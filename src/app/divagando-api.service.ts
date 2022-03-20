@@ -23,21 +23,27 @@ export class DivagandoApiService {
     this.request(observable, next, error);
   }
 
-  post<T>(resource: string, body: any, next: (value: T) => void, error?: (err: any) => void){
+  post<T>(resource: string, body: T, next: (value: T) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
     var observable = this.http.post<T>(uri, body);
     this.request(observable, next, error);
   }
 
-  put<T>(resource: string, body: any, next: (value: T) => void, error?: (err: any) => void){
+  put<T>(resource: string, body: T, next: (value: T) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
     var observable = this.http.put<T>(uri, body);
     this.request(observable, next, error);
   }
 
-  patch<T>(resource: string, body: any, next: (value: T) => void, error?: (err: any) => void){
+  patch<T>(resource: string, body: T, next: (value: T) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
     var observable = this.http.patch<T>(uri, body);
+    this.request(observable, next, error);
+  }
+
+  patch_(resource: string, next: (value: any) => void, error?: (err: any) => void){
+    var uri = `${this.baseUrl}${resource}`;
+    var observable = this.http.patch(uri, null);
     this.request(observable, next, error);
   }
 

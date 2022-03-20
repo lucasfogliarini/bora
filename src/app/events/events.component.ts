@@ -64,6 +64,13 @@ export class EventsComponent {
       }
     });
   }
+  participate(eventId: string){
+    this.divagandoApiService.patch_(`events/${eventId}/participate`, (event) => {
+      this.toastr.success('Tá convidado.');
+    }, (errorResponse)=>{
+      this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    });
+  }
   addressChange(address: Address){
     this.newEvent.location = address.formatted_address;
   }
