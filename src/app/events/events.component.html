@@ -3,35 +3,37 @@
 
   <div class="card">
         <div class="card-header">
-          <div *ngIf="!event.id" class="card-title">
+          <div *ngIf="false && !event.id" class="card-title">
             Bora fazer? <button (click)="create()" type="button" class="btn btn-dark">Bora!</button>
           </div>
           <div *ngIf="event.id && !event.location" class="card-title">
             Onde?
             <input [(ngModel)]="newEvent.location" type="search" ngx-google-places-autocomplete  (onAddressChange)="addressChange($event)"/>
-            <button (click)="update()" type="button" class="btn btn-dark">Aqui!</button>
+            &nbsp;
+            <button (click)="update()" type="button" class="btn btn-dark fa-solid fa-map-pin"></button>
           </div>
           <div *ngIf="event.location && !event.title" class="card-title">
             Título 
             <input [(ngModel)]="newEvent.title" type="text" placeholder="Churras"/>
-            <button (click)="update()" type="button" class="btn btn-dark">Esse!</button>
+            &nbsp;
+            <button (click)="update()" type="button" class="btn btn-dark fa fa-pen-to-square"></button>
           </div>
-          <div *ngIf="event.title && !event.public" class="card-title">
+          <div *ngIf="true || event.title && !event.public" class="card-title">
             Quando? 
             <input id="start" [(ngModel)]="newEvent.start"
             [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa hh:min">
             <owl-date-time #dtStart></owl-date-time>
-            <button (click)="update(true)" type="button" class="btn btn-dark">Esse dia</button>
-            <button (click)="update(true)" type="button" class="btn btn-white">Diz tu</button>
+            &nbsp;
+            <button (click)="update(true)" type="button" class="btn btn-dark fa fa-calendar-day"></button>
           </div>
         </div>
         <div class="card-body p-0">
           <table class="table table-striped" *ngIf="events">
               <tbody>
                   <tr *ngFor="let event of events">                      
-                      <td>{{ event.start | date: 'dd/MM/yyyy' }}&nbsp;<span style="font-size: small;" >{{ event.start | date: 'hh:mm' }}</span></td>
-                      <td>{{ event.title }}</td>
-                      <td><a target="_blank">{{ event.location }}</a></td>
+                      <td>{{ event.start | date: 'dd/MM/yy' }}&nbsp;<span style="font-size: small;" >{{ event.start | date: 'hh:mm' }}</span></td>
+                      <td>{{ event.title?.substring(0,15) }}</td>
+                      <td><a target="_blank">{{ event.location?.substring(0,15) }}</a></td>
                       <td (click)="participate(event.id)" title="Participar"><i class="fa-solid fa-door-open btn "></i></td>
                       <td>
                           <a title="Abrir Google Maps" href="https://www.google.com.br/maps/place/{{ event.location }}" target="_blank" class="btn btn-light btn-sm mr-2">
