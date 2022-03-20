@@ -15,13 +15,12 @@ export class SideBarMenuComponent {
 
   ngOnInit() {
     this.authService.authState.subscribe(user => {
-      console.log('asdf');
       this.user = user;
       if(user){
         var signInUri = `authentications/signIn`;
         this.divagandoApiService.post(signInUri, user, (authentication: any) => {
           localStorage.setItem("jwt", authentication.jwToken);
-          this.toastr.info('Participante logado.');
+          this.toastr.info('Logado.');
         });
       }
     });

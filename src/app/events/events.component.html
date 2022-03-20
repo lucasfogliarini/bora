@@ -16,14 +16,14 @@
             <input [(ngModel)]="newEvent.title" type="text" placeholder="Churras"/>
             <button (click)="update()" type="button" class="btn btn-dark">Esse!</button>
           </div>
-          <!--<div *ngIf="event.title && !event.public" class="card-title">
+          <div *ngIf="event.title && !event.public" class="card-title">
             Quando? 
             <input id="start" [(ngModel)]="newEvent.start"
             [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa hh:min">
             <owl-date-time #dtStart></owl-date-time>
             <button (click)="update(true)" type="button" class="btn btn-dark">Esse dia</button>
             <button (click)="update(true)" type="button" class="btn btn-white">Diz tu</button>
-          </div>-->
+          </div>
         </div>
         <div class="card-body p-0">
           <table class="table table-striped" *ngIf="events">
@@ -34,7 +34,7 @@
                       <td><a target="_blank">{{ event.location }}</a></td>                      
                       <td>
                           <a title="Abrir Google Maps" href="https://www.google.com.br/maps/place/{{ event.location }}" target="_blank" class="btn btn-light btn-sm mr-2">
-                              <i class="fas fa-edit"></i>
+                              <i class="fa-solid fa-map-location-dot"></i>
                           </a>
                       </td>
                   </tr>

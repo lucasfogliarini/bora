@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
-//import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
+import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';//depends on: @angular/cdk
 import { ToastrModule } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
@@ -38,8 +38,8 @@ import { SideBarMenuComponent } from './sidebar-menu/sidebar-menu.component';
       cancelText: "Cancelar",
       confirmText: "Confirmar"
     }),
-    //OwlDateTimeModule, 
-    //OwlNativeDateTimeModule,
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
     SocialLoginModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -48,7 +48,7 @@ import { SideBarMenuComponent } from './sidebar-menu/sidebar-menu.component';
   ],
   providers: [{ provide: 'DIVAGANDO_API', useValue: environment.divagandoApi },
               { provide: APP_BASE_HREF, useValue: '/'},
-              //{ provide: OWL_DATE_TIME_LOCALE, useValue: 'pt-BR'},
+              { provide: OWL_DATE_TIME_LOCALE, useValue: 'pt-BR'},
               { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
               {
                 provide: 'SocialAuthServiceConfig',

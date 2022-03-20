@@ -2,7 +2,7 @@
 @import "~admin-lte/plugins/fontawesome-free/css/all.min.css";
 @import "~admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css";
 @import "~ngx-toastr/toastr.css";
-/*@import "~ng-pick-datetime/assets/style/picker.min.css";*/
+@import "~ng-pick-datetime/assets/style/picker.min.css";
 
 .content a{
     color: inherit;
