@@ -3,7 +3,7 @@
 
   <div class="card">
         <div class="card-header">
-          <div *ngIf="false && !event.id" class="card-title">
+          <div *ngIf="!event.id" class="card-title">
             Bora fazer? <button (click)="create()" type="button" class="btn btn-dark">Bora!</button>
           </div>
           <div *ngIf="event.id && !event.location" class="card-title">
@@ -18,7 +18,7 @@
             &nbsp;
             <button (click)="update()" type="button" class="btn btn-dark fa fa-pen-to-square"></button>
           </div>
-          <div *ngIf="true || event.title && !event.public" class="card-title">
+          <div *ngIf="event.title && !event.public" class="card-title">
             Quando? 
             <input id="start" [(ngModel)]="newEvent.start"
             [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa hh:min">
