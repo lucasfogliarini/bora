@@ -38,8 +38,8 @@ import { SideBarMenuComponent } from './sidebar-menu/sidebar-menu.component';
       cancelText: "Cancelar",
       confirmText: "Confirmar"
     }),
-    OwlDateTimeModule, 
-    OwlNativeDateTimeModule,
+    //OwlDateTimeModule, 
+    //OwlNativeDateTimeModule,
     SocialLoginModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -48,12 +48,12 @@ import { SideBarMenuComponent } from './sidebar-menu/sidebar-menu.component';
   ],
   providers: [{ provide: 'DIVAGANDO_API', useValue: environment.divagandoApi },
               { provide: APP_BASE_HREF, useValue: '/'},
-              { provide: OWL_DATE_TIME_LOCALE, useValue: 'pt-BR'},
+              //{ provide: OWL_DATE_TIME_LOCALE, useValue: 'pt-BR'},
               { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
               {
                 provide: 'SocialAuthServiceConfig',
                 useValue: {
-                  autoLogin: false,
+                  autoLogin: true,
                   providers: [
                     {
                       id: GoogleLoginProvider.PROVIDER_ID,

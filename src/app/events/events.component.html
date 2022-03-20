@@ -16,14 +16,14 @@
             <input [(ngModel)]="newEvent.title" type="text" placeholder="Churras"/>
             <button (click)="update()" type="button" class="btn btn-dark">Esse!</button>
           </div>
-          <div *ngIf="event.title && !event.public" class="card-title">
+          <!--<div *ngIf="event.title && !event.public" class="card-title">
             Quando? 
             <input id="start" [(ngModel)]="newEvent.start"
             [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa hh:min">
             <owl-date-time #dtStart></owl-date-time>
             <button (click)="update(true)" type="button" class="btn btn-dark">Esse dia</button>
             <button (click)="update(true)" type="button" class="btn btn-white">Diz tu</button>
-          </div>
+          </div>-->
         </div>
         <div class="card-body p-0">
           <table class="table table-striped" *ngIf="events">

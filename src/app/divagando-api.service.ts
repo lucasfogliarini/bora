@@ -45,7 +45,7 @@ export class DivagandoApiService {
     this.http.delete(uri).subscribe(subscribe, (response)=> this.requestError(response));
   }
 
-  requestError(errorResponse){
+  requestError(errorResponse: any){
     var messageTitle = "";
     if(errorResponse.statusText) messageTitle = errorResponse.statusText;
     if(errorResponse.error) messageTitle = errorResponse.error.title;

@@ -34,7 +34,7 @@ export class EventsComponent {
       this.toastr.success('Fecho.');
     });
   }
-  update(pub: boolean){
+  update(pub: boolean = false){
     this.newEvent.public = pub;
     this.divagandoApiService.patch<Event>('events/'+this.event.id, this.newEvent, (event) => {
       this.event = event;
