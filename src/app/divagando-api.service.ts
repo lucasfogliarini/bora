@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,45 +11,55 @@ export class DivagandoApiService {
     @Inject('DIVAGANDO_API') private baseUrl: string,
     private toastr: ToastrService) { }
 
-  get<T>(resource: string, subscribe: (value: T) => void){
+  get<T>(resource: string, next: (value: T) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
-    this.http.get<T>(uri).subscribe(subscribe, (response)=> this.requestError(response));
+    var observable = this.http.get<T>(uri);
+    this.request(observable, next, error);
   }
 
-  getText(resource: string, subscribe: (value: string) => void){
+  getText(resource: string, next: (value: string) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
-    this.http.get(uri, { responseType: 'text'}).subscribe(subscribe, (response) => this.requestError(response));
+    var observable = this.http.get(uri, { responseType: 'text'});
+    this.request(observable, next, error);
   }
 
-  post<T>(resource: string, body: any, subscribe: (value: T) => void){
+  post<T>(resource: string, body: any, next: (value: T) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
-    this.http.post<T>(uri, body).subscribe(subscribe, (response)=> this.requestError(response));
+    var observable = this.http.post<T>(uri, body);
+    this.request(observable, next, error);
   }
 
-  put<T>(resource: string, body: any, subscribe: (value: T) => void){
+  put<T>(resource: string, body: any, next: (value: T) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
-    this.http.put<T>(uri, body).subscribe(subscribe, (response)=> this.requestError(response));
+    var observable = this.http.put<T>(uri, body);
+    this.request(observable, next, error);
   }
 
-  patch<T>(resource: string, body: any, subscribe: (value: T) => void){
+  patch<T>(resource: string, body: any, next: (value: T) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
-    this.http.patch<T>(uri, body).subscribe(subscribe, (response)=> this.requestError(response));
+    var observable = this.http.patch<T>(uri, body);
+    this.request(observable, next, error);
   }
 
   put_(resource: string){
     var uri = `${this.baseUrl}${resource}`;
-    this.http.put(uri, null).subscribe(()=> true,(response)=> this.requestError(response));
+    var observable = this.http.put(uri, null);
+    this.request(observable, ()=> true);
   }
 
-  delete(resource: string,  subscribe: (value: any) => void){
+  delete(resource: string,  next: (value: any) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
-    this.http.delete(uri).subscribe(subscribe, (response)=> this.requestError(response));
+    var observable = this.http.delete(uri);
+    this.request(observable, next, error);
   }
 
-  requestError(errorResponse: any){
-    var messageTitle = "";
-    if(errorResponse.statusText) messageTitle = errorResponse.statusText;
-    if(errorResponse.error) messageTitle = errorResponse.error.title;
-    this.toastr.error(messageTitle);
+  request<T>(observable: Observable<T>, next: ((value: T) => void), error?: (err: any) => void){      
+      let defaultError = (errorResponse: HttpErrorResponse) => {
+        this.toastr.error(errorResponse.error.detail);
+      };
+      observable.subscribe({ 
+        next: next,
+        error: error || defaultError
+      });
   }
 }

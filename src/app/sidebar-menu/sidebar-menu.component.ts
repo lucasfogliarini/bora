@@ -17,8 +17,8 @@ export class SideBarMenuComponent {
     this.authService.authState.subscribe(user => {
       this.user = user;
       if(user){
-        var signInUri = `authentications/signIn`;
-        this.divagandoApiService.post(signInUri, user, (authentication: any) => {
+        var tokenUri = `token`;
+        this.divagandoApiService.post(tokenUri, user, (authentication: any) => {
           localStorage.setItem("jwt", authentication.jwToken);
           this.toastr.info('Logado.');
         });

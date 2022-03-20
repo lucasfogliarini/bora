@@ -3,6 +3,7 @@ import { Event } from '../models/event.model';
 import { ToastrService } from 'ngx-toastr';
 import { DivagandoApiService } from '../divagando-api.service';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 
 @Component({
   selector: 'app-events',
@@ -14,6 +15,7 @@ export class EventsComponent {
   newEvent: Event = new Event;
 
   constructor(private divagandoApiService: DivagandoApiService,
+              private authService: SocialAuthService,
               private toastr: ToastrService) {
               this.getEvents();
   }
@@ -24,14 +26,14 @@ export class EventsComponent {
     });
   }
   create(){
-    var logged = "divagandonosul@gmail.com";
     this.newEvent = new Event();
-    this.newEvent.attendeeEmails = [logged];
     this.divagandoApiService.post<Event>('events', this.newEvent, (event) => {
       this.event.id = event.id;
       this.event.attendeeEmails = event.attendeeEmails;
       this.newEvent = new Event();
       this.toastr.success('Fecho.');
+    }, (errorResponse)=>{
+      this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     });
   }
   update(pub: boolean = false){
