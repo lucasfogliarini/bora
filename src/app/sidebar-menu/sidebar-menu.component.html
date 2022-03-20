@@ -1,0 +1,45 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a [routerLink]="['/']" class="brand-link">
+    &nbsp;
+    &nbsp;
+    <span class="brand-text font-weight-light">Divagando</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img *ngIf="user" src="{{ user.photoUrl }}" class="img-circle elevation-2" alt="User Image">
+      </div>
+      <div class="info">
+        <a *ngIf="user">{{ user.name }} <span (click)="signOut()" title="Sair" class="fa fa-sign-out-alt"></span></a>
+        <a *ngIf="!user" (click)="signInWithGoogle()"><span class="fab fa-google"></span> Entrar usando Google</a>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!--<li class="nav-item">
+          <a [routerLink]="['/events']" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+            <p>Eventos</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/spaces']" class="nav-link">
+            <i class="nav-icon fas fa-map-marker-alt"></i>
+            <p>
+              Lugares
+            </p>
+          </a>
+        </li>-->
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

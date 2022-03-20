@@ -1,0 +1,46 @@
+<section class="content">
+  <p *ngIf="!events"><em>Carregando ...</em></p>
+
+  <div class="card">
+        <div class="card-header">
+          <div *ngIf="!event.id" class="card-title">
+            Bora fazer? <button (click)="create()" type="button" class="btn btn-dark">Bora!</button>
+          </div>
+          <div *ngIf="event.id && !event.location" class="card-title">
+            Onde?
+            <input [(ngModel)]="newEvent.location" type="search" ngx-google-places-autocomplete  (onAddressChange)="addressChange($event)"/>
+            <button (click)="update()" type="button" class="btn btn-dark">Aqui!</button>
+          </div>
+          <div *ngIf="event.location && !event.title" class="card-title">
+            Título 
+            <input [(ngModel)]="newEvent.title" type="text" placeholder="Churras"/>
+            <button (click)="update()" type="button" class="btn btn-dark">Esse!</button>
+          </div>
+          <div *ngIf="event.title && !event.public" class="card-title">
+            Quando? 
+            <input id="start" [(ngModel)]="newEvent.start"
+            [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa hh:min">
+            <owl-date-time #dtStart></owl-date-time>
+            <button (click)="update(true)" type="button" class="btn btn-dark">Esse dia</button>
+            <button (click)="update(true)" type="button" class="btn btn-white">Diz tu</button>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped" *ngIf="events">
+              <tbody>
+                  <tr *ngFor="let event of events">                      
+                      <td>{{ event.start | date: 'dd/MM/yyyy' }}&nbsp;<span style="font-size: small;" >{{ event.start | date: 'hh:mm' }}</span></td>
+                      <td>{{ event.title }}</td>
+                      <td><a target="_blank">{{ event.location }}</a></td>                      
+                      <td>
+                          <a title="Abrir Google Maps" href="https://www.google.com.br/maps/place/{{ event.location }}" target="_blank" class="btn btn-light btn-sm mr-2">
+                              <i class="fas fa-edit"></i>
+                          </a>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+</section>

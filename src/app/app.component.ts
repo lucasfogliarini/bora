@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DivagandoApiService } from './divagando-api.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'divagando-ng';
+  title = 'Divagando';
+  version: string = "";
+  constructor(
+    private divagandoApiService: DivagandoApiService) { }
+  ngOnInit(): void {
+    this.RequestVersion();
+  }
+
+  private RequestVersion(){
+      this.divagandoApiService.getText('version', (version: string) => {
+        this.version = version;
+      });
+  }
 }
