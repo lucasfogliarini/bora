@@ -17,6 +17,8 @@ import { HomeComponent } from './home/home.component';
 import { HttpRequestInterceptor } from './httprequest.interceptor';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { SideBarMenuComponent } from './sidebar-menu/sidebar-menu.component';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faTicket, faDoorOpen, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { SideBarMenuComponent } from './sidebar-menu/sidebar-menu.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'events',  component: EventsComponent }
-    ])
+    ]),
+    FontAwesomeModule
   ],
   providers: [{ provide: 'DIVAGANDO_API', useValue: environment.divagandoApi },
               { provide: APP_BASE_HREF, useValue: '/'},
@@ -67,4 +70,12 @@ import { SideBarMenuComponent } from './sidebar-menu/sidebar-menu.component';
               }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(library: FaIconLibrary) {
+    library.addIcons(
+      faTicket,
+      faDoorOpen,
+      faMapLocationDot
+    );
+  }
+}
