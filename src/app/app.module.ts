@@ -18,7 +18,12 @@ import { HttpRequestInterceptor } from './httprequest.interceptor';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { SideBarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faTicket, faDoorOpen, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faTicket,
+        faDoorOpen, 
+        faMapLocationDot,
+        faPenToSquare, 
+        faMapPin,
+        faCalendarDay } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -75,7 +80,10 @@ export class AppModule {
     library.addIcons(
       faTicket,
       faDoorOpen,
-      faMapLocationDot
+      faMapLocationDot,
+      faPenToSquare,
+      faMapPin,
+      faCalendarDay
     );
   }
 }

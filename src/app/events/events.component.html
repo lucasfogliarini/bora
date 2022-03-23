@@ -10,13 +10,13 @@
             Onde?
             <input [(ngModel)]="newEvent.location" type="search" ngx-google-places-autocomplete  (onAddressChange)="addressChange($event)"/>
             &nbsp;
-            <button (click)="update()" type="button" class="btn btn-dark fa-solid fa-map-pin"></button>
+            <fa-icon (click)="update()" type="button" [icon]="['fas','map-pin']" role="button"></fa-icon>
           </div>
           <div *ngIf="event.location && !event.title" class="card-title">
             Título 
             <input [(ngModel)]="newEvent.title" type="text" placeholder="Churras"/>
             &nbsp;
-            <button (click)="update()" type="button" class="btn btn-dark fa fa-pen-to-square"></button>
+            <fa-icon (click)="update()" type="button" [icon]="['fas','pen-to-square']" role="button"></fa-icon>
           </div>
           <div *ngIf="event.title && !event.public" class="card-title">
             Quando? 
@@ -24,7 +24,7 @@
             [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa hh:min">
             <owl-date-time #dtStart></owl-date-time>
             &nbsp;
-            <button (click)="update(true)" type="button" class="btn btn-dark fa fa-calendar-day"></button>
+            <fa-icon (click)="update(true)" type="button" [icon]="['fas','calendar-day']" role="button"></fa-icon>
           </div>
         </div>
         <div class="card-body p-0">
