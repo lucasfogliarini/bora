@@ -23,7 +23,8 @@ import { faTicket,
         faMapLocationDot,
         faPenToSquare, 
         faMapPin,
-        faCalendarDay } from '@fortawesome/free-solid-svg-icons';
+        faCalendarDay,
+        faBars } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ export class AppModule {
       faMapLocationDot,
       faPenToSquare,
       faMapPin,
-      faCalendarDay
+      faCalendarDay,
+      faBars
     );
   }
 }
