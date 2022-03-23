@@ -25,7 +25,9 @@ import { faTicket,
         faPenToSquare, 
         faMapPin,
         faCalendarDay,
-        faBars } from '@fortawesome/free-solid-svg-icons';
+        faBars,
+        faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,9 @@ export class AppModule {
       faPenToSquare,
       faMapPin,
       faCalendarDay,
-      faBars
+      faBars,
+      faSignOutAlt,
+      faGoogle
     );
   }
 }

@@ -12,11 +12,11 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img *ngIf="user" src="{{ user.photoUrl }}" class="img-circle elevation-2" alt="User Image">
+        <img *ngIf="authService.user" src="{{ authService.user.photoUrl }}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a *ngIf="user">{{ user.name }} <span (click)="signOut()" title="Sair" class="fa fa-sign-out-alt"></span></a>
-        <a *ngIf="!user" (click)="signInWithGoogle()"><span class="fab fa-google"></span> Entrar usando Google</a>
+        <a *ngIf="authService.user">{{ authService.user.name }} <fa-icon (click)="signOut()" title="Sair" [icon]="['fas','sign-out-alt']"></fa-icon></a>
+        <a *ngIf="!authService.user" (click)="signInWithGoogle()"><fa-icon [icon]="['fab','google']"></fa-icon> Entrar usando Google</a>
       </div>
     </div>
 
