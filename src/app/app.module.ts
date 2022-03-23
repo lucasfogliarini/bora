@@ -16,6 +16,7 @@ import { EventsComponent } from './events/events.component';
 import { HomeComponent } from './home/home.component';
 import { HttpRequestInterceptor } from './httprequest.interceptor';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { EventCreateComponent } from './event-create/event-create.component';
 import { SideBarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTicket,
@@ -32,7 +33,8 @@ import { faTicket,
     NavMenuComponent,
     SideBarMenuComponent,
     HomeComponent,
-    EventsComponent
+    EventsComponent,
+    EventCreateComponent
   ],
   imports: [
     BrowserModule,
