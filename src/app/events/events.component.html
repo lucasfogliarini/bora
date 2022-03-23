@@ -32,13 +32,14 @@
               <tbody>
                   <tr *ngFor="let event of events">                      
                       <td>{{ event.start | date: 'dd/MM/yy' }}&nbsp;<span style="font-size: small;" >{{ event.start | date: 'hh:mm' }}</span></td>
-                      <td>{{ event.title?.substring(0,15) }}</td>
-                      <td><a target="_blank">{{ event.location?.substring(0,15) }}</a></td>
-                      <td (click)="participate(event.id)" title="Participar"><i class="fa-solid fa-door-open btn "></i></td>
+                      <td>{{ event.title?.substring(0, 20) }}</td>
+                      <td><a target="_blank">{{ event.location?.substring(0,20) }}</a></td>
                       <td>
-                          <a title="Abrir Google Maps" href="https://www.google.com.br/maps/place/{{ event.location }}" target="_blank" class="btn btn-light btn-sm mr-2">
-                              <i class="fa-solid fa-map-location-dot"></i>
-                          </a>
+                          <a title="Comprar Ingresso"  [hidden]="!event.ticketUrl" href="{{event.ticketUrl}}" target="_blank" class="fa-solid fa-ticket btn btn-light btn-sm"></a>
+                      </td>
+                      <td (click)="participate(event.id)" title="Participar"><i class="fa-solid fa-door-open btn btn-light btn-sm"></i></td>
+                      <td>
+                          <a title="Abrir Google Maps" href="https://www.google.com.br/maps/place/{{ event.location }}" target="_blank" class="fa-solid fa-map-location-dot btn btn-light btn-sm"></a>
                       </td>
                   </tr>
               </tbody>
