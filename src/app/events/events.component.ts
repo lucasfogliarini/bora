@@ -74,4 +74,11 @@ export class EventsComponent {
   addressChange(address: Address){
     this.newEvent.location = address.formatted_address;
   }
+  openUrl(url: string){
+    window.open(url);
+  }
+  openMaps(place: string){
+      var mapsUrl = 'https://www.google.com.br/maps/place/' + place;
+      window.open(mapsUrl);
+  }
 }

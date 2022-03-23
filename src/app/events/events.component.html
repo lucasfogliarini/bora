@@ -32,14 +32,39 @@
               <tbody>
                   <tr *ngFor="let event of events">                      
                       <td>{{ event.start | date: 'dd/MM/yy' }}&nbsp;<span style="font-size: small;" >{{ event.start | date: 'hh:mm' }}</span></td>
-                      <td>{{ event.title?.substring(0, 20) }}</td>
-                      <td><a target="_blank">{{ event.location?.substring(0,20) }}</a></td>
+                      <td>{{ event.title?.substring(0, 100) }}</td>
                       <td>
-                          <a title="Comprar Ingresso"  [hidden]="!event.ticketUrl" href="{{event.ticketUrl}}" target="_blank" class="fa-solid fa-ticket btn btn-light btn-sm"></a>
+                          <a mwlConfirmationPopover
+                            [hidden]="!event.ticketUrl"
+                            title="Abrir link do ingresso"
+                            popoverTitle="Abrir link do ingresso?"
+                            popoverMessage="{{event.ticketUrl}}"
+                            placement="left"
+                            confirmText="Abrir"
+                            (confirm)="openUrl(event.ticketUrl)"
+                            class="fa-solid fa-ticket btn btn-light btn-sm">
+                          </a>
                       </td>
-                      <td (click)="participate(event.id)" title="Participar"><i class="fa-solid fa-door-open btn btn-light btn-sm"></i></td>
                       <td>
-                          <a title="Abrir Google Maps" href="https://www.google.com.br/maps/place/{{ event.location }}" target="_blank" class="fa-solid fa-map-location-dot btn btn-light btn-sm"></a>
+                        <a mwlConfirmationPopover
+                           title="Participar no Google Calendar"
+                           popoverTitle="Participar no Google Calendar?"
+                           placement="left"
+                           confirmText="Participar"
+                           (confirm)="participate(event.id)"
+                           class="fa-solid fa-door-open btn btn-light btn-sm">
+                        </a>
+                     </td>
+                      <td>
+                          <a mwlConfirmationPopover
+                             title="Abrir no Google Maps"
+                             popoverTitle="Abrir no Google Maps?"
+                             placement="left"
+                             confirmText="Abrir"
+                             popoverMessage="{{event.location?.substring(0,60) }}"
+                             (confirm)="openMaps(event.location)"
+                             class="fa-solid fa-map-location-dot btn btn-light btn-sm">
+                          </a>
                       </td>
                   </tr>
               </tbody>

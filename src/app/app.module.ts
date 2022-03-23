@@ -34,7 +34,8 @@ import { SideBarMenuComponent } from './sidebar-menu/sidebar-menu.component';
     HttpClientModule,
     ToastrModule.forRoot(),
     ConfirmationPopoverModule.forRoot({
-      confirmButtonType: 'danger',
+      cancelButtonType: '',
+      confirmButtonType: 'dark',
       cancelText: "Cancelar",
       confirmText: "Confirmar"
     }),
