@@ -14,11 +14,11 @@
                       <td>
                           <fa-icon [icon]="['fas', 'ticket']" mwlConfirmationPopover
                             [hidden]="!event.ticketUrl"
-                            title="Abrir link do ingresso"
-                            popoverTitle="Abrir link do ingresso?"
+                            title="Ingresso"
+                            popoverTitle="Ingresso"
                             popoverMessage="{{event.ticketUrl}}"
                             placement="left"
-                            confirmText="Abrir"
+                            confirmText="Abrir Link"
                             (confirm)="openUrl(event.ticketUrl)"
                             role="button">
                           </fa-icon>
@@ -26,7 +26,8 @@
                       <td>
                         <fa-icon [icon]="['fas', 'calendar-plus']" mwlConfirmationPopover
                            title="Participar no Google Calendar"
-                           popoverTitle="Participar no Google Calendar?"
+                           popoverTitle="Google Calendar"
+                           popoverMessage="Participar no Google Calendar?"
                            placement="left"
                            confirmText="Participar"
                            (confirm)="participate(event.id)"
@@ -35,7 +36,7 @@
                      </td>
                       <td>
                           <fa-icon [icon]="['fas', 'map-location-dot']" mwlConfirmationPopover
-                             title="Abrir no Google Maps"
+                             title="Localização"
                              popoverTitle="Abrir no Google Maps?"
                              placement="left"
                              confirmText="Abrir"
