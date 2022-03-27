@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand">
+  <ul class="navbar-nav">
+    <li class="image">
+      <img *ngIf="account" src="{{account.photo}}" class="img-circle elevation-2" alt="User Image">
+    </li>
+    <li>
+      <a class="nav-link" target="_blank" href="https://api.whatsapp.com/send/?phone={{account.whatsApp}}&text=Bora fazer!" role="button"><fa-icon [icon]="['fab','whatsapp']"></fa-icon></a>      
+    </li>
+    <li>
+      <a class="nav-link" target="_blank" href="https://instagram.com/{{account.instagram}}" role="button"><fa-icon [icon]="['fab','instagram']"></fa-icon></a>
+    </li>
+    <li>
+      <a class="nav-link" target="_blank" href="https://open.spotify.com/user/{{account.spotify}}" role="button"><fa-icon [icon]="['fab','spotify']"></fa-icon></a>
+    </li>
+  </ul>
+</nav>
+<app-event-create></app-event-create>
