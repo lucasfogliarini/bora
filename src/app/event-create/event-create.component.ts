@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { ToastrService } from 'ngx-toastr';
@@ -17,11 +18,13 @@ export class EventCreateComponent {
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: SocialAuthService,
               private toastr: ToastrService,
-              private events: EventsComponent) {
+              private events: EventsComponent,
+              private activeRoute: ActivatedRoute) {
   }
   create(){
+    var user = this.activeRoute.snapshot.params['user'];
     this.newEvent = new Event();
-    this.divagandoApiService.post<Event>('events', this.newEvent, (event) => {
+    this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
       this.event.id = event.id;
       this.event.attendeeEmails = event.attendeeEmails;
       this.newEvent = new Event();
@@ -31,8 +34,9 @@ export class EventCreateComponent {
     });
   }
   update(pub: boolean = false){
+    var user = this.activeRoute.snapshot.params['user'];
     this.newEvent.public = pub;
-    this.divagandoApiService.patch<Event>('events/'+this.event.id, this.newEvent, (event) => {
+    this.divagandoApiService.patch<Event>(`events/${this.event.id}?user=${user}`, this.newEvent, (event) => {
       this.event = event;
       this.newEvent = new Event();
       var credit = 0;

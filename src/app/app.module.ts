@@ -57,7 +57,7 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify } from '@fortawesome/free-
     SocialLoginModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'events',  component: EventsComponent }
+      { path: ':user/events',  component: EventsComponent }
     ]),
     FontAwesomeModule
   ],
