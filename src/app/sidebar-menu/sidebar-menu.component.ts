@@ -14,4 +14,8 @@ export class SideBarMenuComponent {
     this.authService.signOut();
     localStorage.removeItem("jwt");
   }
+  openUser(){
+    var user = this.authService.user?.email?.split('@')[0] || '';
+    window.location.pathname = '/' + user;
+  }
 }
