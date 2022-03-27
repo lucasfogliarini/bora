@@ -15,7 +15,9 @@ export class HeaderComponent {
                 var user = this.activeRoute.snapshot.params['user'];
                 var account = `odata/accounts?$filter=contains(Email,'${user}')`;
                 this.divagandoApiService.get<ODataResponse<Account>>(account, (account) => {
-                  this.account = account.value[0];
+                  if(account.value.length){
+                    this.account = account.value[0];
+                  }
                 });
   }
 }
