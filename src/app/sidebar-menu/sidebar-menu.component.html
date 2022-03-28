@@ -15,21 +15,23 @@
         <img *ngIf="authService.user" src="{{ authService.user.photoUrl }}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a *ngIf="authService.user">{{ authService.user.name }} <fa-icon (click)="signOut()" title="Sair" [icon]="['fas','sign-out-alt']"></fa-icon></a>
-        <a *ngIf="!authService.user" (click)="signInWithGoogle()"><fa-icon [icon]="['fab','google']"></fa-icon> Entrar usando Google</a>
+        <a *ngIf="authService.user" role="button">{{ authService.user.name }} <fa-icon (click)="authService.signOut()" title="Sair" [icon]="['fas','sign-out-alt']"></fa-icon></a>
+        <a *ngIf="!authService.user" (click)="authService.signInWithGoogle()" role="button"><fa-icon [icon]="['fab','google']"></fa-icon> Entrar usando Google</a>
       </div>
     </div>
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!--<li class="nav-item">
-          <a [routerLink]="['/events']" class="nav-link">
-            <i class="nav-icon far fa-calendar-alt"></i>
-            <p>Eventos</p>
+        <li *ngIf="authService.user" class="nav-item">
+          <a *ngIf="!authService.account.calendarAuthorized" (click)="authService.authorizeCalendar()" class="nav-link" role="button">
+            <p>Autorizar Google Calendar</p>
+          </a>
+          <a *ngIf="authService.account.calendarAuthorized" (click)="authService.unauthorizeCalendar()" class="nav-link" role="button">
+            <p>Desautorizar Google Calendar</p>
           </a>
         </li>
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a [routerLink]="['/spaces']" class="nav-link">
             <i class="nav-icon fas fa-map-marker-alt"></i>
             <p>

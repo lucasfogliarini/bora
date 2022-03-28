@@ -47,12 +47,6 @@ export class DivagandoApiService {
     this.request(observable, next, error);
   }
 
-  put_(resource: string){
-    var uri = `${this.baseUrl}${resource}`;
-    var observable = this.http.put(uri, null);
-    this.request(observable, ()=> true);
-  }
-
   delete(resource: string,  next: (value: any) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
     var observable = this.http.delete(uri);
