@@ -26,6 +26,8 @@ export class EventsComponent {
     var eventsUri = `events?user=${user}`;
     this.divagandoApiService.get<Event[]>(eventsUri, (events) => {
       this.events = events;
+    }, (errorResponse)=>{
+        //usuário não existe ou Calendário não autorizado
     });
   }
   participate(eventId: string){
