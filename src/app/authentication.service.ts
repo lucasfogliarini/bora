@@ -17,10 +17,14 @@ export class AuthenticationService {
                 this.authService.authState.subscribe(user => {
                   this.user = user;
                   if(user){
-                    var tokenUri = `token`;
-                    this.divagandoApiService.post(tokenUri, user, (authentication: any) => {
-                      localStorage.setItem("jwt", authentication.jwToken);
-                    });
+                    const jwt = localStorage.getItem("jwt");
+                    if(!jwt){
+                      var tokenUri = `token`;
+                      this.divagandoApiService.post(tokenUri, user, (authentication: any) => {
+                        localStorage.setItem("jwt", authentication.jwToken);
+                      });
+                    }
+
                     var account = `odata/accounts?$filter=Email eq '${user.email}'`;
                     this.divagandoApiService.get<ODataResponse<Account>>(account, (account) => {
                       this.account = account.value[0];
