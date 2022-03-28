@@ -37,11 +37,13 @@ export class AuthenticationService {
   }
   authorizeCalendar(){
     this.divagandoApiService.patch_(`accounts/${this.user.email}/calendar/authorize`, (account) => {
+      this.account.calendarAuthorized = true;
       this.toastr.success('Calendário autorizado para ver e criar eventos.');
     });
   }
   unauthorizeCalendar(){
     this.divagandoApiService.patch_(`accounts/${this.user.email}/calendar/unauthorize`, (account) => {
+      this.account.calendarAuthorized = false;
       this.toastr.success('Calendário desautorizado!');
     });
   }
