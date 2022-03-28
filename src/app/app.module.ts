@@ -28,7 +28,9 @@ import { faTicket,
         faCalendarDay,
         faBars,
         faSignOutAlt,
-        faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
+        faCalendarPlus,
+        faLock,
+        faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
@@ -87,6 +89,8 @@ export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIcons(
       faTicket,
+      faLock,
+      faLockOpen,
       faDoorOpen,
       faMapLocationDot,
       faPenToSquare,
