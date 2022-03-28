@@ -14,4 +14,6 @@
     </li>
   </ul>
 </nav>
-<app-event-create></app-event-create>
+<div *ngIf="account.calendarAuthorized">
+  <app-event-create></app-event-create>
+</div>
