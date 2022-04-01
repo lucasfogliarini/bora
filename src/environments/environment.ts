@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  //divagandoApi: 'http://api.divagando.org/'
+  //divagandoApi: 'https://divagando-api.azurewebsites.net/'
   divagandoApi: 'https://localhost:5001/'//must use /
 };
 
