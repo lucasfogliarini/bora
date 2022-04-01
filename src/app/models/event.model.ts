@@ -7,6 +7,6 @@ export class Event {
     start: Date;
     end: Date;
     deadline: Date;
-    location: string;
+    location?: string;
     public: boolean;
 }

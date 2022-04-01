@@ -44,7 +44,7 @@ export class EventsComponent {
   openUrl(url: string){
     window.open(url);
   }
-  openMaps(place: string){
+  openMaps(place?: string){
       var mapsUrl = 'https://www.google.com.br/maps/place/' + place;
       window.open(mapsUrl);
   }
