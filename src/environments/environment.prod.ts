@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  divagandoApi: 'https://divagando-api.azurewebsites.net/'//must use /
+  divagandoApi: 'http://api.divagando.org/'//must use /
 };
