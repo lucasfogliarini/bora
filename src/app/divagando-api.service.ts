@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class DivagandoApiService {
   constructor(private http: HttpClient, 
-    @Inject('DIVAGANDO_API') private baseUrl: string,
+    @Inject('DIVAGANDO_API') public baseUrl: string,
     private toastr: ToastrService) { }
 
   get<T>(resource: string, next: (value: T) => void, error?: (err: any) => void){

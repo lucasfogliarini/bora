@@ -9,7 +9,7 @@ import { ODataResponse } from './models/odata-response.interface';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  user: SocialUser = new SocialUser;
+  user?: SocialUser;
   account = new Account;
   constructor(private authService: SocialAuthService,
               private toastr: ToastrService,
@@ -40,13 +40,14 @@ export class AuthenticationService {
     localStorage.removeItem("jwt");
   }
   authorizeCalendar(){
-    this.divagandoApiService.patch_(`accounts/${this.user.email}/calendar/authorize`, (account) => {
+    window.open(this.divagandoApiService.baseUrl + 'accounts/authorizeCalendar','authorization','popup');
+    /*this.divagandoApiService.get(`accounts/authorizeCalendar`, (account) => {
       this.account.calendarAuthorized = true;
       this.toastr.success('Calendário autorizado para ver e criar eventos.');
-    });
+    });*/
   }
   unauthorizeCalendar(){
-    this.divagandoApiService.patch_(`accounts/${this.user.email}/calendar/unauthorize`, (account) => {
+    this.divagandoApiService.patch_(`accounts/unauthorizeCalendar`, (account) => {
       this.account.calendarAuthorized = false;
       this.toastr.success('Calendário desautorizado!');
     });
