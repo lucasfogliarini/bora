@@ -3,7 +3,6 @@ import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-soc
 import { ToastrService } from 'ngx-toastr';
 import { DivagandoApiService } from './divagando-api.service';
 import { Account } from './models/account.model';
-import { ODataResponse } from './models/odata-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -25,9 +24,9 @@ export class AuthenticationService {
                       });
                     }
 
-                    var account = `odata/accounts?$filter=Email eq '${user.email}'`;
-                    this.divagandoApiService.get<ODataResponse<Account>>(account, (account) => {
-                      this.account = account.value[0];
+                    var account = `accounts?$filter=Email eq '${user.email}'`;
+                    this.divagandoApiService.get<Account[]>(account, (accounts) => {
+                      this.account = accounts[0];
                     });
                   }
                 });

@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
-import { DivagandoApiService } from '../divagando-api.service';
-import { Account } from '../models/account.model';
-import { ODataResponse } from '../models/odata-response.interface';
 
 @Component({
   selector: 'app-sidebar-menu',
