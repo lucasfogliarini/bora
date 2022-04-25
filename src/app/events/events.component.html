@@ -9,7 +9,7 @@
           <table class="table table-striped" *ngIf="events">
               <tbody>
                   <tr *ngFor="let event of events">                      
-                      <td>{{ event.start | date: 'dd/MM/yy' }}&nbsp;<span style="font-size: small;" >{{ event.start | date: 'hh:mm' }}</span></td>
+                      <td>{{ event.start | date: 'dd/MM/yy' }}&nbsp;<span style="font-size: small;" >{{ event.start | date: 'HH:mm' }}</span></td>
                       <td>{{ event.title?.substring(0, 100) }}</td>
                       <td>
                           <fa-icon [icon]="['fas', 'ticket']" mwlConfirmationPopover
