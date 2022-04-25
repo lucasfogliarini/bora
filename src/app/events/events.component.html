@@ -24,12 +24,12 @@
                           </fa-icon>
                       </td>
                       <td>
-                        <fa-icon [icon]="['fas', 'calendar-plus']" mwlConfirmationPopover
-                           title="Participar no Google Calendar"
-                           popoverTitle="Google Calendar"
-                           popoverMessage="Participar no Google Calendar?"
+                        <fa-icon [icon]="['fas', 'people-line']" mwlConfirmationPopover
+                           title="Convidados. Bora?"
+                           popoverTitle="Convidados. Bora?"
+                           popoverMessage="{{attendees(event.attendees)}}"
                            placement="left"
-                           confirmText="Participar"
+                           confirmText="Bora!"
                            (confirm)="participate(event.id)"
                            role="button">
                         </fa-icon>
@@ -40,7 +40,7 @@
                              popoverTitle="Abrir no Google Maps?"
                              placement="left"
                              confirmText="Abrir"
-                             popoverMessage="{{event.location?.substring(0,60) }}"
+                             popoverMessage="{{ event.location?.substring(0,100) }}"
                              (confirm)="openMaps(event.location)"
                              role="button">
                           </fa-icon>

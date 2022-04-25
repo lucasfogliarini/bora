@@ -30,7 +30,8 @@ import { faTicket,
         faSignOutAlt,
         faCalendarPlus,
         faLock,
-        faLockOpen } from '@fortawesome/free-solid-svg-icons';
+        faLockOpen,
+        faPeopleLine } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
@@ -102,7 +103,8 @@ export class AppModule {
       faCalendarPlus,
       faWhatsapp,
       faInstagram,
-      faSpotify
+      faSpotify,
+      faPeopleLine
     );
   }
 }

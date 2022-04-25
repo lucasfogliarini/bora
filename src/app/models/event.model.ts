@@ -9,4 +9,5 @@ export class Event {
     deadline: Date;
     location?: string;
     public: boolean;
+    attendees: string[]
 }

@@ -5,6 +5,7 @@ import { DivagandoApiService } from '../divagando-api.service';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-events',
@@ -33,7 +34,7 @@ export class EventsComponent {
   participate(eventId: string){
     var user = this.activeRoute.snapshot.params['user'];
     this.divagandoApiService.patch_(`events/${eventId}/participate?user=${user}`, (event) => {
-      this.toastr.success('Tá convidado.');
+      this.toastr.success('Então bora!');
     }, (errorResponse)=>{
       this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     });
@@ -47,5 +48,8 @@ export class EventsComponent {
   openMaps(place?: string){
       var mapsUrl = 'https://www.google.com.br/maps/place/' + place;
       window.open(mapsUrl);
+  }
+  attendees(attendees: string[]){
+    return attendees?.map(e=>`<a href="${environment.divagando}${e}">${e}</a><br>`).join('');
   }
 }
