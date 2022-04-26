@@ -2,19 +2,25 @@
   Bora fazer? <button (click)="create()" type="button" class="btn btn-dark">Bora!</button>
 </div>
 <div *ngIf="event.id && !event.location" class="card-title">
-  Onde?
+  <h6>Onde?</h6>
   <input [(ngModel)]="newEvent.location" type="search" ngx-google-places-autocomplete [options]='placesOptions' (onAddressChange)="addressChange($event)"/>
   &nbsp;
   <fa-icon (click)="update()" type="button" [icon]="['fas','map-pin']" role="button"></fa-icon>
 </div>
 <div *ngIf="event.location && !event.title" class="card-title">
-  Título 
-  <input [(ngModel)]="newEvent.title" type="text" placeholder="Churras aqui em casa!" />
-  &nbsp;
-  <fa-icon (click)="update()" type="button" [icon]="['fas','pen-to-square']" role="button"></fa-icon>
+  <h6>O que vamos fazer?</h6>
+  <div *ngFor="let title of titleOptions; let i = index" class="form-check">
+    <input [value]="title" [(ngModel)]="newEvent.title" class="form-check-input" type="radio" id="title_{{i}}">
+    <label class="form-check-label" for="title_{{i}}">
+      {{title}}
+    </label>
+  </div>
+  <div style="text-align: center;">
+    <button *ngIf="newEvent.title" (click)="update()" type="button" class="btn btn-dark">{{newEvent.title}}!</button>
+  </div>
 </div>
 <div *ngIf="event.title && !event.public" class="card-title">
-  Quando? 
+  <h6>Quando?</h6>
   <input id="start" [(ngModel)]="newEvent.start"
   [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa hh:min">
   <owl-date-time #dtStart></owl-date-time>

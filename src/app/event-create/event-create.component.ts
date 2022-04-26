@@ -16,6 +16,7 @@ export class EventCreateComponent {
   event: Event = new Event;
   newEvent: Event = new Event;
   placesOptions: Options = new Options;
+  titleOptions = ['Churrasco','Festa, dançar e tocar','Viajar ou fazer uma trilha', 'Desenvolver um software'];
 
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: SocialAuthService,
@@ -33,7 +34,6 @@ export class EventCreateComponent {
       this.event.attendeeEmails = event.attendeeEmails;
       this.newEvent = new Event();
       this.newEvent.location = event.location;
-      this.toastr.success('Fecho.');
     }, (errorResponse)=>{
       this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     });
@@ -44,24 +44,8 @@ export class EventCreateComponent {
     this.divagandoApiService.patch<Event>(`events/${this.event.id}?user=${user}`, this.newEvent, (event) => {
       this.event = event;
       this.newEvent = new Event();
-      var credit = 0;
-      if(this.event.location){
-        credit += 5;
-      }
-      if(this.event.title){
-        credit += 5;
-      }
       if(this.event.public){
-        credit += 5;
-      }
-
-      if(credit == 0){
         this.toastr.success('Bora então!');
-      }else{
-        this.toastr.success(`R$${credit} pila se tu for!`);
-      }
-      
-      if(pub){
         this.events.getEvents();
         this.event = new Event;
       }
