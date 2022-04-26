@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand">
   <ul class="navbar-nav">
     <li class="image">
-      <img *ngIf="account" src="{{account.photo}}" class="img-circle elevation-2" alt="User Image">
+      <img *ngIf="account" style="width: 75px" src="{{account.photo}}" class="img-circle elevation-2" alt="User Image">
     </li>
     <li *ngIf="account.whatsApp">
       <a class="nav-link" target="_blank" href="https://api.whatsapp.com/send/?phone={{account.whatsApp}}&text=Bora fazer!" role="button"><fa-icon [icon]="['fab','whatsapp']"></fa-icon></a>      
