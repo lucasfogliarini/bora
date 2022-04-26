@@ -29,14 +29,16 @@ export class EventCreateComponent {
                 this.placesOptions.componentRestrictions = { country: 'br' };
 }
   create(){
+    const jwt = localStorage.getItem("jwt");
+    if(!jwt){
+      this.authService.signInWithGoogle();
+    }
     var user = this.activeRoute.snapshot.params['user'];
     this.newEvent = new Event();
     this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
       this.event.id = event.id;
       this.event.attendeeEmails = event.attendeeEmails;
       this.newEvent = new Event();
-    }, (errorResponse)=>{
-      this.authService.signInWithGoogle();
     });
   }
   update(pub: boolean = false){
