@@ -9,8 +9,7 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-events',
-  templateUrl: './events.component.html',
-  styleUrls: ['./events.component.css']
+  templateUrl: './events.component.html'
 })
 export class EventsComponent {
   events: Event[] = [];

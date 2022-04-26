@@ -1,29 +1,31 @@
-<div *ngIf="!event.id" class="card-title">
-  Bora fazer? <button (click)="create()" type="button" class="btn btn-dark">Bora!</button>
-</div>
-<div *ngIf="event.id && !event.location" class="card-title">
-  <h6>Onde?</h6>
-  <input [(ngModel)]="newEvent.location" type="search" ngx-google-places-autocomplete [options]='placesOptions' (onAddressChange)="addressChange($event)"/>
-  &nbsp;
-  <fa-icon (click)="update()" type="button" [icon]="['fas','map-pin']" role="button"></fa-icon>
-</div>
-<div *ngIf="event.location && !event.title" class="card-title">
-  <h6>O que vamos fazer?</h6>
-  <div *ngFor="let title of titleOptions; let i = index" class="form-check">
-    <input [value]="title" [(ngModel)]="newEvent.title" class="form-check-input" type="radio" id="title_{{i}}">
-    <label class="form-check-label" for="title_{{i}}">
-      {{title}}
-    </label>
+<div id="event-create">
+  <div *ngIf="!event.id" class="card-title">
+    <button (click)="create()" type="button" class="btn btn-dark">Bora Fazer!</button>
   </div>
-  <div style="text-align: center;">
-    <button *ngIf="newEvent.title" (click)="update()" type="button" class="btn btn-dark">{{newEvent.title}}!</button>
+  <div *ngIf="event.id && !event.location" class="card-title" id="location">
+    <h5>Onde?</h5>
+    <input [(ngModel)]="newEvent.location" type="search" ngx-google-places-autocomplete [options]='placesOptions' (onAddressChange)="addressChange($event)"/>
+    &nbsp;
+    <fa-icon (click)="update()" type="button" [icon]="['fas','map-pin']" role="button"></fa-icon>
   </div>
-</div>
-<div *ngIf="event.title && !event.public" class="card-title">
-  <h6>Quando?</h6>
-  <input id="start" [(ngModel)]="newEvent.start"
-  [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa hh:min">
-  <owl-date-time #dtStart></owl-date-time>
-  &nbsp;
-  <fa-icon (click)="update(true)" type="button" [icon]="['fas','calendar-day']" role="button"></fa-icon>
+  <div *ngIf="event.location && !event.title" class="card-title">
+    <h5>O que vamos fazer?</h5>
+    <div *ngFor="let title of titleOptions; let i = index" class="form-check">
+      <input [value]="title" [(ngModel)]="newEvent.title" class="form-check-input" type="radio" id="title_{{i}}">
+      <label class="form-check-label" for="title_{{i}}">
+        {{title}}
+      </label>
+    </div>
+    <div id="buttonTitle">
+      <button *ngIf="newEvent.title" (click)="update()" type="button" class="btn btn-dark">{{newEvent.title}}!</button>
+    </div>
+  </div>
+  <div *ngIf="event.title && !event.public" class="card-title">
+    <h5>Quando?</h5>
+    <input id="start" [(ngModel)]="newEvent.start"
+    [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa hh:min">
+    <owl-date-time #dtStart></owl-date-time>
+    &nbsp;
+    <fa-icon (click)="update(true)" type="button" [icon]="['fas','calendar-day']" role="button"></fa-icon>
+  </div>
 </div>
