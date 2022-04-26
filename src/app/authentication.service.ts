@@ -24,9 +24,8 @@ export class AuthenticationService {
                       });
                     }
 
-                    var account = `accounts?$filter=Email eq '${user.email}'`;
-                    this.divagandoApiService.get<Account[]>(account, (accounts) => {
-                      this.account = accounts[0];
+                    this.divagandoApiService.getAccount(user.email, (account: Account)=>{
+                      this.account = account;
                     });
                   }
                 });

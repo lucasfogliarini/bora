@@ -6,12 +6,14 @@ import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { Account } from '../models/account.model';
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html'
 })
 export class EventsComponent {
+  account = new Account;
   events: Event[] = [];
   event: Event = new Event;
   newEvent: Event = new Event;
@@ -24,6 +26,10 @@ export class EventsComponent {
   }
   getEvents(){
     var user = this.activeRoute.snapshot.params['user'];
+    this.divagandoApiService.getAccount(user, (account: Account)=>{
+      this.account = account;
+    });
+
     var eventsUri = `events?user=${user}`;
     this.divagandoApiService.get<Event[]>(eventsUri, (events) => {
       this.events = events;

@@ -52,4 +52,4 @@
         <!-- /.card-body -->
       </div>
 </section>
-<app-event-create></app-event-create>
+<app-event-create *ngIf="account?.calendarAuthorized"></app-event-create>

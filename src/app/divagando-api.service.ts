@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { Account } from './models/account.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,19 @@ export class DivagandoApiService {
   constructor(private http: HttpClient, 
     @Inject('DIVAGANDO_API') public baseUrl: string,
     private toastr: ToastrService) { }
+
+  getAccount(user: string, onFound: any){
+    var account = `accounts?$filter=contains(Email,'${user}')`;
+    this.get<Account[]>(account, (accounts) => {
+      let account;
+      if(accounts.length){
+        account = accounts[0];
+      }else{
+        this.toastr.warning('Usuário não encontrado.');
+      }
+      onFound(account);
+    });
+  }
 
   get<T>(resource: string, next: (value: T) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
