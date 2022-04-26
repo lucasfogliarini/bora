@@ -29,7 +29,7 @@
       <button *ngIf="newEvent.location" (click)="update()" type="button" class="btn btn-dark">{{newEvent.location?.substring(0, 15)}}!</button>
     </div>
   </div>
-  <div *ngIf="event.title && !event.public" class="card-title">
+  <div *ngIf="event.location && !event.public" class="card-title">
     <h5>Quando?</h5>
     <input id="start" [(ngModel)]="newEvent.start"
     [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa hh:min">

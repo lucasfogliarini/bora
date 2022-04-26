@@ -34,7 +34,6 @@ export class EventCreateComponent {
       this.event.id = event.id;
       this.event.attendeeEmails = event.attendeeEmails;
       this.newEvent = new Event();
-      this.getCurrentPlace();
     }, (errorResponse)=>{
       this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     });
@@ -45,6 +44,9 @@ export class EventCreateComponent {
     this.divagandoApiService.patch<Event>(`events/${this.event.id}?user=${user}`, this.newEvent, (event) => {
       this.event = event;
       this.newEvent = new Event();
+      if(!event.location){
+        this.getCurrentPlace();
+      }
       if(this.event.public){
         this.toastr.success('Bora então!');
         this.events.getEvents();
