@@ -9,6 +9,11 @@
     -moz-border-radius: 10px;
     background-color: white;
 }
+
+#event-create #title{
+    width: 220px;
+}
+
 #event-create #location input[type=search]{
     margin-top: 10px;
 }

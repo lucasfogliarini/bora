@@ -10,6 +10,7 @@
         {{title}}
       </label>
     </div>
+    <input [(ngModel)]="newEvent.title" class="form-control" type="text" id="title" placeholder="ou ...">
     <div class="buttonEvent">
       <button *ngIf="newEvent.title" (click)="update()" type="button" class="btn btn-dark">{{newEvent.title}}!</button>
     </div>
