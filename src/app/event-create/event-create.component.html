@@ -2,7 +2,19 @@
   <div *ngIf="!event.id" class="card-title">
     <button (click)="create()" type="button" class="btn btn-dark">Bora Fazer!</button>
   </div>
-  <div *ngIf="event.id && !event.location" class="card-title" id="location">
+  <div *ngIf="event.id && !event.title" class="card-title">
+    <h5>O que vamos fazer?</h5>
+    <div *ngFor="let title of titles; let i = index" class="form-check">
+      <input [value]="title" [(ngModel)]="newEvent.title" class="form-check-input" type="radio" id="title_{{i}}">
+      <label class="form-check-label" for="title_{{i}}">
+        {{title}}
+      </label>
+    </div>
+    <div class="buttonEvent">
+      <button *ngIf="newEvent.title" (click)="update()" type="button" class="btn btn-dark">{{newEvent.title}}!</button>
+    </div>
+  </div>
+  <div *ngIf="event.title && !event.location" class="card-title" id="location">
     <h5>Onde?</h5>
     <div *ngFor="let location of locations; let i = index" class="form-check">
       <input [value]="location" [(ngModel)]="newEvent.location" class="form-check-input" type="radio" id="location_{{i}}">
@@ -14,18 +26,6 @@
     &nbsp;
     <div class="buttonEvent">
       <button *ngIf="newEvent.location" (click)="update()" type="button" class="btn btn-dark">{{newEvent.location?.substring(0, 15)}}!</button>
-    </div>
-  </div>
-  <div *ngIf="event.location && !event.title" class="card-title">
-    <h5>O que vamos fazer?</h5>
-    <div *ngFor="let title of titles; let i = index" class="form-check">
-      <input [value]="title" [(ngModel)]="newEvent.title" class="form-check-input" type="radio" id="title_{{i}}">
-      <label class="form-check-label" for="title_{{i}}">
-        {{title}}
-      </label>
-    </div>
-    <div class="buttonEvent">
-      <button *ngIf="newEvent.title" (click)="update()" type="button" class="btn btn-dark">{{newEvent.title}}!</button>
     </div>
   </div>
   <div *ngIf="event.title && !event.public" class="card-title">
