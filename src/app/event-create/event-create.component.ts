@@ -17,7 +17,8 @@ export class EventCreateComponent {
   event: Event = new Event;
   newEvent: Event = new Event;
   placesOptions: Options = new Options;
-  titleOptions = ['Churrasco','Festa, dançar e tocar','Viajar ou fazer uma trilha', 'Desenvolver um software'];
+  titles = ['Churrasco','Festa, dançar e tocar','Viajar ou fazer uma trilha', 'Desenvolver um software'];
+  locations = ['Aqui em casa','Na tua casa','Num Quiosque','Na Praia','Google Meet'];
 
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: SocialAuthService,
@@ -29,12 +30,11 @@ export class EventCreateComponent {
   create(){
     var user = this.activeRoute.snapshot.params['user'];
     this.newEvent = new Event();
-    this.newEvent.location = localStorage.getItem('currentPlace') || undefined;
     this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
       this.event.id = event.id;
       this.event.attendeeEmails = event.attendeeEmails;
       this.newEvent = new Event();
-      this.newEvent.location = event.location;
+      this.getCurrentPlace();
     }, (errorResponse)=>{
       this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     });
@@ -54,5 +54,23 @@ export class EventCreateComponent {
   }
   addressChange(address: Address){
     this.newEvent.location = address.formatted_address;
+  }
+
+  getCurrentPlace(){
+    window.navigator.geolocation.getCurrentPosition(position =>{
+      //@ts-ignore
+      var geocoder = new google.maps.Geocoder();
+      //@ts-ignore
+      var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      //@ts-ignore
+      geocoder.geocode({'location': latLng }, addresses =>{
+        this.newEvent.location = addresses[0].formatted_address;
+      });
+    }, error =>{
+      //error.code 1 You've decided not to share your position, but it's OK. We won't ask you again.
+      //error.code 2 The network is down or the positioning service can't be reached.
+      //error.code 3 The attempt timed out before it could get the location data.
+      //else Geolocation failed due to unknown error.;
+    });
   }
 }
