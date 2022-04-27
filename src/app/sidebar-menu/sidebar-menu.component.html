@@ -23,7 +23,7 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <li *ngIf="authService.user" class="nav-item">
+        <li *ngIf="authService.user?.email?.includes('lucasfogliarini')" class="nav-item">
           <a title="Autorizar Google Calendar" *ngIf="!authService.account.calendarAuthorized" (click)="authService.authorizeCalendar()" class="nav-link" role="button">
             <p>Google Calendar</p>
             &nbsp;
