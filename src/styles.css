@@ -16,5 +16,10 @@
 }
 
 .selectedEvent{
-    font-size: 40px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+app-events td fa-icon{
+    display: block;
 }

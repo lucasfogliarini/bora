@@ -8,44 +8,40 @@
         <div class="card-body p-0">
           <table class="table table-striped" *ngIf="events">
               <tbody>
-                  <tr class="{{isSelectedEvent(event.id)}}" id="{{event.id}}" (click)="selectEvent(event.id)" role="button" *ngFor="let event of events">
+                  <tr  id="{{event.id}}" (click)="selectEvent(event.id)" role="button" *ngFor="let event of events">
                       <td>{{ event.start | date: 'dd/MM/yy' }}&nbsp;<span style="font-size: small;" >{{ event.start | date: 'HH:mm' }}</span></td>
-                      <td>{{ event.title?.substring(0, 100) }}</td>
-                      <td>
-                          <fa-icon [icon]="['fas', 'ticket']" mwlConfirmationPopover
-                            [hidden]="!event.ticketUrl"
-                            title="Ingresso"
-                            popoverTitle="Ingresso"
-                            popoverMessage="{{event.ticketUrl}}"
-                            placement="left"
-                            confirmText="Abrir Link"
-                            (confirm)="openUrl(event.ticketUrl)"
-                            role="button">
-                          </fa-icon>
-                      </td>
+                      <td class="{{isSelectedEvent(event.id)}}">{{ event.title?.substring(0, 100) }}</td>
                       <td>
                         <fa-icon [icon]="['fas', 'people-line']" mwlConfirmationPopover
-                           title="Convidados. Bora?"
-                           popoverTitle="Convidados. Bora?"
-                           popoverMessage="{{attendees(event.attendees)}}"
-                           placement="left"
-                           confirmText="Bora!"
-                           (confirm)="participate(event.id)"
-                           role="button">
+                          title="Convidados. Bora?"
+                          popoverTitle="Convidados. Bora?"
+                          popoverMessage="{{attendees(event.attendees)}}"
+                          placement="left"
+                          confirmText="Bora!"
+                          (confirm)="participate(event.id)"
+                          role="button">
                         </fa-icon>
-                     </td>
-                      <td>
-                          <fa-icon [icon]="['fas', 'map-location-dot']" mwlConfirmationPopover
-                             title="Localização"
-                             popoverTitle="Abrir no Google Maps?"
-                             placement="left"
-                             confirmText="Abrir"
-                             popoverMessage="{{ event.location?.substring(0,100) }}"
-                             (confirm)="openMaps(event.location)"
-                             role="button">
-                          </fa-icon>
+                        <fa-icon (click)="share(event)" [icon]="['fab', 'whatsapp']"></fa-icon>
+                        <fa-icon [icon]="['fas', 'ticket']" mwlConfirmationPopover
+                          [hidden]="!event.ticketUrl"
+                          title="Ingresso"
+                          popoverTitle="Ingresso"
+                          popoverMessage="{{event.ticketUrl}}"
+                          placement="left"
+                          confirmText="Abrir Link"
+                          (confirm)="openUrl(event.ticketUrl)"
+                          role="button">
+                        </fa-icon>
+                        <fa-icon [icon]="['fas', 'map-location-dot']" mwlConfirmationPopover
+                            title="Localização"
+                            popoverTitle="Abrir no Google Maps?"
+                            placement="left"
+                            confirmText="Abrir"
+                            popoverMessage="{{ event.location?.substring(0,100) }}"
+                            (confirm)="openMaps(event.location)"
+                            role="button">
+                        </fa-icon>
                       </td>
-                      <td><fa-icon (click)="share(event.id)" [icon]="['fab', 'whatsapp']"></fa-icon></td>
                   </tr>
               </tbody>
           </table>

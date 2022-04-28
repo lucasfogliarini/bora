@@ -56,9 +56,11 @@ export class EventsComponent {
       var mapsUrl = 'https://www.google.com.br/maps/place/' + place;
       window.open(mapsUrl);
   }
-  share(eventId: string){
-    var whatsApp = `https://api.whatsapp.com/send/?text=Bora! \n ${environment.divagando}/lucasfogliarini?eventId=${eventId}`;
-    window.open(whatsApp);
+  share(event: Event){
+    var date = new Date(event.start).toLocaleDateString();
+    var whatsappText = window.encodeURIComponent(`Bora ${event.title} \n\n Data: ${date} \n ${environment.divagando}${this.router.url.replace('/','')}`);
+    var whatsAppLink = `https://api.whatsapp.com/send/?text=${whatsappText}`;
+    window.open(whatsAppLink);
   }
   isSelectedEvent(eventId: string){
     var isEvent = this.activeRoute.snapshot.queryParams['eventId'] == eventId;
