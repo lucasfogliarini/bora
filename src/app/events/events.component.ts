@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DivagandoApiService } from '../divagando-api.service';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Account } from '../models/account.model';
 
@@ -21,6 +21,7 @@ export class EventsComponent {
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: SocialAuthService,
               private toastr: ToastrService,
+              private router: Router,
               private activeRoute: ActivatedRoute) {
               this.getEvents();
   }
@@ -54,6 +55,17 @@ export class EventsComponent {
   openMaps(place?: string){
       var mapsUrl = 'https://www.google.com.br/maps/place/' + place;
       window.open(mapsUrl);
+  }
+  share(eventId: string){
+    var whatsApp = `https://api.whatsapp.com/send/?text=Bora! \n ${environment.divagando}/lucasfogliarini?eventId=${eventId}`;
+    window.open(whatsApp);
+  }
+  isSelectedEvent(eventId: string){
+    var isEvent = this.activeRoute.snapshot.queryParams['eventId'] == eventId;
+    return isEvent ? 'selectedEvent' : '';
+  }
+  selectEvent(eventId: string){
+    this.router.navigate([], { queryParams: { eventId: eventId } });
   }
   attendees(attendees: string[]){
     return attendees?.map(e=>`<a href="${environment.divagando}${e}">${e}</a><br>`).join('');

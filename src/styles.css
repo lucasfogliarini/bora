@@ -14,3 +14,7 @@
 #start{
     width: 160px;
 }
+
+.selectedEvent{
+    font-size: 40px;
+}
