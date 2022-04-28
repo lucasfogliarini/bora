@@ -7,7 +7,7 @@ import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Account } from '../models/account.model';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-events',
@@ -24,7 +24,8 @@ export class EventsComponent {
               private toastr: ToastrService,
               private router: Router,
               private activeRoute: ActivatedRoute,
-              private meta: Meta) {
+              private meta: Meta,
+              private title: Title) {
               this.getEvents();
   }
   getEvents(){
@@ -60,21 +61,27 @@ export class EventsComponent {
   }
   share(event: Event){
     var date = new Date(event.start).toLocaleDateString();
-    var whatsappText = window.encodeURIComponent(`Bora ${event.title} \n\n Data: ${date} \n ${environment.divagando}${this.router.url.replace('/','')}`);
+    let eventUrl = `${environment.divagando}${this.router.url.replace('/','')}`;
+    var whatsappText = window.encodeURIComponent(`Bora ${event.title} \n\n Data: ${date} \n ${eventUrl}`);
     var whatsAppLink = `https://api.whatsapp.com/send/?text=${whatsappText}`;
     window.open(whatsAppLink);
   }
   isSelectedEvent(event: Event){
     var date = new Date(event.start).toLocaleDateString();
     var isEvent = this.activeRoute.snapshot.queryParams['eventId'] == event.id;
-    this.meta.updateTag({ name: 'og:title', content: `Bora ${event.title} - ${date}` });
-    this.meta.updateTag({ name: 'description', content: event.location?.substring(0,50)! });
-    this.meta.updateTag({ name: 'og:image', content: this.account.photo! });
+    if(isEvent){
+      this.title.setTitle(`Bora ${event.title} - ${date}`);
+      this.meta.updateTag({ name: 'og:title', content: `Bora ${event.title} - ${date}` });
+      this.meta.updateTag({ name: 'description', content: event.location?.substring(0,50)! });
+      this.meta.updateTag({ name: 'og:image', content: this.account.photo! });
+      return 'selectedEvent';
+    }
+
     //this.router.navigate([], {  fragment: eventId });
-    return isEvent ? 'selectedEvent' : '';
+    return '';
   }
-  selectEvent(eventId: string){
-    this.router.navigate([], { queryParams: { eventId: eventId } });
+  selectEvent(event: Event){
+    this.router.navigate([], { queryParams: { eventId: event.id } });
   }
   attendees(attendees: string[]){
     return attendees?.map(e=>`<a href="${environment.divagando}${e}">${e}</a><br>`).join('');
