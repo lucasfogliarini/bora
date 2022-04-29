@@ -69,7 +69,7 @@ export class EventsComponent {
   share(event: Event){
     var date = new Date(event.start).toLocaleDateString();
     let eventUrl = `${environment.divagando}${this.router.url.replace('/','')}`;
-    var whatsappText = window.encodeURIComponent(`Bora ${event.title} \n\n Data: ${date} \n ${eventUrl}`);
+    var whatsappText = window.encodeURIComponent(`${event.title} \n\n Data: ${date} \n ${eventUrl}`);
     var whatsAppLink = `https://api.whatsapp.com/send/?text=${whatsappText}`;
     window.open(whatsAppLink);
   }
@@ -77,7 +77,7 @@ export class EventsComponent {
     var date = new Date(event.start).toLocaleDateString();
     var isEvent = this.activeRoute.snapshot.queryParams['eventId'] == event.id;
     if(isEvent){
-      this.title.setTitle(`Bora ${event.title} - ${date}`);
+      this.title.setTitle(`${event.title} - ${date}`);
       this.meta.updateTag({ name: 'og:title', content: `Bora ${event.title} - ${date}` });
       this.meta.updateTag({ name: 'description', content: event.location?.substring(0,50)! });
       this.meta.updateTag({ name: 'og:image', content: this.account.photo! });
