@@ -1,8 +1,7 @@
 #event-create{
     position: fixed;
-    bottom: 10px;
-    right: 15px;
-    padding: 15px;
+    bottom: 15px;
+    right: 25px;
     z-index: 999;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -10,11 +9,21 @@
     background-color: white;
 }
 
-#event-create #title{
+#event-create #event-start{
+    font-size: 50px;
+    padding: 0px 11px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px #999;
+}
+#event-create #event-title, #event-create #event-location, #event-create #event-when{
+    padding: 20px;
+}
+
+#event-create #title, #event-create #event-date{
     width: 220px;
 }
 
-#event-create #location input[type=search]{
+#event-create #event-location input[type=search]{
     margin-top: 10px;
 }
 

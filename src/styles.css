@@ -11,9 +11,6 @@
     color: inherit;
     text-decoration: underline;
 }
-#start{
-    width: 160px;
-}
 
 .selectedEvent .date{
     font-size: 15px;
