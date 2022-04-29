@@ -70,7 +70,7 @@ export class EventsComponent {
     var date = new Date(event.start).toLocaleDateString();
     var user = this.activeRoute.snapshot.params['user'];
     let eventUrl = `${environment.divagando}${user}?eId=${this.shortId(event)}`;
-    var whatsappText = window.encodeURIComponent(`${event.title} \n\n Data: ${date} \n ${eventUrl}`);
+    var whatsappText = window.encodeURIComponent(`${event.title} - ${date} \n\n ${eventUrl}`);
     var whatsAppLink = `https://api.whatsapp.com/send/?text=${whatsappText}`;
     window.open(whatsAppLink);
   }

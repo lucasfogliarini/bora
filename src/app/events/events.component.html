@@ -21,7 +21,15 @@
                           (confirm)="participate(event.id)"
                           role="button">
                         </fa-icon>
-                        <fa-icon (click)="share(event)" [icon]="['fab', 'whatsapp']"></fa-icon>
+                        <fa-icon [icon]="['fab', 'whatsapp']" mwlConfirmationPopover
+                          title="WhatsApp"
+                          popoverTitle="WhatsApp"
+                          popoverMessage="Compartilhar <b>{{event.title}}</b> no WhatsApp?"
+                          placement="left"
+                          confirmText="Compartilhar"
+                          (confirm)="share(event)"
+                          role="button">
+                        </fa-icon>
                         <fa-icon [icon]="['fas', 'ticket']" mwlConfirmationPopover
                           [hidden]="!event.ticketUrl"
                           title="Ingresso"
