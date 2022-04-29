@@ -29,7 +29,7 @@ export class EventsComponent {
               this.getEvents();
   }
   getEvents(){
-    var user = this.activeRoute.snapshot.params['user'];
+    let user = this.activeRoute.snapshot.params['user'];
     this.divagandoApiService.getAccount(user, (account: Account)=>{
       this.account = account;
     });
@@ -37,6 +37,13 @@ export class EventsComponent {
     var eventsUri = `events?user=${user}`;
     this.divagandoApiService.get<Event[]>(eventsUri, (events: Event[]) => {
       this.events = events;
+      var eventId = this.activeRoute.snapshot.queryParams['eventId'];
+      let currentEvent = events.find(e=>e.id == eventId);
+      if(currentEvent){
+        var eIndex = events.indexOf(currentEvent);
+        this.events.splice(eIndex, 1);//remove
+        this.events.splice(0, 0, currentEvent);//insert
+      }
     }, (errorResponse)=>{
         //usuário não existe ou Calendário não autorizado
     });
@@ -76,8 +83,6 @@ export class EventsComponent {
       this.meta.updateTag({ name: 'og:image', content: this.account.photo! });
       return 'selectedEvent';
     }
-
-    //this.router.navigate([], {  fragment: eventId });
     return '';
   }
   selectEvent(event: Event){
