@@ -8,7 +8,7 @@
         <div class="card-body p-0">
           <table class="table table-striped" *ngIf="events">
               <tbody>
-                  <tr id="{{event.id}}" class="{{isSelectedEvent(event)}}" (click)="selectEvent(event)" role="button" *ngFor="let event of events">
+                  <tr class="{{isSelectedEvent(event)}}" (click)="selectEvent(event)" role="button" *ngFor="let event of events">
                       <td class="date"><div>{{ event.start | date: 'dd/MM/yy' }}</div>&nbsp;<span style="font-size: small;" >{{ event.start | date: 'HH:mm' }}</span></td>
                       <td class="title" >{{ event.title?.substring(0, 100) }}</td>
                       <td>

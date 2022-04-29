@@ -37,8 +37,8 @@ export class EventsComponent {
     var eventsUri = `events?user=${user}`;
     this.divagandoApiService.get<Event[]>(eventsUri, (events: Event[]) => {
       this.events = events;
-      var eventId = this.activeRoute.snapshot.queryParams['eventId'];
-      let currentEvent = events.find(e=>e.id == eventId);
+      var eId = this.activeRoute.snapshot.queryParams['eId'];
+      let currentEvent = events.find(e=>e.id == eId);
       if(currentEvent){
         var eIndex = events.indexOf(currentEvent);
         this.events.splice(eIndex, 1);//remove
@@ -68,14 +68,15 @@ export class EventsComponent {
   }
   share(event: Event){
     var date = new Date(event.start).toLocaleDateString();
-    let eventUrl = `${environment.divagando}${this.router.url.replace('/','')}`;
+    var user = this.activeRoute.snapshot.params['user'];
+    let eventUrl = `${environment.divagando}${user}?eId=${this.shortId(event)}`;
     var whatsappText = window.encodeURIComponent(`${event.title} \n\n Data: ${date} \n ${eventUrl}`);
     var whatsAppLink = `https://api.whatsapp.com/send/?text=${whatsappText}`;
     window.open(whatsAppLink);
   }
   isSelectedEvent(event: Event){
     var date = new Date(event.start).toLocaleDateString();
-    var isEvent = this.activeRoute.snapshot.queryParams['eventId'] == event.id;
+    var isEvent = this.activeRoute.snapshot.queryParams['eId'] == this.shortId(event);
     if(isEvent){
       this.title.setTitle(`${event.title} - ${date}`);
       this.meta.updateTag({ name: 'og:title', content: `Bora ${event.title} - ${date}` });
@@ -85,8 +86,11 @@ export class EventsComponent {
     }
     return '';
   }
+  shortId(event: Event){
+     return event.id?.substring(0,5);
+  }
   selectEvent(event: Event){
-    this.router.navigate([], { queryParams: { eventId: event.id } });
+    this.router.navigate([], { queryParams: { eId: this.shortId(event) } });
   }
   attendees(attendees: string[]){
     return attendees?.map(e=>`<a href="${environment.divagando}${e}">${e}</a><br>`).join('');
