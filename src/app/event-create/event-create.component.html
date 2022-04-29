@@ -1,6 +1,6 @@
 <div id="event-create">
   <div id="event-start" *ngIf="!event.id">
-    <fa-icon (click)="create()" type="button" [icon]="['fas','calendar-plus']" role="button"></fa-icon>
+    <fa-icon (click)="create()" [icon]="['fas','calendar-plus']" role="button"></fa-icon>
   </div>
   <div id="event-title" *ngIf="event.id && !event.title" class="card-title">
     <h5>O que vamos fazer?</h5>

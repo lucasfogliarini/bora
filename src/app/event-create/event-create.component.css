@@ -6,17 +6,15 @@
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-    background-color: white;
 }
 
 #event-create #event-start{
     font-size: 50px;
-    padding: 0px 11px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 3px #999;
+    padding: 0px 7px;
 }
 #event-create #event-title, #event-create #event-location, #event-create #event-when{
     padding: 20px;
+    background-color: white;
 }
 
 #event-create #title, #event-create #event-date{
