@@ -38,7 +38,7 @@ export class EventsComponent {
     this.divagandoApiService.get<Event[]>(eventsUri, (events: Event[]) => {
       this.events = events;
       var eId = this.activeRoute.snapshot.queryParams['eId'];
-      let currentEvent = events.find(e=>e.id == eId);
+      let currentEvent = events.find(e=>e.id.includes(eId));
       if(currentEvent){
         var eIndex = events.indexOf(currentEvent);
         this.events.splice(eIndex, 1);//remove
