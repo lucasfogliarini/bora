@@ -7,7 +7,7 @@ import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Account } from '../models/account.model';
-import { Meta, Title } from '@angular/platform-browser';
+import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-events',
@@ -24,6 +24,7 @@ export class EventsComponent {
               private toastr: ToastrService,
               private router: Router,
               private activeRoute: ActivatedRoute,
+              private domSanitizer: DomSanitizer,
               private meta: Meta,
               private title: Title) {
               this.getEvents();
@@ -94,5 +95,13 @@ export class EventsComponent {
   }
   attendees(attendees: string[]){
     return attendees?.map(e=>`<a href="${environment.divagando}${e}">${e}</a><br>`).join('');
+  }
+  getSpotifyEmbedUrl(event: Event){
+    if(event.spotifyUrl){
+      const path = new URL(event.spotifyUrl).pathname;
+      const url = `https://open.spotify.com/embed${path}?utm_source=generator&theme=0`;
+      return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+    }
+    return '';
   }
 }

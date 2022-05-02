@@ -11,16 +11,14 @@
                   <tr class="{{isSelectedEvent(event)}}" (click)="selectEvent(event)" role="button" *ngFor="let event of events">
                       <td class="date"><div>{{ event.start | date: 'dd/MM/yy' }}</div>&nbsp;<span style="font-size: small;" >{{ event.start | date: 'HH:mm' }}</span></td>
                       <td class="event-details">
-                        <div class="title">{{ event.title?.substring(0, 100) }}</div>
+                        <h6 class="title">{{ event.title?.substring(0, 100) }}</h6>
+                        <br />
                         <iframe *ngIf="event.spotifyUrl"
                               class="spotify"
                                 style="border-radius:12px"
-                                src="https://open.spotify.com/embed/playlist/2dO7oyLvkzsYiuGkmIgiLz?utm_source=generator"
-                                title="{{event.spotifyUrl.replace('spotify.com/','spotify.com/embed/')}}?utm_source=generator"
+                                [src]="getSpotifyEmbedUrl(event)"
                                 width="100%"
-                                height="380"
-                                frameBorder="0"
-                                allowfullscreen=""
+                                height="80"
                                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
                         </iframe>
                       </td>
