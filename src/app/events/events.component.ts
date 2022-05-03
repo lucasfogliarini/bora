@@ -44,12 +44,15 @@ export class EventsComponent {
         //usuário não existe ou Calendário não autorizado
     });
   }
-  participate(eventId: string){
+  participate(eventId: string, attendeeEmail?: string){
     let user = this.getUser();
-    this.divagandoApiService.patch_(`events/${eventId}/participate?user=${user}`, (event) => {
+    let attendeeEmailParam = attendeeEmail ? `&attendeeEmail=${attendeeEmail}` : '';
+    this.divagandoApiService.patch_(`events/${eventId}/participate?user=${user}${attendeeEmailParam}`, (event) => {
       this.toastr.success('Então bora!');
     }, (errorResponse)=>{
-      this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+      this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(e=>{
+        this.participate(eventId, e.email);
+      });
     });
   }
   openUrl(url: string){
