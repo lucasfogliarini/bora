@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { Event } from '../models/event.model';
 import { ToastrService } from 'ngx-toastr';
 import { DivagandoApiService } from '../divagando-api.service';
-import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { Account } from '../models/account.model';
 import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 
 @Component({
@@ -15,10 +13,7 @@ import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent {
-  account = new Account;
   events: Event[] = [];
-  event: Event = new Event;
-  newEvent: Event = new Event;
 
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: SocialAuthService,
@@ -30,12 +25,11 @@ export class EventsComponent {
               private title: Title) {
               this.getEvents();
   }
+  getUser(){
+    return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
+  }
   getEvents(){
-    let user = this.activeRoute.snapshot.params['user'];
-    this.divagandoApiService.getAccount(user, (account: Account)=>{
-      this.account = account;
-    });
-
+    let user = this.getUser();
     var eventsUri = `events?user=${user}`;
     this.divagandoApiService.get<Event[]>(eventsUri, (events: Event[]) => {
       this.events = events;
@@ -51,15 +45,12 @@ export class EventsComponent {
     });
   }
   participate(eventId: string){
-    var user = this.activeRoute.snapshot.params['user'];
+    let user = this.getUser();
     this.divagandoApiService.patch_(`events/${eventId}/participate?user=${user}`, (event) => {
       this.toastr.success('Então bora!');
     }, (errorResponse)=>{
       this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     });
-  }
-  addressChange(address: Address){
-    this.newEvent.location = address.formatted_address;
   }
   openUrl(url: string){
     window.open(url);
@@ -70,7 +61,7 @@ export class EventsComponent {
   }
   share(event: Event){
     var date = new Date(event.start).toLocaleDateString();
-    var user = this.activeRoute.snapshot.params['user'];
+    let user = this.getUser();
     let eventUrl = `${environment.divagando}${user}?eId=${this.shortId(event)}`;
     var whatsappText = window.encodeURIComponent(`${event.title} - ${date} \n\n ${eventUrl}`);
     var whatsAppLink = `https://api.whatsapp.com/send/?text=${whatsappText}`;
@@ -83,7 +74,7 @@ export class EventsComponent {
       this.title.setTitle(`${event.title} - ${date}`);
       this.meta.updateTag({ name: 'og:title', content: `Bora ${event.title} - ${date}` });
       this.meta.updateTag({ name: 'description', content: event.location?.substring(0,50)! });
-      this.meta.updateTag({ name: 'og:image', content: this.account.photo! });
+      //this.meta.updateTag({ name: 'og:image', content: this.account.photo! });
       return true;
     }
     return false;

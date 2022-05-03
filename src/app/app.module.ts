@@ -12,7 +12,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { EventsComponent } from './events/events.component';
 import { HomeComponent } from './home/home.component';
 import { HttpRequestInterceptor } from './httprequest.interceptor';
@@ -33,16 +32,17 @@ import { faTicket,
         faLockOpen,
         faPeopleLine } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify } from '@fortawesome/free-brands-svg-icons';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     NavMenuComponent,
     SideBarMenuComponent,
     HomeComponent,
+    EventCreateComponent,
     EventsComponent,
-    EventCreateComponent
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +62,7 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify } from '@fortawesome/free-
     SocialLoginModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: ':user',  component: EventsComponent }
+      { path: ':user',  component: AccountComponent }
     ]),
     FontAwesomeModule
   ],

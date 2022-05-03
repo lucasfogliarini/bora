@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { GoogleLoginProvider } from 'angularx-social-login';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { Options } from 'ngx-google-places-autocomplete/objects/options/options';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 import { DivagandoApiService } from '../divagando-api.service';
-import { EventsComponent } from '../events/events.component';
 import { Event } from '../models/event.model';
 
 @Component({
@@ -24,10 +22,10 @@ export class EventCreateComponent {
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: AuthenticationService,
               private toastr: ToastrService,
-              private events: EventsComponent,
-              private activeRoute: ActivatedRoute) {
+              private activeRoute: ActivatedRoute,
+              private router: Router) {
                 this.placesOptions.componentRestrictions = { country: 'br' };
-}
+  }
   create(){
     const jwt = localStorage.getItem("jwt");
     if(!jwt){
@@ -52,7 +50,7 @@ export class EventCreateComponent {
       }
       if(this.event.public){
         this.toastr.success('Bora então!');
-        this.events.getEvents();
+        this.router.navigateByUrl('', { skipLocationChange:true });
         this.event = new Event;
       }
     });
