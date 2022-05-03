@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a (click)="openUser()" role="button" class="brand-link">
+  <a href="/" role="button" class="brand-link">
     &nbsp;
     &nbsp;
     <span class="brand-text font-weight-light">Divagando</span>
@@ -11,11 +11,11 @@
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
+      <div class="image" (click)="openUser()" role="button">
         <img *ngIf="authService.user" src="{{ authService.user.photoUrl }}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a *ngIf="authService.user" role="button">{{ authService.user.name }} <fa-icon (click)="authService.signOut()" title="Sair" [icon]="['fas','sign-out-alt']"></fa-icon></a>
+        <a *ngIf="authService.user" (click)="openUser()" role="button">{{ authService.user.name }} <fa-icon (click)="authService.signOut()" title="Sair" [icon]="['fas','sign-out-alt']"></fa-icon></a>
         <a *ngIf="!authService.user" (click)="authService.signInWithGoogle()" role="button"><fa-icon [icon]="['fab','google']"></fa-icon> Entrar usando Google</a>
       </div>
     </div>
