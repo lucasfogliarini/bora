@@ -1,0 +1,23 @@
+.selected-event .date-time{
+    font-weight: bold;
+}
+.selected-event .title{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.date-time{
+    font-size: 20px;
+}
+
+.event-buttons{
+    font-size: 30px;
+    text-align: center;
+}
+
+.title{
+    font-family: fantasy;
+    font-size: 25px;
+    padding: 10px 0px;
+    text-align: center;
+}

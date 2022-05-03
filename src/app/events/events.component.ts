@@ -11,7 +11,8 @@ import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-events',
-  templateUrl: './events.component.html'
+  templateUrl: './events.component.html',
+  styleUrls: ['./events.component.css']
 })
 export class EventsComponent {
   account = new Account;
@@ -75,7 +76,7 @@ export class EventsComponent {
     var whatsAppLink = `https://api.whatsapp.com/send/?text=${whatsappText}`;
     window.open(whatsAppLink);
   }
-  isSelectedEvent(event: Event){
+  isSelected(event: Event){
     var date = new Date(event.start).toLocaleDateString();
     var isEvent = this.activeRoute.snapshot.queryParams['eId'] == this.shortId(event);
     if(isEvent){
@@ -83,9 +84,12 @@ export class EventsComponent {
       this.meta.updateTag({ name: 'og:title', content: `Bora ${event.title} - ${date}` });
       this.meta.updateTag({ name: 'description', content: event.location?.substring(0,50)! });
       this.meta.updateTag({ name: 'og:image', content: this.account.photo! });
-      return 'selectedEvent';
+      return true;
     }
-    return '';
+    return false;
+  }
+  isSelectedClass(event: Event){
+    return this.isSelected(event) ? 'selected-event' : '';
   }
   shortId(event: Event){
      return event.id?.substring(0,5);

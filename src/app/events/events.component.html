@@ -8,10 +8,10 @@
         <div class="card-body p-0">
           <table class="table table-striped" *ngIf="events">
               <tbody>
-                  <tr class="{{isSelectedEvent(event)}}" (click)="selectEvent(event)" role="button" *ngFor="let event of events">
-                      <td class="date"><div>{{ event.start | date: 'dd/MM/yy' }}</div>&nbsp;<span style="font-size: small;" >{{ event.start | date: 'HH:mm' }}</span></td>
-                      <td class="event-details">
-                        <h6 class="title">{{ event.title?.substring(0, 100) }}</h6>
+                  <tr class="{{isSelectedClass(event)}}" (click)="selectEvent(event)" role="button" *ngFor="let event of events">
+                    <td class="event-details">
+                      <div class="row">
+                        <h6 class="title col-12">{{ event.title?.substring(0, 100) }}</h6>
                         <br />
                         <iframe *ngIf="event.spotifyUrl"
                               class="spotify"
@@ -21,46 +21,58 @@
                                 height="80"
                                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
                         </iframe>
-                      </td>
-                      <td class="event-buttons">
-                        <fa-icon [icon]="['fas', 'people-line']" mwlConfirmationPopover
-                          title="Convidados. Bora?"
-                          popoverTitle="Convidados. Bora?"
-                          popoverMessage="{{attendees(event.attendees)}}"
-                          placement="left"
-                          confirmText="Bora!"
-                          (confirm)="participate(event.id)"
-                          role="button">
-                        </fa-icon>
-                        <fa-icon [icon]="['fab', 'whatsapp']" mwlConfirmationPopover
-                          title="WhatsApp"
-                          popoverTitle="WhatsApp"
-                          popoverMessage="Compartilhar <b>{{event.title}}</b> no WhatsApp?"
-                          placement="left"
-                          confirmText="Compartilhar"
-                          (confirm)="share(event)"
-                          role="button">
-                        </fa-icon>
-                        <fa-icon [icon]="['fas', 'ticket']" mwlConfirmationPopover
-                          [hidden]="!event.ticketUrl"
-                          title="Ingresso"
-                          popoverTitle="Ingresso"
-                          popoverMessage="{{event.ticketUrl}}"
-                          placement="left"
-                          confirmText="Abrir Link"
-                          (confirm)="openUrl(event.ticketUrl)"
-                          role="button">
-                        </fa-icon>
-                        <fa-icon [icon]="['fas', 'map-location-dot']" mwlConfirmationPopover
-                            title="Localização"
-                            popoverTitle="Abrir no Google Maps?"
-                            placement="left"
-                            confirmText="Abrir"
-                            popoverMessage="{{ event.location?.substring(0,100) }}"
-                            (confirm)="openMaps(event.location)"
-                            role="button">
-                        </fa-icon>
-                      </td>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="date-time col-4">
+                          <div class="date">{{ event.start | date: 'dd/MM/yy' }}</div>
+                          <span style="font-size: small;" >{{ event.start | date: 'HH:mm' }}</span>
+                        </div>
+                        <div class="event-buttons col-8 row float-right">
+                          <fa-icon [icon]="['fas', 'people-line']" mwlConfirmationPopover
+                            title="Convidados. Bora?"
+                            popoverTitle="Convidados. Bora?"
+                            popoverMessage="{{attendees(event.attendees)}}"
+                            placement="bottom"
+                            confirmText="Bora!"
+                            (confirm)="participate(event.id)"
+                            role="button"
+                            [isOpen]="isSelected(event)"
+                            class="col-3">
+                          </fa-icon>
+                          <fa-icon [icon]="['fab', 'whatsapp']" mwlConfirmationPopover
+                            title="WhatsApp"
+                            popoverTitle="WhatsApp"
+                            popoverMessage="Compartilhar <b>{{event.title}}</b> no WhatsApp?"
+                            placement="bottom"
+                            confirmText="Compartilhar"
+                            (confirm)="share(event)"
+                            role="button"
+                            class="col-3 float-right">
+                          </fa-icon>
+                          <fa-icon [icon]="['fas', 'ticket']" mwlConfirmationPopover
+                            [hidden]="!event.ticketUrl"
+                            title="Ingresso"
+                            popoverTitle="Ingresso"
+                            popoverMessage="{{event.ticketUrl}}"
+                            placement="bottom"
+                            confirmText="Abrir Link"
+                            (confirm)="openUrl(event.ticketUrl)"
+                            role="button"
+                            class="col-3 float-right">
+                          </fa-icon>
+                          <fa-icon [icon]="['fas', 'map-location-dot']" mwlConfirmationPopover
+                              title="Localização"
+                              popoverTitle="Abrir no Google Maps?"
+                              placement="left "
+                              confirmText="Abrir"
+                              popoverMessage="{{ event.location?.substring(0,100) }}"
+                              (confirm)="openMaps(event.location)"
+                              role="button"
+                              class="col-3 float-right">
+                          </fa-icon>
+                        </div>
+                      </div>
+                    </td>
                   </tr>
               </tbody>
           </table>
