@@ -13,4 +13,5 @@ export class Event {
     location?: string;
     public: boolean;
     attendees: string[];
+    attachments?: string[];
 }

@@ -1,13 +1,9 @@
-.selected-event .date-time{
-    font-weight: bold;
-}
-.selected-event .title{
-    font-size: 30px;
+.selected-event{
     font-weight: bold;
 }
 
-.date-time{
-    font-size: 20px;
+.event-details{
+    font-size: 15px;
 }
 
 .event-buttons{
@@ -16,8 +12,12 @@
 }
 
 .title{
-    font-size: 25px;
     font-family: sans-serif;
     padding: 10px 0px;
     text-align: center;
+}
+
+.event-details .background-image{
+    overflow: hidden;
+    height: 130px;
 }

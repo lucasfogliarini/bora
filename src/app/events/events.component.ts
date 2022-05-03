@@ -99,4 +99,7 @@ export class EventsComponent {
     }
     return '';
   }
+  getBackGroundImage(event: Event){
+    return event.attachments ? event.attachments[0] : '';
+  }
 }

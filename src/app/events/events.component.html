@@ -4,7 +4,10 @@
         <tr class="{{isSelectedClass(event)}}" (click)="selectEvent(event)" role="button" *ngFor="let event of events">
           <td class="event-details">
             <div class="row">
-              <h6 class="title col-12">{{ event.title?.substring(0, 100) }}</h6>
+              <div *ngIf="event.attachments" class="background-image">
+                <img class="col-12" [src]="getBackGroundImage(event)" />
+              </div>
+              <div class="title col-12">{{ event.title?.substring(0, 100) }}</div>
               <br />
               <iframe *ngIf="event.spotifyUrl"
                     class="spotify"
