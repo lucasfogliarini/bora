@@ -3,10 +3,6 @@
 @import "~ngx-toastr/toastr.css";
 @import "~ng-pick-datetime/assets/style/picker.min.css";
 
-.table td, .table tr{
-    padding: 3px;
-}
-
 .content a{
     color: inherit;
     text-decoration: underline;
