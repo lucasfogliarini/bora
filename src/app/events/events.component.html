@@ -18,6 +18,7 @@
                 [src]="getSpotifyEmbedUrl(event)"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
         </iframe>
+        <div *ngIf="!event.spotifyUrl" class="offset-4"></div>
         <div class="event-buttons col-4">
           <div class="row">
             <fa-icon [icon]="['fas', 'people-line']" mwlConfirmationPopover
