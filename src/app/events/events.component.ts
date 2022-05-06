@@ -5,7 +5,7 @@ import { DivagandoApiService } from '../divagando-api.service';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-events',
@@ -21,7 +21,6 @@ export class EventsComponent {
               private router: Router,
               private activeRoute: ActivatedRoute,
               private domSanitizer: DomSanitizer,
-              private meta: Meta,
               private title: Title) {
               this.getEvents();
   }
@@ -71,16 +70,8 @@ export class EventsComponent {
     window.open(whatsAppLink);
   }
   isSelected(event: Event){
-    var date = new Date(event.start).toLocaleDateString();
     var isEvent = this.activeRoute.snapshot.queryParams['eId'] == this.shortId(event);
-    if(isEvent){
-      this.title.setTitle(`${event.title} - ${date}`);
-      this.meta.updateTag({ name: 'og:title', content: `Bora ${event.title} - ${date}` });
-      this.meta.updateTag({ name: 'description', content: event.location?.substring(0,50)! });
-      //this.meta.updateTag({ name: 'og:image', content: this.account.photo! });
-      return true;
-    }
-    return false;
+    return isEvent;
   }
   isSelectedClass(event: Event){
     return this.isSelected(event) ? 'selected-event' : '';
@@ -89,6 +80,8 @@ export class EventsComponent {
      return event.id?.substring(0,5);
   }
   selectEvent(event: Event){
+    var date = new Date(event.start).toLocaleDateString();
+    this.title.setTitle(`${event.title} - ${date}`);
     this.router.navigate([], { queryParams: { eId: this.shortId(event) } });
   }
   attendees(attendees: string[]){
