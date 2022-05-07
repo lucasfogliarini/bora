@@ -35,6 +35,7 @@ export class EventsComponent {
       var eId = this.activeRoute.snapshot.queryParams['eId'];
       let currentEvent = events.find(e=>e.id.includes(eId));
       if(currentEvent){
+        this.selectEvent(currentEvent);
         var eIndex = events.indexOf(currentEvent);
         this.events.splice(eIndex, 1);//remove
         this.events.splice(0, 0, currentEvent);//insert
@@ -80,6 +81,7 @@ export class EventsComponent {
      return event.id?.substring(0,5);
   }
   selectEvent(event: Event){
+    this.setBackGroundImage(event);
     var date = new Date(event.start).toLocaleDateString();
     this.title.setTitle(`${event.title} - ${date}`);
     this.router.navigate([], { queryParams: { eId: this.shortId(event) } });
@@ -95,7 +97,19 @@ export class EventsComponent {
     }
     return '';
   }
-  getBackGroundImage(event: Event){
-    return event.attachments ? event.attachments[0] : '';
+  setBackGroundImage(event: Event){
+    if(!event.bgImage){
+      if(event.attachments){
+        event.bgImage = event.attachments[0];
+      }else{
+        //@ts-ignore
+        const placesService = new google.maps.places.PlacesService(document.createElement('div'));
+        placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: any) =>{
+          if(response.length && response[0].photos && response[0].photos.length){
+            event.bgImage = response[0].photos[0].getUrl();
+          }
+        });
+      }
+    }
   }
 }
