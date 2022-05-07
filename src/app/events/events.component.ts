@@ -81,7 +81,7 @@ export class EventsComponent {
      return event.id?.substring(0,5);
   }
   selectEvent(event: Event){
-    this.setBackGroundImage(event);
+    this.expandEvent(event);
     var date = new Date(event.start).toLocaleDateString();
     this.title.setTitle(`${event.title} - ${date}`);
     this.router.navigate([], { queryParams: { eId: this.shortId(event) } });
@@ -97,24 +97,17 @@ export class EventsComponent {
     }
     return '';
   }
-  setBackGroundImage(event: Event){
+  expandEvent(event: Event){
     if(!event.expanded){
       event.expanded = true;
-      if(false && event.attachments){
-        /*const bgImage = event.attachments[0];
-        setTimeout(() => {
+      //@ts-ignore
+      const placesService = new google.maps.places.PlacesService(document.createElement('div'));
+      placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: any) =>{
+        if(response.length && response[0].photos && response[0].photos.length){
+          const bgImage = response[0].photos[0].getUrl();
           document.querySelector(`#e${event.id} img`)!.setAttribute('src', bgImage);
-        }, 3000);*/
-      }else{
-        //@ts-ignore
-        const placesService = new google.maps.places.PlacesService(document.createElement('div'));
-        placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: any) =>{
-          if(response.length && response[0].photos && response[0].photos.length){
-            const bgImage = response[0].photos[0].getUrl();
-            document.querySelector(`#e${event.id} img`)!.setAttribute('src', bgImage);
-          }
-        });
-      }
+        }
+      });
     }
   }
 }
