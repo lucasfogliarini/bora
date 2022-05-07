@@ -1,10 +1,10 @@
 <p *ngIf="!events"><em>Carregando ...</em></p>
 <div *ngIf="events">
   <div class="{{isSelectedClass(event)}}" (click)="selectEvent(event)" role="button" *ngFor="let event of events">
-    <div class="event-details">
+    <div [id]="'e'+event.id" class="event-details">
       <div class="row">
-        <div *ngIf="event.bgImage" class="background-image col-12">
-          <img class="col-12 p-0" [src]="event.bgImage" />
+        <div [hidden]="!event.showBackgroundImage" class="background-image col-12">
+          <img class="col-12 p-0" />
         </div>
         <div class="date-time col-3">
           <div class="date">{{ event.start | date: 'dd/MM/yy' }}</div>

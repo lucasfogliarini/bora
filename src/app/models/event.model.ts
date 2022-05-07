@@ -14,5 +14,5 @@ export class Event {
     public: boolean;
     attendees: string[];
     attachments?: string[];
-    bgImage?: string;
+    showBackgroundImage: boolean;
 }

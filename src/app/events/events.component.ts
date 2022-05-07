@@ -98,15 +98,20 @@ export class EventsComponent {
     return '';
   }
   setBackGroundImage(event: Event){
-    if(!event.bgImage){
-      if(event.attachments){
-        event.bgImage = event.attachments[0];
+    if(!event.showBackgroundImage){
+      event.showBackgroundImage = true;
+      if(false && event.attachments){
+        /*const bgImage = event.attachments[0];
+        setTimeout(() => {
+          document.querySelector(`#e${event.id} img`)!.setAttribute('src', bgImage);
+        }, 3000);*/
       }else{
         //@ts-ignore
         const placesService = new google.maps.places.PlacesService(document.createElement('div'));
         placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: any) =>{
           if(response.length && response[0].photos && response[0].photos.length){
-            event.bgImage = response[0].photos[0].getUrl();
+            const bgImage = response[0].photos[0].getUrl();
+            document.querySelector(`#e${event.id} img`)!.setAttribute('src', bgImage);
           }
         });
       }
