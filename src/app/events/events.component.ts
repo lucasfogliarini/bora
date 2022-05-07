@@ -98,8 +98,8 @@ export class EventsComponent {
     return '';
   }
   setBackGroundImage(event: Event){
-    if(!event.showBackgroundImage){
-      event.showBackgroundImage = true;
+    if(!event.expanded){
+      event.expanded = true;
       if(false && event.attachments){
         /*const bgImage = event.attachments[0];
         setTimeout(() => {
