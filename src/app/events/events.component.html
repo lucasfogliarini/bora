@@ -57,7 +57,7 @@
       </div>
       <div class="row">
         <div class="date-time col-3">
-          <div class="date">{{ event.start | date: 'dd/MM/yy' }}</div>
+          <div class="date">{{ event.start | date: 'dd/MM/yy' }} {{ event.start | date: 'EE' : '' : 'pt-BR' }}</div>
           <span style="font-size: small;" >{{ event.start | date: 'HH:mm' }}</span>
         </div>
         <div class="title col-9">{{ event.title?.substring(0, 100) }}</div>
