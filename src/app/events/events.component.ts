@@ -59,7 +59,7 @@ export class EventsComponent {
     window.open(url);
   }
   openMaps(place?: string){
-      var mapsUrl = 'https://www.google.com.br/maps/place/' + place;
+      var mapsUrl = `https://www.google.com/maps/search/?api=1&query=${place}`;
       window.open(mapsUrl);
   }
   share(event: Event){
