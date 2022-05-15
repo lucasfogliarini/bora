@@ -8,6 +8,11 @@
     text-align: center;
 }
 
+.event-buttons-collapsed{
+    font-size: 10px;
+    text-align: center;
+}
+
 .date-time{
     text-align: center;
     padding-top: 7px;
@@ -35,4 +40,9 @@
 
 .selected-event{
     font-weight: bold;
+}
+
+hr{
+    margin-bottom: 0;
+    margin-top: 7px;
 }

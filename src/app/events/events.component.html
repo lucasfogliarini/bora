@@ -60,7 +60,13 @@
           <div class="date">{{ event.start | date: 'dd/MM/yy' }} {{ event.start | date: 'EE' : '' : 'pt-BR' }}</div>
           <span style="font-size: small;" >{{ event.start | date: 'HH:mm' }}</span>
         </div>
-        <div class="title col-9">{{ event.title?.substring(0, 100) }}</div>
+        <div class="title col-7">{{ event.title?.substring(0, 100) }}</div>
+        <div *ngIf="!event.expanded" class="event-buttons-collapsed col-1 mt-2">
+          <fa-icon [icon]="['fas', 'people-line']" class="col-12"></fa-icon>
+          <fa-icon [icon]="['fab', 'whatsapp']" class="col-12"></fa-icon>
+          <fa-icon [icon]="['fas', 'ticket']" class="col-12"></fa-icon>
+          <fa-icon [icon]="['fas', 'map-location-dot']" class="col-12"></fa-icon>
+        </div>
       </div>
       <div *ngIf="event.expanded" class="row mt-3">
         <iframe *ngIf="event.spotifyUrl"
@@ -68,7 +74,6 @@
                 [src]="getSpotifyEmbedUrl(event)"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
         </iframe>
-        <div *ngIf="!event.spotifyUrl"></div>
       </div>
     </div>
     <hr/>
