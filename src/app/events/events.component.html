@@ -64,7 +64,7 @@
         <div *ngIf="!event.expanded" class="event-buttons-collapsed col-1 mt-2">
           <fa-icon [icon]="['fas', 'people-line']" class="col-12"></fa-icon>
           <fa-icon [icon]="['fab', 'whatsapp']" class="col-12"></fa-icon>
-          <fa-icon [icon]="['fas', 'ticket']" class="col-12"></fa-icon>
+          <fa-icon [hidden]="!event.ticketUrl" [icon]="['fas', 'ticket']" class="col-12"></fa-icon>
           <fa-icon [icon]="['fas', 'map-location-dot']" class="col-12"></fa-icon>
         </div>
       </div>
