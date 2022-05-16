@@ -6,17 +6,28 @@
     &nbsp;
     <span class="brand-text font-weight-light">Divagando</span>
   </a>
-
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image" (click)="openUser()" role="button">
-        <img *ngIf="authService.user" src="{{ authService.user.photoUrl }}" class="img-circle elevation-2" alt="User Image">
+    <div *ngIf="authService.user" class="user-panel mt-3 pb-3 mb-3 d-flex"
+        mwlConfirmationPopover
+        popoverTitle="Perfil do usuário"
+        placement="bottom"
+        confirmText="Editar"
+        cancelText="Abrir"
+        (confirm)="openUser(true)"
+        (cancel)="openUser()"
+        role="button">
+      <div class="image">
+        <img src="{{ authService.user.photoUrl }}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a *ngIf="authService.user" (click)="openUser()" role="button">{{ authService.user.name }} <fa-icon (click)="authService.signOut()" title="Sair" [icon]="['fas','sign-out-alt']"></fa-icon></a>
-        <a *ngIf="!authService.user" (click)="authService.signInWithGoogle()" role="button"><fa-icon [icon]="['fab','google']"></fa-icon> Entrar usando Google</a>
+        <a role="button">{{ authService.user.name }} <fa-icon (click)="authService.signOut()" title="Sair" [icon]="['fas','sign-out-alt']"></fa-icon></a>        
+      </div>
+    </div>
+    <div *ngIf="!authService.user" class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="info">
+        <a (click)="authService.signInWithGoogle()" role="button"><fa-icon [icon]="['fab','google']"></fa-icon> Entrar usando Google</a>
       </div>
     </div>
 

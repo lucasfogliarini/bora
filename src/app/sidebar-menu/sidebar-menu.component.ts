@@ -7,8 +7,11 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class SideBarMenuComponent {
   constructor(public authService: AuthenticationService) {}
-  openUser(){
-    var user = this.authService.user?.email?.split('@')[0] || '';
-    window.location.pathname = '/' + user;
+  openUser(editing: boolean = false){
+    var locationPath = this.authService.account?.username;
+    if(editing){
+      locationPath += `?editing=true`;
+    }
+    window.location.href = locationPath;
   }
 }

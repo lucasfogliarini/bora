@@ -24,8 +24,13 @@ export class AuthenticationService {
                       });
                     }
 
-                    this.divagandoApiService.getAccount(user.email, (account: Account)=>{
-                      this.account = account;
+                    var accountUri = `accounts?filter=contains(Email,'${user.email}')`;
+                    this.divagandoApiService.get<Account[]>(accountUri, (accounts) => {
+                      if(accounts.length){
+                        this.account = accounts[0];
+                      }else{
+                        this.toastr.warning('Usuário não encontrado.');
+                      }
                     });
                   }
                 });

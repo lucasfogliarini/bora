@@ -30,7 +30,9 @@ import { faTicket,
         faSignOutAlt,
         faLock,
         faLockOpen,
-        faPeopleLine } from '@fortawesome/free-solid-svg-icons';
+        faPeopleLine,
+        faUser,
+        faAt } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify } from '@fortawesome/free-brands-svg-icons';
 import { AccountComponent } from './account/account.component';
 import { registerLocaleData } from '@angular/common';
@@ -107,7 +109,9 @@ export class AppModule {
       faWhatsapp,
       faInstagram,
       faSpotify,
-      faPeopleLine
+      faPeopleLine,
+      faUser,
+      faAt
     );
   }
 }

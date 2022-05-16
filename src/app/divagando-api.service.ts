@@ -12,9 +12,9 @@ export class DivagandoApiService {
     @Inject('DIVAGANDO_API') public baseUrl: string,
     private toastr: ToastrService) { }
 
-  getAccount(user: string, onFound: any){
-    var account = `accounts?$filter=contains(Email,'${user}')`;
-    this.get<Account[]>(account, (accounts) => {
+  getAccount(username: string, onFound: any){
+    var accountUri = `accounts?filter=username eq '${username}'`;
+    this.get<Account[]>(accountUri, (accounts) => {
       let account;
       if(accounts.length){
         account = accounts[0];

@@ -1,14 +1,13 @@
 <section class="content">
-  <p *ngIf="!account"><em>Carregando ...</em></p>
   <div class="card">
     <div class="card-header">
-      <nav class="navbar navbar-expand">
+      <nav *ngIf="!editing" class="navbar navbar-expand">
         <ul *ngIf="account?.id" class="navbar-nav">
-          <li *ngIf="account.photo" class="image">
+          <li *ngIf="account.photo" class="image" (click)="editing=true">
             <img style="width: 75px" [src]="account.photo" class="img-circle elevation-2" alt="User Image">
           </li>
           <li *ngIf="account.whatsApp">
-            <a class="nav-link" target="_blank" href="https://api.whatsapp.com/send/?phone={{account.whatsApp}}&text=Bora fazer!" role="button"><fa-icon [icon]="['fab','whatsapp']"></fa-icon></a>      
+            <a class="nav-link" target="_blank" href="https://api.whatsapp.com/send/?phone=55{{account.whatsApp}}&text=Bora fazer!" role="button"><fa-icon [icon]="['fab','whatsapp']"></fa-icon></a>      
           </li>
           <li *ngIf="account.instagram">
             <a class="nav-link" target="_blank" href="https://instagram.com/{{account.instagram}}" role="button"><fa-icon [icon]="['fab','instagram']"></fa-icon></a>
@@ -19,6 +18,26 @@
         </ul>
         <h3 *ngIf="!account">Usuário não encontrado</h3>
       </nav>
+      <div class="editing-account" *ngIf="editing">
+        <div class="d-flex mb-2">
+          <fa-icon class="mr-2" [icon]="['fas','at']"></fa-icon>
+          <input [(ngModel)]="account.username" type="text" class="form-control input-sm" placeholder="Usuário Divagando" (keydown.space)="$event.preventDefault();" />
+        </div>
+        <div class="d-flex mb-2">
+          <fa-icon class="mr-2" [icon]="['fab','instagram']"></fa-icon>
+          <input [(ngModel)]="account.instagram" type="text" class="form-control input-sm" placeholder="Usuário Instagram" (keydown.space)="$event.preventDefault();" />
+        </div>
+        <div class="d-flex mb-2">
+          <fa-icon class="mr-2" [icon]="['fab','whatsapp']"></fa-icon>
+          <input [(ngModel)]="account.whatsApp" type="number" class="form-control input-sm" placeholder="51987654321" />
+        </div>
+        <div class="d-flex mb-2">
+          <fa-icon class="mr-2" [icon]="['fab','spotify']"></fa-icon>
+          <input [(ngModel)]="account.spotify" type="text" class="form-control input-sm" placeholder="Usuário Spotify" (keydown.space)="$event.preventDefault();" />
+        </div>
+        <button (click)="updateAccount()" type="submit" class="btn-dark btn btn-sm">Salvar</button>
+        <button (click)="editing=false" type="submit" class="btn-white btn btn-sm">Cancelar</button>
+      </div>
     </div>
     <div class="card-body p-0">
       <app-events></app-events>

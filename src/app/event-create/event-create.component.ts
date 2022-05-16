@@ -50,7 +50,7 @@ export class EventCreateComponent {
       }
       if(this.event.public){
         this.toastr.success('Bora então!');
-        this.router.navigateByUrl('', { skipLocationChange:true });
+        this.router.navigateByUrl('', { skipLocationChange: true });
         this.event = new Event;
       }
     });
