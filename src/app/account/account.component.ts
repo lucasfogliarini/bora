@@ -4,6 +4,7 @@ import { Account } from '../models/account.model';
 import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
 import { DivagandoApiService } from '../divagando-api.service';
 import { ToastrService } from 'ngx-toastr';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-account',
@@ -16,6 +17,7 @@ export class AccountComponent {
   editing: boolean = false;
   newEvent: Event = new Event;
   constructor(private divagandoApiService: DivagandoApiService,
+              public authService: AuthenticationService,
               private toastr: ToastrService,
               private router: Router,
               private activeRoute: ActivatedRoute) {

@@ -11,7 +11,8 @@
     <!-- Sidebar user panel (optional) -->
     <div *ngIf="authService.user" class="user-panel mt-3 pb-3 mb-3 d-flex"
         mwlConfirmationPopover
-        popoverTitle="Perfil do usuário"
+        popoverTitle="Perfil"
+        popoverMessage="<b>Editar</b> para editar o perfil e <b>Autorizar Google Agenda</b> <br /><br /> <b>Abrir</b> para abrir o perfil."
         placement="bottom"
         confirmText="Editar"
         cancelText="Abrir"
@@ -30,33 +31,6 @@
         <a (click)="authService.signInWithGoogle()" role="button"><fa-icon [icon]="['fab','google']"></fa-icon> Entrar usando Google</a>
       </div>
     </div>
-
-    <!-- Sidebar Menu -->
-    <nav class="mt-2">
-      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <li class="nav-item">
-          <a title="Autorizar Google Calendar" *ngIf="!authService.account.calendarAuthorized" (click)="authService.authorizeCalendar()" class="nav-link" role="button">
-            <p>Google Calendar</p>
-            &nbsp;
-            <fa-icon [icon]="['fas','lock']"></fa-icon>
-          </a>
-          <a title="Desautorizar Google Calendar" *ngIf="authService.account.calendarAuthorized" (click)="authService.unauthorizeCalendar()" class="nav-link" role="button">
-            <p>Google Calendar</p>
-            &nbsp;
-            <fa-icon [icon]="['fas','lock-open']"></fa-icon>
-          </a>
-        </li>
-        <!--<li class="nav-item">
-          <a [routerLink]="['/spaces']" class="nav-link">
-            <i class="nav-icon fas fa-map-marker-alt"></i>
-            <p>
-              Lugares
-            </p>
-          </a>
-        </li>-->
-      </ul>
-    </nav>
-    <!-- /.sidebar-menu -->
   </div>
   <!-- /.sidebar -->
 </aside>
