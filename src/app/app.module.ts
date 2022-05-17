@@ -37,6 +37,7 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify } from '@fortawesome/free-
 import { AccountComponent } from './account/account.component';
 import { registerLocaleData } from '@angular/common';
 import localePT from '@angular/common/locales/pt';
+import { ContactComponent } from './contact/contact.component';
 registerLocaleData(localePT);
 
 @NgModule({
@@ -47,7 +48,8 @@ registerLocaleData(localePT);
     HomeComponent,
     EventCreateComponent,
     EventsComponent,
-    AccountComponent
+    AccountComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
