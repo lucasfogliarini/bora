@@ -7,3 +7,9 @@
     color: inherit;
     text-decoration: underline;
 }
+
+.event-buttons img{
+    width: 25px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}

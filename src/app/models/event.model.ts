@@ -1,3 +1,5 @@
+import { Account } from "./account.model";
+
 export class Event {
     id: string;
     attendeeEmails: string[];
@@ -12,7 +14,7 @@ export class Event {
     deadline: Date;
     location?: string;
     public: boolean;
-    attendees: string[];
+    attendees: Account[];
     attachments?: string[];
     expanded: boolean;
 }

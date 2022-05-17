@@ -6,6 +6,7 @@ import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer, Title } from '@angular/platform-browser';
+import { Account } from '../models/account.model';
 
 @Component({
   selector: 'app-events',
@@ -86,9 +87,9 @@ export class EventsComponent {
     this.title.setTitle(`${event.title} - ${date}`);
     this.router.navigate([], { queryParams: { eId: this.shortId(event) } });
   }
-  attendees(attendees: string[]){
+  attendees(attendees: Account[]){
     if(attendees){
-      return attendees.map(e=>`<a href="${environment.divagando}${e}">${e}</a><br>`).join('');
+      return attendees.map(e=>`<img src='${e.photo}' />&nbsp;<a href='${environment.divagando}${e.username}'>${e.name}</a> <br />`).join('');
     }
     return `<a href="${environment.divagando}${this.getUser()}">${this.getUser()}</a><br>`;
   }
@@ -108,7 +109,7 @@ export class EventsComponent {
       placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: any) =>{
         if(response.length && response[0].photos && response[0].photos.length){
           const bgImage = response[0].photos[0].getUrl();
-          document.querySelector(`#e${event.id} img`)!.setAttribute('src', bgImage);
+          document.querySelector(`#e${event.id} .background-image img`)!.setAttribute('src', bgImage);
         }
       });
     }
