@@ -16,8 +16,8 @@
             <a class="nav-link" target="_blank" href="https://open.spotify.com/user/{{account.spotify}}" role="button"><fa-icon [icon]="['fab','spotify']"></fa-icon></a>
           </li>
         </ul>
-        <h3 *ngIf="!account">Usuário não encontrado</h3>
       </nav>
+      <h3 *ngIf="!account">Usuário não encontrado</h3>
       <div class="editing-account" *ngIf="editing">
         <div class="d-flex mb-2">
           <fa-icon class="mr-2" [icon]="['fas','user']"></fa-icon>
