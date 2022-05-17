@@ -3,7 +3,7 @@
     <div class="card-header">
       <nav *ngIf="!editing" class="navbar navbar-expand">
         <ul *ngIf="account?.id" class="navbar-nav">
-          <li *ngIf="account.photo" class="image" (click)="editing=true">
+          <li *ngIf="account.photo" class="image">
             <img style="width: 75px" [src]="account.photo" class="img-circle elevation-2" alt="User Image">
           </li>
           <li *ngIf="account.whatsApp">
