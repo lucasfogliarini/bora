@@ -21,6 +21,10 @@
       <div class="editing-account" *ngIf="editing">
         <div class="d-flex mb-2">
           <fa-icon class="mr-2" [icon]="['fas','user']"></fa-icon>
+          <input [(ngModel)]="account.name" type="text" class="form-control input-sm" placeholder="Nome" />
+        </div>
+        <div class="d-flex mb-2">
+          <fa-icon class="mr-2" [icon]="['fas','at']"></fa-icon>
           <input [(ngModel)]="account.username" type="text" class="form-control input-sm" placeholder="Usuário Divagando" (keydown.space)="$event.preventDefault();" />
         </div>
         <div class="d-flex mb-2">
