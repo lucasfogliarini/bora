@@ -87,7 +87,10 @@ export class EventsComponent {
     this.router.navigate([], { queryParams: { eId: this.shortId(event) } });
   }
   attendees(attendees: string[]){
-    return attendees?.map(e=>`<a href="${environment.divagando}${e}">${e}</a><br>`).join('');
+    if(attendees){
+      return attendees.map(e=>`<a href="${environment.divagando}${e}">${e}</a><br>`).join('');
+    }
+    return `<a href="${environment.divagando}${this.getUser()}">${this.getUser()}</a><br>`;
   }
   getSpotifyEmbedUrl(event: Event){
     if(event.spotifyUrl){

@@ -11,7 +11,7 @@
             <fa-icon [icon]="['fas', 'people-line']" mwlConfirmationPopover
               title="Quem vai... Bora?"
               popoverTitle="Quem vai... Bora?"
-              popoverMessage="{{attendees(event.attendees)}}"
+              [popoverMessage]="attendees(event.attendees)"
               placement="bottom"
               confirmText="Bora!"
               (confirm)="participate(event.id)"
