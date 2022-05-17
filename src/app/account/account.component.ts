@@ -41,4 +41,7 @@ export class AccountComponent {
        this.toastr.success('Perfil atualizado!');
     });
   }
+  openGoogleConta(){
+    window.open('https://myaccount.google.com/', '', 'popup');
+  }
 }

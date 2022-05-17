@@ -39,12 +39,17 @@
           <fa-icon class="mr-2" [icon]="['fab','spotify']"></fa-icon>
           <input [(ngModel)]="account.spotify" type="text" class="form-control input-sm" placeholder="Usuário Spotify" (keydown.space)="$event.preventDefault();" />
         </div>
-        <div class="row">
-          <button *ngIf="!authService.account.calendarAuthorized" (click)="authService.authorizeCalendar()" type="submit" class="offset-3 btn-success btn btn-sm">Autorizar Google Agenda</button>
-          <button *ngIf="authService.account.calendarAuthorized" (click)="authService.unauthorizeCalendar()" type="submit" class="offset-3 btn-secondary btn btn-sm">Desautorizar Google Agenda</button>
+        <div class="d-flex mb-2">
+          <fa-icon class="mr-2" [icon]="['fas','camera']"></fa-icon>
+          <button (click)="openGoogleConta()" class="btn btn-dark form-control">Entrar na Conta do Google</button>
         </div>
-        <button (click)="updateAccount()" type="submit" class="btn-dark btn btn-sm">Salvar</button>
-        <button (click)="editing=false" type="submit" class="btn-white btn btn-sm">Cancelar</button>
+        <div class="d-flex mb-2">
+          <fa-icon class="mr-2" [icon]="['fas','calendar-day']"></fa-icon>
+          <button *ngIf="!authService.account.calendarAuthorized" (click)="authService.authorizeCalendar()" class="btn-success btn form-control">Autorizar Google Agenda</button>
+          <button *ngIf="authService.account.calendarAuthorized" (click)="authService.unauthorizeCalendar()" class="btn-secondary btn form-control">Desautorizar Google Agenda</button>
+        </div>
+        <button (click)="updateAccount()" class="btn-dark btn">Salvar</button>
+        <button (click)="editing=false" class="btn-white btn">Cancelar</button>
       </div>
     </div>
     <div class="card-body p-0">
