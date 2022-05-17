@@ -44,15 +44,11 @@ export class AuthenticationService {
   }
   authorizeCalendar(){
     window.open(this.divagandoApiService.baseUrl + 'accounts/authorizeCalendar','authorization','popup');
-    /*this.divagandoApiService.get(`accounts/authorizeCalendar`, (account) => {
-      this.account.calendarAuthorized = true;
-      this.toastr.success('Calendário autorizado para ver e criar eventos.');
-    });*/
   }
   unauthorizeCalendar(){
     this.divagandoApiService.patch_(`accounts/unauthorizeCalendar`, (account) => {
       this.account.calendarAuthorized = false;
-      this.toastr.success('Calendário desautorizado!');
+      this.toastr.success('Acesso a sua agenda do Google foi revogado.');
     });
   }
 }

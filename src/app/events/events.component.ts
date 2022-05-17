@@ -41,7 +41,7 @@ export class EventsComponent {
         this.events.splice(0, 0, currentEvent);//insert
       }
     }, (errorResponse)=>{
-        //usuário não existe ou Calendário não autorizado
+        //usuário não existe ou Agenda não autorizada
     });
   }
   participate(eventId: string, attendeeEmail?: string){
