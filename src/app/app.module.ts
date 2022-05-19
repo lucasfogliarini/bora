@@ -74,8 +74,7 @@ registerLocaleData(localePT);
     ]),
     FontAwesomeModule
   ],
-  providers: [{ provide: 'DIVAGANDO_API', useValue: environment.divagandoApi },
-              { provide: APP_BASE_HREF, useValue: '/'},
+  providers: [{ provide: APP_BASE_HREF, useValue: '/'},
               { provide: OWL_DATE_TIME_LOCALE, useValue: 'pt-BR'},
               { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
               {

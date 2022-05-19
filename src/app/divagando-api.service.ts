@@ -1,16 +1,17 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Account } from './models/account.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DivagandoApiService {
-  constructor(private http: HttpClient, 
-    @Inject('DIVAGANDO_API') public baseUrl: string,
-    private toastr: ToastrService) { }
+  baseUrl: string = environment.divagandoApi;
+  constructor(private http: HttpClient,
+    private toastr: ToastrService) {}
 
   getAccount(username: string, onFound: any){
     var accountUri = `accounts?filter=username eq '${username}'`;

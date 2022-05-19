@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 import { DivagandoApiService } from './divagando-api.service';
 import { Account } from './models/account.model';
 
@@ -43,7 +44,8 @@ export class AuthenticationService {
     localStorage.removeItem("jwt");
   }
   authorizeCalendar(){
-    window.open(this.divagandoApiService.baseUrl + 'accounts/authorizeCalendar','authorization','popup');
+    var authUrl = `${environment.divagandoApi}accounts/authorizeCalendar?redirectUrl=${environment.divagando}/${this.account.username}`;
+    window.open(authUrl, '_blank');
   }
   unauthorizeCalendar(){
     this.divagandoApiService.patch_(`accounts/unauthorizeCalendar`, (account) => {
