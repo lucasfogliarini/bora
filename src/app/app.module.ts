@@ -39,6 +39,7 @@ import { AccountComponent } from './account/account.component';
 import { registerLocaleData } from '@angular/common';
 import localePT from '@angular/common/locales/pt';
 import { ContactComponent } from './contact/contact.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 registerLocaleData(localePT);
 
 @NgModule({
@@ -50,7 +51,8 @@ registerLocaleData(localePT);
     EventCreateComponent,
     EventsComponent,
     AccountComponent,
-    ContactComponent
+    ContactComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +72,7 @@ registerLocaleData(localePT);
     SocialLoginModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'privacy',  component: PrivacyComponent },
       { path: ':user',  component: AccountComponent }
     ]),
     FontAwesomeModule
