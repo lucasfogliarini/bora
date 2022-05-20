@@ -1,16 +1,22 @@
 #event-create{
     position: fixed;
     bottom: 85px;
-    right: 25px;
+    right: 10px;
     z-index: 999;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
 }
 
+#event-create-close{
+    position: relative;
+    right: 25px;
+    top: 5px;
+}
+
 #event-create #event-start{
     font-size: 50px;
-    padding: 0px 7px;
+    padding: 0px 22px;
 }
 #event-create #event-title, #event-create #event-location, #event-create #event-when{
     padding: 20px;

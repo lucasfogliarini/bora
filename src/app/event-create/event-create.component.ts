@@ -36,7 +36,7 @@ export class EventCreateComponent {
     this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
       this.event.id = event.id;
       this.event.attendeeEmails = event.attendeeEmails;
-      this.newEvent = new Event();
+      this.newEvent = new Event;
     });
   }
   update(pub: boolean = false){
@@ -75,5 +75,9 @@ export class EventCreateComponent {
       //error.code 3 The attempt timed out before it could get the location data.
       //else Geolocation failed due to unknown error.;
     });
+  }
+
+  close(){
+    this.event = new Event;
   }
 }

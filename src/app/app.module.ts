@@ -33,7 +33,8 @@ import { faTicket,
         faPeopleLine,
         faUser,
         faAt,
-        faCamera } from '@fortawesome/free-solid-svg-icons';
+        faCamera,
+        faCircleXmark} from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { AccountComponent } from './account/account.component';
 import { registerLocaleData } from '@angular/common';
@@ -124,7 +125,8 @@ export class AppModule {
       faPeopleLine,
       faUser,
       faAt,
-      faCamera
+      faCamera,
+      faCircleXmark
     );
   }
 }
