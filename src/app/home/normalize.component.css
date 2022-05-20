@@ -1,2 +1,33 @@
-/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
-.pdx{display:flex;align-items:center;box-sizing:border-box}.pdx--noOverflow{overflow:hidden}.pdxItem{position:relative;z-index:4}.ft--center .pdxParent--smartphones{box-sizing:content-box;width:auto}.ft--bottom .pdxParent--smartphones,.ft--center .pdxParent--smartphones{max-height:410px;align-items:flex-start}.pdxContent{position:absolute;overflow:hidden}.pdxItem--browser{width:800px;min-width:500px}.pdxItem--browser>.pdxContent{top:5.7%;left:0;right:0;bottom:0;border-radius:0 0 5px 5px}.pdxItem--laptop,.pdxItem--laptop-smartphone{width:100%;max-width:840px;min-width:500px}.pdxItem--laptop-smartphone>.pdxContent,.pdxItem--laptop>.pdxContent{top:4.4%;left:11.8%;right:11.8%;bottom:8.7%;border-radius:7px}.pdxItem--laptop-smartphone-phone,.pdxItem--smartphones,.pdxItem--smartphones-thin{width:100%;max-height:540px;max-width:270px}.pdxItem--laptop-smartphone-phone>.pdxContent,.pdxItem--nestedPhone>.pdxContent,.pdxItem--smartphones-thin>.pdxContent,.pdxItem--smartphones>.pdxContent{top:2.1%;left:4.4%;right:4.4%;bottom:2.1%;border-radius:28px}.pdxItem--laptop-3d{width:100%;max-width:710px;min-width:500px}.pdxItem--laptop-3d>.pdxContent{top:4.5%;left:15.2%;right:14.9%;bottom:28.4%;border-radius:2px}.pdxItem--laptop-3d-half{width:710px;min-width:710px;perspective:500px;perspective-origin:top}.pdxItem--laptop-3d-half>.pdxContent{top:-13%;left:9.5%;right:9.5%;bottom:28.5%;transform:rotateX(-53.5deg);border-radius:2px}.pdxItem--laptop-smartphone-phone{position:absolute;left:-10px;bottom:-20px;width:25%}.ft--right .pdxItem--laptop-smartphone-phone{left:auto;right:-10px}.pdxItem--laptop-smartphone-phone .pdxContent{border-radius:20px}.pdxItem--nestedPhone{position:absolute;width:100%;left:80%;top:0;z-index:-1!important;transform:scale(.7)}.ft--bottom .pdx--devices-2 .pdxItem--nestedPhone,.ft--center .pdx--devices-2 .pdxItem--nestedPhone{transform:scale(1)!important;right:87%!important}.ft--right .pdxItem--nestedPhone{left:auto;right:80%}.pdxItem--nestedPhone.two{left:150%;z-index:-2!important;transform:scale(.8)}.ft--right .pdxItem--nestedPhone.two{left:auto;right:150%}.pdxItem--img-solid{overflow:hidden}.pdxItem--img-solid>img,.pdxItem--img-solid>video,.pdxItem--img-transparent>img,.pdxItem--img-transparent>video,.pdxItem--video>video{display:block;max-height:500px;max-height:calc(var(--pdx-maxheight)*500px);max-width:100%}.pdxContent img,.pdxContent video{height:100%;width:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:top;object-position:top}.pdxItem svg{display:block;max-height:100%;max-width:100%;width:100%;filter:drop-shadow(0 8px 16px #0005)}.ft--bottom .pdxItem{min-width:0}.ft--bottom .pdxItem--laptop-smartphone-phone,.ft--center .pdxItem--laptop-smartphone-phone{bottom:-10px}.ft--bottom .pdxItem--nestedPhone.one,.ft--center .pdxItem--nestedPhone.one{left:auto;right:60%;transform:scale(.8)}.ft--bottom .ft--right .pdxItem--nestedPhone.two,.ft--bottom .pdxItem--nestedPhone.two,.ft--center .ft--right .pdxItem--nestedPhone.two,.ft--center .pdxItem--nestedPhone.two{right:auto;left:60%}.ft--bottom .pdx--devices-2 .pdxItem--smartphones,.ft--center .pdx--devices-2 .pdxItem--smartphones{transform:translate(43%)}@media only screen and (max-width:1000px){.ft--left .pdxItem--laptop-smartphone-phone>.pdxContent,.ft--right .pdxItem--laptop-smartphone-phone>.pdxContent{border-radius:14px}.pdxItem--laptop-3d-half{width:500px;min-width:500px}.pdxItem--laptop-3d-half>.pdxContent{top:-22.6%;bottom:19.8%;transform:rotateX(-61.5deg)}}@media only screen and (max-width:750px){.pdx{max-height:500px}.pdxParent--smartphones{padding-left:0!important;padding-right:0!important;max-height:370px!important;align-items:flex-start!important}.pdxItem--smartphones{min-width:0;transform:scale(.7)}.pdxItem--laptop-smartphone-phone{bottom:-10px}.pdxItem--laptop-smartphone-phone .pdxContent{border-radius:14px}.pdx--devices-2 .pdxItem--nestedPhone{transform:scale(1)!important;right:87%!important}.pdx--devices-2 .pdxItem--smartphones{transform:translate(43%)}.pdxItem--img-solid>img,.pdxItem--img-transparent>img{max-height:400px}.pdxItem--nestedPhone.one{left:auto;right:60%;transform:scale(.8)}.ft--right .pdxItem--nestedPhone.two,.pdxItem--nestedPhone.two{right:auto;left:60%}}@media only screen and (max-width:600px){.pdxItem--laptop-3d-half{width:400px;min-width:400px}.pdxItem--laptop-3d-half>.pdxContent{top:-44px;bottom:13px;transform:rotateX(-66.4deg)}}@media only screen and (max-width:500px){.pdxItem{min-width:0}}@media only screen and (max-width:450px){.pdxItem--laptop-3d-half{width:300px;min-width:300px}.pdxItem--laptop-3d-half>.pdxContent{top:-51px;bottom:-7px;transform:rotateX(-72.4deg)}}
+.pdxItem {
+    position: relative;
+    z-index: 4
+}
+
+.pdxContent {
+    position: absolute;
+    overflow: hidden
+}
+
+.pdxItem--smartphones{
+    width: 100%;
+    max-height: 540px;
+    max-width: 270px
+}
+
+.pdxItem--smartphones>.pdxContent {
+    top: 2.1%;
+    left: 4.4%;
+    right: 4.4%;
+    bottom: 2.1%;
+    border-radius: 28px
+}
+
+.pdxContent img,
+.pdxContent video {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: top;
+    object-position: top
+}
