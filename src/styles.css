@@ -13,3 +13,8 @@
     border-radius: 12px;
     margin-bottom: 5px;
 }
+
+app-contact .popover{
+	position: fixed !important;
+    top: -70px !important;
+}
