@@ -15,10 +15,14 @@
 #event-create #event-title, #event-create #event-location, #event-create #event-when{
     padding: 20px;
     background-color: white;
+    border: 1px solid;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
 }
 
 #event-create #title, #event-create #event-date{
-    width: 220px;
+    width: 165px;
 }
 
 #event-create #event-location input[type=search]{
