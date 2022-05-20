@@ -42,6 +42,6 @@ export class AccountComponent {
     });
   }
   openGoogleConta(){
-    window.open('https://myaccount.google.com/', '', 'popup');
+    window.open('https://myaccount.google.com/personal-info', '', 'popup');
   }
 }
