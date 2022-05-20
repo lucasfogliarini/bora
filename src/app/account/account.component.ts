@@ -39,6 +39,7 @@ export class AccountComponent {
     this.divagandoApiService.patch<Account>(`accounts`, this.account, () => {       
        this.editing = false;
        this.toastr.success('Perfil atualizado!');
+       this.router.navigate([this.account.username]);
     });
   }
   openGoogleConta(){
