@@ -1,5 +1,34 @@
+#home{
+  text-align: center;
+}
+
 #hero{
   background:linear-gradient(45deg, rgb(255, 255, 255) 0%, rgba(0, 0, 0, 0.23) 100%);
+}
+
+#hero h1{
+  padding-top: 40px;
+  font-size: 28pt;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 17px;
+  white-space: pre-line;
+}
+
+#smartphones{
+  overflow: hidden;
+  max-height: 370px;
+}
+
+#smartphones .pdxItem{
+  transform: scale(.7);
+  max-width: 500px;
+}
+
+#feature .ft-content{
+  padding: 30px;
+  width: 100%;
 }
 
 #feature h2{
@@ -11,15 +40,42 @@
 #feature .ft_subtitle{
   font-size: 20px;
 }
+#features .ft-point{
+  margin-top: 30px;
+  display: flex;
+}
+
+#features .ft-point-meta{
+  flex-direction: column;
+  text-align: left;
+}
+
+#features h3{
+  margin: 0;
+  font-size: 1.25em;
+  font-weight: 500;
+}
+
+#features p{
+  font-size: 1.15em;
+}
+
+#features .icon{
+  height:32px;
+  width:32px;
+  margin-right: 15px;
+  margin-top: 4px;
+}
 
 .btn {
+  text-align: center;
   display: inline-flex;
   position: relative;
   background: #eee;
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  margin: 0;
+  margin: 5px;
   padding: 0.7em 0.8em;
   line-height: 1;
   color: var(--color);
