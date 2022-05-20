@@ -34,12 +34,14 @@ import { faTicket,
         faUser,
         faAt,
         faCamera } from '@fortawesome/free-solid-svg-icons';
-import { faGoogle, faWhatsapp, faInstagram, faSpotify } from '@fortawesome/free-brands-svg-icons';
+import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { AccountComponent } from './account/account.component';
 import { registerLocaleData } from '@angular/common';
 import localePT from '@angular/common/locales/pt';
 import { ContactComponent } from './contact/contact.component';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { FooterComponent } from './footer/footer.component';
+import { BoraComponent } from './bora/bora.component';
 registerLocaleData(localePT);
 
 @NgModule({
@@ -52,7 +54,9 @@ registerLocaleData(localePT);
     EventsComponent,
     AccountComponent,
     ContactComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    FooterComponent,
+    BoraComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +77,7 @@ registerLocaleData(localePT);
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'privacy',  component: PrivacyComponent },
+      { path: 'bora',  component: BoraComponent },
       { path: ':user',  component: AccountComponent }
     ]),
     FontAwesomeModule
@@ -110,6 +115,8 @@ export class AppModule {
       faBars,
       faSignOutAlt,
       faGoogle,
+      faLinkedin,
+      faGithub,
       faCalendarPlus,
       faWhatsapp,
       faInstagram,
