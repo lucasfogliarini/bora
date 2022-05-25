@@ -112,7 +112,7 @@ export class EventsComponent {
       //@ts-ignore
       const placesService = new google.maps.places.PlacesService(document.createElement('div'));
       placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: any) =>{
-        if(response.length && response[0].photos && response[0].photos.length){
+        if(response && response.length && response[0].photos && response[0].photos.length){
           const bgImage = response[0].photos[0].getUrl();
           document.querySelector(`#e${event.id} .background-image img`)!.setAttribute('src', bgImage);
         }
