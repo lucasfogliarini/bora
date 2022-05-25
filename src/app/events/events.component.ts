@@ -59,9 +59,14 @@ export class EventsComponent {
   openUrl(url: string){
     window.open(url);
   }
+  getLocation(event: Event){
+    return event.location ? event.location.substring(0,100) : 'Não informado.';
+  }
   openMaps(place?: string){
-      var mapsUrl = `https://www.google.com/maps/search/?api=1&query=${place}`;
-      window.open(mapsUrl);
+      if(place){
+        var mapsUrl = `https://www.google.com/maps/search/?api=1&query=${place}`;
+        window.open(mapsUrl);
+      }
   }
   share(event: Event){
     var date = new Date(event.start).toLocaleDateString();

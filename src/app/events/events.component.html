@@ -35,7 +35,7 @@
               [hidden]="!event.ticketUrl"
               title="Ingresso"
               popoverTitle="Ingresso"
-              popoverMessage="{{event.ticketUrl}}"
+              [popoverMessage]="event.ticketUrl"
               placement="left"
               confirmText="Abrir Link"
               (confirm)="openUrl(event.ticketUrl)"
@@ -47,8 +47,9 @@
                 popoverTitle="Abrir no Google Maps?"
                 placement="left"
                 confirmText="Abrir"
-                popoverMessage="{{ event.location?.substring(0,100) }}"
+                [popoverMessage]="getLocation(event)"
                 (confirm)="openMaps(event.location)"
+                [hideConfirmButton]="event.location ? false : true"
                 role="button"
                 class="col-6 float-right">
             </fa-icon>
@@ -64,7 +65,7 @@
         <div *ngIf="!event.expanded" class="event-buttons-collapsed col-1 mt-2">
           <fa-icon [icon]="['fas', 'people-line']" class="col-12"></fa-icon>
           <fa-icon [icon]="['fab', 'whatsapp']" class="col-12"></fa-icon>
-          <fa-icon [hidden]="!event.ticketUrl" [icon]="['fas', 'ticket']" class="col-12"></fa-icon>
+          <fa-icon *ngIf="event.ticketUrl" [icon]="['fas', 'ticket']" class="col-12"></fa-icon>
           <fa-icon [icon]="['fas', 'map-location-dot']" class="col-12"></fa-icon>
         </div>
       </div>
