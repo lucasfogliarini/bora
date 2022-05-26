@@ -21,11 +21,6 @@
   max-height: 370px;
 }
 
-#smartphones .pdxItem{
-  transform: scale(.7);
-  max-width: 500px;
-}
-
 #feature .ft-content{
   padding: 30px;
   width: 100%;
