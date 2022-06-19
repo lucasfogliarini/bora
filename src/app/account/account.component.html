@@ -57,4 +57,4 @@
     </div>
   </div>
 </section>
-<app-event-create *ngIf="account?.calendarAuthorized"></app-event-create>
+<app-event-create *ngIf="account?.calendarAuthorized && account?.createEventEnabled"></app-event-create>
