@@ -31,7 +31,7 @@
     </div>
   </div>
   <div id="event-when" *ngIf="event.location && !event.public" class="card-title">
-    <h5>Quando?</h5>
+    <h5>Que dia?</h5>
     <input id="event-date" [(ngModel)]="newEvent.start" readonly="readonly"
     [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa">
     <owl-date-time [pickerType]="'calendar'" #dtStart></owl-date-time>
