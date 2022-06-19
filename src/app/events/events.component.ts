@@ -6,7 +6,7 @@ import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer, Title } from '@angular/platform-browser';
-import { Account } from '../models/account.model';
+import { Attendee } from '../models/attendee.model';
 
 @Component({
   selector: 'app-events',
@@ -30,7 +30,7 @@ export class EventsComponent {
   }
   getEvents(){
     let user = this.getUser();
-    var eventsUri = `events?user=${user}`;
+    var eventsUri = `events?user=${user}&favoritesCount=true`;
     this.divagandoApiService.get<Event[]>(eventsUri, (events: Event[]) => {
       this.events = events;
       var eId = this.activeRoute.snapshot.queryParams['eId'];
@@ -92,9 +92,9 @@ export class EventsComponent {
     this.title.setTitle(`${event.title} - ${date}`);
     this.router.navigate([], { queryParams: { eId: this.shortId(event) } });
   }
-  attendees(attendees: Account[]){
+  attendees(attendees: Attendee[]){
     if(attendees){
-      return attendees.map(e=>`<img src='${e.photo}' />&nbsp;<a href='${environment.divagando}${e.username}'>${e.name}</a> <br />`).join('');
+      return attendees.map(e=>`<img src='${e.photo}' />&nbsp;<a href='${environment.divagando}${e.username}'>${e.name}</a> ${e.proximityRate}% dos encontros <br />`).join('');
     }
     return `<a href="${environment.divagando}${this.getUser()}">${this.getUser()}</a><br>`;
   }
