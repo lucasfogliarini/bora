@@ -94,9 +94,13 @@ export class EventsComponent {
   }
   attendees(attendees: Attendee[]){
     if(attendees){
-      return attendees.map(e=>`<img src='${e.photo}' />&nbsp;<a href='${environment.divagando}${e.username}'>${e.name}</a> ${e.proximityRate}% dos encontros <br />`).join('');
+      return attendees.map(e=>`<img src='${e.photo}' />&nbsp;<a href='${environment.divagando}${e.username}'>${e.name}</a> ${this.proximityRate(e)}% <br />`).join('');
     }
     return `<a href="${environment.divagando}${this.getUser()}">${this.getUser()}</a><br>`;
+  }
+  proximityRate(attendee: Attendee){
+    var isLucas = this.authService.account.email == 'lucasfogliarini@gmail.com';
+    return isLucas ? attendee.proximityRate : "";
   }
   getSpotifyEmbedUrl(event: Event){
     if(event.spotifyUrl){
