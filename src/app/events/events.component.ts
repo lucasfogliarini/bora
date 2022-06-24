@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Event } from '../models/event.model';
 import { ToastrService } from 'ngx-toastr';
 import { DivagandoApiService } from '../divagando-api.service';
-import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer, Title } from '@angular/platform-browser';
 import { Attendee } from '../models/attendee.model';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-events',
@@ -17,7 +17,7 @@ export class EventsComponent {
   events: Event[] = [];
 
   constructor(private divagandoApiService: DivagandoApiService,
-              private authService: SocialAuthService,
+              private authService: AuthenticationService,
               private toastr: ToastrService,
               private router: Router,
               private activeRoute: ActivatedRoute,
@@ -51,7 +51,7 @@ export class EventsComponent {
     this.divagandoApiService.patch_(`events/${eventId}/participate?user=${user}${attendeeEmailParam}`, (event) => {
       this.toastr.success('Então bora!');
     }, (errorResponse)=>{
-      this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(e=>{
+      this.authService.signInWithGoogle().then(e=>{
         this.participate(eventId, e.email);
       });
     });
