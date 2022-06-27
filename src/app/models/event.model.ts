@@ -6,6 +6,7 @@ export class Event {
     title: string;
     ticketUrl: string;
     spotifyUrl: string;
+    googleEventUrl: string;
     instagramUrl: string;
     youtubeUrl: string;
     description: string;

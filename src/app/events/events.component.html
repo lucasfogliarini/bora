@@ -58,8 +58,16 @@
       </div>
       <div class="row">
         <div class="date-time col-3">
-          <div class="date">{{ event.start | date: 'dd/MM/yy' }} {{ event.start | date: 'EE' : '' : 'pt-BR' }}</div>
-          <span style="font-size: small;" >{{ event.start | date: 'HH:mm' }}</span>
+          <div class="date" mwlConfirmationPopover
+              title="Google Agenda"
+              popoverTitle="Abrir no Google Agenda?"
+              placement="right"
+              confirmText="Abrir"
+              popoverMessage="{{event.googleEventUrl.substring(0,50)}}..."
+              (confirm)="openCalendar(event)"
+              role="button">{{ event.start | date: 'dd/MM/yy' }} {{ event.start | date: 'EE' : '' : 'pt-BR' }}
+          </div>
+          <span style="font-size: small;">{{ event.start | date: 'HH:mm' }}</span>
         </div>
         <div class="title col-7">{{ event.title?.substring(0, 100) }}</div>
         <div *ngIf="!event.expanded" class="event-buttons-collapsed col-1 mt-2">

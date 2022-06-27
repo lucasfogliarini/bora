@@ -62,6 +62,9 @@ export class EventsComponent {
   getLocation(event: Event){
     return event.location ? event.location.substring(0,100) : 'Não informado.';
   }
+  openCalendar(event: Event){
+    window.open(event.googleEventUrl);
+  }
   openMaps(place?: string){
       if(place){
         var mapsUrl = `https://www.google.com/maps/search/?api=1&query=${place}`;
