@@ -44,6 +44,11 @@ export class DivagandoApiService {
     this.request(observable, next, error);
   }
 
+  postPromise<T>(resource: string, body: T){
+    var uri = `${this.baseUrl}${resource}`;
+    return this.http.post<any>(uri, body).toPromise();
+  }
+
   put<T>(resource: string, body: T, next: (value: T) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
     var observable = this.http.put<T>(uri, body);

@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { DomSanitizer, Title } from '@angular/platform-browser';
 import { Attendee } from '../models/attendee.model';
 import { AuthenticationService } from '../authentication.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-events',
@@ -54,12 +55,15 @@ export class EventsComponent {
       if(response == 'accepted'){
         this.toastr.success('Então bora!');
       }else{
-        this.toastr.success('Deixa pra próxima ...');
+        this.toastr.success('Tranquilo ...');
       }
-    }, (errorResponse)=>{
-      this.authService.signInWithGoogle().then(e=>{
-        this.reply(eventId, response);
-      });
+    }, async (errorResponse: HttpErrorResponse)=>{
+       if(errorResponse.status == 401){
+          await this.authService.signInWithGoogle();
+          this.reply(eventId, response);
+       }else{
+          this.toastr.error(errorResponse.message);
+       }
     });
   }
   openUrl(url: string){

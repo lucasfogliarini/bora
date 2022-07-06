@@ -17,13 +17,7 @@ export class AuthenticationService {
                 this.authService.authState.subscribe(user => {
                   this.user = user;
                   if(user){
-                    const jwt = localStorage.getItem("jwt");
-                    if(!jwt){
-                      var tokenUri = `token`;
-                      this.divagandoApiService.post(tokenUri, user, (authentication: any) => {
-                        localStorage.setItem("jwt", authentication.jwToken);
-                      });
-                    }
+                    this.getJwtAndSave(user);
 
                     var accountUri = `accounts?filter=contains(Email,'${user.email}')`;
                     this.divagandoApiService.get<Account[]>(accountUri, (accounts) => {
@@ -36,9 +30,20 @@ export class AuthenticationService {
                   }
                 });
               }
-  signInWithGoogle(): Promise<SocialUser> {
-    return this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  async signInWithGoogle(): Promise<any> {
+    const user = await this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    await this.getJwtAndSave(user);
   }
+
+  async getJwtAndSave(user: SocialUser){
+    const jwt = localStorage.getItem("jwt");
+    if(!jwt){
+      var tokenUri = `token`;
+      const authentication = await this.divagandoApiService.postPromise(tokenUri, user);
+      localStorage.setItem("jwt", authentication.jwToken);
+    }
+  }
+
   signOut(): void {
     this.authService.signOut();
     localStorage.removeItem("jwt");
