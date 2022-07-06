@@ -45,14 +45,20 @@ export class EventsComponent {
         //usuário não existe ou Agenda não autorizada
     });
   }
-  participate(eventId: string, attendeeEmail?: string){
+  reply(eventId: string, response: string){
     let user = this.getUser();
-    let attendeeEmailParam = attendeeEmail ? `&attendeeEmail=${attendeeEmail}` : '';
-    this.divagandoApiService.patch_(`events/${eventId}/participate?user=${user}${attendeeEmailParam}`, (event) => {
-      this.toastr.success('Então bora!');
+    let attendeeReply = {
+      response: response
+    };
+    this.divagandoApiService.patch(`events/${eventId}/reply?user=${user}`, attendeeReply,  (event) => {
+      if(response == 'accepted'){
+        this.toastr.success('Então bora!');
+      }else{
+        this.toastr.success('Deixa pra próxima ...');
+      }
     }, (errorResponse)=>{
       this.authService.signInWithGoogle().then(e=>{
-        this.participate(eventId, e.email);
+        this.reply(eventId, response);
       });
     });
   }
