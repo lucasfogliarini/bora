@@ -9,10 +9,11 @@
         <div *ngIf="event.expanded" class="event-buttons col-4 mt-4">
           <div class="row">
             <fa-icon [icon]="['fas', 'people-line']" mwlConfirmationPopover
+              popoverClass='attendees'
               title="Quem vai... Bora?"
               popoverTitle="Quem vai... Bora?"
               [popoverMessage]="attendees(event.attendees)"
-              placement="bottom"
+              placement="left"
               confirmText="Bora!"
               (confirm)="reply(event.id, 'accepted')"
               cancelText="Talvez"

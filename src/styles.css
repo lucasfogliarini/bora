@@ -8,13 +8,17 @@
     text-decoration: underline;
 }
 
-.event-buttons img{
+app-contact .popover{
+	position: fixed !important;
+    top: -70px !important;
+}
+
+app-events .event-buttons img{
     width: 25px;
     border-radius: 12px;
     margin-bottom: 5px;
 }
 
-app-contact .popover{
-	position: fixed !important;
-    top: -70px !important;
+app-events .attendees .popover-body{
+    width: 13rem !important;
 }
