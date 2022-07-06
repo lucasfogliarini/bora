@@ -108,7 +108,9 @@ export class EventsComponent {
   }
   attendees(attendees: Attendee[]){
     if(attendees){
-      return attendees.map(e=>`<img src='${e.photo}' />&nbsp;<a href='${environment.divagando}${e.username}'>${e.name}</a>&nbsp;<small>${this.proximityRate(e)}</small><br />`).join('');
+      let attendeesContent = attendees.map(e=>`<img src='${e.photo}' />&nbsp;<a href='${environment.divagando}${e.username}'>${e.name}</a>&nbsp;<small>${this.proximityRate(e)}</small><br />`).join('');
+      attendeesContent += `<small class="offset-7">${attendees.length} convidados</small>`;
+      return attendeesContent;
     }
     return `<a href="${environment.divagando}${this.getUser()}">${this.getUser()}</a><br>`;
   }
