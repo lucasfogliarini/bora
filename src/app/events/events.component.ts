@@ -42,8 +42,9 @@ export class EventsComponent {
         this.events.splice(eIndex, 1);//remove
         this.events.splice(0, 0, currentEvent);//insert
       }
-    }, (errorResponse)=>{
-        //usuário não existe ou Agenda não autorizada
+    }, (errorResponse: HttpErrorResponse)=>{
+        this.events = [];
+        this.toastr.error(errorResponse.message);
     });
   }
   reply(eventId: string, response: string){
