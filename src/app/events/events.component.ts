@@ -59,7 +59,6 @@ export class EventsComponent {
       }
     }, (errorResponse: HttpErrorResponse)=>{
         this.events = [];
-        this.toastr.error(errorResponse.message);
     });
   }
   reply(eventId: string, response: string){
