@@ -15,8 +15,9 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent {
-  events?: Event[];
+  events?: Event[] = [];
   eventsLoaded?: Event[];
+  eventsMessage?: string = undefined;
 
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: AuthenticationService,
@@ -30,35 +31,42 @@ export class EventsComponent {
   getUser(){
     return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
   }
-  loadingEvents(){
-    return this.events == undefined;
+  setEvents(events?: Event[]){
+    this.eventsMessage = undefined;
+    this.events = events;
+    if(events === undefined)
+      this.eventsMessage = "Carregando  ...";
+    else if(!this.hasEventsLoaded())
+      this.eventsMessage = "Sem encontros públicos.";
+    else if(events && events.length === 0 && this.hasEventsLoaded())
+      this.eventsMessage = "Sem encontros públicos desse tipo ...";
   }
-  noEventFound(){
-    return this.events != undefined && this.events.length === 0;
-  }
-  setEvents(){
-    this.events = this.eventsLoaded;
+  hasEventsLoaded(){
+    return this.eventsLoaded && this.eventsLoaded.length > 0;
   }
   getEvents(){
     let user = this.getUser();
     var eventsUri = `events?user=${user}&favoritesCount=true`;
+    this.setEvents(undefined);
     this.divagandoApiService.get<Event[]>(eventsUri, (eventsLoaded: Event[]) => {
       this.eventsLoaded = eventsLoaded;
-      this.events = eventsLoaded;
+      this.setEvents(this.eventsLoaded);
       const eId = this.activeRoute.snapshot.queryParams['eId'];
       let currentEvent = eventsLoaded.find(e=>e.id.includes(eId));
       if(currentEvent){
         this.selectEvent(currentEvent);
         var eIndex = eventsLoaded.indexOf(currentEvent);
-        this.events.splice(eIndex, 1);//remove
-        this.events.splice(0, 0, currentEvent);//insert
+        this.events!.splice(eIndex, 1);//remove
+        this.events!.splice(0, 0, currentEvent);//insert
       }else{
         const eType = this.activeRoute.snapshot.queryParams['eType'];
-        if(eType)
-          this.events = this.events.filter(e=>e.eventType == eType);
+        if(eType){
+          let eventsFiltered = this.events!.filter(e=>e.eventType == eType);
+          this.setEvents(eventsFiltered);
+        }
       }
     }, (errorResponse: HttpErrorResponse)=>{
-        this.events = [];
+        this.setEvents([]);
     });
   }
   reply(eventId: string, response: string){
