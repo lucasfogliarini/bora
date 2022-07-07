@@ -15,7 +15,8 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent {
-  events: Event[] = [];
+  events?: Event[];
+  eventsLoaded?: Event[];
 
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: AuthenticationService,
@@ -29,18 +30,32 @@ export class EventsComponent {
   getUser(){
     return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
   }
+  loadingEvents(){
+    return this.events == undefined;
+  }
+  noEventFound(){
+    return this.events != undefined && this.events.length === 0;
+  }
+  setEvents(){
+    this.events = this.eventsLoaded;
+  }
   getEvents(){
     let user = this.getUser();
     var eventsUri = `events?user=${user}&favoritesCount=true`;
-    this.divagandoApiService.get<Event[]>(eventsUri, (events: Event[]) => {
-      this.events = events;
-      var eId = this.activeRoute.snapshot.queryParams['eId'];
-      let currentEvent = events.find(e=>e.id.includes(eId));
+    this.divagandoApiService.get<Event[]>(eventsUri, (eventsLoaded: Event[]) => {
+      this.eventsLoaded = eventsLoaded;
+      this.events = eventsLoaded;
+      const eId = this.activeRoute.snapshot.queryParams['eId'];
+      let currentEvent = eventsLoaded.find(e=>e.id.includes(eId));
       if(currentEvent){
         this.selectEvent(currentEvent);
-        var eIndex = events.indexOf(currentEvent);
+        var eIndex = eventsLoaded.indexOf(currentEvent);
         this.events.splice(eIndex, 1);//remove
         this.events.splice(0, 0, currentEvent);//insert
+      }else{
+        const eType = this.activeRoute.snapshot.queryParams['eType'];
+        if(eType)
+          this.events = this.events.filter(e=>e.eventType == eType);
       }
     }, (errorResponse: HttpErrorResponse)=>{
         this.events = [];

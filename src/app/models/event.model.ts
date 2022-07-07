@@ -4,6 +4,7 @@ export class Event {
     id: string;
     attendeeEmails: string[];
     title: string;
+    eventType: number;
     ticketUrl: string;
     spotifyUrl: string;
     googleEventUrl: string;

@@ -1,4 +1,8 @@
-<p class="text-center mt-2" *ngIf="!events?.length"><em>Carregando ...</em></p>
+<p class="text-center mt-2" *ngIf="loadingEvents()"><em>Carregando ...</em></p>
+<p class="text-center mt-2" *ngIf="noEventFound()">
+  <em>Nenhum encontro desse tipo agora ...</em>
+  <button (click)="setEvents()" class="btn btn-dark mt-3">Carregar mais!</button>
+</p>
 <div *ngIf="events">
   <div class="{{isSelectedClass(event)}}" (click)="selectEvent(event)" role="button" *ngFor="let event of events">
     <div [id]="'e'+event.id" class="event-details">
