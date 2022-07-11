@@ -55,9 +55,9 @@ export class DivagandoApiService {
     this.request(observable, next, error);
   }
 
-  patch<T>(resource: string, body: T, next: (value: T) => void, error?: (err: any) => void){
+  patch<TResponse>(resource: string, body: any, next: (value: TResponse) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
-    var observable = this.http.patch<T>(uri, body);
+    var observable = this.http.patch<TResponse>(uri, body);
     this.request(observable, next, error);
   }
 

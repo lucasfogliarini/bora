@@ -3,7 +3,6 @@ import { Event } from '../models/event.model';
 import { ToastrService } from 'ngx-toastr';
 import { DivagandoApiService } from '../divagando-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
 import { DomSanitizer, Title } from '@angular/platform-browser';
 import { Attendee } from '../models/attendee.model';
 import { AuthenticationService } from '../authentication.service';
@@ -18,6 +17,7 @@ export class EventsComponent {
   events?: Event[] = [];
   eventsLoaded?: Event[];
   eventsMessage?: string = undefined;
+  replied: boolean = false;
 
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: AuthenticationService,
@@ -56,8 +56,7 @@ export class EventsComponent {
       if(currentEvent){
         this.selectEvent(currentEvent);
         var eIndex = eventsLoaded.indexOf(currentEvent);
-        this.events!.splice(eIndex, 1);//remove
-        this.events!.splice(0, 0, currentEvent);//insert
+        this.arrayMove(this.events!, eIndex, 0);
       }else{
         const eType = this.activeRoute.snapshot.queryParams['eType'];
         if(eType){
@@ -74,12 +73,17 @@ export class EventsComponent {
     let attendeeReply = {
       response: response
     };
-    this.divagandoApiService.patch(`events/${eventId}/reply?user=${user}`, attendeeReply,  (event) => {
+    this.divagandoApiService.patch(`events/${eventId}/reply?user=${user}`, attendeeReply,  (event: Event) => {
       if(response == 'accepted'){
         this.toastr.success('Então bora!');
       }else{
         this.toastr.success('Tranquilo ...');
       }
+      let oldEventIndex = this.events?.findIndex(e=>e.id == eventId);
+      this.events?.splice(oldEventIndex!, 1);
+      this.events?.splice(oldEventIndex!, 0, event);
+      this.selectEvent(event);
+      this.replied = true;
     }, async (errorResponse: HttpErrorResponse)=>{
        if(errorResponse.status == 401){
           await this.authService.signInWithGoogle();
@@ -127,14 +131,23 @@ export class EventsComponent {
     var date = new Date(event.start).toLocaleDateString();
     this.title.setTitle(`${event.title} - ${date}`);
     this.router.navigate([], { queryParams: { eId: this.shortId(event) } });
+    let aIndex = event.attendees.findIndex(e=>e.username == this.authService.account.username);
+    this.replied = aIndex > 0;
   }
   attendees(attendees: Attendee[]){
     if(attendees){
+      this.popAttendee(attendees);
       let attendeesContent = attendees.map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a>&nbsp;<small>${this.proximityRate(e)}</small><br />`).join('');
       attendeesContent += `<small class="offset-7">${attendees.length} convidados</small>`;
       return attendeesContent;
     }
     return `<a href="${window.location.origin}/${this.getUser()}">${this.getUser()}</a><br>`;
+  }
+  popAttendee(attendees: Attendee[]){
+    let aIndex = attendees.findIndex(e=>e.username == this.authService.account.username);
+    if(aIndex > 0){
+      this.arrayMove(attendees, aIndex, 0);
+    }
   }
   proximityRate(attendee: Attendee){
     var isLoggedUser = this.authService.account.email == this.authService.user?.email;
@@ -160,5 +173,11 @@ export class EventsComponent {
         }
       });
     }
+  }
+
+  arrayMove(arr: Array<any>, fromIndex: number, toIndex: number) {
+    var element = arr[fromIndex];
+    arr.splice(fromIndex, 1);
+    arr.splice(toIndex, 0, element);
   }
 }

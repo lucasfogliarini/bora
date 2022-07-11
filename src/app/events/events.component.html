@@ -11,7 +11,7 @@
         </div>
         <div *ngIf="event.expanded" class="event-buttons col-4 mt-4">
           <div class="row">
-            <fa-icon [icon]="['fas', 'people-line']" mwlConfirmationPopover
+            <fa-icon *ngIf="!replied" [icon]="['fas', 'people-line']" mwlConfirmationPopover
               popoverClass='attendees'
               title="Quem vai... Bora?"
               popoverTitle="Quem vai... Bora?"
@@ -21,6 +21,19 @@
               (confirm)="reply(event.id, 'accepted')"
               cancelText="Talvez"
               (cancel)="reply(event.id, 'tentative')"
+              role="button"
+              [isOpen]="isSelected(event)"
+              class="col-6">
+            </fa-icon>
+            <fa-icon *ngIf="replied" [icon]="['fas', 'people-line']" mwlConfirmationPopover
+              popoverClass='attendees'
+              title="Quem vai..."
+              popoverTitle="Quem vai..."
+              [popoverMessage]="attendees(event.attendees)"
+              placement="left"
+              confirmText="Mas ..."
+              (confirm)="replied = false"
+              cancelText="Cancelar"
               role="button"
               [isOpen]="isSelected(event)"
               class="col-6">
