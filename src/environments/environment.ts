@@ -6,7 +6,6 @@ export const environment = {
   production: false,
   divagandoApi: 'https://api.divagando.org/',
   //divagandoApi: 'https://localhost:5001/',//must use /
-  divagando: 'http://localhost:4200/'//must use /
 };
 
 /*

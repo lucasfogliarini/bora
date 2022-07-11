@@ -49,7 +49,7 @@ export class AuthenticationService {
     localStorage.removeItem("jwt");
   }
   authorizeCalendar(){
-    var authUrl = `${environment.divagandoApi}accounts/authorizeCalendar?redirectUrl=${environment.divagando}/${this.account.username}`;
+    var authUrl = `${environment.divagandoApi}accounts/authorizeCalendar?redirectUrl=${window.location.origin}/${this.account.username}`;
     window.open(authUrl, '_blank');
   }
   unauthorizeCalendar(){
