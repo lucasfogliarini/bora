@@ -15,7 +15,10 @@ export class HomeComponent {
     this.getContents();
   }
   getContents(){
-    var contentsUri = `contents?filter=collection eq 'home'`;
+    let contentsUri = `contents?filter=collection eq 'home'`;
+    if(window.location.origin.includes('tunel'))
+      contentsUri = `contents?filter=collection eq 'home' and accountId eq 5`;
+
     this.divagandoApiService.get(contentsUri, (homeContents: Content[])=>{
       var contents = Object.keys(this.home);
       for (const contentKey of contents) {
