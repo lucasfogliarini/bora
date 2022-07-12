@@ -1,10 +1,11 @@
 import { Attendee } from "./attendee.model";
+import { EventType } from "./event-type.model";
 
 export class Event {
     id: string;
     attendeeEmails: string[];
-    title: string;
-    eventType: number;
+    title?: string;
+    eventType?: EventType;
     ticketUrl: string;
     spotifyUrl: string;
     googleEventUrl: string;
