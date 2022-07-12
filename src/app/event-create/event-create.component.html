@@ -11,7 +11,7 @@
         {{title}}
       </label>
     </div>
-    <input [(ngModel)]="newEvent.title" class="form-control" type="text" id="title" placeholder="ou ...">
+    <input [(ngModel)]="newEvent.title" class="form-control mt-2" type="text" id="title" placeholder="outra opção ...">
     <div class="buttonEvent">
       <button *ngIf="newEvent.title" (click)="update()" type="button" class="btn btn-dark">{{newEvent.title}}!</button>
     </div>
@@ -36,7 +36,7 @@
     [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa">
     <owl-date-time [pickerType]="'calendar'" #dtStart></owl-date-time>
     <div class="buttonEvent">
-      <button (click)="update(true)" type="button" class="btn btn-dark">Agendar!</button>
+      <button (click)="update(true)" type="button" class="btn btn-dark">🗓 Agendar!</button>
     </div>
   </div>
 </div>

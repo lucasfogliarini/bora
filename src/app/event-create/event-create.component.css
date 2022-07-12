@@ -27,9 +27,9 @@
     -moz-border-radius: 10px;
 }
 
-#event-create #title, #event-create #event-date{
+/*#event-create #title, #event-create #event-date{
     width: 165px;
-}
+}*/
 
 #event-create #event-location input[type=search]{
     margin-top: 10px;

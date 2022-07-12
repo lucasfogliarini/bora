@@ -16,14 +16,13 @@ export class EventCreateComponent {
   event: Event = new Event;
   newEvent: Event = new Event;
   placesOptions: Options = new Options;
-  titles = ['Churrasco','Festa, dançar e tocar','Viajar ou fazer uma trilha', 'Desenvolver um software'];
-  locations = ['Aqui em casa','Na tua casa','Num Quiosque','Na Praia','Google Meet'];
+  titles = ['🥂 Camarote ou festa privada','💰 Empreender','🔮 Criar','🥩 Churrasco e bate-papo','🏞 Viajar ou fazer uma trilha', '📱 Desenvolver um aplicativo'];
+  locations = ['🏡 Aqui em casa','🏛 Na Divagando','💻 Google Meet','⛩ Num Quiosque','🏖 Na Praia']
 
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: AuthenticationService,
               private toastr: ToastrService,
-              private activeRoute: ActivatedRoute,
-              private router: Router) {
+              private activeRoute: ActivatedRoute) {
                 this.placesOptions.componentRestrictions = { country: 'br' };
   }
   create(){
