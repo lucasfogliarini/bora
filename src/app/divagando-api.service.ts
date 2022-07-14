@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Account } from './models/account.model';
+import { Content } from './models/content.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,16 @@ export class DivagandoApiService {
         this.toastr.warning('Usuário não encontrado.');
       }
       onFound(account);
+    });
+  }
+
+  getContents(callBack: (content: Content[]) => void){
+    let contentsUri = `contents?filter=collection eq 'home'`;
+    if(window.location.origin.includes('tunel'))
+      contentsUri = `contents?filter=collection eq 'home' and accountId eq 5`;
+
+    this.get(contentsUri, (homeContents: Content[])=>{
+       callBack(homeContents);
     });
   }
 
