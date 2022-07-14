@@ -7,7 +7,6 @@ import { DivagandoApiService } from './divagando-api.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Divagando';
   version: string = "";
   constructor(
     private divagandoApiService: DivagandoApiService) { }

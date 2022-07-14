@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { AuthenticationService } from '../authentication.service';
 import { DivagandoApiService } from '../divagando-api.service';
 
@@ -9,11 +10,14 @@ import { DivagandoApiService } from '../divagando-api.service';
 export class SideBarMenuComponent {
   title = 'Divagando';
   constructor(private divagandoApiService: DivagandoApiService,
-              public authService: AuthenticationService) {
+              public authService: AuthenticationService,
+              private titleService: Title) {
                 this.divagandoApiService.getContents(homeContents=>{
                     let homeTitle = homeContents.filter(e=>e.key == 'title');
-                    if(homeTitle.length)
+                    if(homeTitle.length){
                       this.title = homeTitle[0].text;
+                      this.titleService.setTitle(this.title);
+                    }
                 });
               }
   openUser(editing: boolean = false){
