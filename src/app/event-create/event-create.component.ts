@@ -40,16 +40,17 @@ export class EventCreateComponent {
   }
   create(){
     const jwt = localStorage.getItem("jwt");
-    if(!jwt){
+    if(jwt){
+      var user = this.activeRoute.snapshot.params['user'];
+      this.newEvent = new Event();
+      this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
+        this.event.id = event.id;
+        this.event.attendeeEmails = event.attendeeEmails;
+        this.newEvent = new Event;
+      });
+    }else{
       this.authService.signInWithGoogle();
     }
-    var user = this.activeRoute.snapshot.params['user'];
-    this.newEvent = new Event();
-    this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
-      this.event.id = event.id;
-      this.event.attendeeEmails = event.attendeeEmails;
-      this.newEvent = new Event;
-    });
   }
   getEventType(){
     if(this.newEvent.title){
