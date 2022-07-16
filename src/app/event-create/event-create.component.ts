@@ -5,6 +5,7 @@ import { Options } from 'ngx-google-places-autocomplete/objects/options/options'
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 import { DivagandoApiService } from '../divagando-api.service';
+import { Content } from '../models/content.model';
 import { EventType } from '../models/event-type.model';
 import { Event } from '../models/event.model';
 
@@ -17,14 +18,8 @@ export class EventCreateComponent {
   event: Event = new Event;
   newEvent: Event = new Event;
   placesOptions: Options = new Options;
-  titles = [
-    '🥂 Camarote ou festa privada',
-    '💰 Empreender',
-    '🔮 Criar',
-    '🥩 Churrasco e bate-papo',
-    '🏞 Viajar ou fazer uma trilha',
-    '📱 Desenvolver um aplicativo'
-  ];
+  what?: string = 'O que vamos fazer?';
+  titles = ['🥂 Camarote ou festa privada','💰 Empreender', '🔮 Criar', '🥩 Churrasco e bate-papo', '🏞 Viajar ou fazer uma trilha', '📱 Desenvolver um aplicativo' ];
   locations = ['🏡 Aqui em casa','🏛 Na Divagando','💻 Google Meet','⛩ Num Quiosque','🏖 Na Praia']
 
   constructor(private divagandoApiService: DivagandoApiService,
@@ -32,6 +27,16 @@ export class EventCreateComponent {
               private toastr: ToastrService,
               private activeRoute: ActivatedRoute) {
                 this.placesOptions.componentRestrictions = { country: 'br' };
+                this.setContents();
+  }
+  setContents(){
+    this.divagandoApiService.getContents('event-create', (contents: Content[])=>{
+      const what = contents.find(e=>e.key == 'what');
+      if(what) 
+        this.what = what.text;
+      this.titles = contents.filter(e=>e.key.includes('title')).map(e=>e.text);
+      this.locations = contents.filter(e=>e.key.includes('location')).map(e=>e.text);
+    });
   }
   getEventType(event: Event){
     if(!event.title)

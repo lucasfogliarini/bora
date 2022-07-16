@@ -12,7 +12,7 @@ export class SideBarMenuComponent {
   constructor(private divagandoApiService: DivagandoApiService,
               public authService: AuthenticationService,
               private titleService: Title) {
-                this.divagandoApiService.getContents(homeContents=>{
+                this.divagandoApiService.getContents('home', homeContents=>{
                     let homeTitle = homeContents.filter(e=>e.key == 'title');
                     if(homeTitle.length){
                       this.title = homeTitle[0].text;

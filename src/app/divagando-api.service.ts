@@ -27,10 +27,9 @@ export class DivagandoApiService {
     });
   }
 
-  getContents(callBack: (content: Content[]) => void){
-    let contentsUri = `contents?filter=collection eq 'home'`;
-    if(window.location.origin.includes('tunel'))
-      contentsUri = `contents?filter=collection eq 'home' and accountId eq 5`;
+  getContents(collection: string, callBack: (content: Content[]) => void){
+    const accountId = window.location.origin.includes('tunel') ? 5 : 1;
+    let contentsUri = `contents?filter=collection eq '${collection}' and accountId eq ${accountId}`;
 
     this.get(contentsUri, (homeContents: Content[])=>{
        callBack(homeContents);
