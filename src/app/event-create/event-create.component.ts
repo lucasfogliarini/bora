@@ -17,7 +17,14 @@ export class EventCreateComponent {
   event: Event = new Event;
   newEvent: Event = new Event;
   placesOptions: Options = new Options;
-  titles = ['🥂 Camarote ou festa privada','💰 Empreender','🔮 Criar','🥩 Churrasco e bate-papo','🏞 Viajar ou fazer uma trilha', '📱 Desenvolver um aplicativo'];
+  titles = [
+    '🥂 Camarote ou festa privada',
+    '💰 Empreender',
+    '🔮 Criar',
+    '🥩 Churrasco e bate-papo',
+    '🏞 Viajar ou fazer uma trilha',
+    '📱 Desenvolver um aplicativo'
+  ];
   locations = ['🏡 Aqui em casa','🏛 Na Divagando','💻 Google Meet','⛩ Num Quiosque','🏖 Na Praia']
 
   constructor(private divagandoApiService: DivagandoApiService,
