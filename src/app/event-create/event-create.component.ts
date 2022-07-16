@@ -38,20 +38,6 @@ export class EventCreateComponent {
       this.locations = contents.filter(e=>e.key.includes('location')).map(e=>e.text);
     });
   }
-  getEventType(event: Event){
-    if(!event.title)
-      return undefined;
-    if(event.title?.includes('Camarote'))
-       return EventType.Party;
-    else if(event.title.includes('Empreender') || event.title.includes('Criar') || event.title.includes('Churrasco') || event.title.includes('Desenvolver'))
-       return EventType.Career;
-    else if(event.title.includes('Viajar'))
-       return EventType.Travel;
-    else if(event.title.includes('Jogar'))
-       return EventType.Game;
-    else
-       return EventType.Any;
- }
   create(){
     const jwt = localStorage.getItem("jwt");
     if(!jwt){
@@ -65,10 +51,16 @@ export class EventCreateComponent {
       this.newEvent = new Event;
     });
   }
+  getEventType(){
+    if(this.newEvent.title){
+      return window.location.origin.includes('tunel') ? EventType.Career : EventType.Party;
+    }
+    return undefined;
+  }
   update(pub: boolean = false){
     var user = this.activeRoute.snapshot.params['user'];
     this.newEvent.public = pub;
-    this.newEvent.eventType = this.getEventType(this.newEvent);
+    this.newEvent.eventType = this.getEventType();
     this.divagandoApiService.patch<Event>(`events/${this.event.id}?user=${user}`, this.newEvent, (event) => {
       this.event = event;
       this.newEvent = new Event();
