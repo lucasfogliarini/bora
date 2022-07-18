@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
-import { Event } from '../models/event.model';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { Account } from '../models/account.model';
 import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
 import { DivagandoApiService } from '../divagando-api.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
+import { EventCreateComponent } from '../event-create/event-create.component';
+import { EventOrderComponent } from '../event-order/event-order.component';
 
 @Component({
   selector: 'app-account',
@@ -13,9 +14,20 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class AccountComponent {
   account = new Account;
-  event: Event = new Event;
   editing: boolean = false;
-  newEvent: Event = new Event;
+  eventCreate!: EventCreateComponent;
+  @ViewChild(EventCreateComponent)
+  set eventCreateChield(eventCreate: EventCreateComponent) {
+    if(eventCreate != undefined)
+      this.eventCreate = eventCreate;
+  }
+  eventOrder!: EventOrderComponent;
+  @ViewChild(EventOrderComponent)
+  set eventOrderChield(eventOrder: EventOrderComponent) {
+    if(eventOrder != undefined)
+      this.eventOrder = eventOrder;
+  }
+
   constructor(private divagandoApiService: DivagandoApiService,
               public authService: AuthenticationService,
               private toastr: ToastrService,
@@ -30,6 +42,15 @@ export class AccountComponent {
                     this.editing = e.snapshot.queryParams['editing'] === 'true';
                   }
                 });
+  }
+  createEvent(){
+    this.eventCreate.create();
+  }
+  createOrder(){
+    this.eventOrder.create();
+  }
+  inProgress(){
+      return this.eventCreate ? this.eventCreate.inProgress() : false;
   }
   getUser(){
     return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';

@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { Options } from 'ngx-google-places-autocomplete/objects/options/options';
@@ -112,6 +112,9 @@ export class EventCreateComponent {
     });
   }
 
+  inProgress(){
+    return this.event.id;
+  }
   close(){
     this.event = new Event;
   }

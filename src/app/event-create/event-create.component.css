@@ -1,8 +1,7 @@
-#event-create{
-    position: fixed;
-    bottom: 85px;
-    right: 10px;
-    z-index: 999;
+#event-create .event-question {
+    padding: 20px;
+    background-color: white;
+    border: 1px solid;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -13,23 +12,6 @@
     right: 25px;
     top: 5px;
 }
-
-#event-create #event-start{
-    font-size: 50px;
-    padding: 0px 22px;
-}
-#event-create .event-question {
-    padding: 20px;
-    background-color: white;
-    border: 1px solid;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-}
-
-/*#event-create #title, #event-create #event-date{
-    width: 165px;
-}*/
 
 #event-create #event-location input[type=search]{
     margin-top: 10px;

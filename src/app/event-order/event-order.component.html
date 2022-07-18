@@ -1,0 +1,43 @@
+<div *ngIf="attendeeOrder" id="event-order">
+  <fa-icon *ngIf="inProgress()" id="order-close" (click)="close()" [icon]="['fas','circle-xmark']" role="button"></fa-icon>
+  <div id="order-what" *ngIf="!attendeeOrder.type" class="event-question card-title">
+    <h6>{{eventOrder.what}}</h6>
+    <div *ngFor="let orderType of eventOrder.orderTypes; let i = index" class="form-check">
+      <input [value]="orderType" [(ngModel)]="attendeeOrderCreating.type" class="form-check-input" type="radio" id="orderType_{{i}}">
+      <label class="form-check-label" for="orderType_{{i}}">
+        {{orderType}}
+      </label>
+    </div>
+    <div class="buttonEvent">
+      <button *ngIf="attendeeOrderCreating.type" (click)="update()" type="button" class="btn btn-dark">{{attendeeOrderCreating.type}}!</button>
+    </div>
+  </div>
+  <div id="order-product" *ngIf="attendeeOrder.type && !attendeeOrder.product" class="event-question card-title">
+    <h6>{{eventOrder.product}}</h6>
+    <div *ngFor="let product of eventOrder.orderProducts; let i = index" class="form-check">
+      <input [value]="product" [(ngModel)]="attendeeOrderCreating.product" class="form-check-input" type="radio" id="product_{{i}}">
+      <label class="form-check-label" for="product_{{i}}">
+        {{product}}
+      </label>
+    </div>
+    <input [(ngModel)]="attendeeOrderCreating.product" class="form-control mt-2" type="text" id="title" placeholder="outro produto ou serviço ...">
+    <div class="buttonEvent">
+      <button *ngIf="attendeeOrderCreating.product" (click)="update()" type="button" class="btn btn-dark">{{attendeeOrderCreating.product}}!</button>
+    </div>
+  </div>
+  <div id="order-price" *ngIf="attendeeOrder.product && !attendeeOrder.price" class="event-question card-title">
+    <h6>{{eventOrder.howMuch}}</h6>
+    <input [(ngModel)]="attendeeOrderCreating.price" class="form-control mt-2" type="number" placeholder="R$1">
+    <div class="buttonEvent">
+      <button [disabled]="!attendeeOrderCreating.price" (click)="update()" type="button" class="btn btn-dark">R$ {{attendeeOrderCreating.price}}</button>
+    </div>
+  </div>
+  <div id="order-view-order" *ngIf="attendeeOrder.price" class="event-question card-title">
+    <h6>{{eventOrder.sendOrder}}</h6>
+    <p>{{attendeeOrder.getComment()}}</p>
+    <div class="buttonEvent">
+      <button (click)="close()" type="button" class="btn btn-white">Cancelar</button>
+      <button (click)="sendOrder()" type="button" class="btn btn-dark">{{eventOrder.sendOrder}}</button>
+    </div>
+  </div>
+</div>

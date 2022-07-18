@@ -1,4 +1,4 @@
-<section class="content">
+<section id="account" class="content">
   <div class="card">
     <div class="card-header">
       <nav *ngIf="!editing" class="navbar navbar-expand">
@@ -50,7 +50,7 @@
         </div>
         <div class="d-flex mb-2">
           <fa-icon class="mr-2" [icon]="['fas','calendar-plus']"></fa-icon>
-          <div id="create-event-enabled-switch" class="custom-control custom-switch">
+          <div class="custom-control custom-switch mt-2">
             <input id="createEventEnabled" [(ngModel)]="account.createEventEnabled" type="checkbox" class="custom-control-input">
             <label class="custom-control-label" for="createEventEnabled"></label>
           </div>
@@ -64,4 +64,20 @@
     </div>
   </div>
 </section>
-<app-event-create *ngIf="account?.calendarAuthorized && account?.createEventEnabled"></app-event-create>
+
+<div id="order-questions" *ngIf="account?.calendarAuthorized && account?.createEventEnabled">
+  <fa-icon *ngIf="!inProgress()" id="bora" [icon]="['fas','calendar-plus']" mwlConfirmationPopover
+          title="Bora fazer ..."
+          popoverTitle="Bora fazer .."
+          popoverMessage="Um <b>Encontro</b> ou um <b>Pedido</b> em um encontro <br /> <small>É necessário se autenticar pelo Google para fazer um encontro ou pedido.</small>"
+          placement="top"
+          confirmText="Encontro"
+          (confirm)="createEvent()"
+          cancelText="Pedido"
+          (cancel)="createOrder()"
+          role="button"
+          class="col-6"></fa-icon>
+
+  <app-event-create></app-event-create>
+  <app-event-order></app-event-order>
+</div>

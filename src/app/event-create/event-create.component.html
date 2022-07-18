@@ -1,8 +1,5 @@
 <div id="event-create">
-  <fa-icon *ngIf="event.id" id="event-create-close" (click)="close()" [icon]="['fas','circle-xmark']" role="button"></fa-icon>
-  <div id="event-start" *ngIf="!event.id">
-    <fa-icon (click)="create()" [icon]="['fas','calendar-plus']" role="button"></fa-icon>
-  </div>
+  <fa-icon *ngIf="inProgress()" id="event-create-close" (click)="close()" [icon]="['fas','circle-xmark']" role="button"></fa-icon>
   <div id="event-title" *ngIf="event.id && !event.title" class="event-question card-title">
     <h6>{{eventCreate.what}}</h6>
     <div *ngFor="let title of eventCreate.titles; let i = index" class="form-check">

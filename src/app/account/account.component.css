@@ -1,6 +1,18 @@
+#order-questions{
+    position: fixed;
+    bottom: 85px;
+    right: 10px;
+    z-index: 999;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+
+#bora{
+    font-size: 50px;
+    padding: 0px 22px;
+}
+
 .editing-account{
     font-size: 25px;
-}
-#create-event-enabled-switch{
-    margin-top: 8px;
 }

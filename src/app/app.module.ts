@@ -43,6 +43,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { FooterComponent } from './footer/footer.component';
 import { BoraComponent } from './bora/bora.component';
+import { EventOrderComponent } from './event-order/event-order.component';
 registerLocaleData(localePT);
 
 @NgModule({
@@ -57,7 +58,8 @@ registerLocaleData(localePT);
     ContactComponent,
     PrivacyComponent,
     FooterComponent,
-    BoraComponent
+    BoraComponent,
+    EventOrderComponent
   ],
   imports: [
     BrowserModule,
