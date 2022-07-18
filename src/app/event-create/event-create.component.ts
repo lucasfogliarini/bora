@@ -32,9 +32,17 @@ export class EventCreateComponent {
   }
   setContents(){
     this.divagandoApiService.getContents('event-create', (contents: Content[])=>{
-      const what = contents.find(e=>e.key == 'what');
-      if(what) 
-        this.eventCreate.what = what.text;
+      let content = contents.find(e=>e.key == 'what');
+      if(content) this.eventCreate.what = content.text;
+      content = contents.find(e=>e.key == 'where');
+      if(content) this.eventCreate.where = content.text;
+      content = contents.find(e=>e.key == 'when');
+      if(content) this.eventCreate.when = content.text;
+      content = contents.find(e=>e.key == 'quota');
+      if(content) this.eventCreate.quota = content.text;
+      content = contents.find(e=>e.key == 'priceDefault');
+      if(content) this.eventCreate.priceDefault = Number.parseFloat(content.text);
+
       this.eventCreate.titles = contents.filter(e=>e.key.includes('title')).map(e=>e.text);
       this.eventCreate.locations = contents.filter(e=>e.key.includes('location')).map(e=>e.text);
     });
@@ -80,9 +88,9 @@ export class EventCreateComponent {
   quote(){
     var user = this.activeRoute.snapshot.params['user'];
     let attendeeReply = new AttendeeReply();
-    attendeeReply.comment = this.newEvent.price ? `R$${this.newEvent.price} por pessoa` : 'Não sei quanto vale.';
+    attendeeReply.comment = this.newEvent.price ? `R$${this.newEvent.price}` : 'Não sei quanto vale.';
     this.divagandoApiService.patch(`events/${this.event.id}/reply?user=${user}`, attendeeReply,  (event: Event) => {
-      this.event.price = this.newEvent.price || this.eventCreate.price;
+      this.event.price = this.newEvent.price || this.eventCreate.priceDefault;
     }, async (errorResponse: HttpErrorResponse)=>{
     });
   }

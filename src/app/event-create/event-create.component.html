@@ -32,10 +32,10 @@
   </div>
   <div id="event-quota" *ngIf="event.location && !event.price" class="event-question card-title">
     <h6>{{eventCreate.quota}}</h6>
-    <input [(ngModel)]="newEvent.price" class="form-control mt-2" type="number" placeholder="R${{eventCreate.price}}">
+    <input [(ngModel)]="newEvent.price" class="form-control mt-2" type="number" placeholder="R${{eventCreate.priceDefault}}">
     <div class="buttonEvent">
       <button (click)="quote()" type="button" class="btn btn-white mr-2">Não sei</button>
-      <button [disabled]="!newEvent.price" (click)="quote()" type="button" class="btn btn-dark">R$ {{newEvent.price}} por pessoa</button>
+      <button [disabled]="!newEvent.price" (click)="quote()" type="button" class="btn btn-dark">R$ {{newEvent.price}}</button>
     </div>
   </div>
   <div id="event-when" *ngIf="event.price" class="event-question card-title">
