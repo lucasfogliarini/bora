@@ -58,9 +58,8 @@ export class EventCreateComponent {
     }
     return undefined;
   }
-  update(pub: boolean = false){
+  update(bora?: boolean){
     var user = this.activeRoute.snapshot.params['user'];
-    this.newEvent.public = pub;
     this.newEvent.eventType = this.getEventType();
     this.divagandoApiService.patch<Event>(`events/${this.event.id}?user=${user}`, this.newEvent, (event) => {
       this.event = event;
@@ -68,12 +67,9 @@ export class EventCreateComponent {
       if(!event.location){
         this.getCurrentPlace();
       }
-      if(this.event.public){
+      if(bora){
         this.toastr.success('Bora então!');
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
-        this.event = new Event;
+        this.close();
       }
     });
   }

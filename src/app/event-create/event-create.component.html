@@ -35,8 +35,13 @@
     <input id="event-date" [(ngModel)]="newEvent.start" readonly="readonly"
     [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa">
     <owl-date-time [pickerType]="'calendar'" #dtStart></owl-date-time>
+    <div id="event-public-switch" class="custom-control custom-switch mt-3">
+      <input id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
+      <label class="custom-control-label" for="event-public">Público</label>
+    </div>
     <div class="buttonEvent">
-      <button (click)="update(true)" type="button" class="btn btn-dark">🗓 Agendar!</button>
+      <button (click)="close()" type="button" class="btn btn-white mr-2">Não sei</button>
+      <button [disabled]="!newEvent.start" (click)="update(true)" type="button" class="btn btn-dark">🗓 Agendar</button>
     </div>
   </div>
 </div>
