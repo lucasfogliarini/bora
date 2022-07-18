@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
@@ -5,7 +6,9 @@ import { Options } from 'ngx-google-places-autocomplete/objects/options/options'
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 import { DivagandoApiService } from '../divagando-api.service';
+import { AttendeeReply } from '../models/attendee-reply.model';
 import { Content } from '../models/content.model';
+import { EventCreate } from '../models/event-create.model';
 import { EventType } from '../models/event-type.model';
 import { Event } from '../models/event.model';
 
@@ -18,9 +21,7 @@ export class EventCreateComponent {
   event: Event = new Event;
   newEvent: Event = new Event;
   placesOptions: Options = new Options;
-  what?: string = 'O que vamos fazer?';
-  titles = ['🥂 Camarote ou festa privada','💰 Empreender', '🔮 Criar', '🥩 Churrasco e bate-papo', '🏞 Viajar ou fazer uma trilha', '📱 Desenvolver um aplicativo' ];
-  locations = ['🏡 Aqui em casa','🏛 Na Divagando','💻 Google Meet','⛩ Num Quiosque','🏖 Na Praia']
+  eventCreate: EventCreate = new EventCreate;
 
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: AuthenticationService,
@@ -33,9 +34,9 @@ export class EventCreateComponent {
     this.divagandoApiService.getContents('event-create', (contents: Content[])=>{
       const what = contents.find(e=>e.key == 'what');
       if(what) 
-        this.what = what.text;
-      this.titles = contents.filter(e=>e.key.includes('title')).map(e=>e.text);
-      this.locations = contents.filter(e=>e.key.includes('location')).map(e=>e.text);
+        this.eventCreate.what = what.text;
+      this.eventCreate.titles = contents.filter(e=>e.key.includes('title')).map(e=>e.text);
+      this.eventCreate.locations = contents.filter(e=>e.key.includes('location')).map(e=>e.text);
     });
   }
   create(){
@@ -76,7 +77,15 @@ export class EventCreateComponent {
   addressChange(address: Address){
     this.newEvent.location = address.formatted_address;
   }
-
+  quote(){
+    var user = this.activeRoute.snapshot.params['user'];
+    let attendeeReply = new AttendeeReply();
+    attendeeReply.comment = this.newEvent.price ? `R$${this.newEvent.price} por pessoa` : 'Não sei quanto vale.';
+    this.divagandoApiService.patch(`events/${this.event.id}/reply?user=${user}`, attendeeReply,  (event: Event) => {
+      this.event.price = this.newEvent.price || this.eventCreate.price;
+    }, async (errorResponse: HttpErrorResponse)=>{
+    });
+  }
   getCurrentPlace(){
     window.navigator.geolocation.getCurrentPosition(position =>{
       //@ts-ignore

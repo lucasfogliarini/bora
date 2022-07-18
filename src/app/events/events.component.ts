@@ -7,6 +7,7 @@ import { DomSanitizer, Title } from '@angular/platform-browser';
 import { Attendee } from '../models/attendee.model';
 import { AuthenticationService } from '../authentication.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AttendeeReply } from '../models/attendee-reply.model';
 
 @Component({
   selector: 'app-events',
@@ -70,7 +71,7 @@ export class EventsComponent {
   }
   reply(eventId: string, response: string){
     let user = this.getUser();
-    let attendeeReply = {
+    let attendeeReply: AttendeeReply = {
       response: response
     };
     this.divagandoApiService.patch(`events/${eventId}/reply?user=${user}`, attendeeReply,  (event: Event) => {

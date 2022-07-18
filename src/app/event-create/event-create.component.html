@@ -3,9 +3,9 @@
   <div id="event-start" *ngIf="!event.id">
     <fa-icon (click)="create()" [icon]="['fas','calendar-plus']" role="button"></fa-icon>
   </div>
-  <div id="event-title" *ngIf="event.id && !event.title" class="card-title">
-    <h5>{{what}}</h5>
-    <div *ngFor="let title of titles; let i = index" class="form-check">
+  <div id="event-title" *ngIf="event.id && !event.title" class="event-question card-title">
+    <h6>{{eventCreate.what}}</h6>
+    <div *ngFor="let title of eventCreate.titles; let i = index" class="form-check">
       <input [value]="title" [(ngModel)]="newEvent.title" class="form-check-input" type="radio" id="title_{{i}}">
       <label class="form-check-label" for="title_{{i}}">
         {{title}}
@@ -16,9 +16,9 @@
       <button *ngIf="newEvent.title" (click)="update()" type="button" class="btn btn-dark">{{newEvent.title}}!</button>
     </div>
   </div>
-  <div id="event-location" *ngIf="event.title && !event.location" class="card-title">
-    <h5>Onde?</h5>
-    <div *ngFor="let location of locations; let i = index" class="form-check">
+  <div id="event-location" *ngIf="event.title && !event.location" class="event-question card-title">
+    <h6>{{eventCreate.where}}</h6>
+    <div *ngFor="let location of eventCreate.locations; let i = index" class="form-check">
       <input [value]="location" [(ngModel)]="newEvent.location" class="form-check-input" type="radio" id="location_{{i}}">
       <label class="form-check-label" for="location_{{i}}">
         {{location}}
@@ -30,8 +30,16 @@
       <button *ngIf="newEvent.location" (click)="update()" type="button" class="btn btn-dark">{{newEvent.location?.substring(0, 15)}}!</button>
     </div>
   </div>
-  <div id="event-when" *ngIf="event.location && !event.public" class="card-title">
-    <h5>Que dia?</h5>
+  <div id="event-quota" *ngIf="event.location && !event.price" class="event-question card-title">
+    <h6>{{eventCreate.quota}}</h6>
+    <input [(ngModel)]="newEvent.price" class="form-control mt-2" type="number" placeholder="R${{eventCreate.price}}">
+    <div class="buttonEvent">
+      <button (click)="quote()" type="button" class="btn btn-white mr-2">Não sei</button>
+      <button [disabled]="!newEvent.price" (click)="quote()" type="button" class="btn btn-dark">R$ {{newEvent.price}} por pessoa</button>
+    </div>
+  </div>
+  <div id="event-when" *ngIf="event.price" class="event-question card-title">
+    <h6>{{eventCreate.when}}</h6>
     <input id="event-date" [(ngModel)]="newEvent.start" readonly="readonly"
     [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa">
     <owl-date-time [pickerType]="'calendar'" #dtStart></owl-date-time>
