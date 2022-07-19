@@ -1,4 +1,4 @@
-<div *ngIf="attendeeOrder" id="event-order">
+<div *ngIf="nextEvent && attendeeOrder" id="event-order">
   <fa-icon *ngIf="inProgress()" id="order-close" (click)="close()" [icon]="['fas','circle-xmark']" role="button"></fa-icon>
   <div id="order-what" *ngIf="!attendeeOrder.type" class="event-question card-title">
     <h6>{{eventOrder.what}}</h6>
@@ -33,11 +33,11 @@
     </div>
   </div>
   <div id="order-view-order" *ngIf="attendeeOrder.price" class="event-question card-title">
-    <h6>{{eventOrder.sendOrder}}</h6>
-    <p>{{attendeeOrder.getComment()}}</p>
+    <h6>{{nextEvent.title}}</h6>
+    <b>{{attendeeOrder.getComment()}}</b>
     <div class="buttonEvent">
       <button (click)="close()" type="button" class="btn btn-white">Cancelar</button>
-      <button (click)="sendOrder()" type="button" class="btn btn-dark">{{eventOrder.sendOrder}}</button>
+      <button (click)="sendOrder(nextEvent.id)" type="button" class="btn btn-dark">{{eventOrder.sendOrder}}</button>
     </div>
   </div>
 </div>

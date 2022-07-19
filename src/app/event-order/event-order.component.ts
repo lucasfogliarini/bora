@@ -19,12 +19,26 @@ export class EventOrderComponent {
   eventOrder: EventOrder = new EventOrder;
   attendeeOrder?: AttendeeOrder;
   attendeeOrderCreating: AttendeeOrder = new AttendeeOrder;
+  //events?: Event[] = [];
+  nextEvent?: Event;
 
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: AuthenticationService,
               private toastr: ToastrService,
               private activeRoute: ActivatedRoute) {
-                this.setContents();
+  }
+  getUser(){
+    return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
+  }
+  setEvents(){
+    let user = this.getUser();
+    const timeMax = '2022-07-26';
+    var eventsUri = `events?user=${user}&timeMax=${timeMax}`;
+    this.divagandoApiService.get<Event[]>(eventsUri, (events: Event[]) => {
+      if(events?.length)
+        this.nextEvent = events[0];
+    }, (errorResponse: HttpErrorResponse)=>{
+    });
   }
   update(){
     this.attendeeOrder!.type = this.attendeeOrderCreating.type;
@@ -41,15 +55,17 @@ export class EventOrderComponent {
     const jwt = localStorage.getItem("jwt");
     if(jwt){
         this.attendeeOrder = new AttendeeOrder;
+        this.setEvents();
+        this.setContents();
     }else{
       this.authService.signInWithGoogle();
     }
   }
-  sendOrder(){
+  sendOrder(eventId: string){
     var user = this.activeRoute.snapshot.params['user'];
     let attendeeReply = new AttendeeReply();
     attendeeReply.comment = this.attendeeOrder?.getComment();
-    this.divagandoApiService.patch(`events/${this.attendeeOrder?.eventId}/reply?user=${user}`, attendeeReply,  (event: Event) => {
+    this.divagandoApiService.patch(`events/${eventId}/reply?user=${user}`, attendeeReply,  (event: Event) => {
       this.toastr.success('Pedido enviado!');
       this.close();
     }, async (errorResponse: HttpErrorResponse)=>{

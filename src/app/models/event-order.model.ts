@@ -1,8 +1,8 @@
 export class EventOrder {
-  what?: string = 'O que quer?';
+  what?: string = 'O que deseja?';
   howMuch?: string = 'Por quanto?';
-  product?: string = 'Pelo que?';
+  product?: string = 'o que?';
   orderTypes = ['📈 Compro', '📉 Vendo'];//,'Peço'
   orderProducts = ['📸 Fotos','🎼 Músicas','🍻 Bebida','🥩 Comida','🚕 Motorista'];
-  sendOrder = 'Enviar Pedido';
+  sendOrder = 'Pedir';
 }
