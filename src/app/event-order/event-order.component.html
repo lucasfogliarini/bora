@@ -27,9 +27,10 @@
   </div>
   <div id="order-price" *ngIf="attendeeOrder.product && !attendeeOrder.price" class="event-question card-title">
     <h6>{{eventOrder.howMuch}}</h6>
-    <input [(ngModel)]="attendeeOrderCreating.price" class="form-control mt-2" type="number" placeholder="R$1">
+    <mat-slider [(ngModel)]="attendeeOrderCreating.price" min="1" max="500" step="1"></mat-slider>
     <div class="buttonEvent">
-      <button [disabled]="!attendeeOrderCreating.price" (click)="update()" type="button" class="btn btn-dark">R$ {{attendeeOrderCreating.price}}</button>
+      <button (click)="update()" type="button" class="btn btn-white mr-2">Não sei</button>
+      <button [disabled]="!attendeeOrderCreating.price" (click)="update()" type="button" class="btn btn-dark">{{eventOrder.currency}} {{attendeeOrderCreating.price}}</button>
     </div>
   </div>
   <div id="order-view-order" *ngIf="attendeeOrder.price" class="event-question card-title">

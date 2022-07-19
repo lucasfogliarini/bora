@@ -46,6 +46,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { FooterComponent } from './footer/footer.component';
 import { BoraComponent } from './bora/bora.component';
 import { EventOrderComponent } from './event-order/event-order.component';
+import { MatSliderModule } from '@angular/material/slider';
 registerLocaleData(localePT);
 
 @NgModule({
@@ -66,6 +67,7 @@ registerLocaleData(localePT);
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatSliderModule,
     FormsModule,
     GooglePlaceModule,
     HttpClientModule,
