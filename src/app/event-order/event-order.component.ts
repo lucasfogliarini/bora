@@ -66,7 +66,7 @@ export class EventOrderComponent {
     let attendeeReply = new AttendeeReply();
     attendeeReply.comment = this.attendeeOrder?.getComment();
     this.divagandoApiService.patch(`events/${eventId}/reply?user=${user}`, attendeeReply,  (event: Event) => {
-      this.toastr.success('Pedido enviado!');
+      this.toastr.success(this.eventOrder.success);
       this.close();
     }, async (errorResponse: HttpErrorResponse)=>{
 
