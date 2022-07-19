@@ -22,3 +22,5 @@ app-events .event-buttons img{
 app-events .attendees .popover-body{
     width: 13rem !important;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
