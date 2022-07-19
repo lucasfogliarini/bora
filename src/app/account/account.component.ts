@@ -44,7 +44,7 @@ export class AccountComponent {
                 });
   }
   createEvent(){
-    this.eventCreate.create();
+    this.eventCreate.init();
   }
   createOrder(){
     this.eventOrder.create();

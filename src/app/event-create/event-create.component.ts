@@ -18,7 +18,7 @@ import { Event } from '../models/event.model';
   styleUrls: ['./event-create.component.css']
 })
 export class EventCreateComponent {
-  event: Event = new Event;
+  event?: Event;
   newEvent: Event = new Event;
   placesOptions: Options = new Options;
   eventCreate: EventCreate = new EventCreate;
@@ -50,18 +50,20 @@ export class EventCreateComponent {
       this.eventCreate.locations = contents.filter(e=>e.key.includes('location')).map(e=>e.text);
     });
   }
-  create(){
+  init(){
+    this.event = new Event;
+  }
+  async create(){
     const jwt = localStorage.getItem("jwt");
     if(jwt){
       var user = this.getUser();
-      this.newEvent = new Event();
       this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
-        this.event.id = event.id;
-        this.event.attendeeEmails = event.attendeeEmails;
+        this.event = event;
         this.newEvent = new Event;
       });
     }else{
-      this.authService.signInWithGoogle();
+      await this.authService.signInWithGoogle();
+      await this.create();
     }
   }
   getEventType(){
@@ -71,9 +73,9 @@ export class EventCreateComponent {
     return undefined;
   }
   update(bora?: boolean){
-    var user = this.activeRoute.snapshot.params['user'];
+    var user = this.getUser();
     this.newEvent.eventType = this.getEventType();
-    this.divagandoApiService.patch<Event>(`events/${this.event.id}?user=${user}`, this.newEvent, (event) => {
+    this.divagandoApiService.patch<Event>(`events/${this.event!.id}?user=${user}`, this.newEvent, (event) => {
       this.event = event;
       this.newEvent = new Event();
       if(!event.location){
@@ -92,8 +94,8 @@ export class EventCreateComponent {
     var user = this.activeRoute.snapshot.params['user'];
     let attendeeReply = new AttendeeReply();
     attendeeReply.comment = this.newEvent.price ? `R$${this.newEvent.price}` : 'Não sei quanto vale.';
-    this.divagandoApiService.patch(`events/${this.event.id}/reply?user=${user}`, attendeeReply,  (event: Event) => {
-      this.event.price = this.newEvent.price || this.eventCreate.priceDefault;
+    this.divagandoApiService.patch(`events/${this.event!.id}/reply?user=${user}`, attendeeReply,  (event: Event) => {
+      this.event!.price = this.newEvent.price || this.eventCreate.priceDefault;
     }, async (errorResponse: HttpErrorResponse)=>{
     });
   }
@@ -116,9 +118,9 @@ export class EventCreateComponent {
   }
 
   inProgress(){
-    return this.event.id;
+    return this.event;
   }
   close(){
-    this.event = new Event;
+    this.event = undefined;
   }
 }
