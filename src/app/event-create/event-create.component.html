@@ -29,10 +29,10 @@
   </div>
   <div id="event-quota" *ngIf="event?.location && !event?.price" class="event-question card-title">
     <h6>{{eventCreate.quota}}</h6>
-    <input [(ngModel)]="newEvent.price" class="form-control mt-2" type="number" placeholder="R${{eventCreate.priceDefault}}">
+    <mat-slider [(ngModel)]="newEvent.price" min="0" max="500" step="10" thumbLabel></mat-slider>
     <div class="buttonEvent">
       <button (click)="quote()" type="button" class="btn btn-white mr-2">Não sei</button>
-      <button [disabled]="!newEvent.price" (click)="quote()" type="button" class="btn btn-dark">R$ {{newEvent.price}}</button>
+      <button [disabled]="!newEvent.price" (click)="quote()" type="button" class="btn btn-dark">{{eventCreate.currency}} {{newEvent.price}}</button>
     </div>
   </div>
   <div id="event-when" *ngIf="event?.price" class="event-question card-title">

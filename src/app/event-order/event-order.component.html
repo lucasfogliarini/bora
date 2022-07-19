@@ -27,7 +27,7 @@
   </div>
   <div id="order-price" *ngIf="attendeeOrder.product && !attendeeOrder.price" class="event-question card-title">
     <h6>{{eventOrder.howMuch}}</h6>
-    <mat-slider [(ngModel)]="attendeeOrderCreating.price" min="1" max="500" step="1"></mat-slider>
+    <mat-slider [(ngModel)]="attendeeOrderCreating.price" min="1" max="500" step="1" thumbLabel></mat-slider>
     <div class="buttonEvent">
       <button (click)="update()" type="button" class="btn btn-white mr-2">Não sei</button>
       <button [disabled]="!attendeeOrderCreating.price" (click)="update()" type="button" class="btn btn-dark">{{eventOrder.currency}} {{attendeeOrderCreating.price}}</button>
