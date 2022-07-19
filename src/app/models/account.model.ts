@@ -5,6 +5,7 @@ export class Account {
     email: string;
     calendarAuthorized: boolean;
     createEventEnabled: boolean;
+    createOrderEnabled: boolean;
     photo: string;
     whatsApp: string;
     instagram: string;
