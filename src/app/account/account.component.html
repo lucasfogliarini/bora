@@ -67,10 +67,10 @@
 
 <div id="order-questions" *ngIf="account?.calendarAuthorized && account?.createEventEnabled">
   <fa-icon *ngIf="!inProgress()" id="bora" [icon]="['fas','comments']" mwlConfirmationPopover
-          title="Bora fazer ..."
-          popoverTitle="Bora fazer ..."
+          title="Bora ..."
+          popoverTitle="Bora ..."
           popoverMessage="Um <b>Encontro</b> ou um <b>Pedido</b> em um encontro <br /> <small>É necessário se autenticar pelo Google para fazer um encontro ou pedido.</small>"
-          placement="top"
+          placement="left"
           confirmText="Encontro"
           (confirm)="createEvent()"
           cancelText="Pedido"
