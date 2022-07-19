@@ -34,7 +34,9 @@ import { faTicket,
         faUser,
         faAt,
         faCamera,
-        faCircleXmark} from '@fortawesome/free-solid-svg-icons';
+        faCircleXmark,
+        faComments,
+        faCommentsDollar } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { AccountComponent } from './account/account.component';
 import { registerLocaleData } from '@angular/common';
@@ -128,7 +130,8 @@ export class AppModule {
       faUser,
       faAt,
       faCamera,
-      faCircleXmark
+      faCircleXmark,
+      faComments
     );
   }
 }
