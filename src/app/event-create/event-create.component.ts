@@ -30,6 +30,9 @@ export class EventCreateComponent {
                 this.placesOptions.componentRestrictions = { country: 'br' };
                 this.setContents();
   }
+  getUser(){
+    return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
+  }
   setContents(){
     this.divagandoApiService.getContents('event-create', (contents: Content[])=>{
       let content = contents.find(e=>e.key == 'what');
@@ -50,7 +53,7 @@ export class EventCreateComponent {
   create(){
     const jwt = localStorage.getItem("jwt");
     if(jwt){
-      var user = this.activeRoute.snapshot.params['user'];
+      var user = this.getUser();
       this.newEvent = new Event();
       this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
         this.event.id = event.id;
