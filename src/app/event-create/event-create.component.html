@@ -42,7 +42,7 @@
     <owl-date-time [pickerType]="'calendar'" #dtStart></owl-date-time>
     <div id="event-public-switch" class="custom-control custom-switch mt-3">
       <input id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
-      <label class="custom-control-label" for="event-public">Público</label>
+      <label class="custom-control-label" for="event-public" role="button">{{protectionLabel()}}</label>
     </div>
     <div class="buttonEvent">
       <button (click)="close()" type="button" class="btn btn-white mr-2">Não sei</button>

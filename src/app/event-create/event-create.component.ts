@@ -72,6 +72,9 @@ export class EventCreateComponent {
     }
     return undefined;
   }
+  protectionLabel(){
+    return this.newEvent.public ? 'Público' : 'Privado';
+  }
   update(bora?: boolean){
     var user = this.getUser();
     this.newEvent.eventType = this.getEventType();
