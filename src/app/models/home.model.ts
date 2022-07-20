@@ -1,6 +1,6 @@
 export class Home {
-    title: string = 'Divagando';
-    subtitle: string = 'no Mundo';
+    title: string = '...';
+    subtitle: string = '...';
     callToAction: string = '/lucasfogliarini';
     bora: string = 'Bora!';
     presentation: string = 'Celebre momentos com amigos e familiares';
