@@ -43,6 +43,8 @@ export class EventCreateComponent {
       if(content) this.eventCreate.when = content.text;
       content = contents.find(e=>e.key == 'quota');
       if(content) this.eventCreate.quota = content.text;
+      content = contents.find(e=>e.key == 'currency');
+      if(content) this.eventCreate.currency = content.text;
       content = contents.find(e=>e.key == 'priceDefault');
       if(content) this.eventCreate.priceDefault = Number.parseFloat(content.text);
 
