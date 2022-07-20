@@ -38,7 +38,7 @@
   <div id="event-when" *ngIf="event?.price" class="event-question card-title">
     <h6>{{eventCreate.when}}</h6>
     <input id="event-date" [(ngModel)]="newEvent.start" readonly="readonly"
-    [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" placeholder="dd/mm/aaaa hh:min">
+    [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" [min]="eventCreate.startAt" placeholder="dd/mm/aaaa hh:min">
     <owl-date-time [startAt]="eventCreate.startAt" #dtStart></owl-date-time>
     <div id="event-public-switch" class="custom-control custom-switch mt-3">
       <input id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
