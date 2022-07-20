@@ -100,11 +100,11 @@
     <fa-icon *ngIf="!inProgress()" id="bora" [icon]="['fas','comments']" mwlConfirmationPopover
         title="Bora ..."
         popoverTitle="Bora ..."
-        popoverMessage="Um <b>Encontro</b> ou uma <b>Oferta</b> em um encontro <br /> <small>É necessário se autenticar no Google.</small>"
+        popoverMessage="Um <b>Encontro</b> ou uma <b>Comentário</b> em um encontro <br /> <small>É necessário se autenticar no Google.</small>"
         placement="left"
         confirmText="Encontro"
         (confirm)="createEvent()"
-        cancelText="Oferta"
+        cancelText="Comentário"
         (cancel)="createOrder()"
         role="button"
         class="col-6"></fa-icon>

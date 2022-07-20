@@ -8,8 +8,9 @@
         {{orderType}}
       </label>
     </div>
+    <input [(ngModel)]="attendeeOrderCreating.comment" class="form-control mt-2" type="text" id="what" placeholder="comentário ou questão ...">
     <div class="buttonEvent">
-      <button *ngIf="attendeeOrderCreating.type" (click)="update()" type="button" class="btn btn-dark">{{attendeeOrderCreating.type}}!</button>
+      <button *ngIf="attendeeOrderCreating.comment" (click)="update()" type="button" class="btn btn-dark">{{attendeeOrderCreating.getComment()}}!</button>
     </div>
   </div>
   <div id="order-product" *ngIf="attendeeOrder.type && !attendeeOrder.product" class="event-question card-title">
@@ -20,7 +21,7 @@
         {{product}}
       </label>
     </div>
-    <input [(ngModel)]="attendeeOrderCreating.product" class="form-control mt-2" type="text" id="title" placeholder="outro produto ou serviço ...">
+    <input [(ngModel)]="attendeeOrderCreating.product" class="form-control mt-2" type="text" id="proudct" placeholder="outro produto ou serviço ...">
     <div class="buttonEvent">
       <button *ngIf="attendeeOrderCreating.product" (click)="update()" type="button" class="btn btn-dark">{{attendeeOrderCreating.product}}!</button>
     </div>
