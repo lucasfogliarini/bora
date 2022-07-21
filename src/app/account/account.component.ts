@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 import { EventCreateComponent } from '../event-create/event-create.component';
 import { EventOrderComponent } from '../event-order/event-order.component';
+import { EventsComponent } from '../events/events.component';
 
 @Component({
   selector: 'app-account',
@@ -15,6 +16,7 @@ import { EventOrderComponent } from '../event-order/event-order.component';
 export class AccountComponent {
   account = new Account;
   editing: boolean = false;
+
   eventCreate!: EventCreateComponent;
   @ViewChild(EventCreateComponent)
   set eventCreateChield(eventCreate: EventCreateComponent) {
@@ -26,6 +28,13 @@ export class AccountComponent {
   set eventOrderChield(eventOrder: EventOrderComponent) {
     if(eventOrder != undefined)
       this.eventOrder = eventOrder;
+  }
+
+  events!: EventsComponent;
+  @ViewChild(EventsComponent)
+  set eventsChield(events: EventsComponent) {
+    if(events != undefined)
+      this.events = events;
   }
 
   constructor(private divagandoApiService: DivagandoApiService,
@@ -52,6 +61,10 @@ export class AccountComponent {
   inProgress(){
       return this.eventCreate ? this.eventCreate.inProgress() : false;
   }
+  refreshEvents(){
+    this.events.getEvents();
+    this.events.eventsLoaded = undefined;
+  }
   getUser(){
     return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
   }
@@ -59,7 +72,7 @@ export class AccountComponent {
     this.account.whatsApp = this.account.whatsApp ?? '';
     this.divagandoApiService.patch<Account>(`accounts`, this.account, () => {       
        this.editing = false;
-       this.toastr.success('Perfil atualizado!');
+       this.toastr.success('Perfil atualizado.');
        this.router.navigate([this.account.username]);
     });
   }

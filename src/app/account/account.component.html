@@ -58,6 +58,7 @@
         <button (click)="updateAccount()" class="btn-dark btn">Salvar</button>
         <button (click)="editing=false" class="btn-white btn">Cancelar</button>
       </div>
+      <fa-icon (click)="refreshEvents()" title="Atualizar eventos" class="float-right" [icon]="['fas','arrows-rotate']"></fa-icon>
     </div>
     <div class="card-body p-0">
       <app-events></app-events>
