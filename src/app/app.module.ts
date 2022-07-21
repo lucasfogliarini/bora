@@ -9,7 +9,6 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';//depends on: @angular/cdk
 import { ToastrModule } from 'ngx-toastr';
-import { environment } from 'src/environments/environment';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
@@ -47,6 +46,7 @@ import { FooterComponent } from './footer/footer.component';
 import { BoraComponent } from './bora/bora.component';
 import { EventOrderComponent } from './event-order/event-order.component';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatButtonModule } from '@angular/material/button';
 registerLocaleData(localePT);
 
 @NgModule({
@@ -68,6 +68,7 @@ registerLocaleData(localePT);
     BrowserModule,
     BrowserAnimationsModule,
     MatSliderModule,
+    MatButtonModule,
     FormsModule,
     GooglePlaceModule,
     HttpClientModule,

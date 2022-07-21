@@ -3,6 +3,11 @@
 @import "~ngx-toastr/toastr.css";
 @import "~ng-pick-datetime/assets/style/picker.min.css";
 
+app-root .content-wrapper{
+    background: url("assets/tunelcriativo.jpeg") no-repeat fixed center;
+    background-size: 400px;
+}
+
 .content a{
     color: inherit;
     text-decoration: underline;

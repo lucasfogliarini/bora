@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { DivagandoApiService } from '../divagando-api.service';
+import { Content } from '../models/content.model';
 import { Home } from '../models/home.model';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css','./normalize.component.css', './feature-arrow.component.css']
 })
-export class HomeComponent {
+export class HomeDivagandoComponent {
   home: Home = new Home;
 
   constructor(private divagandoApiService: DivagandoApiService){
