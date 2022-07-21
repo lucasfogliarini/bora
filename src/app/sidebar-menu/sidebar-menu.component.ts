@@ -8,11 +8,11 @@ import { DivagandoApiService } from '../divagando-api.service';
   templateUrl: './sidebar-menu.component.html'
 })
 export class SideBarMenuComponent {
-  title = 'Divagando';
+  title = '...';
   constructor(private divagandoApiService: DivagandoApiService,
               public authService: AuthenticationService,
               private titleService: Title) {
-                this.divagandoApiService.getContents('home', homeContents=>{
+                this.divagandoApiService.getContentsByDomain('home', homeContents=>{
                     let homeTitle = homeContents.filter(e=>e.key == 'title');
                     if(homeTitle.length){
                       this.title = homeTitle[0].text;

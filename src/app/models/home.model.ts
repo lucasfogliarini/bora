@@ -2,7 +2,7 @@ export class Home {
     title: string = '...';
     subtitle: string = '...';
     callToAction: string = '/lucasfogliarini';
-    bora: string = 'Bora!';
+    bora: string = '...';
     presentation: string = 'Celebre momentos com amigos e familiares';
     presentationDescription: string = 'Compartilhe seus melhores momentos com amigos e familiares enviando convites para: viagens, festas, risadas, almoços e jantares especiais.';
     featureGoogleAgendaTitle: string = 'Integração com Google Agenda';

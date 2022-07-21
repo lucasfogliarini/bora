@@ -12,7 +12,7 @@ export class HomeComponent {
   home: Home = new Home;
 
   constructor(private divagandoApiService: DivagandoApiService){
-    this.divagandoApiService.getContents('home', homeContents=>{
+    this.divagandoApiService.getContentsByDomain('home', homeContents=>{
       var contents = Object.keys(this.home);
         for (const contentKey of contents) {
           let homeContent = homeContents.filter(e=>e.key == contentKey);

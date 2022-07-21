@@ -30,11 +30,12 @@ export class EventCreateComponent {
                 this.placesOptions.componentRestrictions = { country: 'br' };
                 this.setContents();
   }
-  getUser(){
+  getUsername(){
     return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
   }
   setContents(){
-    this.divagandoApiService.getContents('event-create', (contents: Content[])=>{
+    const username = this.getUsername();
+    this.divagandoApiService.getContents('event-create', username, (contents: Content[])=>{
       let content = contents.find(e=>e.key == 'what');
       if(content) this.eventCreate.what = content.text;
       content = contents.find(e=>e.key == 'where');
@@ -58,7 +59,7 @@ export class EventCreateComponent {
   async create(){
     const jwt = localStorage.getItem("jwt");
     if(jwt){
-      var user = this.getUser();
+      var user = this.getUsername();
       this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
         this.event = event;
         this.newEvent = new Event;
@@ -78,7 +79,7 @@ export class EventCreateComponent {
     return this.newEvent.public ? 'Público' : 'Privado';
   }
   update(bora?: boolean){
-    var user = this.getUser();
+    var user = this.getUsername();
     this.newEvent.eventType = this.getEventType();
     this.divagandoApiService.patch<Event>(`events/${this.event!.id}?user=${user}`, this.newEvent, (event) => {
       this.event = event;

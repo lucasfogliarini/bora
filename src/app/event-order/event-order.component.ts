@@ -46,7 +46,7 @@ export class EventOrderComponent {
     this.attendeeOrder!.product = this.attendeeOrderCreating.product;
   }
   setContents(){
-    this.divagandoApiService.getContents('event-order', (contents: Content[])=>{
+    this.divagandoApiService.getContentsByDomain('event-order', (contents: Content[])=>{
       let content = contents.find(e=>e.key == 'what');
       if(content) this.eventOrder.what = content.text;
     });
