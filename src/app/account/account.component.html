@@ -49,7 +49,7 @@
           <button *ngIf="authService.account.calendarAuthorized" (click)="authService.unauthorizeCalendar()" class="btn-secondary btn form-control">Desautorizar Google Agenda</button>
         </div>
         <div class="d-flex mb-2">
-          <fa-icon class="mr-2" [icon]="['fas','calendar-plus']"></fa-icon>
+          <fa-icon class="mr-2" [icon]="['fas','comments']"></fa-icon>
           <div class="custom-control custom-switch mt-2">
             <input id="createEventEnabled" [(ngModel)]="account.createEventEnabled" type="checkbox" class="custom-control-input">
             <label class="custom-control-label" for="createEventEnabled"></label>
