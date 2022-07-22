@@ -12,6 +12,9 @@
           <li *ngIf="account.instagram">
             <a class="nav-link" target="_blank" href="https://instagram.com/{{account.instagram}}" role="button"><fa-icon [icon]="['fab','instagram']"></fa-icon></a>
           </li>
+          <li *ngIf="account.linkedin">
+            <a class="nav-link" target="_blank" href="https://open.spotify.com/user/{{account.linkedin}}" role="button"><fa-icon [icon]="['fab','linkedin']"></fa-icon></a>
+          </li>
           <li *ngIf="account.spotify">
             <a class="nav-link" target="_blank" href="https://open.spotify.com/user/{{account.spotify}}" role="button"><fa-icon [icon]="['fab','spotify']"></fa-icon></a>
           </li>
