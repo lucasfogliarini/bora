@@ -21,7 +21,7 @@
         {{location}}
       </label>
     </div>
-    <input [(ngModel)]="newEvent.location" type="search" ngx-google-places-autocomplete [options]='placesOptions' (onAddressChange)="addressChange($event)"/>
+    <input #googlePlace type="search" ngx-google-places-autocomplete [options]='placesOptions' (onAddressChange)="addressChange()"/>
     &nbsp;
     <div class="buttonEvent">
       <button *ngIf="newEvent.location" (click)="update()" type="button" class="btn btn-dark">{{newEvent.location?.substring(0, 15)}}!</button>

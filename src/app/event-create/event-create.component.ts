@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { Options } from 'ngx-google-places-autocomplete/objects/options/options';
@@ -22,6 +22,9 @@ export class EventCreateComponent {
   newEvent: Event = new Event;
   placesOptions: Options = new Options;
   eventCreate: EventCreate = new EventCreate;
+
+  @ViewChild('googlePlace')
+  googlePlace?: ElementRef;
 
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: AuthenticationService,
@@ -93,8 +96,8 @@ export class EventCreateComponent {
       }
     });
   }
-  addressChange(address: Address){
-    this.newEvent.location = address.formatted_address;
+  addressChange(){
+    this.newEvent.location = this.googlePlace?.nativeElement.value;
   }
   quote(){
     var user = this.activeRoute.snapshot.params['user'];
