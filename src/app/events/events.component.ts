@@ -135,11 +135,14 @@ export class EventsComponent {
     let aIndex = event.attendees.findIndex(e=>e.username == this.authService.account.username);
     this.replied = aIndex > 0;
   }
-  attendees(attendees: Attendee[]){
-    if(attendees){
-      this.popAttendee(attendees);
-      let attendeesContent = attendees.map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a>&nbsp;<small>${this.proximityRate(e)}</small><br />`).join('');
-      attendeesContent += `<small class="offset-7">${attendees.length} convidados</small>`;
+  attendees(event: Event){
+    if(event.attendees){
+      this.popAttendee(event.attendees);
+      let attendeesContent = event.attendees.map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a>&nbsp;<small>${this.proximityRate(e)}</small><br />`).join('');
+      if(event.chat)
+        attendeesContent += `<div class='row'><small class="col-12"><a href='${event.chat}'>Comente no WhatsApp</a></small></div>`;
+      attendeesContent += `<div class='row mt-1'><small class="col-12 font-weight-bold"><a href='https://api.whatsapp.com/send/?phone=5551992364249&text=Quero fazer parte da Túnel Criativo ...'>Faça parte da Túnel Criativo</a></small></div>`;
+      attendeesContent += `<small class="offset-7">${event.attendees.length} convidados</small>`;
       return attendeesContent;
     }
     return `<a href="${window.location.origin}/${this.getUser()}">${this.getUser()}</a><br>`;

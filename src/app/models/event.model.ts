@@ -12,6 +12,7 @@ export class Event {
     googleEventUrl: string;
     instagramUrl: string;
     youtubeUrl: string;
+    chat: string;
     description: string;
     start: Date;
     end: Date;

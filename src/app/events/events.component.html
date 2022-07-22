@@ -15,7 +15,7 @@
               popoverClass='attendees'
               title="Quem vai... Bora?"
               popoverTitle="Quem vai... Bora?"
-              [popoverMessage]="attendees(event.attendees)"
+              [popoverMessage]="attendees(event)"
               placement="left"
               confirmText="Bora!"
               (confirm)="reply(event.id, 'accepted')"
@@ -29,7 +29,7 @@
               popoverClass='attendees'
               title="Quem vai..."
               popoverTitle="Quem vai..."
-              [popoverMessage]="attendees(event.attendees)"
+              [popoverMessage]="attendees(event)"
               placement="left"
               confirmText="Editar"
               (confirm)="replied = false"
