@@ -42,8 +42,9 @@ export class EventCommentComponent {
   }
   setEvents(){
     let user = this.getUser();
-    const timeMax = '2022-07-26';
-    var eventsUri = `events?user=${user}&timeMax=${timeMax}`;
+    const today = new Date();
+    today.setDate(today.getDate() + 7);
+    var eventsUri = `events?user=${user}&timeMax=${today.toISOString()}`;
     this.divagandoApiService.get<Event[]>(eventsUri, (events: Event[]) => {
       if(events?.length)
         this.events = events;
