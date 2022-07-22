@@ -2,9 +2,9 @@ export class EventCreate {
   what?: string = 'O que vamos fazer?';
   where?: string = 'Onde?';
   when?: string = 'Que dia?';
-  quota?: string = 'Quanto vale esse encontro?';
-  currency?: string = 'R$';
-  priceDefault: number = 50;
+  evaluation?: string = 'Quanto vale esse encontro?';
+  currency?: string = '💃🕺';
+  evaluationDefault: number = 50;
   startAtHour: number = 19;
   whatSuggestion: string = 'Que tal arte? ...';
   startAt: Date = new Date(new Date().setHours(this.startAtHour,0,0,0));

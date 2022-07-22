@@ -27,15 +27,15 @@
       <button *ngIf="newEvent.location" (click)="update()" type="button" class="btn btn-dark">{{newEvent.location?.substring(0, 15)}}!</button>
     </div>
   </div>
-  <div id="event-quota" *ngIf="event?.location && !event?.price" class="event-question card-title">
-    <h6>{{eventCreate.quota}}</h6>
-    <mat-slider [(ngModel)]="newEvent.price" min="0" max="500" step="10" thumbLabel></mat-slider>
+  <div id="event-evaluation" *ngIf="event?.location && !event?.evaluation" class="event-question card-title">
+    <h6>{{eventCreate.evaluation}}</h6>
+    <mat-slider [(ngModel)]="newEvent.evaluation" min="0" max="500" step="10" thumbLabel></mat-slider>
     <div class="buttonEvent">
-      <button (click)="quote()" type="button" class="btn btn-white mr-2">Não sei</button>
-      <button [disabled]="!newEvent.price" (click)="quote()" type="button" class="btn btn-dark">{{eventCreate.currency}} {{newEvent.price}}</button>
+      <button (click)="evaluate()" type="button" class="btn btn-white mr-2">Não sei</button>
+      <button [disabled]="!newEvent.evaluation" (click)="evaluate()" type="button" class="btn btn-dark">{{eventCreate.currency}} {{newEvent.evaluation}}</button>
     </div>
   </div>
-  <div id="event-when" *ngIf="event?.price" class="event-question card-title">
+  <div id="event-when" *ngIf="event?.evaluation" class="event-question card-title">
     <h6>{{eventCreate.when}}</h6>
     <input id="event-date" [(ngModel)]="newEvent.start" readonly="readonly"
     [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" [min]="eventCreate.startAt" placeholder="dd/mm/aaaa hh:min">
