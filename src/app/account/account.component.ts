@@ -74,7 +74,7 @@ export class AccountComponent {
     const today = new Date();
     let daysAgo = new Date();
     daysAgo.setDate(today.getDate() - 14);
-    const eventsDaysAgoUri = `events?user=${user}&timeMin=${daysAgo.toDateString()}&timeMax=${today.toLocaleString()}`;
+    const eventsDaysAgoUri = `events?user=${user}&timeMin=${daysAgo.toISOString()}&timeMax=${today.toISOString()}`;
     this.divagandoApiService.get(eventsDaysAgoUri, (events: Event[]) => {
         if(events){
           const observers = [...new Map(events.flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
