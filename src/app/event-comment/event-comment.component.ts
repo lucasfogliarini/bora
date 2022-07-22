@@ -15,16 +15,26 @@ import { Event } from '../models/event.model';
   styleUrls: ['./event-comment.component.css']
 })
 export class EventCommentComponent {
-  eventcomment: EventComment = new EventComment;
+  eventComment: EventComment = new EventComment;
   attendeeComment?: AttendeeReply;
-  attendeeCommentCreating: AttendeeComment = new AttendeeComment;
-  //events?: Event[] = [];
+  attendeeCommentCreating: AttendeeReply = new AttendeeReply;
   nextEvent?: Event;
 
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: AuthenticationService,
               private toastr: ToastrService,
               private activeRoute: ActivatedRoute) {
+  }
+  init(){
+    const jwt = localStorage.getItem("jwt");
+    if(jwt){
+        this.attendeeComment = new AttendeeReply;
+        this.attendeeCommentCreating = new AttendeeReply;
+        this.setEvents();
+        this.setContents();
+    }else{
+      this.authService.signInWithGoogle();
+    }
   }
   getUser(){
     return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
@@ -39,45 +49,32 @@ export class EventCommentComponent {
     }, (errorResponse: HttpErrorResponse)=>{
     });
   }
-  update(){
-    this.attendeeComment!.type = this.attendeeCommentCreating.type;
-    this.attendeeComment!.price = this.attendeeCommentCreating.price;
-    this.attendeeComment!.product = this.attendeeCommentCreating.product;
-  }
   setContents(){
     this.divagandoApiService.getContentsByDomain('event-comment', (contents: Content[])=>{
       let content = contents.find(e=>e.key == 'what');
-      if(content) this.eventcomment.what = content.text;
+      if(content) this.eventComment.what = content.text;
 
-      this.eventcomment.questions = contents.filter(e=>e.key.includes('question')).map(e=>e.text);
+      const questions = contents.filter(e=>e.key.includes('question')).map(e=>e.text);
+      if(questions.length)
+        this.eventComment.questions = questions;
     });
   }
-  create(){
-    const jwt = localStorage.getItem("jwt");
-    if(jwt){
-        this.attendeeOrder = new AttendeeOrder;
-        this.setEvents();
-        this.setContents();
-    }else{
-      this.authService.signInWithGoogle();
-    }
+  setComment(){
+    this.attendeeComment!.comment = this.attendeeCommentCreating.comment;
   }
-  sendOrder(eventId: string){
-    var user = this.activeRoute.snapshot.params['user'];
-    let attendeeReply = new AttendeeReply();
-    attendeeReply.comment = this.attendeeOrder?.getComment();
-    this.divagandoApiService.patch(`events/${eventId}/reply?user=${user}`, attendeeReply,  (event: Event) => {
-      this.toastr.success(this.eventOrder.success);
+  comment(eventId: string){
+    let user = this.getUser();
+    this.divagandoApiService.patch(`events/${eventId}/reply?user=${user}`, this.attendeeComment,  (event: Event) => {
+      this.toastr.success(this.eventComment.success);
       this.close();
     }, async (errorResponse: HttpErrorResponse)=>{
-
     });
   }
   inProgress(){
-    return this.attendeeOrder;
+    return this.attendeeComment;
   }
   close(){
-    this.attendeeOrder = undefined;
-    this.attendeeOrderCreating = new AttendeeOrder;
+    this.attendeeComment = undefined;
+    this.attendeeCommentCreating = new AttendeeReply;
   }
 }

@@ -61,7 +61,7 @@ export class AccountComponent {
     this.eventCreate.init();
   }
   createComment(){
-    this.eventComment.create();
+    this.eventComment.init();
   }
   inProgress(){
       return this.eventCreate ? this.eventCreate.inProgress() : false;

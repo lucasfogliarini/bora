@@ -1,8 +1,8 @@
 export class EventComment {
-  what?: string = 'O que deseja?';
-  questions = ['O que precisa levar?','Onde vai ser?'];
-  sendOrder = 'Comentar';
-  success = 'Comentário enviado na Agenda ...';
+  what?: string = 'Diga o que precisa ...';
+  questions = ['Pode ser outro dia?','Onde vai ser?','Posso levar um amigo?', 'O que precisa levar?','Tem onde dormir?', 'O banheiro é limpo?'];
+  send = 'Comentar';
+  success = 'Comentário adicionado no encontro.';
 }
 
 export class EventOrder {
@@ -12,6 +12,6 @@ export class EventOrder {
   currency?: string = 'R$';
   orderTypes = ['📈 Compro', '📉 Vendo'];//,'Peço'
   orderProducts = ['📸 Fotos','🎼 Músicas','🍻 Bebida','🥩 Comida','🚗 Carona'];
-  sendOrder = 'Comentar';
-  success = 'Comentário enviado na Agenda ...';
+  send = 'Pedir';
+  success = 'Pedido adicionado no encontro.';
 }

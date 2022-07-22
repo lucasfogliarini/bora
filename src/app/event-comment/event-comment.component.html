@@ -1,44 +1,24 @@
-<div *ngIf="nextEvent && attendeeOrder" id="event-Comment">
+<div *ngIf="nextEvent && attendeeComment" id="event-comment">
   <fa-icon *ngIf="inProgress()" id="comment-close" (click)="close()" [icon]="['fas','circle-xmark']" role="button"></fa-icon>
-  <div id="comment-what" *ngIf="!attendeeComment.type" class="event-question card-title">
+  <div id="comment-what" *ngIf="!attendeeComment.comment" class="event-question card-title">
     <h6>{{eventComment.what}}</h6>
     <div *ngFor="let question of eventComment.questions; let i = index" class="form-check">
-      <input [value]="question" [(ngModel)]="attendeeCommentCreating.type" class="form-check-input" type="radio" id="question_{{i}}">
+      <input [value]="question" [(ngModel)]="attendeeCommentCreating.comment" class="form-check-input" type="radio" id="question_{{i}}">
       <label class="form-check-label" for="question_{{i}}">
         {{question}}
       </label>
     </div>
+    <input [(ngModel)]="attendeeCommentCreating.comment" class="form-control mt-2" type="text" id="comment" placeholder="outra questão ou sugestão ...">
     <div class="buttonEvent">
-      <button *ngIf="attendeeCommentCreating.type" (click)="update()" type="button" class="btn btn-dark">{{attendeeCommentCreating.type}}!</button>
+      <button [disabled]="!attendeeCommentCreating.comment" (click)="setComment()" type="button" class="btn btn-dark">{{attendeeCommentCreating.comment}}</button>
     </div>
   </div>
-  <div id="Comment-product" *ngIf="attendeeComment.type && !attendeeComment.product" class="event-question card-title">
-    <h6>{{eventComment.product}}</h6>
-    <div *ngFor="let product of eventComment.CommentProducts; let i = index" class="form-check">
-      <input [value]="product" [(ngModel)]="attendeeCommentCreating.product" class="form-check-input" type="radio" id="product_{{i}}">
-      <label class="form-check-label" for="product_{{i}}">
-        {{product}}
-      </label>
-    </div>
-    <input [(ngModel)]="attendeeCommentCreating.product" class="form-control mt-2" type="text" id="title" placeholder="outro produto ou serviço ...">
-    <div class="buttonEvent">
-      <button *ngIf="attendeeCommentCreating.product" (click)="update()" type="button" class="btn btn-dark">{{attendeeCommentCreating.product}}!</button>
-    </div>
-  </div>
-  <div id="Comment-price" *ngIf="attendeeComment.product && !attendeeComment.price" class="event-question card-title">
-    <h6>{{eventComment.howMuch}}</h6>
-    <mat-slider [(ngModel)]="attendeeCommentCreating.price" min="1" max="500" step="1" thumbLabel></mat-slider>
-    <div class="buttonEvent">
-      <button (click)="update()" type="button" class="btn btn-white mr-2">Não sei</button>
-      <button [disabled]="!attendeeCommentCreating.price" (click)="update()" type="button" class="btn btn-dark">{{eventComment.currency}} {{attendeeCommentCreating.price}}</button>
-    </div>
-  </div>
-  <div id="Comment-view-Comment" *ngIf="attendeeComment.price" class="event-question card-title">
-    <h6>{{nextEvent.title}}</h6>
-    <b>{{attendeeComment.getComment()}}</b>
+  <div id="view-comment" *ngIf="attendeeComment.comment" class="event-question card-title">
+    <h6>Comentar em {{nextEvent.title}}</h6>
+    <b>{{attendeeComment.comment}}</b>
     <div class="buttonEvent">
       <button (click)="close()" type="button" class="btn btn-white">Cancelar</button>
-      <button (click)="sendComment(nextEvent.id)" type="button" class="btn btn-dark">{{eventComment.sendComment}}</button>
+      <button (click)="comment(nextEvent.id)" type="button" class="btn btn-dark">{{eventComment.send}}</button>
     </div>
   </div>
 </div>
