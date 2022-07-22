@@ -58,6 +58,18 @@
         <button (click)="updateAccount()" class="btn-dark btn">Salvar</button>
         <button (click)="editing=false" class="btn-white btn">Cancelar</button>
       </div>
+      <fa-icon title="Observadores" class="offset-4" [icon]="['fas','calendar-check']"
+              [isDisabled]="!observersMessage"
+              mwlConfirmationPopover
+              popoverClass='attendees'
+              title="Quem foi nos últimos 14 dias"
+              popoverTitle="Quem foi nos últimos 14 dias"
+              [popoverMessage]="observersMessage!"
+              placement="bottom"
+              confirmText="Ok"
+              [hideCancelButton]="true"
+              role="button">
+      </fa-icon>
       <fa-icon (click)="refreshEvents()" title="Atualizar eventos" class="float-right" [icon]="['fas','arrows-rotate']"></fa-icon>
     </div>
     <div class="card-body p-0">

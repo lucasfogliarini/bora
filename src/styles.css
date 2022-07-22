@@ -23,14 +23,14 @@ app-contact .popover{
     top: -70px !important;
 }
 
-app-events .event-buttons img{
+.attendees .popover-body{
+    width: 13rem !important;
+}
+.attendees .popover-body img{
     width: 25px;
     border-radius: 12px;
     margin-bottom: 5px;
 }
 
-app-events .attendees .popover-body{
-    width: 13rem !important;
-}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
