@@ -45,7 +45,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { FooterComponent } from './footer/footer.component';
 import { BoraComponent } from './bora/bora.component';
-import { EventOrderComponent } from './event-order/event-order.component';
+import { EventCommentComponent } from './event-comment/event-comment.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 registerLocaleData(localePT);
@@ -57,13 +57,13 @@ registerLocaleData(localePT);
     SideBarMenuComponent,
     HomeComponent,
     EventCreateComponent,
+    EventCommentComponent,
     EventsComponent,
     AccountComponent,
     ContactComponent,
     PrivacyComponent,
     FooterComponent,
     BoraComponent,
-    EventOrderComponent
   ],
   imports: [
     BrowserModule,

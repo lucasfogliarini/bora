@@ -4,21 +4,20 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 import { DivagandoApiService } from '../divagando-api.service';
-import { AttendeeOrder } from '../models/attendee-order.model';
 import { AttendeeReply } from '../models/attendee-reply.model';
 import { Content } from '../models/content.model';
-import { EventOrder } from '../models/event-order.model';
+import { EventComment } from '../models/event-comment.model';
 import { Event } from '../models/event.model';
 
 @Component({
-  selector: 'app-event-order',
-  templateUrl: './event-order.component.html',
-  styleUrls: ['./event-order.component.css']
+  selector: 'app-event-comment',
+  templateUrl: './event-comment.component.html',
+  styleUrls: ['./event-comment.component.css']
 })
-export class EventOrderComponent {
-  eventOrder: EventOrder = new EventOrder;
-  attendeeOrder?: AttendeeOrder;
-  attendeeOrderCreating: AttendeeOrder = new AttendeeOrder;
+export class EventCommentComponent {
+  eventcomment: EventComment = new EventComment;
+  attendeeComment?: AttendeeReply;
+  attendeeCommentCreating: AttendeeComment = new AttendeeComment;
   //events?: Event[] = [];
   nextEvent?: Event;
 
@@ -41,14 +40,16 @@ export class EventOrderComponent {
     });
   }
   update(){
-    this.attendeeOrder!.type = this.attendeeOrderCreating.type;
-    this.attendeeOrder!.price = this.attendeeOrderCreating.price;
-    this.attendeeOrder!.product = this.attendeeOrderCreating.product;
+    this.attendeeComment!.type = this.attendeeCommentCreating.type;
+    this.attendeeComment!.price = this.attendeeCommentCreating.price;
+    this.attendeeComment!.product = this.attendeeCommentCreating.product;
   }
   setContents(){
-    this.divagandoApiService.getContentsByDomain('event-order', (contents: Content[])=>{
+    this.divagandoApiService.getContentsByDomain('event-comment', (contents: Content[])=>{
       let content = contents.find(e=>e.key == 'what');
-      if(content) this.eventOrder.what = content.text;
+      if(content) this.eventcomment.what = content.text;
+
+      this.eventcomment.questions = contents.filter(e=>e.key.includes('question')).map(e=>e.text);
     });
   }
   create(){

@@ -1,3 +1,10 @@
+export class EventComment {
+  what?: string = 'O que deseja?';
+  questions = ['O que precisa levar?','Onde vai ser?'];
+  sendOrder = 'Comentar';
+  success = 'Comentário enviado na Agenda ...';
+}
+
 export class EventOrder {
   what?: string = 'O que deseja?';
   howMuch?: string = 'Por quanto?';

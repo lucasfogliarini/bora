@@ -6,9 +6,8 @@ import { DivagandoApiService } from '../divagando-api.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 import { EventCreateComponent } from '../event-create/event-create.component';
-import { EventOrderComponent } from '../event-order/event-order.component';
 import { EventsComponent } from '../events/events.component';
-import { Attendee } from '../models/attendee.model';
+import { EventCommentComponent } from '../event-comment/event-comment.component';
 
 @Component({
   selector: 'app-account',
@@ -26,11 +25,11 @@ export class AccountComponent {
     if(eventCreate != undefined)
       this.eventCreate = eventCreate;
   }
-  eventOrder!: EventOrderComponent;
-  @ViewChild(EventOrderComponent)
-  set eventOrderChield(eventOrder: EventOrderComponent) {
-    if(eventOrder != undefined)
-      this.eventOrder = eventOrder;
+  eventComment!: EventCommentComponent;
+  @ViewChild(EventCommentComponent)
+  set eventCommentChield(eventComment: EventCommentComponent) {
+    if(eventComment != undefined)
+      this.eventComment = eventComment;
   }
 
   events!: EventsComponent;
@@ -61,8 +60,8 @@ export class AccountComponent {
   createEvent(){
     this.eventCreate.init();
   }
-  createOrder(){
-    this.eventOrder.create();
+  createComment(){
+    this.eventComment.create();
   }
   inProgress(){
       return this.eventCreate ? this.eventCreate.inProgress() : false;

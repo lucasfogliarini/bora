@@ -1,4 +1,4 @@
-#event-order{
+#event-comment{
     position: fixed;
     bottom: 85px;
     right: 10px;
@@ -8,13 +8,13 @@
     -moz-border-radius: 10px;
 }
 
-#order-close{
+#comment-close{
     position: relative;
     right: 25px;
     top: 5px;
 }
 
-#event-order .event-question {
+#event-comment .event-question {
     padding: 20px;
     background-color: white;
     border: 1px solid;
@@ -23,7 +23,7 @@
     -moz-border-radius: 10px;
 }
 
-#event-order .buttonEvent{
+#event-comment .buttonEvent{
     text-align: center;
     margin-top: 20px;
 }

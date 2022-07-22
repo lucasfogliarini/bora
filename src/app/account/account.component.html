@@ -96,7 +96,7 @@
   </div>
   <div *ngIf="account?.createEventEnabled && account.createOrderEnabled">    
     <app-event-create></app-event-create>
-    <app-event-order></app-event-order>
+    <app-event-comment></app-event-comment>
     <fa-icon *ngIf="!inProgress()" id="bora" [icon]="['fas','comments']" mwlConfirmationPopover
         title="Bora ..."
         popoverTitle="Bora ..."
@@ -105,7 +105,7 @@
         confirmText="Encontro"
         (confirm)="createEvent()"
         cancelText="Comentário"
-        (cancel)="createOrder()"
+        (cancel)="createComment()"
         role="button"
         class="col-6"></fa-icon>
   </div>
