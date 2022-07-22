@@ -48,6 +48,9 @@ export class AccountComponent {
                 let user = this.getUser();
                 this.divagandoApiService.getAccount(user, (account: Account)=>{
                   this.account = account;
+                  const user = this.getUser();
+                  if(user == 'lucasfogliarini')
+                    this.account.accountability = 'Disk Jockey';
                   this.getLastObservers();
                 });
 

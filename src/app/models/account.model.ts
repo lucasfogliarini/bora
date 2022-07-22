@@ -10,4 +10,5 @@ export class Account {
     whatsApp: string;
     instagram: string;
     spotify: string;
+    accountability: string;
 }
