@@ -1,24 +1,35 @@
-<div *ngIf="nextEvent && attendeeComment" id="event-comment">
+<div *ngIf="attendeeComment" id="event-comment">
   <fa-icon *ngIf="inProgress()" id="comment-close" (click)="close()" [icon]="['fas','circle-xmark']" role="button"></fa-icon>
   <div id="comment-what" *ngIf="!attendeeComment.comment" class="event-question card-title">
     <h6>{{eventComment.what}}</h6>
-    <div *ngFor="let question of eventComment.questions; let i = index" class="form-check">
-      <input [value]="question" [(ngModel)]="attendeeCommentCreating.comment" class="form-check-input" type="radio" id="question_{{i}}">
-      <label class="form-check-label" for="question_{{i}}">
-        {{question}}
-      </label>
-    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>Questões ...</mat-label>
+      <mat-select [(ngModel)]="attendeeCommentCreating.comment">
+        <mat-option *ngFor="let question of eventComment.questions" [value]="question">
+          {{question}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <input [(ngModel)]="attendeeCommentCreating.comment" class="form-control mt-2" type="text" id="comment" placeholder="outra questão ou sugestão ...">
     <div class="buttonEvent">
-      <button [disabled]="!attendeeCommentCreating.comment" (click)="setComment()" type="button" class="btn btn-dark">{{attendeeCommentCreating.comment}}</button>
+      <button [disabled]="!attendeeCommentCreating.comment" (click)="update()" type="button" class="btn btn-dark">Próximo</button>
     </div>
   </div>
   <div id="view-comment" *ngIf="attendeeComment.comment" class="event-question card-title">
-    <h6>Comentar em {{nextEvent.title}}</h6>
-    <b>{{attendeeComment.comment}}</b>
+    <h6>{{eventComment.whatMeeting}}</h6>
+    <small>Comentário:</small>
+    <p>{{attendeeComment.comment}}</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Encontros ...</mat-label>
+      <mat-select [(ngModel)]="commentEvent.id">
+        <mat-option *ngFor="let event of events" [value]="event.id">
+          {{event.title}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <div class="buttonEvent">
       <button (click)="close()" type="button" class="btn btn-white">Cancelar</button>
-      <button (click)="comment(nextEvent.id)" type="button" class="btn btn-dark">{{eventComment.send}}</button>
+      <button (click)="comment(commentEvent.id)" type="button" class="btn btn-dark">{{eventComment.send}}</button>
     </div>
   </div>
 </div>

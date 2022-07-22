@@ -1,5 +1,6 @@
 export class EventComment {
   what?: string = 'Diga o que precisa ...';
+  whatMeeting?: string = 'Escolha um encontro ...';
   questions = ['Pode ser outro dia?','Onde vai ser?','Posso levar um amigo?', 'O que precisa levar?','Tem onde dormir?', 'O banheiro é limpo?'];
   send = 'Comentar';
   success = 'Comentário adicionado no encontro.';

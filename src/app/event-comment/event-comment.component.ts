@@ -17,8 +17,9 @@ import { Event } from '../models/event.model';
 export class EventCommentComponent {
   eventComment: EventComment = new EventComment;
   attendeeComment?: AttendeeReply;
+  commentEvent: Event = new Event;
   attendeeCommentCreating: AttendeeReply = new AttendeeReply;
-  nextEvent?: Event;
+  events?: Event[];
 
   constructor(private divagandoApiService: DivagandoApiService,
               private authService: AuthenticationService,
@@ -45,7 +46,9 @@ export class EventCommentComponent {
     var eventsUri = `events?user=${user}&timeMax=${timeMax}`;
     this.divagandoApiService.get<Event[]>(eventsUri, (events: Event[]) => {
       if(events?.length)
-        this.nextEvent = events[0];
+        this.events = events;
+
+        console.log(events);
     }, (errorResponse: HttpErrorResponse)=>{
     });
   }
@@ -59,7 +62,7 @@ export class EventCommentComponent {
         this.eventComment.questions = questions;
     });
   }
-  setComment(){
+  update(){
     this.attendeeComment!.comment = this.attendeeCommentCreating.comment;
   }
   comment(eventId: string){
@@ -75,6 +78,7 @@ export class EventCommentComponent {
   }
   close(){
     this.attendeeComment = undefined;
+    this.commentEvent = new Event;
     this.attendeeCommentCreating = new AttendeeReply;
   }
 }

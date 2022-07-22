@@ -48,6 +48,8 @@ import { BoraComponent } from './bora/bora.component';
 import { EventCommentComponent } from './event-comment/event-comment.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+
 registerLocaleData(localePT);
 
 @NgModule({
@@ -70,6 +72,7 @@ registerLocaleData(localePT);
     BrowserAnimationsModule,
     MatSliderModule,
     MatButtonModule,
+    MatSelectModule,
     FormsModule,
     GooglePlaceModule,
     HttpClientModule,
