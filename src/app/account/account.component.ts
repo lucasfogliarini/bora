@@ -48,8 +48,9 @@ export class AccountComponent {
                 let user = this.getUser();
                 this.divagandoApiService.getAccount(user, (account: Account)=>{
                   this.account = account;
+                  this.getLastObservers();
                 });
-                this.getLastObservers();
+
                 this.router.events.subscribe(e=>{
                   if(e instanceof ActivationEnd){
                     this.editing = e.snapshot.queryParams['editing'] === 'true';
@@ -70,17 +71,19 @@ export class AccountComponent {
     this.events.eventsLoaded = undefined;
   }
   getLastObservers(){
-    let user = this.getUser();
-    const today = new Date();
-    let daysAgo = new Date();
-    daysAgo.setDate(today.getDate() - 14);
-    const eventsDaysAgoUri = `events?user=${user}&timeMin=${daysAgo.toISOString()}&timeMax=${today.toISOString()}`;
-    this.divagandoApiService.get(eventsDaysAgoUri, (events: Event[]) => {
-        if(events){
-          const observers = [...new Map(events.flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
-          this.observersMessage = observers.filter(e=>e.username != user).map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a><br />`).join('');
-        }
-    });
+    if(this.account.calendarAuthorized){
+      let user = this.getUser();
+      const today = new Date();
+      let daysAgo = new Date();
+      daysAgo.setDate(today.getDate() - 14);
+      const eventsDaysAgoUri = `events?user=${user}&timeMin=${daysAgo.toISOString()}&timeMax=${today.toISOString()}`;
+      this.divagandoApiService.get(eventsDaysAgoUri, (events: Event[]) => {
+          if(events){
+            const observers = [...new Map(events.flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
+            this.observersMessage = observers.filter(e=>e.username != user).map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a><br />`).join('');
+          }
+      });
+    }
   }
   getUser(){
     return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';

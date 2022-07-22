@@ -58,7 +58,7 @@
         <button (click)="updateAccount()" class="btn-dark btn">Salvar</button>
         <button (click)="editing=false" class="btn-white btn">Cancelar</button>
       </div>
-      <fa-icon title="Observadores" class="offset-4" [icon]="['fas','calendar-check']"
+      <fa-icon *ngIf="account.calendarAuthorized" title="Observadores" class="offset-4" [icon]="['fas','calendar-check']"
               [isDisabled]="!observersMessage"
               mwlConfirmationPopover
               popoverClass='attendees'
