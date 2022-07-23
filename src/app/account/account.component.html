@@ -72,19 +72,33 @@
       <div class="row">
         <small class="col-5" style="font-family: system-ui;">{{account.accountability}}</small>
         <div *ngIf="!account.calendarAuthorized" class="offset-6"></div>
-        <fa-icon *ngIf="account.calendarAuthorized" title="Observadores" class="offset-1 col-5" [icon]="['fas','calendar-check']"
-                [isDisabled]="!observersMessage"
-                mwlConfirmationPopover
-                popoverClass='attendees'
-                title="Quem foi nos últimos 14 dias"
-                popoverTitle="Quem foi nos últimos 14 dias"
-                [popoverMessage]="observersMessage!"
-                placement="bottom"
-                confirmText="Ok"
-                [hideCancelButton]="true"
-                role="button">
-        </fa-icon>
-        <fa-icon (click)="refreshEvents()" title="Atualizar eventos" class="col-1" [icon]="['fas','arrows-rotate']"></fa-icon>
+        <div *ngIf="account.calendarAuthorized" class="row col-7">
+          <fa-icon class="col-2" [icon]="['fas','backward']"
+                  [isDisabled]="!pastObserversMessage"
+                  mwlConfirmationPopover
+                  popoverClass='attendees'
+                  title="Quem foi nos últimos 14 dias"
+                  popoverTitle="Quem foi nos últimos 14 dias"
+                  [popoverMessage]="pastObserversMessage!"
+                  placement="bottom"
+                  confirmText="Ok"
+                  [hideCancelButton]="true"
+                  role="button">
+          </fa-icon>
+          <fa-icon class="col-9" [icon]="['fas','forward']"
+                  [isDisabled]="!futureObserversMessage"
+                  mwlConfirmationPopover
+                  popoverClass='attendees'
+                  title="Quem vai nos próximos 14 dias"
+                  popoverTitle="Quem vai nos próximos 14 dias"
+                  [popoverMessage]="futureObserversMessage!"
+                  placement="bottom"
+                  confirmText="Ok"
+                  [hideCancelButton]="true"
+                  role="button">
+          </fa-icon>
+          <fa-icon (click)="refreshEvents()" title="Atualizar eventos" class="col-1" [icon]="['fas','arrows-rotate']"></fa-icon>
+        </div>
       </div>
     </div>
     <div class="card-body p-0">

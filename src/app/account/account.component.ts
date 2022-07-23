@@ -17,7 +17,8 @@ import { EventCommentComponent } from '../event-comment/event-comment.component'
 export class AccountComponent {
   account = new Account;
   editing: boolean = false;
-  observersMessage?: string;
+  pastObserversMessage?: string;
+  futureObserversMessage?: string;
 
   eventCreate!: EventCreateComponent;
   @ViewChild(EventCreateComponent)
@@ -48,7 +49,7 @@ export class AccountComponent {
                 this.divagandoApiService.getAccount(user, (account: Account)=>{
                   this.account = account;
                   const user = this.getUser();
-                  this.getLastObservers();
+                  this.setObservers();
                 });
 
                 this.router.events.subscribe(e=>{
@@ -70,17 +71,21 @@ export class AccountComponent {
     this.events.getEvents();
     this.events.eventsLoaded = undefined;
   }
-  getLastObservers(){
+  setObservers(){
     if(this.account.calendarAuthorized){
       let user = this.getUser();
       const today = new Date();
       let daysAgo = new Date();
       daysAgo.setDate(today.getDate() - 14);
+      today.setDate(today.getDate() + 14);
       const eventsDaysAgoUri = `events?user=${user}&timeMin=${daysAgo.toISOString()}&timeMax=${today.toISOString()}`;
       this.divagandoApiService.get(eventsDaysAgoUri, (events: Event[]) => {
           if(events){
-            const observers = [...new Map(events.flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
-            this.observersMessage = observers.filter(e=>e.username != user).map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a><br />`).join('');
+            const pastObservers = [...new Map(events.filter(e=>new Date(e.start) <= new Date()).flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
+            this.pastObserversMessage = pastObservers.filter(e=>e.username != user).map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a><br />`).join('');
+
+            const futureObservers = [...new Map(events.filter(e=>new Date(e.start) > new Date()).flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
+            this.futureObserversMessage = futureObservers.filter(e=>e.username != user).map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a><br />`).join('');
           }
       });
     }

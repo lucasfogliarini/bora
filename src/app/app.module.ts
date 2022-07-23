@@ -37,7 +37,9 @@ import { faTicket,
         faComments,
         faArrowsRotate,
         faCalendarCheck,
-        faBookOpen } from '@fortawesome/free-solid-svg-icons';
+        faBookOpen,
+        faBackward,
+        faForward } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { AccountComponent } from './account/account.component';
 import { registerLocaleData } from '@angular/common';
@@ -142,7 +144,9 @@ export class AppModule {
       faComments,
       faArrowsRotate,
       faCalendarCheck,
-      faBookOpen
+      faBookOpen,
+      faBackward,
+      faForward
     );
   }
 }
