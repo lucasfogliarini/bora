@@ -45,12 +45,12 @@ export class EventCreateComponent {
       if(content) this.eventCreate.where = content.text;
       content = contents.find(e=>e.key == 'when');
       if(content) this.eventCreate.when = content.text;
-      content = contents.find(e=>e.key == 'quota');
+      content = contents.find(e=>e.key == 'evaluation');
       if(content) this.eventCreate.evaluation = content.text;
+      content = contents.find(e=>e.key == 'evaluationMax');
+      if(content) this.eventCreate.evaluationMax = Number.parseInt(content.text);
       content = contents.find(e=>e.key == 'currency');
       if(content) this.eventCreate.currency = content.text;
-      content = contents.find(e=>e.key == 'priceDefault');
-      if(content) this.eventCreate.evaluationDefault = Number.parseFloat(content.text);
 
       this.eventCreate.titles = contents.filter(e=>e.key.includes('title')).map(e=>e.text);
       this.eventCreate.locations = contents.filter(e=>e.key.includes('location')).map(e=>e.text);
