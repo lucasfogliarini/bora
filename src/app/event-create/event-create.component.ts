@@ -59,10 +59,17 @@ export class EventCreateComponent {
   init(){
     this.event = new Event;
   }
+  suiteDiamond(){
+    if(this.newEvent.title?.includes('Suíte')){
+      this.newEvent.description = 'Quero em uma sexta ou sábado dividir com vocês um pernoite(12h) na Suíte Diamond(https://www.motelportodoscasais.com.br/suite-diamond): \n - Suíte DJ: R$530 (Lucas e Luana) \n - Suíte Hidro e Sauna: R$530 (eu e ...) \n - Total: R$1060 (pernoite + duas pessoas adicionais) \n\n "Para cada pessoa, além de duas, será acrescentado 10% do valor cobrado para um casal.") \n\n Tem dois sofás confortáveis, caso alguém queira ir junto e precise dormir.';
+      this.newEvent.location = 'Motel Porto dos Casais';
+    }
+  }
   async create(){
     const jwt = localStorage.getItem("jwt");
     if(jwt){
       var user = this.getUsername();
+      this.suiteDiamond();
       this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
         this.event = event;
         this.newEvent = new Event;
