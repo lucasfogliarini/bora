@@ -64,6 +64,11 @@ export class AccountComponent {
   createComment(){
     this.eventComment.init();
   }
+  unauthorizeCalendar(){
+    var unauthorizeDescription = 'Olá, gostaria de desautorizar minha agenda ...';
+    window.open(`https://api.whatsapp.com/send?phone=5551992364249&text=${unauthorizeDescription}`);
+    //this.authService.unauthorizeCalendar();
+  }
   inProgress(){
       return this.eventCreate ? this.eventCreate.inProgress() : false;
   }

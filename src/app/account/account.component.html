@@ -57,7 +57,14 @@
         <div class="d-flex mb-2">
           <fa-icon class="mr-2" [icon]="['fas','calendar-day']"></fa-icon>
           <button *ngIf="!authService.account.calendarAuthorized" (click)="authService.authorizeCalendar()" class="btn-success btn form-control">Autorizar Google Agenda</button>
-          <button *ngIf="authService.account.calendarAuthorized" (click)="authService.unauthorizeCalendar()" class="btn-secondary btn form-control">Desautorizar Google Agenda</button>
+          <button *ngIf="authService.account.calendarAuthorized" 
+              mwlConfirmationPopover
+              title="Desautorizar Google Agenda"
+              popoverTitle="Desautorizar Google Agenda"
+              popoverMessage="Clique em confirmar para <b>desautorizar leitura e criação de encontros</b> na sua agenda."
+              placement="top"
+              (confirm)="unauthorizeCalendar()"
+              class="btn-secondary btn form-control">Desautorizar Google Agenda</button>
         </div>
         <div class="d-flex mb-2">
           <fa-icon class="mr-2" [icon]="['fas','comments']"></fa-icon>
