@@ -37,8 +37,8 @@
               mwlConfirmationPopover
               title="Desautorizar Google Agenda"
               popoverTitle="Desautorizar Google Agenda"
-              popoverMessage="Clique em confirmar para <b>desautorizar leitura e criação de encontros</b> na sua agenda."
-              placement="top"
+              popoverMessage="Clique em confirmar para <b>desautorizar leitura e criação de encontros</b> na sua agenda. <br /><br /> {{whyRevokeCalendar()}}"
+              placement="bottom"
               (confirm)="unauthorizeCalendar()"
               class="btn-secondary btn form-control">Desautorizar Google Agenda</button>
         </div>
