@@ -10,7 +10,7 @@
     </div>
     <input [(ngModel)]="newEvent.title" class="form-control mt-2" type="text" id="title" placeholder="{{eventCreate.whatSuggestion}}">
     <div class="buttonEvent">
-      <button *ngIf="newEvent.title" (click)="create()" type="button" class="btn btn-dark">{{newEvent.title}}!</button>
+      <button [disabled]="!newEvent.title" (click)="create()" type="button" class="btn btn-dark">Próximo</button>
     </div>
   </div>
   <div id="event-location" *ngIf="event?.title && !event?.location" class="event-question card-title">
@@ -24,7 +24,7 @@
     <input #googlePlace type="search" ngx-google-places-autocomplete [options]='placesOptions' (onAddressChange)="addressChange()"/>
     &nbsp;
     <div class="buttonEvent">
-      <button *ngIf="newEvent.location" (click)="update()" type="button" class="btn btn-dark">{{newEvent.location?.substring(0, 15)}}!</button>
+      <button [disabled]="!newEvent.location" (click)="update()" type="button" class="btn btn-dark">Próximo</button>
     </div>
   </div>
   <div id="event-evaluation" *ngIf="event?.location && !event?.evaluation" class="event-question card-title">
