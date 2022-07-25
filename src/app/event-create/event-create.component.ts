@@ -60,8 +60,18 @@ export class EventCreateComponent {
     this.event = new Event;
   }
   suiteDiamond(){
-    if(this.newEvent.title?.includes('Suíte')){
-      this.newEvent.description = 'Quero em uma sexta ou sábado dividir com vocês um pernoite(12h) na Suíte Diamond(https://www.motelportodoscasais.com.br/suite-diamond): \n - Suíte DJ: R$530 (Lucas e Luana) \n - Suíte Hidro e Sauna: R$530 (eu e ...) \n - Total: R$1060 (pernoite + duas pessoas adicionais) \n\n "Para cada pessoa, além de duas, será acrescentado 10% do valor cobrado para um casal.") \n\n Tem dois sofás confortáveis, caso alguém queira ir junto e precise dormir.';
+    if(this.newEvent.title?.includes('Suíte Diamond')){
+      this.newEvent.description =
+      `Quero em uma sexta ou sábado compartilhar com vocês uma pernoite(12h) na <a href='https://www.motelportodoscasais.com.br/suite-diamond'>Suíte Diamond</a>: 
+      - <b>Hidro, Piscina, Sauna, Pista com DJ e Bar compartilhados</b>
+      - <b>Suíte ao lado da Sala: R$530 (eu e ...)</b>
+      - Suíte ao lado da Pista: R$530 (Lucas e Luana)
+      - Levarei meu consumo <b>(Água, cerveja, comida)</b>, senão pagarei o preço do bar 
+      - Levarei minhas <b>playlists do Tidal</b>, para evitar confusão na hora de tocar.
+      -Total: <b>R$530 para mim</b> e R$530 para Lucas e Luana
+
+      Para cada pessoa adicional será cobrado R$90(taxa cobrada pelo Motel).
+      Tem dois sofás confortáveis, caso alguém queira ir junto e precise dormir.`;
       this.newEvent.location = 'Motel Porto dos Casais';
     }
   }
