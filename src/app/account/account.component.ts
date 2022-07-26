@@ -23,8 +23,11 @@ export class AccountComponent {
   eventCreate!: EventCreateComponent;
   @ViewChild(EventCreateComponent)
   set eventCreateChield(eventCreate: EventCreateComponent) {
-    if(eventCreate != undefined)
+    if(eventCreate != undefined){
       this.eventCreate = eventCreate;
+      if(this.account.partnerCallsOpen)
+        this.initEvent();
+    }
   }
   eventComment!: EventCommentComponent;
   @ViewChild(EventCommentComponent)
