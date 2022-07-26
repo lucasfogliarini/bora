@@ -8,4 +8,5 @@ export class Attendee {
     whatsApp: string;
     spotify: string;
     proximityRate: number;
+    isPartner: boolean;
 }

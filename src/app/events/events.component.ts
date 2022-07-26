@@ -138,7 +138,7 @@ export class EventsComponent {
   attendees(event: Event){
     if(event.attendees){
       this.popAttendee(event.attendees);
-      let attendeesContent = event.attendees.map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a>&nbsp;<small>${this.proximityRate(e)}</small><br />`).join('');
+      let attendeesContent = event.attendees.map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a>&nbsp;<small>${e.isPartner ? 'Parceiro' : ''}</small><br />`).join('');
       if(event.chat)
         attendeesContent += `<div class='row'><small class="col-12"><a href='${event.chat}'>Comente no WhatsApp</a></small></div>`;
       attendeesContent += this.partnerInvite();

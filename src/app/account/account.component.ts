@@ -99,10 +99,10 @@ export class AccountComponent {
       this.divagandoApiService.get(eventsDaysAgoUri, (events: Event[]) => {
           if(events){
             const pastObservers = [...new Map(events.filter(e=>new Date(e.start) <= new Date()).flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
-            this.pastObserversMessage = pastObservers.filter(e=>e.username != user).map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a><br />`).join('');
+            this.pastObserversMessage = pastObservers.filter(e=>e.username != user).map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a>&nbsp;<small>${e.isPartner ? 'Parceiro' : ''}</small><br />`).join('');
 
             const futureObservers = [...new Map(events.filter(e=>new Date(e.start) > new Date()).flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
-            this.futureObserversMessage = futureObservers.filter(e=>e.username != user).map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a><br />`).join('');
+            this.futureObserversMessage = futureObservers.filter(e=>e.username != user).map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a>&nbsp;<small>${e.isPartner ? 'Parceiro' : ''}</small><br />`).join('');
           }
       });
     }
