@@ -41,6 +41,8 @@ export class EventCreateComponent {
     this.divagandoApiService.getContents('event-create', username, (contents: Content[])=>{
       let content = contents.find(e=>e.key == 'what');
       if(content) this.eventCreate.what = content.text;
+      content = contents.find(e=>e.key == 'whatSuggestion');
+      if(content) this.eventCreate.whatSuggestion = content.text;
       content = contents.find(e=>e.key == 'where');
       if(content) this.eventCreate.where = content.text;
       content = contents.find(e=>e.key == 'when');
