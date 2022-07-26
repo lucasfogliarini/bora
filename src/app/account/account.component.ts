@@ -25,6 +25,7 @@ export class AccountComponent {
   set eventCreateChield(eventCreate: EventCreateComponent) {
     if(eventCreate != undefined){
       this.eventCreate = eventCreate;
+      this.eventCreate.account = this.account;
       if(this.account.partnerCallsOpen)
         this.initEvent();
     }

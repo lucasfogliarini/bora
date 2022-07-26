@@ -6,6 +6,7 @@ import { Options } from 'ngx-google-places-autocomplete/objects/options/options'
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 import { DivagandoApiService } from '../divagando-api.service';
+import { Account } from '../models/account.model';
 import { AttendeeReply } from '../models/attendee-reply.model';
 import { Content } from '../models/content.model';
 import { EventCreate } from '../models/event-create.model';
@@ -20,6 +21,7 @@ import { Event } from '../models/event.model';
 export class EventCreateComponent {
   event?: Event;
   newEvent: Event = new Event;
+  account?: Account;
   placesOptions: Options = new Options;
   eventCreate: EventCreate = new EventCreate;
 

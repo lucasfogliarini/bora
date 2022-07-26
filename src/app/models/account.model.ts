@@ -7,6 +7,7 @@ export class Account {
     isPartner: boolean;
     partnerCommentsEnabled: boolean;
     partnerCallsOpen: boolean;
+    partnerCallsCanBePublic: boolean;
     photo: string;
     whatsApp: string;
     instagram: string;
