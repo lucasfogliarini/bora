@@ -118,7 +118,7 @@
 <div id="partner-questions" *ngIf="account?.calendarAuthorized">
   <div *ngIf="account.isPartner && !account.partnerCommentsEnabled">
     <app-event-create></app-event-create>
-    <fa-icon (click)="createEvent()" *ngIf="!inProgress()" id="bora" [icon]="['fas','comments']" role="button" class="col-6"></fa-icon>    
+    <fa-icon (click)="initEvent()" *ngIf="!inProgress()" id="bora" [icon]="['fas','comments']" role="button" class="col-6"></fa-icon>
   </div>
   <div *ngIf="account?.isPartner && account.partnerCommentsEnabled">
     <app-event-create></app-event-create>
@@ -129,9 +129,9 @@
         popoverMessage="Um <b>Encontro</b> ou um <b>Comentário</b> em um encontro <br /> <small>É necessário se autenticar no Google.</small>"
         placement="left"
         confirmText="Encontro"
-        (confirm)="createEvent()"
+        (confirm)="initEvent()"
         cancelText="Comentário"
-        (cancel)="createComment()"
+        (cancel)="initComment()"
         role="button"
         class="col-6"></fa-icon>
   </div>

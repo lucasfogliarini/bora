@@ -58,10 +58,10 @@ export class AccountComponent {
                   }
                 });
   }
-  createEvent(){
+  initEvent(){
     this.eventCreate.init();
   }
-  createComment(){
+  initComment(){
     this.eventComment.init();
   }
   changePartnership(){
