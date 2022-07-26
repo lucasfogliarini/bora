@@ -54,8 +54,10 @@ export class EventCreateComponent {
       content = contents.find(e=>e.key == 'currency');
       if(content) this.eventCreate.currency = content.text;
 
-      this.eventCreate.titles = contents.filter(e=>e.key.includes('title')).map(e=>e.text);
-      this.eventCreate.locations = contents.filter(e=>e.key.includes('location')).map(e=>e.text);
+      let contentsFiltered = contents.filter(e=>e.key.includes('title')).map(e=>e.text);
+      if(contentsFiltered.length) this.eventCreate.titles = contentsFiltered;
+      contentsFiltered = contents.filter(e=>e.key.includes('location')).map(e=>e.text);
+      if(contentsFiltered.length) this.eventCreate.locations = contentsFiltered;
     });
   }
   init(){
