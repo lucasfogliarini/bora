@@ -64,6 +64,11 @@ export class AccountComponent {
   createComment(){
     this.eventComment.init();
   }
+  changePartnership(){
+    this.divagandoApiService.patch<Account>(`accounts`, this.account, () => {
+      this.toastr.success('Parceria atualizada.');
+   });
+  }
   whyRevokeCalendar(){
     var whatsAppApi = `https://api.whatsapp.com/send?phone=5551992364249&text=Olá, estou revogando meu acesso ao Google Agenda por que ...`;
     var aHref = `<a href='${whatsAppApi}' target='_blank'>Por que está revogando acesso a sua agenda?</a>`;
@@ -102,7 +107,6 @@ export class AccountComponent {
     return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
   }
   updateAccount(){
-    this.account.whatsApp = this.account.whatsApp ?? '';
     this.divagandoApiService.patch<Account>(`accounts`, this.account, () => {       
        this.editing = false;
        this.toastr.success('Perfil atualizado.');

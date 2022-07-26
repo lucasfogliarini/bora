@@ -25,7 +25,7 @@
         <div class="d-flex mb-2">
           <fa-icon class="mr-2" [icon]="['fas','comments']"></fa-icon>
           <div class="custom-control custom-switch mt-2">
-            <input id="createEventEnabled" [(ngModel)]="account.createEventEnabled" type="checkbox" class="custom-control-input">
+            <input id="createEventEnabled" (change)="changePartnership()" [(ngModel)]="account.createEventEnabled" type="checkbox" class="custom-control-input">
             <label *ngIf="account.createEventEnabled" class="custom-control-label" for="createEventEnabled">Parceiro<small *ngIf="!authService.account.calendarAuthorized">, com Agenda e Catálogo?</small></label>
             <label *ngIf="!account.createEventEnabled" class="custom-control-label" for="createEventEnabled">Cliente</label>
           </div>
