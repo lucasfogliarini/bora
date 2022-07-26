@@ -115,7 +115,7 @@
   </div>
 </section>
 
-<div id="order-questions" *ngIf="authService.account?.calendarAuthorized">
+<div id="order-questions" *ngIf="account?.calendarAuthorized">
   <div *ngIf="account.createEventEnabled && !account.createOrderEnabled">
     <app-event-create></app-event-create>
     <fa-icon (click)="createEvent()" *ngIf="!inProgress()" id="bora" [icon]="['fas','comments']" role="button" class="col-6"></fa-icon>    
