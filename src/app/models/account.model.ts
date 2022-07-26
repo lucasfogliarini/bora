@@ -4,8 +4,9 @@ export class Account {
     name: string;
     email: string;
     calendarAuthorized: boolean;
-    createEventEnabled: boolean;
-    createOrderEnabled: boolean;
+    isPartner: boolean;
+    partnerCommentsEnabled: boolean;
+    partnerCallsOpen: boolean;
     photo: string;
     whatsApp: string;
     instagram: string;

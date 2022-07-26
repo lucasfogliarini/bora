@@ -25,12 +25,12 @@
         <div class="d-flex mb-2">
           <fa-icon class="mr-2" [icon]="['fas','comments']"></fa-icon>
           <div class="custom-control custom-switch mt-2">
-            <input id="createEventEnabled" (change)="changePartnership()" [(ngModel)]="account.createEventEnabled" type="checkbox" class="custom-control-input">
-            <label *ngIf="account.createEventEnabled" class="custom-control-label" for="createEventEnabled">Parceiro<small *ngIf="!authService.account.calendarAuthorized">, com Agenda e Catálogo?</small></label>
-            <label *ngIf="!account.createEventEnabled" class="custom-control-label" for="createEventEnabled">Cliente</label>
+            <input id="partnership" (change)="changePartnership()" [(ngModel)]="account.isPartner" type="checkbox" class="custom-control-input">
+            <label *ngIf="account.isPartner" class="custom-control-label" for="partnership">Parceiro<small *ngIf="!authService.account.calendarAuthorized">, com Agenda e Catálogo?</small></label>
+            <label *ngIf="!account.isPartner" class="custom-control-label" for="partnership">Cliente</label>
           </div>
         </div>
-        <div *ngIf="authService.account.calendarAuthorized != undefined && account.createEventEnabled" class="d-flex mb-2">
+        <div *ngIf="authService.account.calendarAuthorized != undefined && account.isPartner" class="d-flex mb-2">
           <fa-icon class="mr-2" [icon]="['fas','calendar-day']"></fa-icon>
           <button *ngIf="!authService.account.calendarAuthorized" (click)="authService.authorizeCalendar()" class="btn-success btn form-control">Autorizar Google Agenda</button>
           <button *ngIf="authService.account.calendarAuthorized" 
@@ -115,12 +115,12 @@
   </div>
 </section>
 
-<div id="order-questions" *ngIf="account?.calendarAuthorized">
-  <div *ngIf="account.createEventEnabled && !account.createOrderEnabled">
+<div id="partner-questions" *ngIf="account?.calendarAuthorized">
+  <div *ngIf="account.isPartner && !account.partnerCommentsEnabled">
     <app-event-create></app-event-create>
     <fa-icon (click)="createEvent()" *ngIf="!inProgress()" id="bora" [icon]="['fas','comments']" role="button" class="col-6"></fa-icon>    
   </div>
-  <div *ngIf="account?.createEventEnabled && account.createOrderEnabled">    
+  <div *ngIf="account?.isPartner && account.partnerCommentsEnabled">
     <app-event-create></app-event-create>
     <app-event-comment></app-event-comment>
     <fa-icon *ngIf="!inProgress()" id="bora" [icon]="['fas','comments']" mwlConfirmationPopover
