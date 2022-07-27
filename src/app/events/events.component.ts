@@ -113,7 +113,13 @@ export class EventsComponent {
     var dateTime = new Date(event.start).toLocaleString('pt-BR');
     let user = this.getUser();
     let eventUrl = `${window.location.origin}/${user}?eId=${this.shortId(event)}`;
-    var whatsappText = window.encodeURIComponent(`${event.title} - ${dateTime} \n\n ${eventUrl}`);
+    var whatsappText = window.encodeURIComponent(
+`${event.title}
+${dateTime}
+${event.location}
+
+${eventUrl}`);
+
     var whatsAppLink = `https://api.whatsapp.com/send/?text=${whatsappText}`;
     window.open(whatsAppLink);
   }
