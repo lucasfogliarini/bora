@@ -110,10 +110,10 @@ export class EventsComponent {
       }
   }
   share(event: Event){
-    var date = new Date(event.start).toLocaleDateString();
+    var dateTime = new Date(event.start).toLocaleString('pt-BR');
     let user = this.getUser();
     let eventUrl = `${window.location.origin}/${user}?eId=${this.shortId(event)}`;
-    var whatsappText = window.encodeURIComponent(`${event.title} - ${date} \n\n ${eventUrl}`);
+    var whatsappText = window.encodeURIComponent(`${event.title} - ${dateTime} \n\n ${eventUrl}`);
     var whatsAppLink = `https://api.whatsapp.com/send/?text=${whatsappText}`;
     window.open(whatsAppLink);
   }
