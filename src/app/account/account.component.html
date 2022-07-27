@@ -26,8 +26,14 @@
           <fa-icon class="mr-2" [icon]="['fas','comments']"></fa-icon>
           <div class="custom-control custom-switch mt-2">
             <input id="partnership" (change)="changePartnership()" [(ngModel)]="account.isPartner" type="checkbox" class="custom-control-input">
-            <label *ngIf="account.isPartner" class="custom-control-label" for="partnership">Parceiro<small *ngIf="!authService.account.calendarAuthorized">, com Agenda e Catálogo?</small></label>
-            <label *ngIf="!account.isPartner" class="custom-control-label" for="partnership">Cliente</label>
+            <label *ngIf="account.isPartner" class="custom-control-label" for="partnership">
+                Parceiro
+                <small *ngIf="!authService.account.calendarAuthorized">, com Agenda e Catálogo?</small>
+            </label>
+            <label *ngIf="!account.isPartner" class="custom-control-label" for="partnership">
+                Cliente.
+                <small>👉 pra ser <b>Parceiro.</b></small>
+            </label>
           </div>
         </div>
         <div *ngIf="authService.account.calendarAuthorized != undefined && account.isPartner" class="d-flex mb-2">
