@@ -37,10 +37,22 @@
   </div>
   <div id="event-when" *ngIf="event?.evaluation" class="event-question card-title">
     <h6>{{eventCreate.when}}</h6>
-    
-    <!--<input id="event-date" [(ngModel)]="newEvent.start" readonly="readonly"
-    [owlDateTime]="dtStart" [owlDateTimeTrigger]="dtStart" [min]="eventCreate.startAt" placeholder="dd/mm/aaaa hh:min">
-    <owl-date-time [startAt]="eventCreate.startAt" #dtStart></owl-date-time>-->
+    <mat-form-field>
+      <input
+        matInput
+        [ngxMatDatetimePicker]="dateTimePicker"
+        placeholder="Escolha a data e hora"
+        (focus)="dateTimePicker.open()"
+        readonly
+      />
+      <ngx-mat-datetime-picker
+        #dateTimePicker
+        [showSpinners]="true"
+        [stepMinute]="10"
+        [touchUi]="true"
+      >
+      </ngx-mat-datetime-picker>
+    </mat-form-field>
 
     <div id="event-public-switch" class="custom-control custom-switch mt-3">
       <input [disabled]="account?.partnerCallsCanBePublic != true" id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
