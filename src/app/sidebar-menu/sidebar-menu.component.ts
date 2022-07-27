@@ -9,7 +9,6 @@ import { DivagandoApiService } from '../divagando-api.service';
 })
 export class SideBarMenuComponent {
   title = '...';
-  @ViewChild('googleButton') googleButton!: ElementRef;
 
   constructor(private divagandoApiService: DivagandoApiService,
               public authService: AuthenticationService,
@@ -28,9 +27,5 @@ export class SideBarMenuComponent {
       locationPath += `?editing=true`;
     }
     window.location.href = locationPath;
-  }
-
-  signInWithGoogle(){
-    this.googleButton.nativeElement.click();
   }
 }
