@@ -28,7 +28,8 @@
     </div>
     <div *ngIf="!authService.user" class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="info">
-        <a (click)="authService.signInWithGoogle()" role="button"><fa-icon [icon]="['fab','google']"></fa-icon> Entrar usando Google</a>
+        <asl-google-signin-button #googleButton [hidden]="false"></asl-google-signin-button>
+        <a (click)="signInWithGoogle()" role="button"><fa-icon [icon]="['fab','google']"></fa-icon> Entrar usando Google</a>
       </div>
     </div>
   </div>
