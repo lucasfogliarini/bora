@@ -6,7 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
-import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';//depends on: @angular/cdk
 import { ToastrModule } from 'ngx-toastr';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { AppComponent } from './app.component';
@@ -86,8 +85,6 @@ registerLocaleData(localePT);
       cancelText: "Cancelar",
       confirmText: "Confirmar"
     }),
-    OwlDateTimeModule, 
-    OwlNativeDateTimeModule,
     SocialLoginModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -98,7 +95,6 @@ registerLocaleData(localePT);
     FontAwesomeModule
   ],
   providers: [{ provide: APP_BASE_HREF, useValue: '/'},
-              { provide: OWL_DATE_TIME_LOCALE, useValue: 'pt-BR'},
               { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
               {
                 provide: 'SocialAuthServiceConfig',
