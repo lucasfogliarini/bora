@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { Options } from 'ngx-google-places-autocomplete/objects/options/options';
@@ -81,7 +82,7 @@ export class EventCreateComponent {
       this.newEvent.location = 'Motel Porto dos Casais';
     }
   }
-  async create(){
+  create(){
     const jwt = localStorage.getItem("jwt");
     if(jwt){
       var user = this.getUsername();
@@ -91,8 +92,10 @@ export class EventCreateComponent {
         this.newEvent = new Event;
       });
     }else{
-      await this.authService.signInWithGoogle();
-      await this.create();
+      this.authService.signInWithGoogle((dialog: MatDialog)=>{
+        dialog.closeAll();
+        this.create()
+      });
     }
   }
   getEventType(){

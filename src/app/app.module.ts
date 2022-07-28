@@ -53,7 +53,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
-import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NgxMatDatetimePickerModule, 
+         NgxMatNativeDateModule, 
+         NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { AuthenticationDialogComponent } from './authentication-dialog/authentication-dialog.component';
 
 registerLocaleData(localePT);
 
@@ -61,6 +65,7 @@ registerLocaleData(localePT);
   declarations: [
     AppComponent,
     NavMenuComponent,
+    AuthenticationDialogComponent,
     SideBarMenuComponent,
     HomeComponent,
     EventCreateComponent,
@@ -80,6 +85,7 @@ registerLocaleData(localePT);
     MatSliderModule,
     MatButtonModule,
     MatSelectModule,
+    MatDialogModule,
     MatDatepickerModule,
     MatInputModule,
     NgxMatDatetimePickerModule,

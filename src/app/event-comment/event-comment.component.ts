@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
@@ -34,7 +35,10 @@ export class EventCommentComponent {
         this.setEvents();
         this.setContents();
     }else{
-      this.authService.signInWithGoogle();
+      this.authService.signInWithGoogle((dialog: MatDialog)=>{
+        dialog.closeAll();
+        this.init();
+      });
     }
   }
   getUser(){
@@ -48,8 +52,6 @@ export class EventCommentComponent {
     this.divagandoApiService.get<Event[]>(eventsUri, (events: Event[]) => {
       if(events?.length)
         this.events = events;
-
-        console.log(events);
     }, (errorResponse: HttpErrorResponse)=>{
     });
   }

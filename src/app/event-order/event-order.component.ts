@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
@@ -58,7 +59,9 @@ export class EventOrderComponent {
         this.setEvents();
         this.setContents();
     }else{
-      this.authService.signInWithGoogle();
+      this.authService.signInWithGoogle((dialog: MatDialog)=>{
+        dialog.closeAll();
+      });
     }
   }
   sendOrder(eventId: string){

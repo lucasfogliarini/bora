@@ -8,6 +8,7 @@ import { Attendee } from '../models/attendee.model';
 import { AuthenticationService } from '../authentication.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AttendeeReply } from '../models/attendee-reply.model';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-events',
@@ -87,8 +88,10 @@ export class EventsComponent {
       this.replied = true;
     }, async (errorResponse: HttpErrorResponse)=>{
        if(errorResponse.status == 401){
-          await this.authService.signInWithGoogle();
-          this.reply(eventId, response);
+          this.authService.signInWithGoogle((dialog: MatDialog)=>{
+            dialog.closeAll();
+            this.reply(eventId, response);
+          });
        }else{
           this.toastr.error(errorResponse.message);
        }
