@@ -26,7 +26,8 @@ export class AccountComponent {
     if(eventCreate != undefined){
       this.eventCreate = eventCreate;
       this.eventCreate.account = this.account;
-      if(this.account.partnerCallsOpen)
+      const callsOpen = this.activeRoute.snapshot.queryParams['callsOpen'] != undefined;
+      if(this.account.partnerCallsOpen || callsOpen)
         this.initEvent();
     }
   }
