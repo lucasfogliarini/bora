@@ -48,7 +48,7 @@ export class EventsComponent {
   }
   getEvents(){
     let user = this.getUser();
-    var eventsUri = `events?user=${user}&favoritesCount=true`;
+    var eventsUri = `events?user=${user}&favoritesCount=false`;
     this.setEvents(undefined);
     this.divagandoApiService.get<Event[]>(eventsUri, (eventsLoaded: Event[]) => {
       this.eventsLoaded = eventsLoaded;
