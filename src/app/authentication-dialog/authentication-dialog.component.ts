@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class AuthenticationDialogComponent {
   constructor(public dialogRef: MatDialogRef<AuthenticationDialogComponent>) {}
   loginSupport(){
-    const whatsappText = 'Não consigo ou não quero logar ...';
+    const whatsappText = 'Não consigo logar ...';
     const contact = '5551992364249';
     var whatsAppLink = `https://api.whatsapp.com/send?phone=${contact}&text=${whatsappText}`;
     window.open(whatsAppLink);
