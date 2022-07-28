@@ -8,7 +8,7 @@ import { DivagandoApiService } from '../divagando-api.service';
 import { AttendeeOrder } from '../models/attendee-order.model';
 import { AttendeeReply } from '../models/attendee-reply.model';
 import { Content } from '../models/content.model';
-import { EventOrder } from '../models/event-order.model';
+import { EventOrder } from '../models/event-comment.model';
 import { Event } from '../models/event.model';
 
 @Component({
