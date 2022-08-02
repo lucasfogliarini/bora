@@ -173,8 +173,7 @@ export class EventCreateComponent {
       this.newEvent.description =
       `Quero um <a href='https://www.vinicolagaribaldi.com.br/produto/espumante-garibaldi-moscatel/113'>Espumante Garibaldi Moscatel</a>: 
       - R$50 custo do produto
-      - R$10 de frete
-      - Total: <b>R$60</b>
+      - Total: <b>R$50</b>
       - Pagarei antecipado via pix: 51992364249
       - Serei estornada(o) caso não seja entregue até a data proposta.`;
       this.newEvent.location = 'Divagando no Camarote';
