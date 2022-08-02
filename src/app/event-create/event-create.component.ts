@@ -66,27 +66,12 @@ export class EventCreateComponent {
   init(){
     this.event = new Event;
   }
-  suiteDiamond(){
-    if(this.newEvent.title?.includes('Suíte Diamond')){
-      this.newEvent.description =
-      `Quero em uma sexta ou sábado compartilhar com vocês uma pernoite(12h) na <a href='https://www.motelportodoscasais.com.br/suite-diamond'>Suíte Diamond</a>: 
-      - <b>Hidro, Piscina, Sauna, Pista com DJ e Bar compartilhados</b>
-      - <b>Suíte ao lado da Sala: R$530 (eu e ...)</b>
-      - Suíte ao lado da Pista: R$530 (Lucas e Luana)
-      - Levarei meu consumo <b>(Água, cerveja, comida)</b>, senão pagarei o preço do bar 
-      - Levarei minhas <b>playlists do Tidal</b>, para evitar confusão na hora de tocar.
-      -Total: <b>R$530 para mim</b> e R$530 para Lucas e Luana
-
-      Para cada pessoa adicional será cobrado R$90(taxa cobrada pelo Motel).
-      Tem dois sofás confortáveis, caso alguém queira ir junto e precise dormir.`;
-      this.newEvent.location = 'Motel Porto dos Casais';
-    }
-  }
   create(){
     const jwt = localStorage.getItem("jwt");
     if(jwt){
       var user = this.getUsername();
       this.suiteDiamond();
+      this.espumante();
       this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
         this.event = event;
         this.newEvent = new Event;
@@ -165,5 +150,34 @@ export class EventCreateComponent {
   }
   close(){
     this.event = undefined;
+  }
+
+  suiteDiamond(){
+    if(this.newEvent.title?.includes('Suíte Diamond')){
+      this.newEvent.description =
+      `Quero em uma sexta ou sábado compartilhar com vocês uma pernoite(12h) na <a href='https://www.motelportodoscasais.com.br/suite-diamond'>Suíte Diamond</a>: 
+      - <b>Hidro, Piscina, Sauna, Pista com DJ e Bar compartilhados</b>
+      - <b>Suíte ao lado da Sala: R$530 (eu e ...)</b>
+      - Suíte ao lado da Pista: R$530 (Lucas e Luana)
+      - Levarei meu consumo <b>(Água, cerveja, comida)</b>, senão pagarei o preço do bar 
+      - Levarei minhas <b>playlists do Tidal</b>, para evitar confusão na hora de tocar.
+      -Total: <b>R$530 para mim</b> e R$530 para Lucas e Luana
+
+      Para cada pessoa adicional será cobrado R$90(taxa cobrada pelo Motel).
+      Tem dois sofás confortáveis, caso alguém queira ir junto e precise dormir.`;
+      this.newEvent.location = 'Motel Porto dos Casais';
+    }
+  }
+  espumante(){
+    if(this.newEvent.title?.includes('Moscatel')){
+      this.newEvent.description =
+      `Quero um <a href='https://www.vinicolagaribaldi.com.br/produto/espumante-garibaldi-moscatel/113'>Espumante Garibaldi Moscatel</a>: 
+      - R$50 custo do produto
+      - R$10 de frete
+      - Total: <b>R$60</b>
+      - Pagarei antecipado via pix: 51992364249
+      - Serei estornada(o) caso não seja entregue até a data proposta.`;
+      this.newEvent.location = 'Divagando no Camarote';
+    }
   }
 }
