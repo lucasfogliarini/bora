@@ -2,11 +2,6 @@
 @import "~admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css";
 @import "~ngx-toastr/toastr.css";
 
-app-root .content-wrapper{
-    background: url("assets/tunelcriativo.jpeg") no-repeat fixed center;
-    background-size: 400px;
-}
-
 .content a{
     color: inherit;
     text-decoration: underline;
@@ -32,4 +27,9 @@ app-contact .popover{
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background: url("assets/tunelcriativo.jpeg");
+    background-size: cover;
+}

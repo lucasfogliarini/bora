@@ -14,6 +14,10 @@ export class AppComponent {
     this.RequestVersion();
   }
 
+  isHome(){
+    return window.location.pathname == '/';
+  }
+
   private RequestVersion(){
       this.divagandoApiService.getText('version', (version: string) => {
         this.version = version;

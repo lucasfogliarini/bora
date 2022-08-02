@@ -102,7 +102,6 @@ registerLocaleData(localePT);
     }),
     SocialLoginModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'privacy',  component: PrivacyComponent },
       { path: 'bora',  component: BoraComponent },
       { path: ':user',  component: AccountComponent }
