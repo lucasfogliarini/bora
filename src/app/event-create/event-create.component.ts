@@ -155,6 +155,14 @@ export class EventCreateComponent {
   inProgress(){
     return this.event;
   }
+  back(){
+    if(this.event?.evaluation)
+      this.event!.evaluation = undefined;
+    else if(this.event?.location)
+      this.event!.location = undefined;
+    else if(this.event?.title)
+      this.event!.title = undefined;//está criando 2 eventos.
+  }
   close(){
     this.event = undefined;
   }
