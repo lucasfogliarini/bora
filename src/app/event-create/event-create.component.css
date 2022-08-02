@@ -7,9 +7,9 @@
     -moz-border-radius: 10px;
 }
 
-#event-create-close{
+.escape-button{
     position: relative;
-    right: 25px;
+    right: 65px;
     top: 5px;
 }
 
