@@ -8,6 +8,7 @@ import { AuthenticationService } from '../authentication.service';
 import { EventCreateComponent } from '../event-create/event-create.component';
 import { EventsComponent } from '../events/events.component';
 import { EventCommentComponent } from '../event-comment/event-comment.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-account',
@@ -49,11 +50,12 @@ export class AccountComponent {
               public authService: AuthenticationService,
               private toastr: ToastrService,
               private router: Router,
+              private title: Title,
               private activeRoute: ActivatedRoute) {
                 let user = this.getUser();
                 this.divagandoApiService.getAccount(user, (account: Account)=>{
                   this.account = account;
-                  const user = this.getUser();
+                  this.title.setTitle(`${account.name} no Túnel Criativo`);
                   this.setObservers();
                 });
 
