@@ -1,4 +1,5 @@
 import { Attendee } from "./attendee.model";
+import { EventCreate } from "./event-create.model";
 import { EventType } from "./event-type.model";
 
 export class Event {
@@ -13,6 +14,7 @@ export class Event {
     instagramUrl: string;
     youtubeUrl: string;
     chat: string;
+    conferenceUrl: string;
     description: string;
     start: Date;
     end: Date;

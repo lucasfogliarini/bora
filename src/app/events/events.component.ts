@@ -9,6 +9,7 @@ import { AuthenticationService } from '../authentication.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AttendeeReply } from '../models/attendee-reply.model';
 import { MatDialog } from '@angular/material/dialog';
+import { EventCreate } from '../models/event-create.model';
 
 @Component({
   selector: 'app-events',
@@ -187,14 +188,22 @@ ${eventUrl}`);
   expandEvent(event: Event){
     if(!event.expanded){
       event.expanded = true;
+      setTimeout(() => {
+        var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
+        const isConference = event.location == EventCreate.conferenceTitle;
+        if(isConference){
+          eventBackgroundImage!.setAttribute('src', '../../assets/google-meet.jpg');
+        }
+
       //@ts-ignore
       const placesService = new google.maps.places.PlacesService(document.createElement('div'));
       placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: any) =>{
         if(response && response.length && response[0].photos && response[0].photos.length){
           const bgImage = response[0].photos[0].getUrl();
-          document.querySelector(`#e${event.id} .background-image img`)!.setAttribute('src', bgImage);
+          eventBackgroundImage!.setAttribute('src', bgImage);
         }
       });
+      }, 500);
     }
   }
 

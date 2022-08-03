@@ -8,5 +8,6 @@ export class EventCreate {
   currency?: string = '👥';
   whatSuggestion: string = 'Tomar um café ...';
   titles = ['Conversar'];
-  locations = ['💻 Google Meet']
+  static conferenceTitle = '💻 Google Meet';
+  locations = [EventCreate.conferenceTitle];
 }
