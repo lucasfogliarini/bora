@@ -4,25 +4,25 @@
 @media screen and (min-width: 320px){
     .background-image{
         overflow: hidden;
-        max-height: 125px;
+        max-width: 185px;
     }
 }
 @media screen and (min-width: 375px){
     .background-image{
         overflow: hidden;
-        max-height: 150px;
+        max-width: 220px;
     }
 }
 @media screen and (min-width: 425px){
     .background-image{
         overflow: hidden;
-        max-height: 175px;
+        max-width: 235px;
     }
 }
 @media screen and (min-width: 768px){
     .background-image{
         overflow: hidden;
-        max-height: 320px;
+        max-width: 440px;
     }
 }
 /*@media screen and (min-width: 1024px){

@@ -113,6 +113,9 @@ export class EventsComponent {
         window.open(mapsUrl);
       }
   }
+  openConference(event: Event){
+    window.open(event.conferenceUrl);
+  }
   share(event: Event){
     var dateTime = new Date(event.start).toLocaleString('pt-BR');
     let user = this.getUser();
@@ -190,8 +193,7 @@ ${eventUrl}`);
       event.expanded = true;
       setTimeout(() => {
         var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
-        const isConference = event.location == EventCreate.conferenceTitle;
-        if(isConference){
+        if(this.isConference(event)){
           eventBackgroundImage!.setAttribute('src', '../../assets/google-meet.jpg');
         }
 
@@ -205,6 +207,9 @@ ${eventUrl}`);
       });
       }, 500);
     }
+  }
+  isConference(event: Event){
+    return event.location == EventCreate.conferenceTitle;
   }
 
   arrayMove(arr: Array<any>, fromIndex: number, toIndex: number) {
