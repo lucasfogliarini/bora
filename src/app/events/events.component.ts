@@ -191,21 +191,22 @@ ${eventUrl}`);
   expandEvent(event: Event){
     if(!event.expanded){
       event.expanded = true;
-      setTimeout(() => {
-        var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
-        if(this.isConference(event)){
+      if(this.isConference(event)){
+        setTimeout(() => {
+          var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
           eventBackgroundImage!.setAttribute('src', '../../assets/google-meet.jpg');
-        }
-
-      //@ts-ignore
-      const placesService = new google.maps.places.PlacesService(document.createElement('div'));
-      placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: any) =>{
-        if(response && response.length && response[0].photos && response[0].photos.length){
-          const bgImage = response[0].photos[0].getUrl();
-          eventBackgroundImage!.setAttribute('src', bgImage);
-        }
-      });
-      }, 500);
+        }, 500);
+      }else{
+        //@ts-ignore
+        const placesService = new google.maps.places.PlacesService(document.createElement('div'));
+        placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: any) =>{
+          if(response && response.length && response[0].photos && response[0].photos.length){
+            const bgImage = response[0].photos[0].getUrl();
+            var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
+            eventBackgroundImage!.setAttribute('src', bgImage);
+          }
+        });
+      }
     }
   }
   isConference(event: Event){
