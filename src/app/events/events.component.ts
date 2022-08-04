@@ -195,7 +195,7 @@ ${eventUrl}`);
         setTimeout(() => {
           var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
           eventBackgroundImage!.setAttribute('src', '../../assets/google-meet.jpg');
-        }, 500);
+        }, 200);
       }else{
         //@ts-ignore
         const placesService = new google.maps.places.PlacesService(document.createElement('div'));

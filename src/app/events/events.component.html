@@ -6,7 +6,7 @@
   <div class="{{isSelectedClass(event)}}" (click)="selectEvent(event)" role="button" *ngFor="let event of events">
     <div [id]="'e'+event.id" class="event-details">
       <div class="row">
-        <img  [hidden]="!event.expanded" class="background-image" />
+        <img  [hidden]="!event.expanded" class="background-image" src="../../assets/loading.gif" />
         <div *ngIf="event.expanded" class="event-buttons col-4 mt-4">
           <div class="row">
             <fa-icon *ngIf="!replied" [icon]="['fas', 'people-line']" mwlConfirmationPopover
