@@ -13,6 +13,7 @@ import { Content } from '../models/content.model';
 import { EventCreate } from '../models/event-create.model';
 import { EventType } from '../models/event-type.model';
 import { Event } from '../models/event.model';
+import { Scenario } from '../models/scenario.model';
 
 @Component({
   selector: 'app-event-create',
@@ -35,13 +36,21 @@ export class EventCreateComponent {
               private activeRoute: ActivatedRoute) {
                 this.placesOptions.componentRestrictions = { country: 'br' };
                 this.setContents();
+                this.setScenarios();
   }
   getUsername(){
     return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
   }
+  setScenarios(){
+    this.divagandoApiService.getScenarios(this.getUsername(), (scenarios: Scenario[])=>{
+      if(scenarios.length){
+        this.eventCreate.titles = scenarios.map(s=>s.title);
+        this.eventCreate.locations = [...new Set(scenarios.filter(s=>s.location).map(s=>s.location!))];
+      }
+    });
+  }
   setContents(){
-    const username = this.getUsername();
-    this.divagandoApiService.getContents('event-create', username, (contents: Content[])=>{
+    this.divagandoApiService.getContents('event-create', this.getUsername(), (contents: Content[])=>{
       let content = contents.find(e=>e.key == 'what');
       if(content) this.eventCreate.what = content.text;
       content = contents.find(e=>e.key == 'whatSuggestion');
@@ -56,11 +65,6 @@ export class EventCreateComponent {
       if(content) this.eventCreate.evaluationMax = Number.parseInt(content.text);
       content = contents.find(e=>e.key == 'currency');
       if(content) this.eventCreate.currency = content.text;
-
-      let contentsFiltered = contents.filter(e=>e.key.includes('title')).map(e=>e.text);
-      if(contentsFiltered.length) this.eventCreate.titles = contentsFiltered;
-      contentsFiltered = contents.filter(e=>e.key.includes('location')).map(e=>e.text);
-      if(contentsFiltered.length) this.eventCreate.locations = contentsFiltered;
     });
   }
   init(){

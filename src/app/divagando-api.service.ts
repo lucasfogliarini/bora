@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Account } from './models/account.model';
 import { Content } from './models/content.model';
+import { Scenario } from './models/scenario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,14 @@ export class DivagandoApiService {
 
     this.get(contentsUri, (homeContents: Content[])=>{
        callBack(homeContents);
+    });
+  }
+
+  getScenarios(username: string, callBack: (scenariosCallback: Scenario[]) => void){
+    let scenariosUri = `scenarios?filter=Account/Username eq '${username}' and Enabled eq true`;
+
+    this.get(scenariosUri, (scenarios: Scenario[])=>{
+       callBack(scenarios);
     });
   }
 
