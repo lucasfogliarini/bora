@@ -204,11 +204,12 @@ ${eventUrl}`);
         //@ts-ignore
         const placesService = new google.maps.places.PlacesService(document.createElement('div'));
         placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: any) =>{
+          var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
+          let bgImage = '../../assets/convite_tunelcriativo.jpeg';
           if(response && response.length && response[0].photos && response[0].photos.length){
-            const bgImage = response[0].photos[0].getUrl();
-            var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
-            eventBackgroundImage!.setAttribute('src', bgImage);
+            bgImage = response[0].photos[0].getUrl();
           }
+          eventBackgroundImage!.setAttribute('src', bgImage);
         });
       }
     }
