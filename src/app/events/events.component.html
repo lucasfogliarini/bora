@@ -9,7 +9,7 @@
         <img  [hidden]="!event.expanded" class="background-image" src="../../assets/loading.gif" />
         <div *ngIf="event.expanded" class="event-buttons col-4 mt-4">
           <div class="row">
-            <fa-icon *ngIf="!replied" [icon]="['fas', 'people-line']" mwlConfirmationPopover
+            <fa-icon *ngIf="!replied" [icon]="['fas', 'people-group']" mwlConfirmationPopover
               popoverClass='attendees'
               title="Quem vai... Bora?"
               popoverTitle="Quem vai... Bora?"
@@ -23,7 +23,7 @@
               [isOpen]="isSelected(event)"
               class="col-6">
             </fa-icon>
-            <fa-icon *ngIf="replied" [icon]="['fas', 'people-line']" mwlConfirmationPopover
+            <fa-icon *ngIf="replied" [icon]="['fas', 'people-group']" mwlConfirmationPopover
               popoverClass='attendees'
               title="Quem vai..."
               popoverTitle="Quem vai..."
@@ -99,7 +99,7 @@
         </div>
         <div class="title col-7">{{ event.title?.substring(0, 100) }}</div>
         <div *ngIf="!event.expanded" class="event-buttons-collapsed col-1 mt-2">
-          <fa-icon [icon]="['fas', 'people-line']" class="col-12"></fa-icon>
+          <fa-icon [icon]="['fas', 'people-group']" class="col-12"></fa-icon>
           <fa-icon [icon]="['fab', 'whatsapp']" class="col-12"></fa-icon>
           <fa-icon *ngIf="event.ticketUrl" [icon]="['fas', 'ticket']" class="col-12"></fa-icon>
           <fa-icon [icon]="['fas', 'map-location-dot']" class="col-12"></fa-icon>

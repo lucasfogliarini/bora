@@ -28,6 +28,7 @@ import { faTicket,
         faLock,
         faLockOpen,
         faPeopleLine,
+        faPeopleGroup,
         faUser,
         faAt,
         faCamera,
@@ -159,7 +160,8 @@ export class AppModule {
       faBackward,
       faForward,
       faLeftLong,
-      faHeadset
+      faHeadset,
+      faPeopleGroup
     );
   }
 }
