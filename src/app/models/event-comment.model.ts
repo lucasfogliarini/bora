@@ -1,7 +1,7 @@
 export class EventComment {
-  what?: string = 'Diga o que precisa ...';
+  what?: string = 'Comente ou mude cena ...';
   whatMeeting?: string = 'Escolha um encontro ...';
-  questions = ['Pode ser outro dia?','Onde vai ser?','Posso levar um amigo?', 'O que precisa levar?','Tem onde dormir?', 'O banheiro é limpo?'];
+  questions = ['Posso propor um assunto?','Posso mudar o dia?','Posso mudar o lugar?','Posso levar um(a) amig(a)o?', 'Posso levar o que quiser?','Posso dormir por aí?','Onde vai ser?', 'O banheiro é limpo?'];
   send = 'Comentar';
   success = 'Comentário adicionado no encontro.';
 }
