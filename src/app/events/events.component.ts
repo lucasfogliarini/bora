@@ -102,7 +102,7 @@ export class EventsComponent {
     window.open(url);
   }
   getLocation(event: Event){
-    return event.location ? event.location.substring(0,100) : 'Não informado.';
+    return event.location ? event.location.substring(0,100) : '🤐 Secreto.';
   }
   openCalendar(event: Event){
     window.open(event.googleEventUrl);
@@ -192,12 +192,15 @@ ${eventUrl}`);
   expandEvent(event: Event){
     if(!event.expanded){
       event.expanded = true;
-      if(this.isConference(event)){
+      const isSecret = !event.location;
+      if(this.isConference(event) || isSecret){
+        const imgSrc = this.isConference(event) ? '../../assets/google-meet.jpg' : '../../assets/lugarsecreto.jpeg';
         setTimeout(() => {
           var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
-          eventBackgroundImage!.setAttribute('src', '../../assets/google-meet.jpg');
+          eventBackgroundImage!.setAttribute('src', imgSrc);
         }, 200);
-      }else{
+      }
+      else{
         //@ts-ignore
         const placesService = new google.maps.places.PlacesService(document.createElement('div'));
         placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: any) =>{
