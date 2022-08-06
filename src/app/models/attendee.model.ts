@@ -1,6 +1,7 @@
 export class Attendee {
     id: string;
     username: string;
+    comment: string;
     name: string;
     email: string;
     photo: string;
