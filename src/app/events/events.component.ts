@@ -10,6 +10,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AttendeeReply } from '../models/attendee-reply.model';
 import { MatDialog } from '@angular/material/dialog';
 import { EventCreate } from '../models/event-create.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-events',
@@ -17,6 +18,7 @@ import { EventCreate } from '../models/event-create.model';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent {
+  env = environment;
   events?: Event[] = [];
   eventsLoaded?: Event[];
   eventsMessage?: string = undefined;
@@ -162,11 +164,11 @@ ${eventUrl}`);
     return `<a href="${window.location.origin}/${this.getUser()}">${this.getUser()}</a><br>`;
   }
   partnerInvite(){
-    let message = "Quero ser parceiro do Túnel Criativo!";
+    let message = `Quero ser ${this.env.mainRole} d${this.env.appDefiniteArticle} ${this.env.appName}!`;
     return `<div class='row mt-1'>
                 <small class="col-12 font-weight-bold">
                   <a target='_blank' href='https://api.whatsapp.com/send/?phone=5551980451264&text=${message}'>
-                  Quero ser parceiro do Túnel Criativo ...
+                  ${message} ...
                   </a>
                 </small>
             </div>`;

@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 import { AuthenticationService } from '../authentication.service';
 import { DivagandoApiService } from '../divagando-api.service';
 
@@ -8,18 +9,18 @@ import { DivagandoApiService } from '../divagando-api.service';
   templateUrl: './sidebar-menu.component.html'
 })
 export class SideBarMenuComponent {
-  title = '...';
-
+  title = 'Quem é você?';
   constructor(private divagandoApiService: DivagandoApiService,
               public authService: AuthenticationService,
               private titleService: Title) {
-                this.divagandoApiService.getContentsByDomain('home', homeContents=>{
+                this.titleService.setTitle(environment.appName);
+                /*this.divagandoApiService.getContentsByDomain('home', homeContents=>{
                     let homeTitle = homeContents.filter(e=>e.key == 'title');
                     if(homeTitle.length){
                       this.title = homeTitle[0].text;
                       this.titleService.setTitle(this.title);
                     }
-                });
+                });*/
               }
   openUser(editing: boolean = false){
     var locationPath = this.authService.account?.username;

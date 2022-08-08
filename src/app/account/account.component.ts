@@ -9,6 +9,7 @@ import { EventCreateComponent } from '../event-create/event-create.component';
 import { EventsComponent } from '../events/events.component';
 import { EventCommentComponent } from '../event-comment/event-comment.component';
 import { Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-account',
@@ -16,6 +17,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent {
+  env = environment;
   account = new Account;
   editing: boolean = false;
   pastObserversMessage?: string;
@@ -55,7 +57,7 @@ export class AccountComponent {
                 let user = this.getUser();
                 this.divagandoApiService.getAccount(user, (account: Account)=>{
                   this.account = account;
-                  this.title.setTitle(`${account.name} no Túnel Criativo`);
+                  this.title.setTitle(`${account.name} no ${this.env.appName}`);
                   this.setObservers();
                 });
 

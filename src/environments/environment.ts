@@ -3,6 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  appName: "presentesempre.org",
+  appDefiniteArticle: 'a',
+  mainRole: 'Protagonista',
+  secondRole: 'Ator',
   production: false,
   divagandoApi: 'https://api.divagando.org/',
   //divagandoApi: 'https://localhost:5001/',//must use /

@@ -1,4 +1,8 @@
 export const environment = {
   production: true,
-  divagandoApi: 'https://api.divagando.org/',//must use /
+  appName: "presentesempre.org",
+  appDefiniteArticle: 'a',
+  mainRole: 'Protagonista',
+  secondRole: 'Ator',
+  divagandoApi: 'https://api.divagando.org/'
 };
