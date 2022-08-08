@@ -106,8 +106,11 @@ export class EventCreateComponent {
         this.getCurrentPlace();
       }
       if(bora){
-        this.toastr.success('Bora então!');
         this.close();
+        if(this.newEvent.public)
+          this.toastr.success('Bora então!');
+        else
+          this.toastr.success('Marcado na agenda, se tiver público eu me comprometo.');
       }
     });
   }
