@@ -167,7 +167,7 @@ ${eventUrl}`);
     let message = `Quero ser ${this.env.mainRole} d${this.env.appDefiniteArticle} ${this.env.appName}!`;
     return `<div class='row mt-1'>
                 <small class="col-12 font-weight-bold">
-                  <a target='_blank' href='https://api.whatsapp.com/send/?phone=5551980451264&text=${message}'>
+                  <a target='_blank' href='https://api.whatsapp.com/send/?phone=${this.env.adminPhone}&text=${message}'>
                   ${message} ...
                   </a>
                 </small>

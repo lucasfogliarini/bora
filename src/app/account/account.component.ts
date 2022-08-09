@@ -79,7 +79,7 @@ export class AccountComponent {
    });
   }
   whyRevokeCalendar(){
-    var whatsAppApi = `https://api.whatsapp.com/send?phone=5551992364249&text=Olá, estou revogando meu acesso ao Google Agenda por que ...`;
+    var whatsAppApi = `https://api.whatsapp.com/send?phone=${environment.adminPhone}&text=Olá, estou revogando meu acesso ao Google Agenda por que ...`;
     var aHref = `<a href='${whatsAppApi}' target='_blank'>Por que está revogando acesso a sua agenda?</a>`;
     return aHref;
   }
