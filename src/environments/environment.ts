@@ -7,7 +7,7 @@ export const environment = {
   appName: "presentesempre.org",
   appDefiniteArticle: 'a',
   mainRole: 'Protagonista',
-  secondRole: 'Ator',
+  secondRole: 'Artista',
   production: false,
   divagandoApi: 'https://api.divagando.org/',
   //divagandoApi: 'https://localhost:5001/',//must use /

@@ -4,6 +4,6 @@ export const environment = {
   appName: "presentesempre.org",
   appDefiniteArticle: 'a',
   mainRole: 'Protagonista',
-  secondRole: 'Ator',
+  secondRole: 'Artista',
   divagandoApi: 'https://api.divagando.org/'
 };
