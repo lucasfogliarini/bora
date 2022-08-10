@@ -3,12 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  adminPhone: "5551992364249",
-  appName: "presentesempre.org",
-  appDefiniteArticle: 'a',
-  mainRole: 'Protagonista',
-  secondRole: 'Artista',
   production: false,
+  appName: "vamo.chat",
+  adminPhone: "5551992364249",
+  mainRole: 'Protagonista',
+  secondRole: 'Expectador',
+  appDefiniteArticle: 'o',
   divagandoApi: 'https://api.divagando.org/',
   //divagandoApi: 'https://localhost:5001/',//must use /
 };

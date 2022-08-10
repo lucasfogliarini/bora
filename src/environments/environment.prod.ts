@@ -1,9 +1,9 @@
 export const environment = {
   production: true,
+  appName: "vamo.chat",
   adminPhone: "5551992364249",
-  appName: "presentesempre.org",
-  appDefiniteArticle: 'a',
   mainRole: 'Protagonista',
-  secondRole: 'Artista',
+  secondRole: 'Expectador',
+  appDefiniteArticle: 'o',
   divagandoApi: 'https://api.divagando.org/'
 };

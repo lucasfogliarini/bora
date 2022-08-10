@@ -9,7 +9,7 @@ import { DivagandoApiService } from '../divagando-api.service';
   templateUrl: './sidebar-menu.component.html'
 })
 export class SideBarMenuComponent {
-  title = 'Quem é você?';
+  title = 'Vamo';
   constructor(private divagandoApiService: DivagandoApiService,
               public authService: AuthenticationService,
               private titleService: Title) {
