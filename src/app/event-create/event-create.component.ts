@@ -75,7 +75,6 @@ export class EventCreateComponent {
     if(jwt){
       var user = this.getUsername();
       this.suiteDiamond();
-      this.espumante();
       this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
         this.event = event;
         this.newEvent = new Event;
@@ -173,17 +172,6 @@ export class EventCreateComponent {
       Para cada pessoa adicional será cobrado R$90(taxa cobrada pelo Motel).
       Tem dois sofás confortáveis, caso alguém queira ir junto e precise dormir.`;
       this.newEvent.location = 'Motel Porto dos Casais';
-    }
-  }
-  espumante(){
-    if(this.newEvent.title?.includes('Moscatel')){
-      this.newEvent.description =
-      `Quero um <a href='https://www.vinicolagaribaldi.com.br/produto/espumante-garibaldi-moscatel/113'>Espumante Garibaldi Moscatel</a>: 
-      - R$50 custo do produto
-      - Total: <b>R$50</b>
-      - Pagarei antecipado via pix: 51992364249
-      - Serei estornada(o) caso não seja entregue até a data proposta.`;
-      this.newEvent.location = 'Divagando no Camarote';
     }
   }
 }
