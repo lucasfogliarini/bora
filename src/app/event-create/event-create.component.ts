@@ -119,7 +119,7 @@ export class EventCreateComponent {
   evaluate(){
     var user = this.activeRoute.snapshot.params['user'];
     let attendeeReply = new AttendeeReply();
-    attendeeReply.comment = this.newEvent.evaluation ? `${this.eventCreate.currency}${this.newEvent.evaluation}` : 'Não sei quanto vale.';
+    attendeeReply.comment = this.newEvent.evaluation ? `${this.eventCreate.currency}${this.newEvent.evaluation}` : '';
     this.divagandoApiService.patch(`events/${this.event!.id}/reply?user=${user}`, attendeeReply,  (event: Event) => {
       this.event!.evaluation = this.newEvent.evaluation || this.eventCreate.evaluationDefault;
     }, async (errorResponse: HttpErrorResponse)=>{
