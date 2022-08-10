@@ -91,7 +91,7 @@
               popoverTitle="Abrir no Google Agenda?"
               placement="right"
               confirmText="Abrir"
-              popoverMessage="{{event.googleEventUrl.substring(0,50)}}..."
+              popoverMessage=""
               (confirm)="openCalendar(event)"
               role="button">{{ event.start | date: 'dd/MM/yy' }} {{ event.start | date: 'EE' : '' : 'pt-BR' }}
           </div>
