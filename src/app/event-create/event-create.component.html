@@ -32,7 +32,7 @@
     <h6>{{eventCreate.evaluation}}</h6>
     <mat-slider [(ngModel)]="newEvent.evaluation" min="2" max="{{eventCreate.evaluationMax}}" step="2" thumbLabel></mat-slider>
     <div class="buttonEvent">
-      <button (click)="evaluate()" type="button" class="btn btn-white mr-2">Não sei</button>
+      <button (click)="evaluate()" type="button" class="btn btn-white mr-2">{{eventCreate.neutral}}</button>
       <button [disabled]="!newEvent.evaluation" (click)="evaluate()" type="button" class="btn btn-dark">{{eventCreate.currency}} {{newEvent.evaluation}}</button>
     </div>
   </div>
@@ -62,7 +62,7 @@
       <label class="custom-control-label" for="event-public" role="button">{{protectionLabel()}}</label>
     </div>
     <div class="buttonEvent">
-      <button (click)="update(true)" type="button" class="btn btn-white mr-2">Não sei</button>
+      <button (click)="update(true)" type="button" class="btn btn-white mr-2">{{eventCreate.neutral}}</button>
       <button [disabled]="!newEvent.start" (click)="update(true)" type="button" class="btn btn-dark">🗓 Agendar</button>
     </div>
   </div>

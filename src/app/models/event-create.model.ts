@@ -6,6 +6,7 @@ export class EventCreate {
   evaluationMax?: number = 30;
   evaluationDefault: number = 2;
   currency?: string = '👥';
+  neutral: string = 'Tanto faz';//Indiferente
   whatSuggestion: string = 'Tomar um café ...';
   titles = ['Conversar'];
   static conferenceTitle = '💻 Google Meet';
