@@ -11,4 +11,5 @@ export class EventCreate {
   titles = ['Conversar'];
   static conferenceTitle = '💻 Google Meet';
   locations = [EventCreate.conferenceTitle];
+  success = 'Bora então!';
 }

@@ -100,17 +100,17 @@ export class EventCreateComponent {
     this.newEvent.eventType = this.getEventType();
     this.divagandoApiService.patch<Event>(`events/${this.event!.id}?user=${user}`, this.newEvent, (event) => {
       this.event = event;
-      this.newEvent = new Event();
       if(!event.location){
         this.getCurrentPlace();
       }
       if(bora){
         this.close();
         if(this.newEvent.public)
-          this.toastr.success('Bora então!');
+          this.toastr.success(this.eventCreate.success);
         else
-          this.toastr.success('Marcado na agenda, se tiver público eu me comprometo.');
+          this.toastr.success(`${this.eventCreate.success}, posso convidar alguém?`);
       }
+      this.newEvent = new Event();
     });
   }
   addressChange(){
