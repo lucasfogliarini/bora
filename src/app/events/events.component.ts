@@ -126,7 +126,7 @@ export class EventsComponent {
 `${event.title}
 ${dateTime}
 ${event.location}
-Bora 👇🏼
+Confirme presença 👇🏼
 ${eventUrl}`);
 
     var whatsAppLink = `https://api.whatsapp.com/send/?text=${whatsappText}`;
