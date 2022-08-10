@@ -207,7 +207,7 @@ ${eventUrl}`);
         const placesService = new google.maps.places.PlacesService(document.createElement('div'));
         placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: any) =>{
           var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
-          let bgImage = '../../assets/convite_tunelcriativo.jpeg';
+          let bgImage = '../../assets/bg_convite.jpeg';
           if(response && response.length && response[0].photos && response[0].photos.length){
             bgImage = response[0].photos[0].getUrl();
           }
