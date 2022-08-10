@@ -11,6 +11,7 @@ import { AttendeeReply } from '../models/attendee-reply.model';
 import { MatDialog } from '@angular/material/dialog';
 import { EventCreate } from '../models/event-create.model';
 import { environment } from 'src/environments/environment';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-events',
@@ -30,6 +31,7 @@ export class EventsComponent {
               private router: Router,
               private activeRoute: ActivatedRoute,
               private domSanitizer: DomSanitizer,
+              private datePipe: DatePipe,
               private title: Title) {
               this.getEvents();
   }
@@ -72,6 +74,29 @@ export class EventsComponent {
     }, (errorResponse: HttpErrorResponse)=>{
         this.setEvents([]);
     });
+  }
+  transformDate(event: Event){
+    const eventStart = new Date(event.start);
+    const now = new Date();
+    eventStart.setHours(eventStart.getHours() - 1);
+    const today = new Date();
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    if(eventStart.toLocaleString() < now.toLocaleString())
+      return 'Agora';
+    else if(eventStart.toDateString() == today.toDateString())
+      return 'Hoje';
+      else if(eventStart.toDateString() == tomorrow.toDateString())
+      return 'Amanhã';
+    else
+      return this.datePipe.transform(event.start, 'dd/MM/yy');
+  }
+  transformTime(event: Event){
+    return this.datePipe.transform(event.start, 'HH:mm');
+  }
+  transformDateEE(event: Event){
+    return this.datePipe.transform(event.start, 'EE', '', 'pt-BR');
   }
   reply(eventId: string, response: string){
     let user = this.getUser();

@@ -93,9 +93,9 @@
               confirmText="Abrir"
               popoverMessage=""
               (confirm)="openCalendar(event)"
-              role="button">{{ event.start | date: 'dd/MM/yy' }} {{ event.start | date: 'EE' : '' : 'pt-BR' }}
+              role="button">{{transformDate(event)}} <br /> {{ transformDateEE(event) }}
           </div>
-          <span style="font-size: small;">{{ event.start | date: 'HH:mm' }}</span>
+          <span style="font-size: small;">{{transformTime(event)}}</span>
         </div>
         <div class="title col-7">{{ event.title?.substring(0, 100) }}</div>
         <div *ngIf="!event.expanded" class="event-buttons-collapsed col-1 mt-2">
