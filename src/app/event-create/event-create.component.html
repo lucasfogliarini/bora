@@ -9,7 +9,7 @@
         {{title}}
       </label>
     </div>
-    <input [(ngModel)]="newEvent.title" class="form-control mt-2" type="text" id="title" placeholder="{{eventCreate.whatSuggestion}}">
+    <input [(ngModel)]="newEvent.title" class="form-control mt-2" type="text" id="title" [placeholder]="eventCreate.titleSuggestion">
     <div class="buttonEvent">
       <button [disabled]="!newEvent.title" (click)="create()" type="button" class="btn btn-dark">Próximo</button>
     </div>
@@ -52,7 +52,7 @@
         [showSpinners]="true"
         [stepMinute]="10"
         [touchUi]="true"
-        [defaultTime]="[20,0,0]"
+        [defaultTime]="eventCreate.whenDefault"
       >
       </ngx-mat-datetime-picker>
     </mat-form-field>

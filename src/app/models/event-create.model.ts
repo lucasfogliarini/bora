@@ -1,15 +1,26 @@
 export class EventCreate {
+  //what
+  //
   what?: string = 'O que vamos fazer?';
-  where?: string = 'Onde?';
-  when?: string = 'Quando?';
-  evaluation?: string = 'Quantas pessoas?';
-  evaluationMax?: number = 30;
-  evaluationDefault: number = 2;
-  currency?: string = '👥';
-  neutral: string = 'Tanto faz';//Indiferente
-  whatSuggestion: string = 'Tomar um café ...';
   titles = ['Conversar'];
-  static conferenceTitle = '💻 Google Meet';
+  titleSuggestion: string = 'Tomar um café ...';
+  static conferenceTitle = '💻 Google Meet';  
+  //
+  //where
+  where?: string = 'Onde?';
   locations = [EventCreate.conferenceTitle];
+  //
+  //when
+  when?: string = 'Quando?';
+  whenDefault = [18, 0, 0];
+  //
+  //when and how much 
+  evaluation?: string = 'Quantas pessoas?';
+  evaluationDefault: number = 2;
+  evaluationMax?: number = 30;
+  currency?: string = '👥';
+  //
+  //others
+  neutral: string = 'Tanto faz';//Indiferente
   success = 'Bora então!';
 }

@@ -53,8 +53,8 @@ export class EventCreateComponent {
     this.divagandoApiService.getContents('event-create', this.getUsername(), (contents: Content[])=>{
       let content = contents.find(e=>e.key == 'what');
       if(content) this.eventCreate.what = content.text;
-      content = contents.find(e=>e.key == 'whatSuggestion');
-      if(content) this.eventCreate.whatSuggestion = content.text;
+      content = contents.find(e=>e.key == 'titleSuggestion');
+      if(content) this.eventCreate.titleSuggestion = content.text;
       content = contents.find(e=>e.key == 'where');
       if(content) this.eventCreate.where = content.text;
       content = contents.find(e=>e.key == 'when');
@@ -108,7 +108,7 @@ export class EventCreateComponent {
         if(this.newEvent.public)
           this.toastr.success(this.eventCreate.success);
         else
-          this.toastr.success(`${this.eventCreate.success}, posso convidar alguém?`);
+          this.toastr.success(`${this.eventCreate.success}`);
       }
       this.newEvent = new Event();
     });
