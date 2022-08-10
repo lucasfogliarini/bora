@@ -7,7 +7,7 @@ export const environment = {
   appName: "vamo.chat",
   adminPhone: "5551992364249",
   mainRole: 'Protagonista',
-  secondRole: 'Expectador',
+  secondRole: 'Espectador',
   appDefiniteArticle: 'o',
   divagandoApi: 'https://api.divagando.org/',
   //divagandoApi: 'https://localhost:5001/',//must use /
