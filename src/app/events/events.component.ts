@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EventCreate } from '../models/event-create.model';
 import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
+import { PlaceResult } from '../models/place-result.model';
 
 @Component({
   selector: 'app-events',
@@ -236,11 +237,13 @@ ${eventUrl}`);
       else{
         //@ts-ignore
         const placesService = new google.maps.places.PlacesService(document.createElement('div'));
-        placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: any) =>{
+        placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: PlaceResult[]) =>{
           var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
           let bgImage = '../../assets/bg_convite.jpeg';
           if(response && response.length && response[0].photos && response[0].photos.length){
-            bgImage = response[0].photos[0].getUrl();
+            const photo = response[0].photos[0].getUrl();
+            if(photo)
+              bgImage = photo;
           }
           eventBackgroundImage!.setAttribute('src', bgImage);
         });
