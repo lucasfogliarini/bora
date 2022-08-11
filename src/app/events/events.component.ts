@@ -77,13 +77,11 @@ export class EventsComponent {
   }
   transformDate(event: Event){
     const eventStart = new Date(event.start);
-    const now = new Date();
-    eventStart.setHours(eventStart.getHours() - 1);
     const today = new Date();
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
 
-    if(eventStart.toLocaleString() < now.toLocaleString())
+    if(this.isNow(eventStart))
       return 'Agora';
     else if(eventStart.toDateString() == today.toDateString())
       return 'Hoje';
@@ -91,6 +89,14 @@ export class EventsComponent {
       return 'Amanhã';
     else
       return this.datePipe.transform(event.start, 'dd/MM/yy');
+  }
+  isNow(date: Date){
+    const now = new Date();
+    date.setHours(date.getHours() - 1);
+    return date.getFullYear() == now.getFullYear()
+           && date.getMonth() == now.getMonth()
+           && date.getDate() == now.getDate()
+           && date.getTime() < now.getTime();
   }
   transformTime(event: Event){
     return this.datePipe.transform(event.start, 'HH:mm');
