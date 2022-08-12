@@ -76,6 +76,14 @@ export class EventsComponent {
         this.setEvents([]);
     });
   }
+  privateEvent(event: Event){
+    this.refreshEvents();
+    this.toastr.success('Encontro privado.');
+  }
+  refreshEvents(){
+    this.getEvents();
+    this.eventsLoaded = undefined;
+  }
   transformDate(event: Event){
     const eventStart = new Date(event.start);
     const today = new Date();

@@ -18,7 +18,7 @@ export class EventCreate {
   evaluation?: string = 'Quantas pessoas?';
   evaluationDefault: number = 2;
   evaluationMax?: number = 30;
-  currency?: string = '👥';
+  currency?: string = '👨‍👨‍👧‍👦';
   //
   //others
   neutral: string = 'Tanto faz';//Indiferente

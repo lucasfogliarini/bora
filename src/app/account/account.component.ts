@@ -90,8 +90,7 @@ export class AccountComponent {
       return this.eventCreate ? this.eventCreate.inProgress() : false;
   }
   refreshEvents(){
-    this.events.getEvents();
-    this.events.eventsLoaded = undefined;
+    this.events.refreshEvents();
   }
   setObservers(){
     if(this.account.calendarAuthorized){

@@ -89,10 +89,12 @@
           <div class="date" mwlConfirmationPopover
               title="Google Agenda"
               popoverTitle="Abrir no Google Agenda?"
+              popoverMessage="<b>Abrir</b> no Google Agenda <br/><b>Privar</b> encontro"
               placement="right"
               confirmText="Abrir"
-              popoverMessage=""
+              cancelText="Privar"
               (confirm)="openCalendar(event)"
+              (cancel)="privateEvent(event)"
               role="button">{{transformDate(event)}} <br /> {{ transformDateEE(event) }}
           </div>
           <span style="font-size: small;">{{transformTime(event)}}</span>
