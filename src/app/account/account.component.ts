@@ -75,7 +75,7 @@ export class AccountComponent {
   }
   changePartnership(){
     this.divagandoApiService.patch<Account>(`accounts`, this.account, () => {
-      this.toastr.success('Parceria atualizada.');
+      this.toastr.success('Perfil atualizado.');
    });
   }
   whyRevokeCalendar(){
