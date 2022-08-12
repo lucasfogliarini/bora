@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Account } from './models/account.model';
 import { Content } from './models/content.model';
 import { Scenario } from './models/scenario.model';
+import { Event } from './models/event.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,9 @@ export class DivagandoApiService {
     this.get(contentsUri, (homeContents: Content[])=>{
        callBack(homeContents);
     });
+  }
+  patchEvent(user: string, id: string, event: Event, callBack: (event: Event) => void){
+    this.patch<Event>(`events/${id}?user=${user}`, event, callBack);    
   }
 
   getScenarios(username: string, callBack: (scenariosCallback: Scenario[]) => void){

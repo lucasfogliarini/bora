@@ -98,7 +98,7 @@ export class EventCreateComponent {
   update(bora?: boolean){
     var user = this.getUsername();
     this.newEvent.eventType = this.getEventType();
-    this.divagandoApiService.patch<Event>(`events/${this.event!.id}?user=${user}`, this.newEvent, (event) => {
+    this.divagandoApiService.patchEvent(user,this.event!.id, this.newEvent, (event: Event) => {
       this.event = event;
       if(!event.location){
         this.getCurrentPlace();
