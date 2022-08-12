@@ -77,8 +77,9 @@ export class EventsComponent {
     });
   }
   privateEvent(event: Event){
-    event.public = false;
-    this.divagandoApiService.patchEvent(this.getUser(), event.id, event, (eventUpdated: Event) => {
+    const eventPrivate = new Event();
+    eventPrivate.public = false;
+    this.divagandoApiService.patchEvent(this.getUser(), event.id, eventPrivate, (eventUpdated: Event) => {
       this.toastr.success('Encontro privado com sucesso.');
       this.refreshEvents();
     });
