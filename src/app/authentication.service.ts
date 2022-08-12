@@ -49,7 +49,10 @@ export class AuthenticationService {
   }
   signInWithGoogle(afterGetJwt?: (dialog: MatDialog) => void){
     this.afterGetJwt = afterGetJwt;
-    this.dialog.open(AuthenticationDialogComponent);
+    this.dialog.open(AuthenticationDialogComponent, {
+      enterAnimationDuration: '1s',
+      exitAnimationDuration: '1s',
+    });
   }
 
   async getAccessToken(): Promise<string> {
