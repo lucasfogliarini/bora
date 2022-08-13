@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  appName: "vamo.chat",
+  appName: "vamo.fun",
   adminPhone: "5551992364249",
   mainRole: 'Protagonista',
   secondRole: 'Espectador',
