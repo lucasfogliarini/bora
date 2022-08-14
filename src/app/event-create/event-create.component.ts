@@ -1,8 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { ActivatedRoute } from '@angular/router';
 import { Options } from 'ngx-google-places-autocomplete/objects/options/options';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
@@ -26,6 +25,7 @@ export class EventCreateComponent {
   account?: Account;
   placesOptions: Options = new Options;
   eventCreate: EventCreate = new EventCreate;
+  @Output() eventUpdated: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('googlePlace')
   googlePlace?: ElementRef;
@@ -78,6 +78,7 @@ export class EventCreateComponent {
       this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
         this.event = event;
         this.newEvent = new Event;
+        this.eventUpdated.emit(event);
       });
     }else{
       this.authService.signInWithGoogle((dialog: MatDialog)=>{
@@ -110,6 +111,7 @@ export class EventCreateComponent {
         else
           this.toastr.success(`${this.eventCreate.success}`);
       }
+      this.eventUpdated.emit(event);
       this.newEvent = new Event();
     });
   }

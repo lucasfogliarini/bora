@@ -28,6 +28,10 @@ export class AccountComponent {
   set eventCreateChield(eventCreate: EventCreateComponent) {
     if(eventCreate != undefined){
       this.eventCreate = eventCreate;
+      this.eventCreate.eventUpdated.subscribe((event: Event)=>{
+        if(event.public)
+          this.refreshEvents();
+      });
       this.eventCreate.account = this.account;
       const callsOpen = this.activeRoute.snapshot.queryParams['callsOpen'] != undefined;
       if(this.account.partnerCallsOpen || callsOpen)
