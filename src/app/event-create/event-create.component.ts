@@ -107,7 +107,7 @@ export class EventCreateComponent {
       if(bora){
         this.close();
         if(this.newEvent.public)
-          this.toastr.success(this.eventCreate.success);
+          this.toastr.success(`${this.eventCreate.success} Compartilha no Whatsapp 👇`);
         else
           this.toastr.success(`${this.eventCreate.success}`);
       }
