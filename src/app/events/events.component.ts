@@ -88,6 +88,10 @@ export class EventsComponent {
     this.getEvents();
     this.eventsLoaded = undefined;
   }
+  isDay(event: Event){
+    const eventStart = new Date(event.start);
+    return eventStart.getHours() >= 6 && eventStart.getHours() < 18;
+  }
   transformDate(event: Event){
     const eventStart = new Date(event.start);
     const today = new Date();
@@ -112,7 +116,8 @@ export class EventsComponent {
            && date.getTime() < now.getTime();
   }
   transformTime(event: Event){
-    return this.datePipe.transform(event.start, 'HH:mm');
+    const icon = this.isDay(event) ? '🌞': '🌒';
+    return `${icon} ${this.datePipe.transform(event.start, 'HH:mm')}` ;
   }
   transformDateEE(event: Event){
     return this.datePipe.transform(event.start, 'EE', '', 'pt-BR');
