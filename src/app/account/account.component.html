@@ -18,6 +18,9 @@
           <li *ngIf="account.spotify">
             <a class="nav-link" target="_blank" href="https://open.spotify.com/user/{{account.spotify}}" role="button"><fa-icon [icon]="['fab','spotify']"></fa-icon></a>
           </li>
+          <li *ngIf="account.youTube">
+            <a class="nav-link" target="_blank" href="https://www.youtube.com/channel/{{account.youTube}}" role="button"><fa-icon [icon]="['fab','youtube']"></fa-icon></a>
+          </li>
         </ul>
       </nav>
       <h3 *ngIf="!account">Usuário não encontrado</h3>

@@ -13,5 +13,6 @@ export class Account {
     instagram: string;
     spotify: string;
     linkedin: string;
+    youTube: string;
     accountability: string;
 }
