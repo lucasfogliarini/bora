@@ -10,7 +10,6 @@ import { Account } from '../models/account.model';
 import { AttendeeReply } from '../models/attendee-reply.model';
 import { Content } from '../models/content.model';
 import { EventCreate } from '../models/event-create.model';
-import { EventType } from '../models/event-type.model';
 import { Event } from '../models/event.model';
 import { Scenario } from '../models/scenario.model';
 
@@ -87,18 +86,11 @@ export class EventCreateComponent {
       });
     }
   }
-  getEventType(){
-    if(this.newEvent.title){
-      return window.location.origin.includes('tunel') ? EventType.Career : EventType.Party;
-    }
-    return undefined;
-  }
   protectionLabel(){
     return this.newEvent.public ? 'Público' : 'Privado';
   }
   update(bora?: boolean){
     var user = this.getUsername();
-    this.newEvent.eventType = this.getEventType();
     this.divagandoApiService.patchEvent(user,this.event!.id, this.newEvent, (event: Event) => {
       this.event = event;
       if(!event.location){

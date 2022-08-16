@@ -65,12 +65,6 @@ export class EventsComponent {
         this.selectEvent(currentEvent);
         var eIndex = eventsLoaded.indexOf(currentEvent);
         this.arrayMove(this.events!, eIndex, 0);
-      }else{
-        const eType = this.activeRoute.snapshot.queryParams['eType'];
-        if(eType){
-          let eventsFiltered = this.events!.filter(e=>e.eventType == eType);
-          this.setEvents(eventsFiltered);
-        }
       }
     }, (errorResponse: HttpErrorResponse)=>{
         this.setEvents([]);
