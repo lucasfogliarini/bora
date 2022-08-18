@@ -7,7 +7,7 @@ export class Account {
     isPartner: boolean;
     partnerCommentsEnabled: boolean;
     partnerCallsOpen: boolean;
-    partnerCallsCanBePublic: boolean;
+    eventVisibility: EventVisibility;
     photo: string;
     whatsApp: string;
     instagram: string;
@@ -15,4 +15,11 @@ export class Account {
     linkedin: string;
     youTube: string;
     accountability: string;
+}
+
+export enum EventVisibility
+{
+    Both = 0,
+    PublicOnly = 1,
+    PrivateOnly = 2,
 }

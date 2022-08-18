@@ -6,7 +6,7 @@ import { Options } from 'ngx-google-places-autocomplete/objects/options/options'
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 import { DivagandoApiService } from '../divagando-api.service';
-import { Account } from '../models/account.model';
+import { Account, EventVisibility } from '../models/account.model';
 import { AttendeeReply } from '../models/attendee-reply.model';
 import { Content } from '../models/content.model';
 import { EventCreate } from '../models/event-create.model';
@@ -87,6 +87,7 @@ export class EventCreateComponent {
     }
   }
   protectionLabel(){
+    this.newEvent.public = this.account?.eventVisibility == EventVisibility.PublicOnly;
     return this.newEvent.public ? 'Público' : 'Privado';
   }
   update(bora?: boolean){

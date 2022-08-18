@@ -58,7 +58,7 @@
     </mat-form-field>
 
     <div id="event-public-switch" class="custom-control custom-switch mt-3">
-      <input [disabled]="account?.partnerCallsCanBePublic != true" id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
+      <input [disabled]="account?.eventVisibility != 0" id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
       <label class="custom-control-label" for="event-public" role="button">{{protectionLabel()}}</label>
     </div>
     <div class="buttonEvent">
