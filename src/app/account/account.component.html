@@ -83,6 +83,10 @@
           <fa-icon class="mr-2" [icon]="['fas','camera']"></fa-icon>
           <button (click)="openGoogleConta()" class="btn btn-dark form-control">Alterar foto no Google</button>
         </div>
+        <div *ngIf="account?.username == 'lucasfogliarini'" class="d-flex mb-2">
+          <fa-icon class="mr-2" [icon]="['fas','camera-retro']"></fa-icon>
+          <a href="/scenarios" class="btn btn-dark form-control">Cenários</a>
+        </div>
         <button (click)="updateAccount()" class="btn-dark btn">Salvar</button>
         <button (click)="editing=false" class="btn-white btn">Cancelar</button>
       </div>

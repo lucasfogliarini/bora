@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DivagandoApiService } from '../divagando-api.service';
@@ -11,7 +12,6 @@ import { Scenario } from '../models/scenario.model';
 })
 export class ScenariosComponent {
   scenarios?: Scenario[];
-  scenario = new Scenario;
   constructor(private divagandoApiService: DivagandoApiService,
               private toastr: ToastrService,
               private activeRoute: ActivatedRoute) {
@@ -25,10 +25,13 @@ setScenarios(){
       this.scenarios = scenarios;
     });
   }
-toggle(scenarioId: number){
-  this.divagandoApiService.patch(`scenarios/${scenarioId}`, this.scenario, (event: Event) => {
-    this.toastr.success(`Título alterado.`);
-  }, async (errorResponse: HttpErrorResponse)=>{
+toggle(scenarioId: number, enabled: boolean){
+  const scenario = new Scenario;
+  scenario.id = scenarioId;
+  scenario.enabled = enabled;
+  this.divagandoApiService.patch(`scenarios/${scenarioId}`, scenario, (event: Event) => {
+      this.toastr.success(`Título alterado.`);
+    }, async (errorResponse: HttpErrorResponse)=>{
     this.toastr.error(`Erro ao alterar o título.`);
   });
 }

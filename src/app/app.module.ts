@@ -40,6 +40,7 @@ import { faTicket,
         faBackward,
         faForward,
         faLeftLong,
+        faCameraRetro,
         faHeadset } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { AccountComponent } from './account/account.component';
@@ -169,7 +170,8 @@ export class AppModule {
       faForward,
       faLeftLong,
       faHeadset,
-      faPeopleGroup
+      faPeopleGroup,
+      faCameraRetro
     );
   }
 }
