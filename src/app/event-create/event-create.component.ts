@@ -87,7 +87,6 @@ export class EventCreateComponent {
     }
   }
   protectionLabel(){
-    this.newEvent.public = this.account?.eventVisibility == EventVisibility.PublicOnly;
     return this.newEvent.public ? 'Público' : 'Privado';
   }
   update(bora?: boolean){
@@ -106,6 +105,7 @@ export class EventCreateComponent {
       }
       this.eventUpdated.emit(event);
       this.newEvent = new Event();
+      this.newEvent.public = this.account?.eventVisibility == EventVisibility.PublicOnly;
     });
   }
   addressChange(){
