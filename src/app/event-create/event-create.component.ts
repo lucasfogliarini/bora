@@ -24,6 +24,7 @@ export class EventCreateComponent {
   account?: Account;
   placesOptions: Options = new Options;
   eventCreate: EventCreate = new EventCreate;
+  scenarios?: Scenario[];
   @Output() eventUpdated: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('googlePlace')
@@ -42,6 +43,7 @@ export class EventCreateComponent {
   }
   setScenarios(){
     this.divagandoApiService.getScenarios(this.getUsername(), (scenarios: Scenario[])=>{
+      this.scenarios = scenarios;
       if(scenarios.length){
         this.eventCreate.titles = scenarios.map(s=>s.title);
         this.eventCreate.locations = [...new Set(scenarios.filter(s=>s.location).map(s=>s.location!))];
@@ -73,10 +75,10 @@ export class EventCreateComponent {
     const jwt = localStorage.getItem("jwt");
     if(jwt){
       var user = this.getUsername();
-      this.suiteDiamond();
+      this.setScenario();
       this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
         this.event = event;
-        this.newEvent = new Event;
+        this.newEvent = event;
         this.eventUpdated.emit(event);
       });
     }else{
@@ -104,8 +106,7 @@ export class EventCreateComponent {
           this.toastr.success(`${this.eventCreate.success}`);
       }
       this.eventUpdated.emit(event);
-      this.newEvent = new Event();
-      this.newEvent.public = this.account?.eventVisibility == EventVisibility.PublicOnly;
+      this.newEvent = event;
     });
   }
   addressChange(){
@@ -152,21 +153,24 @@ export class EventCreateComponent {
   close(){
     this.event = undefined;
   }
-
-  suiteDiamond(){
-    if(this.newEvent.title?.includes('Suíte Diamond')){
-      this.newEvent.description =
-      `Quero em uma sexta ou sábado compartilhar com vocês uma pernoite(12h) na <a href='https://www.motelportodoscasais.com.br/suite-diamond'>Suíte Diamond</a>: 
-      - <b>Hidro, Piscina, Sauna, Pista com DJ e Bar compartilhados</b>
-      - <b>Suíte ao lado da Sala: R$530 (eu e ...)</b>
-      - Suíte ao lado da Pista: R$530 (Lucas e Luana)
-      - Levarei meu consumo <b>(Água, cerveja, comida)</b>, senão pagarei o preço do bar 
-      - Levarei minhas <b>playlists do Tidal</b>, para evitar confusão na hora de tocar.
-      -Total: <b>R$530 para mim</b> e R$530 para Lucas e Luana
-
-      Para cada pessoa adicional será cobrado R$90(taxa cobrada pelo Motel).
-      Tem dois sofás confortáveis, caso alguém queira ir junto e precise dormir.`;
-      this.newEvent.location = 'Motel Porto dos Casais';
+  setScenario(){
+    const scenario = this.scenarios!.find(e=>e.title == this.newEvent.title);
+    if(scenario?.location){
+      this.newEvent.location = scenario.location;
+    }
+    if(scenario?.description){
+      this.newEvent.description = scenario.description;
+    }
+    var futureDate = new Date();
+    if(scenario?.startsInDays){
+      futureDate.setDate(futureDate.getDate() + scenario!.startsInDays);
+      futureDate.setHours(18);
+    }else{
+      futureDate.setHours(futureDate.getHours() + 1);
+    }
+    this.newEvent.start = futureDate;
+    if(scenario?.public){
+      this.newEvent.public = scenario.public;
     }
   }
 }
