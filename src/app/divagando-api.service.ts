@@ -49,8 +49,16 @@ export class DivagandoApiService {
     this.patch<Event>(`events/${id}?user=${user}`, event, callBack);    
   }
 
-  getScenarios(username: string, callBack: (scenariosCallback: Scenario[]) => void){
+  getEnabledScenarios(username: string, callBack: (scenariosCallback: Scenario[]) => void){
     let scenariosUri = `scenarios?filter=Account/Username eq '${username}' and Enabled eq true`;
+
+    this.get(scenariosUri, (scenarios: Scenario[])=>{
+       callBack(scenarios);
+    });
+  }
+
+  getScenarios(username: string, callBack: (scenariosCallback: Scenario[]) => void){
+    let scenariosUri = `scenarios?filter=Account/Username eq '${username}'`;
 
     this.get(scenariosUri, (scenarios: Scenario[])=>{
        callBack(scenarios);

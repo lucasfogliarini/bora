@@ -61,6 +61,8 @@ import { NgxMatDatetimePickerModule,
          NgxMatNativeDateModule, 
          NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { AuthenticationDialogComponent } from './authentication-dialog/authentication-dialog.component';
+import { ScenariosComponent } from './scenarios/scenarios.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 registerLocaleData(localePT);
 
@@ -79,9 +81,11 @@ registerLocaleData(localePT);
     PrivacyComponent,
     FooterComponent,
     BoraComponent,
+    ScenariosComponent
   ],
   imports: [
     BrowserModule,
+    MatSlideToggleModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
@@ -106,6 +110,7 @@ registerLocaleData(localePT);
     RouterModule.forRoot([
       { path: 'privacy',  component: PrivacyComponent },
       { path: 'bora',  component: BoraComponent },
+      { path: 'scenarios',  component: ScenariosComponent },
       { path: ':user',  component: AccountComponent }
     ]),
     FontAwesomeModule

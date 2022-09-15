@@ -1,8 +1,9 @@
 export class Scenario {
-    id!: string;
+    id!: number;
     title!: string;
     location?: string;
     startsInDays: number;
     public: boolean;
     description: string;
+    enabled: boolean
 }

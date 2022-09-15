@@ -42,7 +42,7 @@ export class EventCreateComponent {
     return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
   }
   setScenarios(){
-    this.divagandoApiService.getScenarios(this.getUsername(), (scenarios: Scenario[])=>{
+    this.divagandoApiService.getEnabledScenarios(this.getUsername(), (scenarios: Scenario[])=>{
       this.scenarios = scenarios;
       if(scenarios.length){
         this.eventCreate.titles = scenarios.map(s=>s.title);
