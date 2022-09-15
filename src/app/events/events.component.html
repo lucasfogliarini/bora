@@ -99,7 +99,10 @@
           </div>
           <span style="font-size: small;">{{transformTime(event)}}</span>
         </div>
-        <div class="title col-7">{{ event.title?.substring(0, 100) }}</div>
+        <div class="title col-7">
+          <div>{{ event.title?.substring(0, 100) }}</div>
+          <small>{{ event.description?.substring(0, 100) }}</small>
+        </div>
         <div *ngIf="!event.expanded" class="event-buttons-collapsed col-1 mt-2">
           <fa-icon [icon]="['fas', 'people-group']" class="col-12"></fa-icon>
           <fa-icon [icon]="['fab', 'whatsapp']" class="col-12"></fa-icon>
