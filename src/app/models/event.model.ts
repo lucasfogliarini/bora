@@ -12,7 +12,7 @@ export class Event {
     youtubeUrl: string;
     chat: string;
     conferenceUrl: string;
-    description: string;
+    description?: string;
     start: Date;
     end: Date;
     deadline: Date;
