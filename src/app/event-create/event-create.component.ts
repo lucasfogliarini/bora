@@ -6,12 +6,13 @@ import { Options } from 'ngx-google-places-autocomplete/objects/options/options'
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 import { DivagandoApiService } from '../divagando-api.service';
-import { Account, EventVisibility } from '../models/account.model';
+import { Account } from '../models/account.model';
 import { AttendeeReply } from '../models/attendee-reply.model';
 import { Content } from '../models/content.model';
 import { EventCreate } from '../models/event-create.model';
 import { Event } from '../models/event.model';
 import { Scenario } from '../models/scenario.model';
+import { Location } from '../models/location.model';
 
 @Component({
   selector: 'app-event-create',
@@ -37,16 +38,21 @@ export class EventCreateComponent {
                 this.placesOptions.componentRestrictions = { country: 'br' };
                 this.setContents();
                 this.setScenarios();
+                this.setLocations();
   }
   getUsername(){
     return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
+  }
+  setLocations(){
+    this.divagandoApiService.getLocations(this.getUsername(), (locations: Location[])=>{
+      this.eventCreate.locations = [...new Set(locations.filter(s=>s).map(s=>s.name!))];
+    });
   }
   setScenarios(){
     this.divagandoApiService.getEnabledScenarios(this.getUsername(), (scenarios: Scenario[])=>{
       this.scenarios = scenarios;
       if(scenarios.length){
         this.eventCreate.titles = scenarios.map(s=>s.title);
-        this.eventCreate.locations = [...new Set(scenarios.filter(s=>s.location).map(s=>s.location!))];
       }
     });
   }

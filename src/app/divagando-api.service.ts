@@ -7,6 +7,7 @@ import { Account } from './models/account.model';
 import { Content } from './models/content.model';
 import { Scenario } from './models/scenario.model';
 import { Event } from './models/event.model';
+import { Location } from './models/location.model';
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +55,13 @@ export class DivagandoApiService {
 
     this.get(scenariosUri, (scenarios: Scenario[])=>{
        callBack(scenarios);
+    });
+  }
+
+  getLocations(username: string, callBack: (scenariosCallback: Location[]) => void){
+    let locationsUri = `locations?filter=Account/Username eq '${username}'`;
+    this.get(locationsUri, (locations: Location[])=>{
+       callBack(locations);
     });
   }
 
