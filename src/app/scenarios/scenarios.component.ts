@@ -29,6 +29,7 @@ toggle(scenarioId: number, enabled: boolean){
   const scenario = new Scenario;
   scenario.id = scenarioId;
   scenario.enabled = enabled;
+  scenario.updatedAt = new Date;
   this.divagandoApiService.patch(`scenarios/${scenarioId}`, scenario, (event: Event) => {
       this.toastr.success(`Título alterado.`);
     }, async (errorResponse: HttpErrorResponse)=>{

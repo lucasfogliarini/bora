@@ -5,5 +5,6 @@ export class Scenario {
     startsInDays: number;
     public: boolean;
     description: string;
-    enabled: boolean
+    enabled: boolean;
+    updatedAt: Date;
 }
