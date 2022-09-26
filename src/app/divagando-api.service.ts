@@ -51,7 +51,7 @@ export class DivagandoApiService {
   }
 
   getEnabledScenarios(username: string, callBack: (scenariosCallback: Scenario[]) => void){
-    let scenariosUri = `scenarios?filter=Account/Username eq '${username}' and Enabled eq true`;
+    let scenariosUri = `scenarios?filter=Account/Username eq '${username}' and Enabled eq true&orderby=UpdatedAt desc`;
 
     this.get(scenariosUri, (scenarios: Scenario[])=>{
        callBack(scenarios);
