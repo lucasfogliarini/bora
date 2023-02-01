@@ -168,8 +168,11 @@ export class EventsComponent {
     var whatsappText = window.encodeURIComponent(
 `${event.title}
 ${dateTime}
-${event.location}
-Confirme presença 👇🏼
+${event.location?.substring(0,30)} ...
+
+Responde com emoji:
+👍 Bora 👎 Não❔Talvez
+
 ${eventUrl}`);
 
     var whatsAppLink = `https://api.whatsapp.com/send/?text=${whatsappText}`;
