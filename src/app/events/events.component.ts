@@ -162,7 +162,7 @@ export class EventsComponent {
     window.open(event.conferenceUrl);
   }
   share(event: Event){
-    var dateTime = new Date(event.start).toLocaleString('pt-BR');
+    var dateTime = `${this.transformDate(event)} - ${this.transformDateEE(event)} - ${this.transformTime(event)}`;
     let user = this.getUser();
     let eventUrl = `${window.location.origin}/${user}?eId=${this.shortId(event)}`;
     var whatsappText = window.encodeURIComponent(
