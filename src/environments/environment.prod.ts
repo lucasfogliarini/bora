@@ -5,5 +5,5 @@ export const environment = {
   mainRole: 'Protagonista',
   secondRole: 'Espectador',
   appDefiniteArticle: 'o',
-  divagandoApi: 'https://api.divagando.org/'
+  divagandoApi: 'https://api.vamo.fun/'
 };
