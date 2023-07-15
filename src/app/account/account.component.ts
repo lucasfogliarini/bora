@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Account } from '../models/account.model';
 import { Event } from '../models/event.model';
 import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
-import { DivagandoApiService } from '../divagando-api.service';
+import { BoraApiService } from '../bora-api.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 import { EventCreateComponent } from '../event-create/event-create.component';
@@ -52,14 +52,14 @@ export class AccountComponent {
       this.events = events;
   }
 
-  constructor(private divagandoApiService: DivagandoApiService,
+  constructor(private boraApiService: BoraApiService,
               public authService: AuthenticationService,
               private toastr: ToastrService,
               private router: Router,
               private title: Title,
               private activeRoute: ActivatedRoute) {
                 let user = this.getUser();
-                this.divagandoApiService.getAccount(user, (account: Account)=>{
+                this.boraApiService.getAccount(user, (account: Account)=>{
                   this.account = account;
                   this.title.setTitle(`${account.name} no ${this.env.appName}`);
                   this.setObservers();
@@ -78,7 +78,7 @@ export class AccountComponent {
     this.eventComment.init();
   }
   changePartnership(){
-    this.divagandoApiService.patch<Account>(`accounts`, this.account, () => {
+    this.boraApiService.patch<Account>(`accounts`, this.account, () => {
       this.toastr.success('Perfil atualizado.');
    });
   }
@@ -104,7 +104,7 @@ export class AccountComponent {
       daysAgo.setDate(today.getDate() - 14);
       today.setDate(today.getDate() + 14);
       const eventsDaysAgoUri = `events?user=${user}&timeMin=${daysAgo.toISOString()}&timeMax=${today.toISOString()}`;
-      this.divagandoApiService.get(eventsDaysAgoUri, (events: Event[]) => {
+      this.boraApiService.get(eventsDaysAgoUri, (events: Event[]) => {
           if(events){
             const pastObservers = [...new Map(events.filter(e=>new Date(e.start) <= new Date()).flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
             this.pastObserversMessage = pastObservers.filter(e=>e.username != user).map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a>&nbsp;<small>${e.isPartner ? this.env.mainRole : ''}</small><br />`).join('');
@@ -119,7 +119,7 @@ export class AccountComponent {
     return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
   }
   updateAccount(){
-    this.divagandoApiService.patch<Account>(`accounts`, this.account, () => {       
+    this.boraApiService.patch<Account>(`accounts`, this.account, () => {       
        this.editing = false;
        this.toastr.success('Perfil atualizado.');
        this.router.navigate([this.account.username]);

@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Options } from 'ngx-google-places-autocomplete/objects/options/options';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
-import { DivagandoApiService } from '../divagando-api.service';
+import { BoraApiService } from '../bora-api.service';
 import { Account } from '../models/account.model';
 import { AttendeeReply } from '../models/attendee-reply.model';
 import { Content } from '../models/content.model';
@@ -31,7 +31,7 @@ export class EventCreateComponent {
   @ViewChild('googlePlace')
   googlePlace?: ElementRef;
 
-  constructor(private divagandoApiService: DivagandoApiService,
+  constructor(private boraApiService: BoraApiService,
               private authService: AuthenticationService,
               private toastr: ToastrService,
               private activeRoute: ActivatedRoute) {
@@ -44,12 +44,12 @@ export class EventCreateComponent {
     return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
   }
   setLocations(){
-    this.divagandoApiService.getLocations(this.getUsername(), (locations: Location[])=>{
+    this.boraApiService.getLocations(this.getUsername(), (locations: Location[])=>{
       this.eventCreate.locations = [...new Set(locations.filter(s=>s).map(s=>s.name!))];
     });
   }
   setScenarios(){
-    this.divagandoApiService.getEnabledScenarios(this.getUsername(), (scenarios: Scenario[])=>{
+    this.boraApiService.getEnabledScenarios(this.getUsername(), (scenarios: Scenario[])=>{
       this.scenarios = scenarios;
       if(scenarios.length){
         this.eventCreate.titles = scenarios.map(s=>s.title);
@@ -57,7 +57,7 @@ export class EventCreateComponent {
     });
   }
   setContents(){
-    this.divagandoApiService.getContents('event-create', this.getUsername(), (contents: Content[])=>{
+    this.boraApiService.getContents('event-create', this.getUsername(), (contents: Content[])=>{
       let content = contents.find(e=>e.key == 'what');
       if(content) this.eventCreate.what = content.text;
       content = contents.find(e=>e.key == 'titleSuggestion');
@@ -82,7 +82,7 @@ export class EventCreateComponent {
     if(jwt){
       var user = this.getUsername();
       this.setScenario();
-      this.divagandoApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
+      this.boraApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
         this.event = event;
         this.newEvent = event;
         this.eventUpdated.emit(event);
@@ -99,7 +99,7 @@ export class EventCreateComponent {
   }
   update(bora?: boolean){
     var user = this.getUsername();
-    this.divagandoApiService.patchEvent(user,this.event!.id, this.newEvent, (event: Event) => {
+    this.boraApiService.patchEvent(user,this.event!.id, this.newEvent, (event: Event) => {
       this.event = event;
       if(!event.location){
         this.getCurrentPlace();
@@ -122,7 +122,7 @@ export class EventCreateComponent {
     var user = this.activeRoute.snapshot.params['user'];
     let attendeeReply = new AttendeeReply();
     attendeeReply.comment = this.newEvent.evaluation ? `${this.eventCreate.currency}${this.newEvent.evaluation}` : '';
-    this.divagandoApiService.patch(`events/${this.event!.id}/reply?user=${user}`, attendeeReply,  (event: Event) => {
+    this.boraApiService.patch(`events/${this.event!.id}/reply?user=${user}`, attendeeReply,  (event: Event) => {
       this.event!.evaluation = this.newEvent.evaluation || this.eventCreate.evaluationDefault;
     }, async (errorResponse: HttpErrorResponse)=>{
     });

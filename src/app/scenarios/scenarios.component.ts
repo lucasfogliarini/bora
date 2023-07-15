@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { DivagandoApiService } from '../divagando-api.service';
+import { BoraApiService } from '../bora-api.service';
 import { Scenario } from '../models/scenario.model';
 
 @Component({
@@ -12,7 +12,7 @@ import { Scenario } from '../models/scenario.model';
 })
 export class ScenariosComponent {
   scenarios?: Scenario[];
-  constructor(private divagandoApiService: DivagandoApiService,
+  constructor(private boraApiService: BoraApiService,
               private toastr: ToastrService,
               private activeRoute: ActivatedRoute) {
       this.setScenarios();
@@ -21,7 +21,7 @@ getUsername(){
   return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
 }
 setScenarios(){
-    this.divagandoApiService.getScenarios(this.getUsername(), (scenarios: Scenario[])=>{
+    this.boraApiService.getScenarios(this.getUsername(), (scenarios: Scenario[])=>{
       this.scenarios = scenarios;
     });
   }
@@ -30,7 +30,7 @@ toggle(scenarioId: number, enabled: boolean){
   scenario.id = scenarioId;
   scenario.enabled = enabled;
   scenario.updatedAt = new Date;
-  this.divagandoApiService.patch(`scenarios/${scenarioId}`, scenario, (event: Event) => {
+  this.boraApiService.patch(`scenarios/${scenarioId}`, scenario, (event: Event) => {
       this.toastr.success(`Título alterado.`);
     }, async (errorResponse: HttpErrorResponse)=>{
     this.toastr.error(`Erro ao alterar o título.`);

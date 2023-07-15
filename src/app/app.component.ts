@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DivagandoApiService } from './divagando-api.service';
+import { BoraApiService } from './bora-api.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { DivagandoApiService } from './divagando-api.service';
 export class AppComponent {
   version: string = "";
   constructor(
-    private divagandoApiService: DivagandoApiService) { }
+    private boraApiService: BoraApiService) { }
   ngOnInit(): void {
     this.RequestVersion();
   }
@@ -19,7 +19,7 @@ export class AppComponent {
   }
 
   private RequestVersion(){
-      this.divagandoApiService.getText('version', (version: string) => {
+      this.boraApiService.getText('version', (version: string) => {
         this.version = version;
       });
   }

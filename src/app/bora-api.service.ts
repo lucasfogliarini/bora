@@ -12,8 +12,8 @@ import { Location } from './models/location.model';
 @Injectable({
   providedIn: 'root'
 })
-export class DivagandoApiService {
-  baseUrl: string = environment.divagandoApi;
+export class BoraApiService {
+  baseUrl: string = environment.boraApi;
   constructor(private http: HttpClient,
     private toastr: ToastrService) {}
 

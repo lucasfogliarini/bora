@@ -1,11 +1,11 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy container app to Azure Web App - divagando
+name: Build and deploy container app to Azure Web App - bora
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -14,15 +14,15 @@ jobs:
     - uses: actions/checkout@v3
     - uses: azure/docker-login@v1
       with:
-        login-server: divagando.azurecr.io
-        username: ${{ secrets.acr_divagando_username }}
-        password: ${{ secrets.acr_divagando_password }}
+        login-server: bora.azurecr.io
+        username: ${{ secrets.acr_bora_username }}
+        password: ${{ secrets.acr_bora_password }}
         
     - name: Build and push image to ACR
       id: build-image
       run: |
-          docker build . -f  Dockerfile -t divagando.azurecr.io/divagando:${{ github.sha }} --label dockerfile-path=Dockerfile
-          docker push divagando.azurecr.io/divagando:${{ github.sha }}
+          docker build . -f  Dockerfile -t bora.azurecr.io/bora:${{ github.sha }} --label dockerfile-path=Dockerfile
+          docker push bora.azurecr.io/bora:${{ github.sha }}
 
   deploy:
     if: true
@@ -37,7 +37,7 @@ jobs:
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'divagando'
+        app-name: 'bora'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_6a4b33619bde4b7bba54770d1ed5cc81 }}
-        images: 'divagando.azurecr.io/divagando:${{ github.sha }}'
+        images: 'bora.azurecr.io/bora:${{ github.sha }}'

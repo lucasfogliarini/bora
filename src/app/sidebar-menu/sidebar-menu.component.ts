@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from '../authentication.service';
-import { DivagandoApiService } from '../divagando-api.service';
+import { BoraApiService } from '../bora-api.service';
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -10,11 +10,11 @@ import { DivagandoApiService } from '../divagando-api.service';
 })
 export class SideBarMenuComponent {
   title = 'Vamo';
-  constructor(private divagandoApiService: DivagandoApiService,
+  constructor(private boraApiService: BoraApiService,
               public authService: AuthenticationService,
               private titleService: Title) {
                 this.titleService.setTitle(environment.appName);
-                /*this.divagandoApiService.getContentsByDomain('home', homeContents=>{
+                /*this.boraApiService.getContentsByDomain('home', homeContents=>{
                     let homeTitle = homeContents.filter(e=>e.key == 'title');
                     if(homeTitle.length){
                       this.title = homeTitle[0].text;

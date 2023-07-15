@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DivagandoApiService } from '../divagando-api.service';
+import { BoraApiService } from '../bora-api.service';
 import { Home } from '../models/home.model';
 
 @Component({
@@ -10,8 +10,8 @@ import { Home } from '../models/home.model';
 export class HomeComponent {
   home: Home = new Home;
 
-  constructor(private divagandoApiService: DivagandoApiService){
-    this.divagandoApiService.getContentsByDomain('home', homeContents=>{
+  constructor(private boraApiService: BoraApiService){
+    this.boraApiService.getContentsByDomain('home', homeContents=>{
       var contents = Object.keys(this.home);
         for (const contentKey of contents) {
           let homeContent = homeContents.filter(e=>e.key == contentKey);

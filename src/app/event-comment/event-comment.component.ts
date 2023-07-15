@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
-import { DivagandoApiService } from '../divagando-api.service';
+import { BoraApiService } from '../bora-api.service';
 import { AttendeeReply } from '../models/attendee-reply.model';
 import { Content } from '../models/content.model';
 import { EventComment } from '../models/event-comment.model';
@@ -22,7 +22,7 @@ export class EventCommentComponent {
   attendeeCommentCreating: AttendeeReply = new AttendeeReply;
   events?: Event[];
 
-  constructor(private divagandoApiService: DivagandoApiService,
+  constructor(private boraApiService: BoraApiService,
               private authService: AuthenticationService,
               private toastr: ToastrService,
               private activeRoute: ActivatedRoute) {
@@ -49,14 +49,14 @@ export class EventCommentComponent {
     const today = new Date();
     today.setDate(today.getDate() + 7);
     var eventsUri = `events?user=${user}&timeMax=${today.toISOString()}`;
-    this.divagandoApiService.get<Event[]>(eventsUri, (events: Event[]) => {
+    this.boraApiService.get<Event[]>(eventsUri, (events: Event[]) => {
       if(events?.length)
         this.events = events;
     }, (errorResponse: HttpErrorResponse)=>{
     });
   }
   setContents(){
-    this.divagandoApiService.getContentsByDomain('event-comment', (contents: Content[])=>{
+    this.boraApiService.getContentsByDomain('event-comment', (contents: Content[])=>{
       let content = contents.find(e=>e.key == 'what');
       if(content) this.eventComment.what = content.text;
 
@@ -70,7 +70,7 @@ export class EventCommentComponent {
   }
   comment(eventId: string){
     let user = this.getUser();
-    this.divagandoApiService.patch(`events/${eventId}/reply?user=${user}`, this.attendeeComment,  (event: Event) => {
+    this.boraApiService.patch(`events/${eventId}/reply?user=${user}`, this.attendeeComment,  (event: Event) => {
       this.toastr.success(this.eventComment.success);
       this.close();
     }, async (errorResponse: HttpErrorResponse)=>{

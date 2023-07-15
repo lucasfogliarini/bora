@@ -9,8 +9,8 @@ export const environment = {
   mainRole: 'Protagonista',
   secondRole: 'Espectador',
   appDefiniteArticle: 'o',
-  divagandoApi: 'https://api.divagando.org/',
-  //divagandoApi: 'https://localhost:5001/',//must use /
+  boraApi: 'https://api.vamo.fun/',
+  //boraApi: 'https://localhost:5001/',//must use /
 };
 
 /*

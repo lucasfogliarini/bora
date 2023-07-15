@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Event } from '../models/event.model';
 import { ToastrService } from 'ngx-toastr';
-import { DivagandoApiService } from '../divagando-api.service';
+import { BoraApiService } from '../bora-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer, Title } from '@angular/platform-browser';
 import { Attendee } from '../models/attendee.model';
@@ -26,7 +26,7 @@ export class EventsComponent {
   eventsMessage?: string = undefined;
   replied: boolean = false;
 
-  constructor(private divagandoApiService: DivagandoApiService,
+  constructor(private boraApiService: BoraApiService,
               private authService: AuthenticationService,
               private toastr: ToastrService,
               private router: Router,
@@ -56,7 +56,7 @@ export class EventsComponent {
     let user = this.getUser();
     var eventsUri = `events?user=${user}&favoritesCount=false`;
     this.setEvents(undefined);
-    this.divagandoApiService.get<Event[]>(eventsUri, (eventsLoaded: Event[]) => {
+    this.boraApiService.get<Event[]>(eventsUri, (eventsLoaded: Event[]) => {
       this.eventsLoaded = eventsLoaded;
       this.setEvents(this.eventsLoaded);
       const eId = this.activeRoute.snapshot.queryParams['eId'];
@@ -73,7 +73,7 @@ export class EventsComponent {
   privateEvent(event: Event){
     const eventPrivate = new Event();
     eventPrivate.public = false;
-    this.divagandoApiService.patchEvent(this.getUser(), event.id, eventPrivate, (eventUpdated: Event) => {
+    this.boraApiService.patchEvent(this.getUser(), event.id, eventPrivate, (eventUpdated: Event) => {
       this.toastr.success('Encontro privado com sucesso.');
       this.refreshEvents();
     });
@@ -121,7 +121,7 @@ export class EventsComponent {
     let attendeeReply: AttendeeReply = {
       response: response
     };
-    this.divagandoApiService.patch(`events/${eventId}/reply?user=${user}`, attendeeReply,  (event: Event) => {
+    this.boraApiService.patch(`events/${eventId}/reply?user=${user}`, attendeeReply,  (event: Event) => {
       if(response == 'accepted'){
         this.toastr.success('Então bora!');
       }else{
