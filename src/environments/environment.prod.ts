@@ -5,5 +5,5 @@ export const environment = {
   mainRole: 'Protagonista',
   secondRole: 'Espectador',
   appDefiniteArticle: 'o',
-  boraApi: 'https://api.vamo.fun/'
+  boraApi: 'https://bora.azurewebsites.net/'//'https://api.vamo.fun/'
 };
