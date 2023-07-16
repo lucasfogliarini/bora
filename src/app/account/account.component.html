@@ -31,7 +31,7 @@
             <input id="partnership" (change)="changePartnership()" [(ngModel)]="account.isPartner" type="checkbox" class="custom-control-input">
             <label *ngIf="account.isPartner" class="custom-control-label" for="partnership">
                 {{env.mainRole}}
-                <small *ngIf="!authService.account.calendarAuthorized">, com Agenda e Catálogo?</small>
+                <small *ngIf="!authService.account.calendarAuthorized">, disponibilize sua agenda para marcar compromissos clicando em autorizar agenda.</small>
             </label>
             <label *ngIf="!account.isPartner" class="custom-control-label" for="partnership">
                 {{env.secondRole}}
@@ -39,7 +39,7 @@
             </label>
           </div>
         </div>
-        <div *ngIf="authService.account.calendarAuthorized != undefined && account.isPartner" class="d-flex mb-2">
+        <div *ngIf="!authService.account.calendarAuthorized && account.isPartner" class="d-flex mb-2">
           <fa-icon class="mr-2" [icon]="['fas','calendar-day']"></fa-icon>
           <button *ngIf="!authService.account.calendarAuthorized" (click)="authService.authorizeCalendar()" class="btn-success btn form-control">Autorizar Google Agenda</button>
           <button *ngIf="authService.account.calendarAuthorized" 
