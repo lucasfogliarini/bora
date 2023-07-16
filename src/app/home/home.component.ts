@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BoraApiService } from '../bora-api.service';
-import { Home } from '../models/home.model';
+import { Home } from '../models/contents/home.model';
 
 @Component({
   selector: 'app-home',

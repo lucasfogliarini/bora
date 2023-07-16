@@ -6,8 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 import { BoraApiService } from '../bora-api.service';
 import { AttendeeReply } from '../models/attendee-reply.model';
-import { Content } from '../models/content.model';
-import { EventComment } from '../models/event-comment.model';
+import { Content } from '../models/contents/content.model';
+import { EventComment } from '../models/contents/event-comment.model';
 import { Event } from '../models/event.model';
 
 @Component({

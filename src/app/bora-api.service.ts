@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Account } from './models/account.model';
-import { Content } from './models/content.model';
+import { Content } from './models/contents/content.model';
 import { Scenario } from './models/scenario.model';
 import { Event } from './models/event.model';
 import { Location } from './models/location.model';
