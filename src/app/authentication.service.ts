@@ -18,7 +18,6 @@ export class AuthenticationService {
               private toastr: ToastrService,
               private dialog: MatDialog,
               private boraApiService: BoraApiService) {
-                this.subscribeAuth();
               }
   subscribeAuth(){
     this.authService.authState.subscribe(user => {

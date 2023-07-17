@@ -2,6 +2,10 @@
 @import "~admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css";
 @import "~ngx-toastr/toastr.css";
 
+#credential_picker_iframe{
+    display: none;
+}
+
 .content a{
     color: inherit;
     text-decoration: underline;

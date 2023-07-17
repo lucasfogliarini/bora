@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from '../authentication.service';
@@ -8,7 +8,7 @@ import { BoraApiService } from '../bora-api.service';
   selector: 'app-sidebar-menu',
   templateUrl: './sidebar-menu.component.html'
 })
-export class SideBarMenuComponent {
+export class SideBarMenuComponent  implements OnInit {
   title = 'Vamo';
   constructor(private boraApiService: BoraApiService,
               public authService: AuthenticationService,
@@ -22,6 +22,9 @@ export class SideBarMenuComponent {
                     }
                 });*/
               }
+  ngOnInit(): void {
+    this.authService.subscribeAuth();
+  }
   openUser(editing: boolean = false){
     var locationPath = this.authService.account?.username;
     if(editing){
