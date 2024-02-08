@@ -9,7 +9,7 @@ import { BoraApiService } from '../bora-api.service';
   templateUrl: './sidebar-menu.component.html'
 })
 export class SideBarMenuComponent  implements OnInit {
-  title = 'Vamo';
+  title = 'Bora';
   constructor(private boraApiService: BoraApiService,
               public authService: AuthenticationService,
               private titleService: Title) {

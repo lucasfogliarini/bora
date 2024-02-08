@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  appName: "vamo.fun",
+  appName: "Bora",
   adminPhone: "5551992364249",
   mainRole: 'Protagonista',
   secondRole: 'Espectador',
