@@ -1,9 +1,9 @@
 export class EventCreate {
   //what
   //
-  what?: string = 'O que vamos fazer?';
-  titles = ['Conversar'];
-  titleSuggestion: string = 'Tomar um café ...';
+  what?: string = 'Bora?';
+  titles = ['♟️🎲 Jogatina','🍖 Churras', '🎭 Teatro'];
+  titleSuggestion: string = 'Bora trabalhar ...';
   static conferenceTitle = '💻 Google Meet';  
   //
   //where
