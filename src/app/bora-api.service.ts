@@ -76,19 +76,19 @@ export class BoraApiService {
   get<T>(resource: string, next: (value: T) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
     var observable = this.http.get<T>(uri);
-    this.request(observable, next, error);
+    this.subscribe(observable, next, error);
   }
 
   getText(resource: string, next: (value: string) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
     var observable = this.http.get(uri, { responseType: 'text'});
-    this.request(observable, next, error);
+    this.subscribe(observable, next, error);
   }
 
   post<T>(resource: string, body: T, next: (value: T) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
     var observable = this.http.post<T>(uri, body);
-    this.request(observable, next, error);
+    this.subscribe(observable, next, error);
   }
 
   postPromise<T>(resource: string, body: T){
@@ -99,28 +99,28 @@ export class BoraApiService {
   put<T>(resource: string, body: T, next: (value: T) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
     var observable = this.http.put<T>(uri, body);
-    this.request(observable, next, error);
+    this.subscribe(observable, next, error);
   }
 
   patch<TResponse>(resource: string, body: any, next: (value: TResponse) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
     var observable = this.http.patch<TResponse>(uri, body);
-    this.request(observable, next, error);
+    this.subscribe(observable, next, error);
   }
 
   patch_(resource: string, next: (value: any) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
     var observable = this.http.patch(uri, null);
-    this.request(observable, next, error);
+    this.subscribe(observable, next, error);
   }
 
   delete(resource: string,  next: (value: any) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
     var observable = this.http.delete(uri);
-    this.request(observable, next, error);
+    this.subscribe(observable, next, error);
   }
 
-  request<T>(observable: Observable<T>, next: ((value: T) => void), error?: (err: any) => void){      
+  subscribe<T>(observable: Observable<T>, next: ((value: T) => void), error?: (err: any) => void){      
       let defaultError = (errorResponse: HttpErrorResponse) => {
         this.toastr.error(errorResponse.error.detail);
       };

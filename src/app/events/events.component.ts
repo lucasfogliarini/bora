@@ -54,7 +54,7 @@ export class EventsComponent {
   }
   getEvents(){
     let user = this.getUser();
-    var eventsUri = `events?user=${user}&favoritesCount=false`;
+    var eventsUri = `events?user=${user}`;
     this.setEvents(undefined);
     this.boraApiService.get<Event[]>(eventsUri, (eventsLoaded: Event[]) => {
       this.eventsLoaded = eventsLoaded;
