@@ -9,7 +9,7 @@ export const environment = {
   mainRole: 'Protagonista',
   secondRole: 'Espectador',
   appDefiniteArticle: 'o',
-  boraApi: 'https://bora.azurewebsites.net/',
+  boraApi: 'https://api.bora.work/',
   //boraApi: 'https://localhost:5001/',//must use /
 };
 
