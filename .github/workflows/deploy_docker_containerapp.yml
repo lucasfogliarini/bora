@@ -32,5 +32,5 @@ jobs:
         appSourcePath: ${{ github.workspace }}   
         imageToBuild: lucasfogliarini/bora:latest
         registryUrl: docker.io
-        registryUsername: ${{ secrets.BORAPI_REGISTRY_USERNAME }}
-        registryPassword: ${{ secrets.BORAPI_REGISTRY_PASSWORD }}
+        registryUsername: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+        registryPassword: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
