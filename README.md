@@ -1,4 +1,4 @@
-[![Deploy Bora Api to Azure Web App](https://github.com/lucasfogliarini/bora/actions/workflows/deploy_docker_containerapp.yml/badge.svg)](https://github.com/lucasfogliarini/bora-api/actions/workflows/deploy_docker_containerapp.yml)
+[![Deploy Bora Api to Azure Web App](https://github.com/lucasfogliarini/bora/actions/workflows/deploy_docker_containerapp.yml/badge.svg)](https://github.com/lucasfogliarini/bora/actions/workflows/deploy_docker_containerapp.yml)
 
 # Bora
 
