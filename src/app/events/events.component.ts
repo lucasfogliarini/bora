@@ -37,7 +37,7 @@ export class EventsComponent {
               this.getEvents();
   }
   getUser(){
-    return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
+    return this.activeRoute.snapshot.url[0].path || 'lucasfogliarini';
   }
   setEvents(events?: Event[]){
     this.eventsMessage = undefined;

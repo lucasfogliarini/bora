@@ -116,7 +116,7 @@ export class AccountComponent {
     }
   }
   getUser(){
-    return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
+    return this.activeRoute.snapshot.url[0].path || 'lucasfogliarini';
   }
   updateAccount(){
     this.boraApiService.patch<Account>(`accounts`, this.account, () => {       
