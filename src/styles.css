@@ -34,6 +34,12 @@ html, body { height: 100%; }
 body { 
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif; 
-    background: url("assets/home_vamo.jpeg");
-    background-size: cover;
+    background: no-repeat url("assets/home_bora.png");
 }
+
+@media (min-width: 600px) {
+    body {
+      background-image: url("assets/home_bora.png");
+      background-size: cover;
+    }
+  }

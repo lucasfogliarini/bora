@@ -7,8 +7,9 @@
 
 @media screen and (min-width: 375px){
     #bora{
-        margin-top: 310px;
-        margin-left: 70px;
+        left: 125px;
+        top: 194px;
+        border: 2px solid #5f5b5b
     }
 }
 
