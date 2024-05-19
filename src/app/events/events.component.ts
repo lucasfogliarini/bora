@@ -42,8 +42,16 @@ export class EventsComponent {
   setEvents(events?: Event[]){
     this.eventsMessage = undefined;
     this.events = events;
-    if(events === undefined)
-      this.eventsMessage = "Carregando  ...";
+    if(events === undefined){
+      let loadingTime = 7;
+      let interval = setInterval(() => {
+        this.eventsMessage = `Carregando  ${loadingTime} ...`;
+        loadingTime--;
+        if (loadingTime < 0) {
+            clearInterval(interval);
+        }
+      }, 1000);
+    }
     else if(!this.hasEventsLoaded())
       this.eventsMessage = "Sem encontros públicos.";
     else if(events && events.length === 0 && this.hasEventsLoaded())
