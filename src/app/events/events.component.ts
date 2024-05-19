@@ -224,6 +224,17 @@ ${eventUrl}`);
                 </small>
             </div>`;
   }
+  ticket(event: Event){
+    let message = `Quero desconto para o ingresso desse evento! ${event.googleEventUrl}`;
+    return `<b>${event.ticketUrl}</b>
+                <div class='row mt-1'>
+                <small class="col-12 font-weight-bold">
+                  <a target='_blank' href='https://api.whatsapp.com/send/?phone=${this.env.adminPhone}&text=${message}'>
+                  ${message}
+                  </a>
+                </small>
+            </div>`;
+  }
   popAttendee(attendees: Attendee[]){
     let aIndex = attendees.findIndex(e=>e.username == this.authService.account.username);
     if(aIndex > 0){

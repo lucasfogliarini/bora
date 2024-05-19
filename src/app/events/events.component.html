@@ -52,9 +52,9 @@
               [hidden]="!event.ticketUrl"
               title="Ingresso"
               popoverTitle="Ingresso"
-              [popoverMessage]="event.ticketUrl"
+              [popoverMessage]="ticket(event)"
               placement="left"
-              confirmText="Abrir Link"
+              confirmText="Comprar ingresso"
               (confirm)="openUrl(event.ticketUrl)"
               role="button"
               class="col-6 float-right">
