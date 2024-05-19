@@ -178,9 +178,6 @@ export class EventsComponent {
 ${dateTime}
 ${event.location?.substring(0,30)} ...
 
-Responde com emoji:
-👍 Bora 👎 Não❔Talvez
-
 ${eventUrl}`);
 
     var whatsAppLink = `https://api.whatsapp.com/send/?text=${whatsappText}`;
