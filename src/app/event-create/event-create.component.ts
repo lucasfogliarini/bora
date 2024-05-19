@@ -41,7 +41,7 @@ export class EventCreateComponent {
                 this.setLocations();
   }
   getUsername(){
-    return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
+    return this.activeRoute.snapshot.url[0].path || 'bora.work';
   }
   setLocations(){
     this.boraApiService.getLocations(this.getUsername(), (locations: Location[])=>{

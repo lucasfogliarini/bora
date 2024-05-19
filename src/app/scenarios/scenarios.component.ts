@@ -1,6 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BoraApiService } from '../bora-api.service';
@@ -18,7 +17,7 @@ export class ScenariosComponent {
       this.setScenarios();
 }
 getUsername(){
-  return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
+  return this.activeRoute.snapshot.url[0].path || 'bora.work';;
 }
 setScenarios(){
     this.boraApiService.getScenarios(this.getUsername(), (scenarios: Scenario[])=>{

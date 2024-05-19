@@ -42,7 +42,7 @@ export class EventCommentComponent {
     }
   }
   getUser(){
-    return this.activeRoute.snapshot.params['user'] || 'lucasfogliarini';
+    return this.activeRoute.snapshot.url[0].path || 'bora.work';;
   }
   setEvents(){
     let user = this.getUser();
