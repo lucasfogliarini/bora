@@ -43,7 +43,7 @@ export class EventsComponent {
     this.eventsMessage = undefined;
     this.events = events;
     if(events === undefined){
-      let loadingTime = 7;
+      let loadingTime = 1;
       let interval = setInterval(() => {
         this.eventsMessage = `Carregando  ${loadingTime} ...`;
         loadingTime--;
