@@ -178,6 +178,7 @@ export class EventsComponent {
 ${dateTime}
 ${event.location?.substring(0,30)} ...
 
+Confirme o encontro no botão "Bora!" deste link:
 ${eventUrl}`);
 
     var whatsAppLink = `https://api.whatsapp.com/send/?text=${whatsappText}`;
