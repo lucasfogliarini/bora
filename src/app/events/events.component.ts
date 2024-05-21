@@ -227,7 +227,7 @@ ${eventUrl}`);
             </div>`;
   }
   ticket(event: Event){
-    let message = `Quero desconto para o ingresso desse evento! ${event.googleEventUrl}`;
+    let message = `Quero desconto no ingresso do ${event.title} no dia ${event.start}`;
     return `<b>${event.ticketUrl}</b>
                 <div class='row mt-1'>
                 <small class="col-12 font-weight-bold">
