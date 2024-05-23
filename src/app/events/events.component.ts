@@ -125,18 +125,18 @@ export class EventsComponent {
   transformDateEE(event: Event){
     return this.datePipe.transform(event.start, 'EE', '', 'pt-BR');
   }
-  reply(eventId: string, response: string){
+  reply(event: Event, response: string){
     let user = this.getUser();
     let attendeeReply: AttendeeReply = {
       response: response
     };
-    this.boraApiService.patch(`events/${eventId}/reply?user=${user}`, attendeeReply,  (event: Event) => {
+    this.boraApiService.patch(`events/${event.id}/reply?user=${user}`, attendeeReply,  (event: Event) => {
       if(response == 'accepted'){
         this.toastr.success('Então bora!');
       }else{
         this.toastr.success('Tranquilo ...');
       }
-      let oldEventIndex = this.events?.findIndex(e=>e.id == eventId);
+      let oldEventIndex = this.events?.findIndex(e=>e.id == event.id);
       this.events?.splice(oldEventIndex!, 1);
       this.events?.splice(oldEventIndex!, 0, event);
       this.selectEvent(event);
@@ -145,7 +145,7 @@ export class EventsComponent {
        if(errorResponse.status == 401){
           this.authService.signInWithGoogle((dialog: MatDialog)=>{
             dialog.closeAll();
-            this.reply(eventId, response);
+            this.reply(event, response);
           });
        }else{
           this.toastr.error(errorResponse.message);

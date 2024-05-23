@@ -16,9 +16,9 @@
               [popoverMessage]="attendees(event)"
               placement="left"
               confirmText="Bora!"
-              (confirm)="reply(event.id, 'accepted')"
+              (confirm)="reply(event, 'accepted')"
               cancelText="Talvez"
-              (cancel)="reply(event.id, 'tentative')"
+              (cancel)="reply(event, 'tentative')"
               role="button"
               [isOpen]="isSelected(event)"
               class="col-6">
