@@ -125,7 +125,7 @@ export class EventsComponent {
   transformDateEE(event: Event){
     return this.datePipe.transform(event.start, 'EE', '', 'pt-BR');
   }
-  reply(event: Event, response: string){
+  replyBoraApi(event: Event, response: string){
     let user = this.getUser();
     let attendeeReply: AttendeeReply = {
       response: response
@@ -151,6 +151,18 @@ export class EventsComponent {
           this.toastr.error(errorResponse.message);
        }
     });
+  }
+
+  reply(event: Event, response: string){
+    var useWhatsApp = true;
+    if(useWhatsApp){
+      var responseText = response == "accepted" ? "Confirmo presença" : "Quero e tentarei ir";
+      var dateTime = `${this.transformDate(event)} - ${this.transformDateEE(event)} - ${this.transformTime(event)}`;
+      var whatsAppLink = `https://wa.me/5551992364249?text=${responseText} no encontro ${event.title} às ${dateTime}!`;
+      window.open(whatsAppLink);
+    }else{
+      this.replyBoraApi(event, response);
+    }
   }
   openUrl(url: string){
     window.open(url);
