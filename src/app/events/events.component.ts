@@ -157,8 +157,14 @@ export class EventsComponent {
     var useWhatsApp = true;
     if(useWhatsApp){
       var responseText = response == "accepted" ? "Confirmo presença" : "Quero e tentarei ir";
-      var dateTime = `${this.transformDate(event)} - ${this.transformDateEE(event)} - ${this.transformTime(event)}`;
+      var dateTime = `${this.transformDate(event)} - ${this.transformDateEE(event)} - ${this.transformTime(event)}`;      
       var whatsAppLink = `https://wa.me/5551992364249?text=${responseText} no encontro ${event.title} às ${dateTime}!`;
+      if(event.conferenceUrl){
+        whatsAppLink = `${whatsAppLink} \n Canal de Voz: \n ${event.conferenceUrl}`;
+      }
+      if(event.chat){
+        whatsAppLink = `${whatsAppLink} \n WhatsApp (grupo): \n ${event.chat}`;
+      }
       window.open(whatsAppLink);
     }else{
       this.replyBoraApi(event, response);
