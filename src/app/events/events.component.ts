@@ -158,7 +158,7 @@ export class EventsComponent {
     if(useWhatsApp){
       var responseText = response == "accepted" ? "Confirmo presença" : "Quero e tentarei ir";
       var dateTime = `${this.transformDate(event)} - ${this.transformDateEE(event)} - ${this.transformTime(event)}`;      
-      var whatsAppLink = `https://wa.me/5551992364249?text=${responseText} no encontro ${event.title} às ${dateTime}!`;
+      var whatsAppLink = `https://wa.me/5551992364249?text=${responseText} no encontro ${event.title} | ${dateTime}!`;
       if(event.conferenceUrl){
         whatsAppLink = `${whatsAppLink} \n Canal de Voz: \n ${event.conferenceUrl}`;
       }
