@@ -246,7 +246,7 @@ ${eventUrl}`);
   }
   ticket(event: Event){
     var dateTime = `${this.transformDate(event)} - ${this.transformDateEE(event)}`;
-    let message = `Quero desconto pro ${event.title} no dia ${dateTime}`;
+    let message = `Quero desconto pro ${event.title} | ${dateTime}`;
     return `<b>${event.ticketDomain}</b>
                 <div class='row mt-1'>
                 <small class="col-12 font-weight-bold">
