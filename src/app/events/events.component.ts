@@ -303,13 +303,12 @@ Bora junto?`;
   expandEvent(event: Event){
     if(!event.expanded){
       event.expanded = true;
-      const isSecret = !event.location;
-      if(this.isConference(event) || isSecret){
-        const imgSrc = this.isConference(event) ? '../../assets/google-meet.jpg' : '../../assets/bora_bg_place.png';
-        setTimeout(() => {
-          var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
-          eventBackgroundImage!.setAttribute('src', imgSrc);
-        }, 200);
+      if(this.isConference(event)){
+        const bgImagePath = event.conferenceUrl?.includes('discord') ? '../../assets/discord.jpg' : '../../assets/google-meet.jpg';
+        this.setBackgroundImage(event, bgImagePath);
+      }
+      else if(!event.location){
+        this.setBackgroundImage(event, '../../assets/bora_bg_place.png')
       }
       else{
         //@ts-ignore
@@ -327,8 +326,14 @@ Bora junto?`;
       }
     }
   }
+  setBackgroundImage(event: Event, imgPath: string){
+      setTimeout(() => {
+        var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
+        eventBackgroundImage!.setAttribute('src', imgPath);
+      }, 200);
+  }
   isConference(event: Event){
-    return event.location == EventCreate.conferenceTitle;
+    return ['discord','m','meet','meet.google'].some(c=>event.location?.includes(c));
   }
 
   arrayMove(arr: Array<any>, fromIndex: number, toIndex: number) {
