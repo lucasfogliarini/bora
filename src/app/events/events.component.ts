@@ -161,7 +161,7 @@ export class EventsComponent {
     if(useWhatsApp){
       var responseText = response == "accepted" ? "Confirmo presença" : "Quero e tentarei ir";
       var dateTime = this.fullDateTime(event);
-      let conferenceText = event.conferenceUrl ? `
+      let conferenceText = this.isConference(event) ? `
 Canal de Voz: 
 ${event.conferenceUrl}` : '';
 
@@ -200,22 +200,35 @@ ${whatsappGroupText}
   openConference(event: Event){
     window.open(event.conferenceUrl);
   }
+  getLocationShare(event: Event){
+    if(this.isConference(event)){
+      return event.location?.includes('discord') ? "💻 Discord" : "💻 Google Meet"
+    }
+    else if(!event.location){
+      return "Indefinido."
+    }
+    else{
+      return `${event.location?.substring(0,30)} ...`;
+    }
+  }
   share(event: Event){
     var dateTime = this.fullDateTime(event);
     let user = this.getUser();
     let eventUrl = `${window.location.origin}/${user}?eId=${this.shortId(event)}`;
-    let ticketMessage = `Entrada ${event.ticketUrl ? 'paga' : 'gratuita'}!`;
+    let ticketMessage = `Entrada ${event.ticketUrl ? 'paga.' : 'gratuita!'}`;
+    let ticketUrl = event.ticketUrl ? `
+Compra de ingressos:
+${event.ticketUrl}` : '';
+
     var whatsappText = 
 `${event.title}
 ${dateTime}
-${event.location?.substring(0,30)} ...
+${this.getLocationShare(event)}
 
 ${ticketMessage}
 Confirme o encontro no botão "Bora!":
 ${eventUrl}
-
-Comprar ingresso:
-${event.ticketUrl}`;
+${ticketUrl}`;
 
     const whatsAppLink = this.generateWhatsAppLink(whatsappText);
     window.open(whatsAppLink);
@@ -268,18 +281,19 @@ ${event.ticketUrl}`;
   }
   ticket(event: Event){
     var dateTime = this.fullDateTime(event);
-    let whatsappText = `Quero desconto pro ${event.title} 
+    const promotionText = `Quero desconto pra ir com o Bora nesse evento!`
+    const whatsappText = `Quero desconto pro ${event.title} 
 ${dateTime}
 
 Bora junto?`;
-    const whatsAppLink = this.generateWhatsAppLink(whatsappText);
+    const whatsAppLink = this.generateWhatsAppLink(whatsappText, environment.adminPhone);
     return `<b>${event.ticketDomain}</b>
                 <div class='row mt-1'>
-                <small class="col-12 font-weight-bold">
+                <p class="col-12 font-weight-bold">
                   <a target='_blank' href='${whatsAppLink}'>
-                  ${whatsappText}
+                  ${promotionText}
                   </a>
-                </small>
+                </p>
             </div>`;
   }
   popAttendee(attendees: Attendee[]){
