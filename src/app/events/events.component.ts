@@ -91,6 +91,9 @@ export class EventsComponent {
     this.getEvents();
     this.eventsLoaded = undefined;
   }
+  fullDateTime(event: Event){
+    return `${this.transformDate(event)} - ${this.transformDateEE(event)} - ${this.transformTime(event)}`;
+  }
   isDay(event: Event){
     const eventStart = new Date(event.start);
     return eventStart.getHours() >= 6 && eventStart.getHours() < 18;
@@ -157,15 +160,24 @@ export class EventsComponent {
     var useWhatsApp = true;
     if(useWhatsApp){
       var responseText = response == "accepted" ? "Confirmo presença" : "Quero e tentarei ir";
-      var dateTime = `${this.transformDate(event)} - ${this.transformDateEE(event)} - ${this.transformTime(event)}`;      
-      var whatsAppLink = `https://wa.me/5551992364249?text=${responseText} no encontro ${event.title} | ${dateTime}!`;
-      if(event.conferenceUrl){
-        whatsAppLink = `${whatsAppLink} \n Canal de Voz: \n ${event.conferenceUrl}`;
-      }
-      if(event.chat){
-        whatsAppLink = `${whatsAppLink} \n WhatsApp (grupo): \n ${event.chat}`;
-      }
-      window.open(whatsAppLink);
+      var dateTime = this.fullDateTime(event);
+      let conferenceText = event.conferenceUrl ? `
+Canal de Voz: 
+${event.conferenceUrl}` : '';
+
+      let whatsappGroupText = event.chat ? `
+WhatsApp (grupo): 
+${event.chat}` : '';
+
+      var whatsappText = 
+`${responseText} no encontro ...
+${event.title}
+${dateTime}
+${conferenceText}
+${whatsappGroupText}
+`;
+    const whatsAppLink = this.generateWhatsAppLink(whatsappText, environment.adminPhone);
+    window.open(whatsAppLink);
     }else{
       this.replyBoraApi(event, response);
     }
@@ -189,19 +201,29 @@ export class EventsComponent {
     window.open(event.conferenceUrl);
   }
   share(event: Event){
-    var dateTime = `${this.transformDate(event)} - ${this.transformDateEE(event)} - ${this.transformTime(event)}`;
+    var dateTime = this.fullDateTime(event);
     let user = this.getUser();
     let eventUrl = `${window.location.origin}/${user}?eId=${this.shortId(event)}`;
-    var whatsappText = window.encodeURIComponent(
+    let ticketMessage = `Entrada ${event.ticketUrl ? 'paga' : 'gratuita'}!`;
+    var whatsappText = 
 `${event.title}
 ${dateTime}
 ${event.location?.substring(0,30)} ...
 
-Confirme o encontro no botão "Bora!" deste link:
-${eventUrl}`);
+${ticketMessage}
+Confirme o encontro no botão "Bora!":
+${eventUrl}
 
-    var whatsAppLink = `https://api.whatsapp.com/send/?text=${whatsappText}`;
+Comprar ingresso:
+${event.ticketUrl}`;
+
+    const whatsAppLink = this.generateWhatsAppLink(whatsappText);
     window.open(whatsAppLink);
+  }
+  generateWhatsAppLink(text: string, number?: string){//número nulo será compartilhamento selecionado
+    var whatsappText = window.encodeURIComponent(text);
+    var whatsAppLink = `https://wa.me/${number || ''}?text=${whatsappText}`;
+    return whatsAppLink;
   }
   isSelected(event: Event){
     var isEvent = this.activeRoute.snapshot.queryParams['eId'] == this.shortId(event);
@@ -245,13 +267,17 @@ ${eventUrl}`);
             </div>`;
   }
   ticket(event: Event){
-    var dateTime = `${this.transformDate(event)} - ${this.transformDateEE(event)}`;
-    let message = `Quero desconto pro ${event.title} | ${dateTime}`;
+    var dateTime = this.fullDateTime(event);
+    let whatsappText = `Quero desconto pro ${event.title} 
+${dateTime}
+
+Bora junto?`;
+    const whatsAppLink = this.generateWhatsAppLink(whatsappText);
     return `<b>${event.ticketDomain}</b>
                 <div class='row mt-1'>
                 <small class="col-12 font-weight-bold">
-                  <a target='_blank' href='https://api.whatsapp.com/send/?phone=${this.env.adminPhone}&text=${message}'>
-                  ${message}
+                  <a target='_blank' href='${whatsAppLink}'>
+                  ${whatsappText}
                   </a>
                 </small>
             </div>`;
