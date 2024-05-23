@@ -1,4 +1,4 @@
 export class Home {
-    boraLink: string = '/lucasfogliarini';
+    boraLink: string = '/bora.work';
     boraText: string = 'Bora!';
 }
