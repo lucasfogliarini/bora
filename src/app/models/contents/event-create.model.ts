@@ -23,6 +23,6 @@ export class EventCreate {
   currency?: string = '👨‍👨‍👧‍👦';
   //
   //others
-  neutral: string = 'Tanto faz';//Indiferente
+  neutral: string = 'Tanto faz';
   success = 'Bora então!';
 }

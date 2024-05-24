@@ -81,7 +81,7 @@ export class EventCreateComponent {
     const jwt = localStorage.getItem("jwt");
     if(jwt){
       var user = this.getUsername();
-      this.setScenario();
+      //this.setScenario();
       this.boraApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
         this.event = event;
         this.newEvent = event;

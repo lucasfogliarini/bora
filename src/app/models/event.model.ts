@@ -18,7 +18,7 @@ export class Event {
     end: Date;
     deadline: Date;
     location?: string;
-    public: boolean;
+    public: boolean = true;
     attendees: Attendee[];
     attachments?: string[];
     expanded: boolean;
