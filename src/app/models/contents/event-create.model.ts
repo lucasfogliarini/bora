@@ -1,3 +1,5 @@
+import { Location } from '../location.model';
+
 export class EventCreate {
   //what
   //
@@ -8,7 +10,7 @@ export class EventCreate {
   //
   //where
   where?: string = 'Onde?';
-  locations = [EventCreate.conferenceTitle];
+  locations?: Location[];
   //
   //when
   when?: string = 'Quando?';

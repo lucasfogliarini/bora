@@ -4,9 +4,9 @@
   <div id="event-location" *ngIf="event && !event?.location" class="event-question card-title">
     <h6>{{eventCreate.where}}</h6>
     <div *ngFor="let location of eventCreate.locations; let i = index" class="form-check">
-      <input [value]="location" [(ngModel)]="newEvent.location" class="form-check-input" type="radio" id="location_{{i}}">
+      <input [value]="location.place" [(ngModel)]="newEvent.location" class="form-check-input" type="radio" id="location_{{i}}">
       <label class="form-check-label" for="location_{{i}}">
-        {{location}}
+        {{location.name}}
       </label>
     </div>
     <input #googlePlace type="search" ngx-google-places-autocomplete [options]='placesOptions' (onAddressChange)="addressChange()"/>
