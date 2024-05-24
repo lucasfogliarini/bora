@@ -6,59 +6,9 @@
   <div class="{{isSelectedClass(event)}}" (click)="selectEvent(event)" role="button" *ngFor="let event of events">
     <div [id]="'e'+event.id" class="event-details">
       <div class="row">
-        <img  [hidden]="!event.expanded" class="background-image" src="../../assets/loading.gif" />
-        <div *ngIf="event.expanded" class="event-buttons col-4 mt-4">
+        <img [hidden]="!event.expanded" class="background-image" src="../../assets/loading.gif" />
+        <div *ngIf="event.expanded" class="event-buttons col-4 mt-3">
           <div class="row">
-            <fa-icon *ngIf="!replied" [icon]="['fas', 'people-group']" mwlConfirmationPopover
-              popoverClass='attendees'
-              title="Convidados,  Bora?"
-              popoverTitle="Convidados,  Bora?"
-              [popoverMessage]="attendees(event)"
-              placement="left"
-              confirmText="Bora!"
-              (confirm)="reply(event, 'accepted')"
-              cancelText="Talvez"
-              (cancel)="reply(event, 'tentative')"
-              role="button"
-              [isOpen]="isSelected(event)"
-              class="col-6">
-            </fa-icon>
-            <fa-icon *ngIf="replied" [icon]="['fas', 'people-group']" mwlConfirmationPopover
-              popoverClass='attendees'
-              title="Quem vai..."
-              popoverTitle="Quem vai..."
-              [popoverMessage]="attendees(event)"
-              placement="left"
-              confirmText="Editar"
-              (confirm)="replied = false"
-              cancelText="Cancelar"
-              role="button"
-              [isOpen]="isSelected(event)"
-              class="col-6">
-            </fa-icon>
-            <fa-icon [icon]="['fab', 'whatsapp']" mwlConfirmationPopover
-              title="WhatsApp"
-              popoverTitle="WhatsApp"
-              popoverMessage="Compartilhar <b>{{event.title}}</b> no WhatsApp?"
-              placement="left"
-              confirmText="Compartilhar"
-              (confirm)="share(event)"
-              role="button"
-              class="col-6 float-right">
-            </fa-icon>
-          </div>
-          <div class="row">
-            <fa-icon [icon]="['fas', 'ticket']" mwlConfirmationPopover
-              [hidden]="!event.ticketUrl"
-              title="Ingresso"
-              popoverTitle="Ingresso"
-              [popoverMessage]="ticket(event)"
-              placement="left"
-              confirmText="Comprar ingresso"
-              (confirm)="openUrl(event.ticketUrl)"
-              role="button"
-              class="col-6 float-right">
-            </fa-icon>
             <fa-icon *ngIf="!isConference(event)" [icon]="['fas', 'map-location-dot']" mwlConfirmationPopover
                 title="Localização"
                 popoverTitle="Abrir Google Maps?"
@@ -80,6 +30,56 @@
                 [hideConfirmButton]="event.location ? false : true"
                 role="button"
                 class="col-6 float-right">
+            </fa-icon>            
+            <fa-icon [icon]="['fab', 'whatsapp']" mwlConfirmationPopover
+              title="WhatsApp"
+              popoverTitle="WhatsApp"
+              popoverMessage="Compartilhar <b>{{event.title}}</b> no WhatsApp?"
+              placement="left"
+              confirmText="Compartilhar"
+              (confirm)="share(event)"
+              role="button"
+              class="col-5 float-right">
+            </fa-icon>
+          </div>
+          <div class="row">
+            <fa-icon [icon]="['fas', 'ticket']" mwlConfirmationPopover
+              [hidden]="!event.ticketUrl"
+              title="Ingresso"
+              popoverTitle="Ingresso"
+              [popoverMessage]="ticket(event)"
+              placement="left"
+              confirmText="Comprar ingresso"
+              (confirm)="openUrl(event.ticketUrl)"
+              role="button"
+              class="col-6 float-right">
+            </fa-icon>
+            <div [hidden]="event.ticketUrl" class="col-6"></div>
+            <input type="button" value="Bora!" *ngIf="!replied" mwlConfirmationPopover
+              popoverClass='attendees'
+              title="Convidados,  Bora?"
+              popoverTitle="Convidados,  Bora?"
+              [popoverMessage]="attendees(event)"
+              placement="left"
+              confirmText="Bora!"
+              (confirm)="reply(event, 'accepted')"
+              cancelText="Talvez"
+              (cancel)="reply(event, 'tentative')"
+              role="button"
+              [isOpen]="isSelected(event)"
+              class="btn btn-block btn-dark col-6" />
+            <fa-icon *ngIf="replied" [icon]="['fas', 'people-group']" mwlConfirmationPopover
+              popoverClass='attendees'
+              title="Quem vai..."
+              popoverTitle="Quem vai..."
+              [popoverMessage]="attendees(event)"
+              placement="left"
+              confirmText="Editar"
+              (confirm)="replied = false"
+              cancelText="Cancelar"
+              role="button"
+              [isOpen]="isSelected(event)"
+              class="col-6">
             </fa-icon>
           </div>
         </div>
