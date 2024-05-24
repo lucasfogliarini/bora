@@ -66,7 +66,6 @@
               cancelText="Talvez"
               (cancel)="reply(event, 'tentative')"
               role="button"
-              [isOpen]="isSelected(event)"
               class="btn btn-block btn-dark col-6" />
             <fa-icon *ngIf="replied" [icon]="['fas', 'people-group']" mwlConfirmationPopover
               popoverClass='attendees'
