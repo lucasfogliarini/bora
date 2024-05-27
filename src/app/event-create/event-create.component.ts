@@ -124,9 +124,10 @@ export class EventCreateComponent {
         this.toastr.success(`${this.eventCreate.success} Compartilha no Whatsapp 👇`);
       else
         this.toastr.success(`${this.eventCreate.success}`);      
-      this.router.navigateByUrl('/', { skipLocationChange: true}).then(() => {
-        this.router.navigate([this.router.url]);
-      });
+      this.router.navigate([], { queryParams: { eId: event.id } });
+      setTimeout(()=>{
+        window.location.reload();
+      }, 1000)
       this.eventUpdated.emit(event);
     });
   }
