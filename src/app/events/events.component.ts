@@ -263,11 +263,22 @@ ${ticketUrl}`;
         `<img src='${e.photo}' /><a href='${window.location.origin}/${e.username}'>${e.name}</a>&nbsp;<small>${e.isPartner ? environment.mainRole : '' }</small><br />${e.comment ? `<small>${e.comment}</small><br />` : '' }`).join('');
       if(event.chat)
         attendeesContent += `<div class='row'><b><a class='col-12 text-center' href='${event.chat}' target='_blank'>Participar no WhatsApp</a></b></div>`;
+      attendeesContent += this.proposeActivity(event);
       //attendeesContent += this.partnerInvite();// Quero ser protagonista
       attendeesContent += `<small class="offset-7">${event.attendees.length} convidados</small>`;
       return attendeesContent;
     }
     return `<a href="${window.location.origin}/${this.getUser()}">${this.getUser()}</a><br>`;
+  }
+  proposeActivity(event: Event){
+    const responseText = 'Quero propor outra atividade ou lugar para o encontro ...';
+    var dateTime = this.fullDateTime(event);
+    const whatsappText = 
+`${responseText}
+${dateTime}
+${event.title}`;
+    const whatsAppLink = this.generateWhatsAppLink(whatsappText, environment.adminPhone);
+    return `<div class='row'><b><a class='col-12 text-center' href='${whatsAppLink}' target='_blank'>Propor outra atividade ...</a></b></div>`;
   }
   partnerInvite(){
     let message = `Quero ser ${this.env.mainRole} d${this.env.appDefiniteArticle} ${this.env.appName}!`;
