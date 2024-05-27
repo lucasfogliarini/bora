@@ -7,6 +7,11 @@
     -moz-border-radius: 10px;
 }
 
+#event-when input[type=button]{
+    margin: 5px;
+    float: right;
+}
+
 .escape-button{
     position: relative;
     right: 65px;

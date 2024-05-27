@@ -29,7 +29,7 @@
     </mat-form-field>
     <div class="buttonEvent">
       <button (click)="close()" type="button" class="btn btn-white">Cancelar</button>
-      <button (click)="comment(commentEvent.id)" type="button" class="btn btn-dark">{{eventComment.send}}</button>
+      <button (click)="comment(commentEvent.id!)" type="button" class="btn btn-dark">{{eventComment.send}}</button>
     </div>
   </div>
 </div>

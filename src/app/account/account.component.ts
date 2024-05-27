@@ -97,7 +97,7 @@ export class AccountComponent {
     this.events.refreshEvents();
   }
   setObservers(){
-    if(this.account.calendarAuthorized){
+    /*if(this.account.calendarAuthorized){
       let user = this.getUser();
       const today = new Date();
       let daysAgo = new Date();
@@ -106,14 +106,14 @@ export class AccountComponent {
       const eventsDaysAgoUri = `events?user=${user}&timeMin=${daysAgo.toISOString()}&timeMax=${today.toISOString()}`;
       this.boraApiService.get(eventsDaysAgoUri, (events: Event[]) => {
           if(events){
-            const pastObservers = [...new Map(events.filter(e=>new Date(e.start) <= new Date()).flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
+            const pastObservers = [...new Map(events.filter(e=>new Date(e.start!) <= new Date()).flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
             this.pastObserversMessage = pastObservers.filter(e=>e.username != user).map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a>&nbsp;<small>${e.isPartner ? this.env.mainRole : ''}</small><br />`).join('');
 
-            const futureObservers = [...new Map(events.filter(e=>new Date(e.start) > new Date()).flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
+            const futureObservers = [...new Map(events.filter(e=>new Date(e.start!) > new Date()).flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
             this.futureObserversMessage = futureObservers.filter(e=>e.username != user).map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a>&nbsp;<small>${e.isPartner ? this.env.mainRole : ''}</small><br />`).join('');
           }
       });
-    }
+    }*/
   }
   getUser(){
     return this.activeRoute.snapshot.url[0].path || 'lucasfogliarini';

@@ -69,7 +69,7 @@ export class EventsComponent {
       this.eventsLoaded = eventsLoaded;
       this.setEvents(this.eventsLoaded);
       const eId = this.activeRoute.snapshot.queryParams['eId'];
-      let currentEvent = eventsLoaded.find(e=>e.id.includes(eId));
+      let currentEvent = eventsLoaded.find(e=>e.id!.includes(eId));
       if(currentEvent){
         this.selectEvent(currentEvent);
         var eIndex = eventsLoaded.indexOf(currentEvent);
@@ -82,7 +82,7 @@ export class EventsComponent {
   privateEvent(event: Event){
     const eventPrivate = new Event();
     eventPrivate.public = false;
-    this.boraApiService.patchEvent(this.getUser(), event.id, eventPrivate, (eventUpdated: Event) => {
+    this.boraApiService.patchEvent(this.getUser(), event.id!, eventPrivate, (eventUpdated: Event) => {
       this.toastr.success('Encontro privado com sucesso.');
       this.refreshEvents();
     });
@@ -92,14 +92,14 @@ export class EventsComponent {
     this.eventsLoaded = undefined;
   }
   fullDateTime(event: Event){
-    return `${this.transformDate(event)} - ${this.transformDateEE(event)} - ${this.transformTime(event.start)}`;
+    return `${this.transformDate(event)} - ${this.transformDateEE(event)} - ${this.transformTime(event.start!)}`;
   }
   isDay(eventTime: Date){
     const eventStart = new Date(eventTime);
     return eventStart.getHours() >= 6 && eventStart.getHours() < 18;
   }
   transformDate(event: Event){
-    const eventStart = new Date(event.start);
+    const eventStart = new Date(event.start!);
     const today = new Date();
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
@@ -251,11 +251,11 @@ ${ticketUrl}`;
   }
   selectEvent(event: Event){
     this.expandEvent(event);
-    var date = new Date(event.start).toLocaleDateString();
+    var date = new Date(event.start!).toLocaleDateString();
     this.title.setTitle(`${event.title} - ${date}`);
     this.router.navigate([], { queryParams: { eId: this.shortId(event) } });
-    let aIndex = event.attendees.findIndex(e=>e.username == this.authService.account.username);
-    this.replied = aIndex > 0;
+    let aIndex = event.attendees?.findIndex(e=>e.username == this.authService.account.username);
+    this.replied = aIndex! > 0;
   }
   attendees(event: Event){
     if(event.attendees){

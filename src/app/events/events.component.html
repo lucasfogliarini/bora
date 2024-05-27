@@ -39,7 +39,7 @@
                 popoverTitle="Abrir Canal?"
                 placement="left"
                 confirmText="Abrir"
-                [popoverMessage]="event.conferenceUrl"
+                [popoverMessage]="event.conferenceUrl!"
                 (confirm)="openConference(event)"
                 [hideConfirmButton]="event.location ? false : true"
                 role="button"
@@ -52,7 +52,7 @@
               [popoverMessage]="ticket(event)"
               placement="left"
               confirmText="Comprar ingresso"
-              (confirm)="openUrl(event.ticketUrl)"
+              (confirm)="openUrl(event.ticketUrl!)"
               role="button"
               class="col-6 float-right">
             </fa-icon>            
@@ -97,10 +97,10 @@
               (cancel)="privateEvent(event)"
               role="button">{{transformDate(event)}} <br /> {{ transformDateEE(event) }}
           </div>
-          <span style="font-size: small;">{{transformTime(event.start)}}</span>
+          <span style="font-size: small;">{{transformTime(event.start!)}}</span>
           <br />
           
-          <span style="font-size: xx-small;">... {{transformTime(event.end)}}</span>
+          <span style="font-size: xx-small;">... {{transformTime(event.end!)}}</span>
         </div>
         <div class="title col-7">
           <div>{{ event.title?.substring(0, 100) }}</div>
