@@ -1,82 +1,92 @@
-<div id="event-create">
-  <fa-icon *ngIf="inProgress()" class="escape-button mr-4" (click)="back()" [icon]="['fas','left-long']" role="button"></fa-icon>
-  <fa-icon *ngIf="inProgress()" class="escape-button" (click)="close()" [icon]="['fas','circle-xmark']" role="button"></fa-icon>  
-  <div id="event-location" *ngIf="event && !event?.location" class="event-question card-title">
-    <h6>{{eventCreate.where}}</h6>
-    <div *ngFor="let location of eventCreate.locations; let i = index" class="form-check">
-      <input [value]="location.place" [(ngModel)]="newEvent.location" class="form-check-input" type="radio" id="location_{{i}}">
-      <label class="form-check-label" for="location_{{i}}">
-        {{location.name}}
-      </label>
-    </div>
-    <input #googlePlace type="search" ngx-google-places-autocomplete [options]='placesOptions' (onAddressChange)="addressChange()"/>
-    &nbsp;
-    <div class="buttonEvent">
-      <button [disabled]="!newEvent.location" (click)="create()" type="button" class="btn btn-dark">Próximo</button>
-    </div>
-  </div>
-  <div id="event-title" *ngIf="event?.location && !event?.title" class="event-question card-title">
-    <h6>{{eventCreate.what}}</h6>
-    <div *ngFor="let title of eventCreate.titles; let i = index" class="form-check">
-      <input [value]="title" [(ngModel)]="newEvent.title" class="form-check-input" type="radio" id="title_{{i}}">
-      <label class="form-check-label" for="title_{{i}}">
-        {{title}}
-      </label>
-    </div>
-    <input [(ngModel)]="newEvent.title" class="form-control mt-2" type="text" id="title" [placeholder]="eventCreate.titleSuggestion">
-    <div class="buttonEvent">
-      <button [disabled]="!newEvent.title" (click)="updateTitle(newEvent.title!)" type="button" class="btn btn-dark">Próximo</button>
-    </div>
-  </div>
-  
-  <div id="event-when" *ngIf="event?.title" class="event-question card-title">
-    <h6>{{eventCreate.when}}</h6>
-    <div id="event-public-switch" class="custom-control custom-switch mt-3">
-      <input [disabled]="account?.eventVisibility != 0" id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
-      <label class="custom-control-label" for="event-public" role="button">{{protectionLabel()}}</label>
-    </div>
-    
-    <input value="Esse mês às 16h" type="button" class="btn btn-dark" (click)="updateWhen('30_dias')" />
-    <br />
-    <input value="Sábado às 16h" type="button" class="btn btn-dark" (click)="updateWhen('sabado')" />
-    <br />
-    <input value="Amanhã às 16h" type="button" class="btn btn-dark" (click)="updateWhen('amanha')" />
-    <br />
-    <input value="Hoje às 16h" type="button" class="btn btn-dark" (click)="updateWhen('hoje')" />
-    <br />
-    <input value="Agora!" type="button" class="btn btn-dark" (click)="updateWhen('agora')" />
-    <!--<mat-form-field>
-      <input
-        matInput
-        [(ngModel)]="newEvent.start"
-        [ngxMatDatetimePicker]="dateTimePicker"
-        placeholder="Escolha a data e hora"
-        (focus)="dateTimePicker.open()"
-        readonly
-      />
-      <ngx-mat-datetime-picker
-        #dateTimePicker
-        [showSpinners]="true"
-        [stepMinute]="30"
-        [touchUi]="true"
-        [defaultTime]="eventCreate.whenDefault"
-      >
-      </ngx-mat-datetime-picker>
-    </mat-form-field>
-    
-    
-    <div class="buttonEvent">
-      <button (click)="update(true)" type="button" class="btn btn-white mr-2">{{eventCreate.neutral}}</button>
-      <button [disabled]="!newEvent.start" (click)="update(true)" type="button" class="btn btn-dark">🗓 Agendar</button>
-    </div>-->
-  </div>
+<!--<fa-icon id="bora" (click)="init()" *ngIf="chatState == 'closed'"  [icon]="['fas','comments']" role="button" class="col-6"></fa-icon>-->
+<div id="bora">
+  <input id="bora_button"
+      (click)="init()"
+      type="button" value="Bora!"
+      role="button"
+      class="btn btn-block btn-dark col-3"
+      [hidden]="chatState != 'closed'" />
 
-  <!--<div id="event-evaluation" *ngIf="event?.location && !event?.evaluation" class="event-question card-title">
-    <h6>{{eventCreate.evaluation}}</h6>
-    <mat-slider [(ngModel)]="newEvent.evaluation" min="2" max="{{eventCreate.evaluationMax}}" step="2" thumbLabel></mat-slider>
-    <div class="buttonEvent">
-      <button (click)="evaluate()" type="button" class="btn btn-white mr-2">{{eventCreate.neutral}}</button>
-      <button [disabled]="!newEvent.evaluation" (click)="evaluate()" type="button" class="btn btn-dark">{{eventCreate.currency}} {{newEvent.evaluation}}</button>
+  <div id="event-create" [hidden]="chatState == 'closed'">
+      <fa-icon class="escape-button mr-4" (click)="back()" [icon]="['fas','left-long']" role="button"></fa-icon>
+      <fa-icon class="escape-button" (click)="close()" [icon]="['fas','circle-xmark']" role="button"></fa-icon>  
+      <div id="event-location" *ngIf="chatState == 'where'" class="event-question card-title">
+      <h6>{{eventCreate.where}}</h6>
+      <div *ngFor="let location of eventCreate.locations; let i = index" class="form-check">
+        <input [value]="location.place" [(ngModel)]="newEvent.location" class="form-check-input" type="radio" id="location_{{i}}">
+        <label class="form-check-label" for="location_{{i}}">
+          {{location.name}}
+        </label>
+      </div>
+      <input #googlePlace type="search" ngx-google-places-autocomplete [options]='placesOptions' (onAddressChange)="addressChange()"/>
+      &nbsp;
+      <div class="buttonEvent">
+        <button [disabled]="!newEvent.location" (click)="create()" type="button" class="btn btn-dark">Próximo</button>
+      </div>
+      </div>
+      <div id="event-title" *ngIf="chatState == 'what'" class="event-question card-title">
+      <h6>{{eventCreate.what}}</h6>
+      <div *ngFor="let title of eventCreate.titles; let i = index" class="form-check">
+        <input [value]="title" [(ngModel)]="newEvent.title" class="form-check-input" type="radio" id="title_{{i}}">
+        <label class="form-check-label" for="title_{{i}}">
+          {{title}}
+        </label>
+      </div>
+      <input [(ngModel)]="newEvent.title" class="form-control mt-2" type="text" id="title" [placeholder]="eventCreate.titleSuggestion">
+      <div class="buttonEvent">
+        <button [disabled]="!newEvent.title" (click)="updateTitle()" type="button" class="btn btn-dark">Próximo</button>
+      </div>
+      </div>
+
+      <div id="event-when" *ngIf="chatState == 'when'" class="event-question card-title">
+      <h6>{{eventCreate.when}}</h6>
+      <div id="event-public-switch" class="custom-control custom-switch mt-3">
+        <input id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
+        <label class="custom-control-label" for="event-public" role="button">{{protectionLabel()}}</label>
+      </div>
+
+      <input value="Esse mês às 16h" type="button" class="btn btn-dark" (click)="updateWhen('30_dias')" />
+      <br />
+      <input value="Sábado às 16h" type="button" class="btn btn-dark" (click)="updateWhen('sabado')" />
+      <br />
+      <input value="Amanhã às 16h" type="button" class="btn btn-dark" (click)="updateWhen('amanha')" />
+      <br />
+      <input value="Hoje às 16h" type="button" class="btn btn-dark" (click)="updateWhen('hoje')" />
+      <br />
+      <input value="Agora!" type="button" class="btn btn-dark" (click)="updateWhen('agora')" />
+      <!--<mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="newEvent.start"
+          [ngxMatDatetimePicker]="dateTimePicker"
+          placeholder="Escolha a data e hora"
+          (focus)="dateTimePicker.open()"
+          readonly
+        />
+        <ngx-mat-datetime-picker
+          #dateTimePicker
+          [showSpinners]="true"
+          [stepMinute]="30"
+          [touchUi]="true"
+          [defaultTime]="eventCreate.whenDefault"
+        >
+        </ngx-mat-datetime-picker>
+      </mat-form-field>
+
+
+      <div class="buttonEvent">
+        <button (click)="update(true)" type="button" class="btn btn-white mr-2">{{eventCreate.neutral}}</button>
+        <button [disabled]="!newEvent.start" (click)="update(true)" type="button" class="btn btn-dark">🗓 Agendar</button>
+      </div>-->
+      </div>
+
+      <!--<div id="event-evaluation" *ngIf="event?.location && !event?.evaluation" class="event-question card-title">
+      <h6>{{eventCreate.evaluation}}</h6>
+      <mat-slider [(ngModel)]="newEvent.evaluation" min="2" max="{{eventCreate.evaluationMax}}" step="2" thumbLabel></mat-slider>
+      <div class="buttonEvent">
+        <button (click)="evaluate()" type="button" class="btn btn-white mr-2">{{eventCreate.neutral}}</button>
+        <button [disabled]="!newEvent.evaluation" (click)="evaluate()" type="button" class="btn btn-dark">{{eventCreate.currency}} {{newEvent.evaluation}}</button>
+      </div>
+      </div>-->
     </div>
-  </div>-->
 </div>

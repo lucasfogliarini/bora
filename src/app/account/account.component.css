@@ -1,18 +1,3 @@
-#partner-questions{
-    position: fixed;
-    bottom: 85px;
-    right: 10px;
-    z-index: 999;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-}
-
-#bora{
-    font-size: 45px;
-    padding: 0px 22px;
-}
-
 #editing-account fa-icon{
     font-size: 25px;
 }

@@ -20,7 +20,7 @@ import { Location } from '../models/location.model';
   styleUrls: ['./event-create.component.css']
 })
 export class EventCreateComponent {
-  event?: Event;
+  //event?: Event;
   newEvent: Event = new Event;
   account?: Account;
   placesOptions: Options = new Options;
@@ -75,15 +75,17 @@ export class EventCreateComponent {
     });
   }
   init(){
-    this.event = new Event;
+    this.chatState = 'where';
+    this.newEvent = new Event;
   }
+  chatState: string = 'closed';
   create(){
     const jwt = localStorage.getItem("jwt");
     if(jwt){
       var user = this.getUsername();
       //this.setScenario();
+      this.chatState = 'what';
       this.boraApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
-        this.event = event;
         this.newEvent = event;
         this.eventUpdated.emit(event);
       });
@@ -97,11 +99,11 @@ export class EventCreateComponent {
   protectionLabel(){
     return this.newEvent.public ? 'Público' : 'Privado';
   }
-  updateTitle(value: string){
+  updateTitle(){
     var user = this.getUsername();
-    const eventPatchTitle: Event = { title: value };
-    this.boraApiService.patchEvent(user,this.event!.id!, eventPatchTitle, (event: Event) => {
-      this.event = event;
+    const eventPatchTitle: Event = { title: this.newEvent.title };
+    this.chatState = 'when';
+    this.boraApiService.patchEvent(user,this.newEvent!.id!, eventPatchTitle, (event: Event) => {
       if(!event.location){
         this.getCurrentPlace();
       }
@@ -115,8 +117,7 @@ export class EventCreateComponent {
       start: this.getWhenDateTime(when),
       public: this.newEvent.public
     };    
-    this.boraApiService.patchEvent(user, this.event!.id!, eventPatchWhen, (event: Event) => {
-      this.event = event;
+    this.boraApiService.patchEvent(user, this.newEvent!.id!, eventPatchWhen, (event: Event) => {
       this.close();
       if(this.newEvent.public)
         this.toastr.success(`${this.eventCreate.success} Compartilha no Whatsapp 👇`);
@@ -148,15 +149,6 @@ export class EventCreateComponent {
   addressChange(){
     this.newEvent.location = this.googlePlace?.nativeElement.value;
   }
-  evaluate(){
-    var user = this.activeRoute.snapshot.params['user'];
-    let attendeeReply = new AttendeeReply();
-    attendeeReply.comment = this.newEvent.evaluation ? `${this.eventCreate.currency}${this.newEvent.evaluation}` : '';
-    this.boraApiService.patch(`events/${this.event!.id}/reply?user=${user}`, attendeeReply,  (event: Event) => {
-      this.event!.evaluation = this.newEvent.evaluation || this.eventCreate.evaluationDefault;
-    }, async (errorResponse: HttpErrorResponse)=>{
-    });
-  }
   getCurrentPlace(){
     window.navigator.geolocation.getCurrentPosition(position =>{
       //@ts-ignore
@@ -174,20 +166,15 @@ export class EventCreateComponent {
       //else Geolocation failed due to unknown error.;
     });
   }
-  inProgress(){
-    return this.event;
-  }
   back(){
-    if(this.event?.evaluation)
-      this.event!.evaluation = undefined;
-    else if(this.event?.location)
-      this.event!.location = undefined;
-    else if(this.event?.title)
-      this.event!.title = undefined;//está criando 2 eventos.
+    if(this.chatState == 'what')
+      this.chatState = 'where';
+    else if(this.chatState == 'when')
+      this.chatState = 'what';
   }
   close(){
-    this.event = undefined;
     this.newEvent = new Event;
+    this.chatState = 'closed';
   }
   setScenario(){
     const scenario = this.scenarios!.find(e=>e.title == this.newEvent.title);

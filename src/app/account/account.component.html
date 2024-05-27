@@ -127,24 +127,4 @@
   </div>
 </section>
 
-<div id="partner-questions" *ngIf="account?.calendarAuthorized">
-  <div *ngIf="account.isPartner && !account.partnerCommentsEnabled">
-    <app-event-create></app-event-create>
-    <fa-icon (click)="initEvent()" *ngIf="!inProgress()" id="bora" [icon]="['fas','comments']" role="button" class="col-6"></fa-icon>
-  </div>
-  <div *ngIf="account?.isPartner && account.partnerCommentsEnabled">
-    <app-event-create></app-event-create>
-    <app-event-comment></app-event-comment>
-    <fa-icon *ngIf="!inProgress()" id="bora" [icon]="['fas','comments']" mwlConfirmationPopover
-        title="Bora ..."
-        popoverTitle="Bora ..."
-        popoverMessage="Um <b>Encontro</b> ou um <b>Comentário</b> em um encontro <br /> <small>É necessário se autenticar no Google.</small>"
-        placement="left"
-        confirmText="Encontro"
-        (confirm)="initEvent()"
-        cancelText="Comentário"
-        (cancel)="initComment()"
-        role="button"
-        class="col-6"></fa-icon>
-  </div>
-</div>
+<app-event-create *ngIf="account?.calendarAuthorized && account.isPartner" ></app-event-create>

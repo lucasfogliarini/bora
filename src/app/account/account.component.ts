@@ -24,20 +24,6 @@ export class AccountComponent {
   futureObserversMessage?: string;
 
   eventCreate!: EventCreateComponent;
-  @ViewChild(EventCreateComponent)
-  set eventCreateChield(eventCreate: EventCreateComponent) {
-    if(eventCreate != undefined){
-      this.eventCreate = eventCreate;
-      this.eventCreate.eventUpdated.subscribe((event: Event)=>{
-        if(event.public)
-          this.refreshEvents();
-      });
-      this.eventCreate.account = this.account;
-      const callsOpen = this.activeRoute.snapshot.queryParams['callsOpen'] != undefined;
-      if(this.account.partnerCallsOpen || callsOpen)
-        this.initEvent();
-    }
-  }
   eventComment!: EventCommentComponent;
   @ViewChild(EventCommentComponent)
   set eventCommentChield(eventComment: EventCommentComponent) {
@@ -71,9 +57,6 @@ export class AccountComponent {
                   }
                 });
   }
-  initEvent(){
-    this.eventCreate.init();
-  }
   initComment(){
     this.eventComment.init();
   }
@@ -89,9 +72,6 @@ export class AccountComponent {
   }
   unauthorizeCalendar(){
     this.authService.unauthorizeCalendar();
-  }
-  inProgress(){
-      return this.eventCreate ? this.eventCreate.inProgress() : false;
   }
   refreshEvents(){
     this.events.refreshEvents();
