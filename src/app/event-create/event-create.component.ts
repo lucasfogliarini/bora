@@ -99,7 +99,7 @@ export class EventCreateComponent {
   }
   updateTitle(value: string){
     var user = this.getUsername();
-    const eventPatchTitle: Event = { title: value }; 
+    const eventPatchTitle: Event = { title: value };
     this.boraApiService.patchEvent(user,this.event!.id!, eventPatchTitle, (event: Event) => {
       this.event = event;
       if(!event.location){
@@ -174,7 +174,6 @@ export class EventCreateComponent {
       //else Geolocation failed due to unknown error.;
     });
   }
-
   inProgress(){
     return this.event;
   }
@@ -188,6 +187,7 @@ export class EventCreateComponent {
   }
   close(){
     this.event = undefined;
+    this.newEvent = new Event;
   }
   setScenario(){
     const scenario = this.scenarios!.find(e=>e.title == this.newEvent.title);
