@@ -328,7 +328,7 @@ Bora junto?`;
   expandEvent(event: Event){
     if(!event.expanded){
       event.expanded = true;
-      if(this.isConference(event)){
+      if(this.isConferenceLocation(event)){
         const bgImagePath = event.conferenceUrl?.includes('discord') ? '../../assets/discord.jpg' : '../../assets/google-meet.jpg';
         this.setBackgroundImage(event, bgImagePath);
       }
@@ -357,15 +357,12 @@ Bora junto?`;
         eventBackgroundImage!.setAttribute('src', imgPath);
       }, 200);
   }
-
   isConference(event: Event){
-    return event.conferenceUrl && this.isConferenceLocation(event);
+    return event.conferenceUrl || this.isConferenceLocation(event);
   }
-
-  public isConferenceLocation(event: Event){
+  isConferenceLocation(event: Event){
     return ['discord','meet.google'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
-}
-
+  }
   arrayMove(arr: Array<any>, fromIndex: number, toIndex: number) {
     var element = arr[fromIndex];
     arr.splice(fromIndex, 1);
