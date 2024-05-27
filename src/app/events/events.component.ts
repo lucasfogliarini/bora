@@ -215,7 +215,7 @@ ${whatsappGroupText}
     var dateTime = this.fullDateTime(event);
     let user = this.getUser();
     let eventUrl = `${window.location.origin}/${user}?eId=${this.shortId(event)}`;
-    let ticketMessage = `Entrada ${event.ticketUrl ? 'paga.' : 'gratuita!'}`;
+    let ticketMessage = `Encontro ${event.ticketUrl ? 'pago.' : 'gratuito!'}`;
     let ticketUrl = event.ticketUrl ? `
 Compra de ingressos:
 ${event.ticketUrl}` : '';
