@@ -1,7 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Options } from 'ngx-google-places-autocomplete/objects/options/options';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
@@ -20,7 +19,6 @@ import { Location } from '../models/location.model';
   styleUrls: ['./event-create.component.css']
 })
 export class EventCreateComponent {
-  //event?: Event;
   newEvent: Event = new Event;
   account?: Account;
   placesOptions: Options = new Options;
@@ -34,7 +32,8 @@ export class EventCreateComponent {
   constructor(private boraApiService: BoraApiService,
               private authService: AuthenticationService,
               private toastr: ToastrService,
-              private activeRoute: ActivatedRoute) {
+              private activeRoute: ActivatedRoute,
+              private router: Router) {
                 this.placesOptions.componentRestrictions = { country: 'br' };
                 this.setContents();
                 this.setScenarios();
@@ -83,10 +82,10 @@ export class EventCreateComponent {
     const jwt = localStorage.getItem("jwt");
     if(jwt){
       var user = this.getUsername();
-      //this.setScenario();
-      this.chatState = 'what';
+      this.chatState = 'creating';
       this.boraApiService.post<Event>(`events?user=${user}`, this.newEvent, (event) => {
         this.newEvent = event;
+        this.chatState = 'what';
         this.eventUpdated.emit(event);
       });
     }else{
@@ -95,6 +94,9 @@ export class EventCreateComponent {
         this.create()
       });
     }
+  }
+  creatingOrNext(){
+    return this.chatState == 'creating' ? 'Criando encontro ... ' : 'Próximo';
   }
   protectionLabel(){
     return this.newEvent.public ? 'Público' : 'Privado';
@@ -108,7 +110,6 @@ export class EventCreateComponent {
         this.getCurrentPlace();
       }
       this.eventUpdated.emit(event);
-      this.newEvent = event;
     });
   }
   updateWhen(when: string){
@@ -122,9 +123,11 @@ export class EventCreateComponent {
       if(this.newEvent.public)
         this.toastr.success(`${this.eventCreate.success} Compartilha no Whatsapp 👇`);
       else
-        this.toastr.success(`${this.eventCreate.success}`);
+        this.toastr.success(`${this.eventCreate.success}`);      
+      this.router.navigateByUrl('/', { skipLocationChange: true}).then(() => {
+        this.router.navigate([this.router.url]);
+      });
       this.eventUpdated.emit(event);
-      this.newEvent = event;
     });
   }
   getWhenDateTime(when: string) {

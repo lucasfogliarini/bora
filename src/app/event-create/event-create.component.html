@@ -10,19 +10,19 @@
   <div id="event-create" [hidden]="chatState == 'closed'">
       <fa-icon class="escape-button mr-4" (click)="back()" [icon]="['fas','left-long']" role="button"></fa-icon>
       <fa-icon class="escape-button" (click)="close()" [icon]="['fas','circle-xmark']" role="button"></fa-icon>  
-      <div id="event-location" *ngIf="chatState == 'where'" class="event-question card-title">
-      <h6>{{eventCreate.where}}</h6>
-      <div *ngFor="let location of eventCreate.locations; let i = index" class="form-check">
-        <input [value]="location.place" [(ngModel)]="newEvent.location" class="form-check-input" type="radio" id="location_{{i}}">
-        <label class="form-check-label" for="location_{{i}}">
-          {{location.name}}
-        </label>
-      </div>
-      <input #googlePlace type="search" ngx-google-places-autocomplete [options]='placesOptions' (onAddressChange)="addressChange()"/>
-      &nbsp;
-      <div class="buttonEvent">
-        <button [disabled]="!newEvent.location" (click)="create()" type="button" class="btn btn-dark">Próximo</button>
-      </div>
+      <div id="event-location" *ngIf="chatState == 'where' || chatState == 'creating'" class="event-question card-title">
+        <h6>{{eventCreate.where}}</h6>
+        <div *ngFor="let location of eventCreate.locations; let i = index" class="form-check">
+          <input [value]="location.place" [(ngModel)]="newEvent.location" class="form-check-input" type="radio" id="location_{{i}}">
+          <label class="form-check-label" for="location_{{i}}">
+            {{location.name}}
+          </label>
+        </div>
+        <input #googlePlace type="search" ngx-google-places-autocomplete [options]='placesOptions' (onAddressChange)="addressChange()"/>
+        &nbsp;
+        <div class="buttonEvent">
+          <button [disabled]="!newEvent.location || chatState == 'creating'" (click)="create()" type="button" class="btn btn-dark">{{creatingOrNext()}}</button>
+        </div>
       </div>
       <div id="event-title" *ngIf="chatState == 'what'" class="event-question card-title">
       <h6>{{eventCreate.what}}</h6>
