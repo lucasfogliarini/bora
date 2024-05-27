@@ -92,10 +92,10 @@ export class EventsComponent {
     this.eventsLoaded = undefined;
   }
   fullDateTime(event: Event){
-    return `${this.transformDate(event)} - ${this.transformDateEE(event)} - ${this.transformTime(event)}`;
+    return `${this.transformDate(event)} - ${this.transformDateEE(event)} - ${this.transformTime(event.start)}`;
   }
-  isDay(event: Event){
-    const eventStart = new Date(event.start);
+  isDay(eventTime: Date){
+    const eventStart = new Date(eventTime);
     return eventStart.getHours() >= 6 && eventStart.getHours() < 18;
   }
   transformDate(event: Event){
@@ -121,9 +121,10 @@ export class EventsComponent {
            && date.getDate() == now.getDate()
            && date.getTime() < now.getTime();
   }
-  transformTime(event: Event){
-    const icon = this.isDay(event) ? '🌞': '🌒';
-    return `${icon} ${this.datePipe.transform(event.start, 'HH:mm')}` ;
+  transformTime(eventTime: Date){
+    const icon = this.isDay(eventTime) ? '🌞': '🌒';
+    const dateTime = this.datePipe.transform(eventTime, 'HH:mm');
+    return `${icon} ${dateTime}` ;
   }
   transformDateEE(event: Event){
     return this.datePipe.transform(event.start, 'EE', '', 'pt-BR');

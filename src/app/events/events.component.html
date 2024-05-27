@@ -5,7 +5,7 @@
 <div *ngIf="events">
   <div class="{{isSelectedClass(event)}}" (click)="selectEvent(event)" role="button" *ngFor="let event of events">
     <div [id]="'e'+event.id" class="event-details">
-      <div class="row">
+      <div id="image-and-buttons" class="row">
         <img [hidden]="!event.expanded" class="background-image" src="../../assets/loading.gif" />
         <div *ngIf="event.expanded" class="event-buttons col-4 mt-3">
           <div class="row">
@@ -84,7 +84,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div id="date-and-title" class="row">
         <div class="date-time col-3">
           <div class="date" mwlConfirmationPopover
               title="Google Agenda"
@@ -97,7 +97,10 @@
               (cancel)="privateEvent(event)"
               role="button">{{transformDate(event)}} <br /> {{ transformDateEE(event) }}
           </div>
-          <span style="font-size: small;">{{transformTime(event)}}</span>
+          <span style="font-size: small;">{{transformTime(event.start)}}</span>
+          <br />
+          
+          <span style="font-size: xx-small;">... {{transformTime(event.end)}}</span>
         </div>
         <div class="title col-7">
           <div>{{ event.title?.substring(0, 100) }}</div>
