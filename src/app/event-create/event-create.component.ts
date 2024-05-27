@@ -45,7 +45,7 @@ export class EventCreateComponent {
   }
   setLocations(){
     this.boraApiService.getLocations(this.getUsername(), (locations: Location[])=>{
-      this.eventCreate.locations = locations;
+      this.eventCreate.locations = locations.filter(s=>s.enabled);
     });
   }
   setScenarios(){
