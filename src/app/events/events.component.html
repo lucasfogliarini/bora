@@ -9,24 +9,13 @@
         <img [hidden]="!event.expanded" class="background-image" src="../../assets/loading.gif" />
         <div *ngIf="event.expanded" class="event-buttons col-4 mt-3">
           <div class="row">
-            <fa-icon *ngIf="!isConference(event)" [icon]="['fas', 'map-location-dot']" mwlConfirmationPopover
+            <fa-icon [icon]="['fas', 'map-location-dot']" mwlConfirmationPopover
                 title="Localização"
                 popoverTitle="Abrir Google Maps?"
                 placement="left"
                 confirmText="Abrir"
                 [popoverMessage]="getLocation(event)"
                 (confirm)="openMaps(event.location)"
-                [hideConfirmButton]="event.location ? false : true"
-                role="button"
-                class="col-6 float-right">
-            </fa-icon>
-            <fa-icon *ngIf="isConference(event)" [icon]="['fas', 'headset']" mwlConfirmationPopover
-                title="Canal de Voz"
-                popoverTitle="Canal de Voz"
-                placement="left"
-                confirmText="Abrir"
-                [popoverMessage]="event.conferenceUrl"
-                (confirm)="openConference(event)"
                 [hideConfirmButton]="event.location ? false : true"
                 role="button"
                 class="col-6 float-right">
@@ -43,8 +32,21 @@
             </fa-icon>
           </div>
           <div class="row">
-            <fa-icon [icon]="['fas', 'ticket']" mwlConfirmationPopover
-              [hidden]="!event.ticketUrl"
+            <div [hidden]="isConference(event) || event.ticketUrl" class="col-6"></div>
+            <fa-icon [icon]="['fas', 'headset']" [hidden]="!isConference(event)"
+                mwlConfirmationPopover
+                title="Canal"
+                popoverTitle="Abrir Canal?"
+                placement="left"
+                confirmText="Abrir"
+                [popoverMessage]="event.conferenceUrl"
+                (confirm)="openConference(event)"
+                [hideConfirmButton]="event.location ? false : true"
+                role="button"
+                class="col-6 float-right">
+            </fa-icon>
+            <fa-icon [icon]="['fas', 'ticket']" [hidden]="isConference(event) || !event.ticketUrl"
+              mwlConfirmationPopover              
               title="Ingresso"
               popoverTitle="Ingresso"
               [popoverMessage]="ticket(event)"
@@ -53,8 +55,7 @@
               (confirm)="openUrl(event.ticketUrl)"
               role="button"
               class="col-6 float-right">
-            </fa-icon>
-            <div [hidden]="event.ticketUrl" class="col-6"></div>
+            </fa-icon>            
             <input type="button" value="Bora!" *ngIf="!replied" mwlConfirmationPopover
               popoverClass='attendees'
               title="Convidados,  Bora?"

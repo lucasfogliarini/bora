@@ -162,7 +162,7 @@ export class EventsComponent {
       var responseText = response == "accepted" ? "Confirmo presença" : "Quero e tentarei ir";
       var dateTime = this.fullDateTime(event);
       let conferenceText = this.isConference(event) ? `
-Canal de Voz: 
+Canal: 
 ${event.conferenceUrl}` : '';
 
       let whatsappGroupText = event.chat ? `
@@ -357,9 +357,14 @@ Bora junto?`;
         eventBackgroundImage!.setAttribute('src', imgPath);
       }, 200);
   }
+
   isConference(event: Event){
-    return event.conferenceUrl !== undefined; //['discord','meet.google'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
+    return event.conferenceUrl && this.isConferenceLocation(event);
   }
+
+  public isConferenceLocation(event: Event){
+    return ['discord','meet.google'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
+}
 
   arrayMove(arr: Array<any>, fromIndex: number, toIndex: number) {
     var element = arr[fromIndex];
