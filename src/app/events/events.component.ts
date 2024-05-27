@@ -358,7 +358,7 @@ Bora junto?`;
       }, 200);
   }
   isConference(event: Event){
-    return ['discord','meet.google'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
+    return event.conferenceUrl !== undefined; //['discord','meet.google'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
   }
 
   arrayMove(arr: Array<any>, fromIndex: number, toIndex: number) {
