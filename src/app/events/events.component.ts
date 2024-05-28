@@ -202,7 +202,7 @@ ${whatsappGroupText}
     window.open(event.conferenceUrl);
   }
   getLocationShare(event: Event){
-    if(this.isConference(event)){
+    if(this.conferenceOnLocation(event)){
       return event.location?.includes('discord') ? "💻 Discord" : "💻 Google Meet"
     }
     else if(!event.location){
@@ -329,7 +329,7 @@ Bora junto?`;
   expandEvent(event: Event){
     if(!event.expanded){
       event.expanded = true;
-      if(this.isConferenceLocation(event)){
+      if(this.conferenceOnLocation(event)){
         const bgImagePath = event.conferenceUrl?.includes('discord') ? '../../assets/discord.jpg' : '../../assets/google-meet.jpg';
         this.setBackgroundImage(event, bgImagePath);
       }
@@ -359,9 +359,9 @@ Bora junto?`;
       }, 200);
   }
   isConference(event: Event){
-    return event.conferenceUrl && this.isConferenceLocation(event);
+    return event.conferenceUrl || this.conferenceOnLocation(event);
   }
-  isConferenceLocation(event: Event){
+  conferenceOnLocation(event: Event){
     return ['discord','meet.google'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
   }
   arrayMove(arr: Array<any>, fromIndex: number, toIndex: number) {
