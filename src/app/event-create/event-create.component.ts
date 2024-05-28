@@ -140,6 +140,9 @@ export class EventCreateComponent {
             return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 16, 0, 0); // Hoje às 16:00
         case 'amanha':
             return new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 16, 0, 0); // Amanhã às 16:00
+        case 'sexta':
+            const daysUntilFriday = (5 - now.getDay() + 7) % 7; // Calcula os dias até a próxima sexta
+            return new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysUntilFriday, 19, 0, 0); // Próximo sexta às 19:00
         case 'sabado':
             const daysUntilSaturday = (6 - now.getDay() + 7) % 7; // Calcula os dias até o próximo sábado
             return new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysUntilSaturday, 16, 0, 0); // Próximo sábado às 16:00
