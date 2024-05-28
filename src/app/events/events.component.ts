@@ -216,7 +216,7 @@ ${whatsappGroupText}
     var dateTime = this.fullDateTime(event);
     let user = this.getUser();
     let eventUrl = `${window.location.origin}/${user}?eId=${this.shortId(event)}`;
-    let ticketMessage = `Encontro ${event.ticketUrl ? 'pago.' : 'gratuito!'}`;
+    let ticketMessage = event.ticketUrl ? 'Encontro pago.' : '';
     let ticketUrl = event.ticketUrl ? `
 Compra de ingressos:
 ${event.ticketUrl}` : '';
@@ -227,7 +227,7 @@ ${dateTime}
 ${this.getLocationShare(event)}
 
 ${ticketMessage}
-Confirme o encontro no botão "Bora!":
+Confirme clicando no botão "Bora!" desse encontro:
 ${eventUrl}
 ${ticketUrl}`;
 
@@ -359,7 +359,7 @@ Bora junto?`;
       }, 200);
   }
   isConference(event: Event){
-    return event.conferenceUrl || this.isConferenceLocation(event);
+    return event.conferenceUrl && this.isConferenceLocation(event);
   }
   isConferenceLocation(event: Event){
     return ['discord','meet.google'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
