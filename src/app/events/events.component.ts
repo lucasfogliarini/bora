@@ -272,14 +272,14 @@ ${ticketUrl}`;
     return `<a href="${window.location.origin}/${this.getUser()}">${this.getUser()}</a><br>`;
   }
   proposeActivity(event: Event){
-    const responseText = 'Quero propor outra atividade ou lugar para o encontro ...';
+    const responseText = 'Quero em outro momento, lugar/canal ou atividade para o encontro ...';
     var dateTime = this.fullDateTime(event);
     const whatsappText = 
 `${responseText}
 ${dateTime}
 ${event.title}`;
     const whatsAppLink = this.generateWhatsAppLink(whatsappText, environment.adminPhone);
-    return `<div class='row'><b><a class='col-12 text-center' href='${whatsAppLink}' target='_blank'>Propor outra atividade ...</a></b></div>`;
+    return `<div class='row'><b><a class='col-12 text-center' href='${whatsAppLink}' target='_blank'>Quero em outro momento, lugar/canal ou atividade ...</a></b></div>`;
   }
   partnerInvite(){
     let message = `Quero ser ${this.env.mainRole} d${this.env.appDefiniteArticle} ${this.env.appName}!`;
