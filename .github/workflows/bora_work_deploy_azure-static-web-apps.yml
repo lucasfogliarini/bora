@@ -1,4 +1,4 @@
-name: Azure Static Web Apps CI/CD
+name: bora.work (Azure Static Web Apps CI/CD)
 
 on:
   push:
