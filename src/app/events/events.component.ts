@@ -216,7 +216,6 @@ ${whatsappGroupText}
     var dateTime = this.fullDateTime(event);
     let user = this.getUser();
     let eventUrl = `${window.location.origin}/${user}?eId=${this.shortId(event)}`;
-    let ticketMessage = event.ticketUrl ? 'Encontro pago.' : '';
     let ticketUrl = event.ticketUrl ? `
 Compra de ingressos:
 ${event.ticketUrl}` : '';
@@ -226,7 +225,6 @@ ${event.ticketUrl}` : '';
 ${dateTime}
 ${this.getLocationShare(event)}
 
-${ticketMessage}
 Confirme clicando no botão "Bora!" desse encontro:
 ${eventUrl}
 ${ticketUrl}`;
