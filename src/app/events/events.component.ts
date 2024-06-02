@@ -327,8 +327,14 @@ Bora junto?`;
   expandEvent(event: Event){
     if(!event.expanded){
       event.expanded = true;
+      let bgImagePath = undefined;
       if(this.conferenceOnLocation(event)){
-        const bgImagePath = event.conferenceUrl?.includes('discord') ? '../../assets/discord.jpg' : '../../assets/google-meet.jpg';
+        if(event.conferenceUrl?.includes('wa.me'))
+          bgImagePath = '../../assets/whatsapp.png'
+        else if(event.conferenceUrl?.includes('discord'))
+          bgImagePath = '../../assets/discord.jpg'
+        else
+          bgImagePath = '../../assets/google-meet.jpg';  
         this.setBackgroundImage(event, bgImagePath);
       }
       else if(!event.location){
@@ -360,7 +366,7 @@ Bora junto?`;
     return event.conferenceUrl || this.conferenceOnLocation(event);
   }
   conferenceOnLocation(event: Event){
-    return ['discord','meet.google'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
+    return ['discord','meet.google', 'wa.me'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
   }
   arrayMove(arr: Array<any>, fromIndex: number, toIndex: number) {
     var element = arr[fromIndex];
