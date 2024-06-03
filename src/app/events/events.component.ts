@@ -221,8 +221,8 @@ Compra de ingressos:
 ${event.ticketUrl}` : '';
 
     var whatsappText = 
-`${event.title}
-${dateTime}
+`${dateTime}
+${event.title}
 ${this.getLocationShare(event)}
 
 Confirme clicando no botão "Bora!" desse encontro:
