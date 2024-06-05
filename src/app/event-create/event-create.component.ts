@@ -43,8 +43,8 @@ export class EventCreateComponent {
     return this.activeRoute.snapshot.url[0].path || 'bora.work';
   }
   setLocations(){
-    this.boraApiService.getLocations(this.getUsername(), (locations: Location[])=>{
-      this.eventCreate.locations = locations.filter(s=>s.enabled);
+    this.boraApiService.getEnabledLocations(this.getUsername(), (locations: Location[])=>{
+      this.eventCreate.locations = locations;
     });
   }
   setScenarios(){

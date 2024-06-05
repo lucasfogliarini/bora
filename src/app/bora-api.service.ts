@@ -58,8 +58,8 @@ export class BoraApiService {
     });
   }
 
-  getLocations(username: string, callBack: (scenariosCallback: Location[]) => void){
-    let locationsUri = `locations?filter=Account/Username eq '${username}'`;
+  getEnabledLocations(username: string, callBack: (scenariosCallback: Location[]) => void){
+    let locationsUri = `locations?filter=Account/Username eq '${username}'and Enabled eq true&orderby=Enabled desc, UpdatedAt desc`;
     this.get(locationsUri, (locations: Location[])=>{
        callBack(locations);
     });
