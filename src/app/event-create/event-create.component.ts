@@ -120,7 +120,7 @@ export class EventCreateComponent {
     };    
     this.boraApiService.patchEvent(user, this.newEvent!.id!, eventPatchWhen, (event: Event) => {
       this.close();
-      if(this.newEvent.public)
+      if(event.public)
         this.toastr.success(`${this.eventCreate.success} Compartilha no Whatsapp 👇`);
       else
         this.toastr.success(`${this.eventCreate.success}`);      
