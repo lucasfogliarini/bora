@@ -225,7 +225,8 @@ ${event.ticketUrl}` : '';
 ${event.title}
 ${this.getLocationShare(event)}
 
-Confirme clicando no botão "Bora!" desse encontro:
+Clique no link e nos dois botões 'Bora!', confirme no WhatsApp 
+E ganhe um prêmio misterioso por ter realizado o encontro!
 ${eventUrl}
 ${ticketUrl}`;
 
