@@ -25,11 +25,22 @@ export class SideBarMenuComponent  implements OnInit {
   ngOnInit(): void {
     this.authService.subscribeAuth();
   }
-  openUser(editing: boolean = false){
+  openUser(){
     var locationPath = this.authService.account?.username;
-    if(editing){
+    /*if(editing){
       locationPath += `?editing=true`;
-    }
+    }*/
     window.location.href = locationPath;
+  }
+  bePartner(){
+    const whatsappText = 'Quero ser parceiro do Bora Agora!';
+    const whatsAppLink = this.generateWhatsAppLink(whatsappText, environment.adminPhone);
+    window.open(whatsAppLink);
+  }
+
+  generateWhatsAppLink(text: string, number?: string){//número nulo será compartilhamento selecionado
+    var whatsappText = window.encodeURIComponent(text);
+    var whatsAppLink = `https://wa.me/${number || ''}?text=${whatsappText}`;
+    return whatsAppLink;
   }
 }
