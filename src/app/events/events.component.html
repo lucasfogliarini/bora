@@ -1,7 +1,13 @@
+<nav id="events-nav" class="row" style="border-bottom: 1px solid rgb(216, 208, 208)">
+  <div class="col-9"></div>
+  <input id="eventsQuery" (input)="getEvents()" [(ngModel)]="eventsQuery" type="text" placeholder="Encontre! 'bora', 'tech', 'jogatina'" class="ml-1 col-8" />
+  <fa-icon (click)="getEvents(true)" title="Eventos com ingresso" class="m-2 col-1" [icon]="['fas','ticket']"></fa-icon>
+  <fa-icon (click)="getEvents()" title="Todos Eventos" class="m-2 col-1" [icon]="['fas','arrows-rotate']"></fa-icon>
+</nav>
 <div *ngIf="eventsMessage" class="text-center mt-2">
   <p><em>{{eventsMessage}}</em></p>
-  <button *ngIf="hasEventsLoaded()" (click)="setEvents(eventsLoaded)" class="btn btn-dark mb-3">Carregar mais!</button>
 </div>
+
 <div *ngIf="events">
   <div class="{{isSelectedClass(event)}}" (click)="selectEvent(event)" role="button" *ngFor="let event of events">
     <div [id]="'e'+event.id" class="event-details">

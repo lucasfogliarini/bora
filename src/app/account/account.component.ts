@@ -31,13 +31,6 @@ export class AccountComponent {
       this.eventComment = eventComment;
   }
 
-  events!: EventsComponent;
-  @ViewChild(EventsComponent)
-  set eventsChield(events: EventsComponent) {
-    if(events != undefined)
-      this.events = events;
-  }
-
   constructor(private boraApiService: BoraApiService,
               public authService: AuthenticationService,
               private toastr: ToastrService,
@@ -72,9 +65,6 @@ export class AccountComponent {
   }
   unauthorizeCalendar(){
     this.authService.unauthorizeCalendar();
-  }
-  refreshEvents(){
-    this.events.refreshEvents();
   }
   setObservers(){
     /*if(this.account.calendarAuthorized){

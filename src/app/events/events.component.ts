@@ -13,6 +13,7 @@ import { EventCreate } from '../models/contents/event-create.model';
 import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
 import { PlaceResult } from '../models/place-result.model';
+import { query } from '@angular/animations';
 
 @Component({
   selector: 'app-events',
@@ -21,6 +22,7 @@ import { PlaceResult } from '../models/place-result.model';
 })
 export class EventsComponent {
   env = environment;
+  eventsQuery?: string;
   events?: Event[] = [];
   eventsLoaded?: Event[];
   eventsMessage?: string = undefined;
@@ -44,26 +46,17 @@ export class EventsComponent {
     this.events = events;
     if(events === undefined){
       this.eventsMessage = "Carregando ...";
-      /*let loadingTime = 1;
-      let interval = setInterval(() => {
-        this.eventsMessage = `Carregando  ${loadingTime} ...`;
-        loadingTime--;
-        if (loadingTime < 0) {
-            clearInterval(interval);
-        }
-      }, 1000);*/
     }
     else if(!this.hasEventsLoaded())
       this.eventsMessage = "Sem encontros públicos.";
-    else if(events && events.length === 0 && this.hasEventsLoaded())
-      this.eventsMessage = "Sem encontros públicos desse tipo ...";
   }
   hasEventsLoaded(){
     return this.eventsLoaded && this.eventsLoaded.length > 0;
   }
-  getEvents(){
+  getEvents(hasTicket?: boolean){
     let user = this.getUser();
-    var eventsUri = `events?user=${user}`;
+    const query = this.eventsQuery ?? '';
+    var eventsUri = `events?user=${user}&query=${query}&hasTicket=${hasTicket ?? false}`;
     this.setEvents(undefined);
     this.boraApiService.get<Event[]>(eventsUri, (eventsLoaded: Event[]) => {
       this.eventsLoaded = eventsLoaded;
