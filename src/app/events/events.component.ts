@@ -13,6 +13,7 @@ import { EventCreate } from '../models/contents/event-create.model';
 import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
 import { PlaceResult } from '../models/place-result.model';
+import { query } from '@angular/animations';
 
 @Component({
   selector: 'app-events',
@@ -21,6 +22,7 @@ import { PlaceResult } from '../models/place-result.model';
 })
 export class EventsComponent {
   env = environment;
+  eventsQuery?: string;
   events?: Event[] = [];
   eventsLoaded?: Event[];
   eventsMessage?: string = undefined;
@@ -64,8 +66,11 @@ export class EventsComponent {
   getEvents(){
     let user = this.getUser();
     var eventsUri = `events?user=${user}`;
+    const body = {
+      query: this.eventsQuery ?? null
+    };
     this.setEvents(undefined);
-    this.boraApiService.get<Event[]>(eventsUri, (eventsLoaded: Event[]) => {
+    this.boraApiService.getRequest<Event[]>(eventsUri, body, (eventsLoaded: Event[]) => {
       this.eventsLoaded = eventsLoaded;
       this.setEvents(this.eventsLoaded);
       const eId = this.activeRoute.snapshot.queryParams['eId'];

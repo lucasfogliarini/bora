@@ -1,3 +1,7 @@
+<nav class="row text-center" id="events-nav">
+  <input id="txtBuscar" [(ngModel)]="eventsQuery" type="text" placeholder="tecnologia" class="m-3 col-7" />
+  <input id="btnBuscar" (click)="getEvents()" type="button" value="Buscar" class="btn btn-dark col-3 m-3"/>
+</nav>
 <div *ngIf="eventsMessage" class="text-center mt-2">
   <p><em>{{eventsMessage}}</em></p>
   <button *ngIf="hasEventsLoaded()" (click)="setEvents(eventsLoaded)" class="btn btn-dark mb-3">Carregar mais!</button>

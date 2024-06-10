@@ -79,13 +79,19 @@ export class BoraApiService {
     this.subscribe(observable, next, error);
   }
 
+  getRequest<T>(resource: string, body: any, next: (value: T) => void, error?: (err: any) => void){
+    var uri = `${this.baseUrl}${resource}`;
+    var observable = this.http.request<T>('GET', uri, { body });
+    this.subscribe(observable, next, error);
+  }
+
   getText(resource: string, next: (value: string) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
     var observable = this.http.get(uri, { responseType: 'text'});
     this.subscribe(observable, next, error);
   }
 
-  post<T>(resource: string, body: T, next: (value: T) => void, error?: (err: any) => void){
+  post<T>(resource: string, body: any, next: (value: T) => void, error?: (err: any) => void){
     var uri = `${this.baseUrl}${resource}`;
     var observable = this.http.post<T>(uri, body);
     this.subscribe(observable, next, error);
