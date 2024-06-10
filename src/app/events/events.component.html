@@ -32,8 +32,8 @@
             </fa-icon>
           </div>
           <div class="row">
-            <div [hidden]="isConference(event) || event.ticketUrl" class="col-6"></div>
-            <fa-icon [icon]="['fas', 'headset']" [hidden]="!isConference(event)"
+            <!--<div [hidden]="isConference(event) || event.ticketUrl" class="col-6"></div>-->
+            <fa-icon [icon]="['fas', 'headset']" [hidden]="event.ticketUrl"
                 mwlConfirmationPopover
                 title="Canal"
                 popoverTitle="Abrir Canal?"
@@ -45,7 +45,7 @@
                 role="button"
                 class="col-6 float-right">
             </fa-icon>
-            <fa-icon [icon]="['fas', 'ticket']" [hidden]="isConference(event) || !event.ticketUrl"
+            <fa-icon [icon]="['fas', 'ticket']" [hidden]="!event.ticketUrl"
               mwlConfirmationPopover              
               title="Ingresso"
               popoverTitle="Ingresso"
