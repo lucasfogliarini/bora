@@ -13,7 +13,6 @@ import { EventCreate } from '../models/contents/event-create.model';
 import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
 import { PlaceResult } from '../models/place-result.model';
-import { query } from '@angular/animations';
 
 @Component({
   selector: 'app-events',
@@ -36,6 +35,7 @@ export class EventsComponent {
               private domSanitizer: DomSanitizer,
               private datePipe: DatePipe,
               private title: Title) {
+              this.eventsQuery = this.activeRoute.snapshot.queryParams['find'];
               this.getEvents();
   }
   getUser(){
