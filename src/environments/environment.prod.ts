@@ -4,6 +4,6 @@ export const environment = {
   adminPhone: "5551992364249",
   mainRole: 'Parceira(o)',
   secondRole: 'Cliente',
-  appDefiniteArticle: 'a(o)',
+  appDefiniteArticle: 'a',
   boraApi: 'https://api.bora.work/'
 };
