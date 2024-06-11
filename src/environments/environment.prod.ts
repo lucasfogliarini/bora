@@ -2,8 +2,8 @@ export const environment = {
   production: true,
   appName: "Bora",
   adminPhone: "5551992364249",
-  mainRole: 'Parceiro',
+  mainRole: 'Parceira(o)',
   secondRole: 'Cliente',
-  appDefiniteArticle: 'o',
+  appDefiniteArticle: 'a(o)',
   boraApi: 'https://api.bora.work/'
 };
