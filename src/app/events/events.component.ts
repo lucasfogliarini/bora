@@ -220,7 +220,7 @@ ${event.title}
 ${this.getLocationShare(event)}
 
 Clique no link e nos dois botões 'Bora!', confirme no WhatsApp
-E bora jam, xadrezinho, jogatina e jogo do pix a vida toda!
+E bora jam, xadrezinho, bola, jogatina e jogo do pix a vida toda!
 ${eventUrl}
 ${ticketUrl}`;
 
