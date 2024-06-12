@@ -219,8 +219,8 @@ ${event.ticketUrl}` : '';
 ${event.title}
 ${this.getLocationShare(event)}
 
-Clique no link e nos dois botões 'Bora!', confirme no WhatsApp 
-E ganhe um prêmio misterioso por ter realizado o encontro!
+Clique no link e nos dois botões 'Bora!', confirme no WhatsApp
+E bora jam, xadrezinho, jogatina e jogo do pix a vida toda!
 ${eventUrl}
 ${ticketUrl}`;
 
