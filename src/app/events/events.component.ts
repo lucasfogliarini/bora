@@ -285,21 +285,25 @@ ${event.title}`;
             </div>`;
   }
   ticket(event: Event){
-    var dateTime = this.fullDateTime(event);
-    const promotionText = `Quero desconto pra ir com o Bora nesse evento!`
-    const whatsappText = `Quero desconto pro ${event.title} 
-${dateTime}
-
-Bora junto?`;
-    const whatsAppLink = this.generateWhatsAppLink(whatsappText, environment.adminPhone);
     return `<b>${event.ticketDomain}</b>
                 <div class='row mt-1'>
                 <p class="col-12 font-weight-bold">
-                  <a target='_blank' href='${whatsAppLink}'>
-                  ${promotionText}
-                  </a>
+                  ${this.ticketHelpLink(event)}
                 </p>
             </div>`;
+  }
+  ticketHelpLink(event: Event){
+    var dateTime = this.fullDateTime(event);
+    let helpText = 'Me ajuda a ir com você nesse evento?';
+
+    if(event.discount){
+      helpText = `Quero ${event.discount}% de desconto pra ir com você nesse evento!`;
+    }
+    const whatsappText = `${helpText}
+${event.title} 
+${dateTime}`;
+    const whatsAppLink = this.generateWhatsAppLink(whatsappText, environment.adminPhone);
+    return `<a target='_blank' href='${whatsAppLink}'>${helpText}</a>`
   }
   popAttendee(attendees: Attendee[]){
     let aIndex = attendees.findIndex(e=>e.username == this.authService.account.username);

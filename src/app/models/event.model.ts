@@ -22,4 +22,5 @@ export class Event {
     attendees?: Attendee[];
     attachments?: string[];
     expanded?: boolean;
+    discount?: number;
 }
