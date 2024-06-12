@@ -12,9 +12,9 @@
     <div *ngIf="authService.user" class="user-panel mt-3 pb-3 mb-3 d-flex"
         mwlConfirmationPopover
         popoverTitle="Perfil"
-        popoverMessage="<b>Seja parceiro</b> ou Abra seu perfil"
+        popoverMessage="<b>Seja {{ mainRole }}</b> ou Abra seu perfil"
         placement="bottom"
-        confirmText="Bora Parceiro!"
+        confirmText="Bora {{ mainRole }}!"
         cancelText="Abrir"
         (confirm)="bePartner()"
         (cancel)="openUser()"

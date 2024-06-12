@@ -6,9 +6,9 @@ export const environment = {
   production: false,
   appName: "Bora",
   adminPhone: "5551992364249",
-  mainRole: 'Parceir(a)o',
+  mainRole: 'Parceira(o)',
   secondRole: 'Cliente',
-  appDefiniteArticle: 'o',
+  appDefiniteArticle: 'o',//O Bora!
   boraApi: 'https://api.bora.work/',
   //boraApi: 'https://localhost:5001/',//must use /
 };

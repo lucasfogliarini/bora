@@ -10,6 +10,7 @@ import { BoraApiService } from '../bora-api.service';
 })
 export class SideBarMenuComponent  implements OnInit {
   title = 'Bora';
+  mainRole = environment.mainRole;
   constructor(private boraApiService: BoraApiService,
               public authService: AuthenticationService,
               private titleService: Title) {
