@@ -257,8 +257,8 @@ ${ticketUrl}`;
         `<img src='${e.photo}' /><a href='${window.location.origin}/${e.username}'>${e.name}</a>&nbsp;<small>${e.isPartner ? environment.mainRole : '' }</small><br />${e.comment ? `<small>${e.comment}</small><br />` : '' }`).join('');
       if(event.chat)
         attendeesContent += `<div class='row'><b><a class='col-12 text-center' href='${event.chat}' target='_blank'>Participar no WhatsApp</a></b></div>`;
-      attendeesContent += this.proposeActivity(event);
-      //attendeesContent += this.partnerInvite();// Quero ser protagonista
+      //attendeesContent += this.proposeActivity(event);
+      attendeesContent += this.partnerInvite();// Quero ser parceiro
       attendeesContent += `<small class="offset-7">${event.attendees.length} convidados</small>`;
       return attendeesContent;
     }
