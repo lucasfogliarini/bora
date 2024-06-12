@@ -48,7 +48,7 @@ export class EventsComponent {
       this.eventsMessage = "Carregando ...";
     }
     else if(!this.hasEventsLoaded())
-      this.eventsMessage = "Sem encontros públicos.";
+      this.eventsMessage = "Nenhum evento público encontrado. Clique em refresh para recarregar todos os eventos e limpar os filtros.";
   }
   hasEventsLoaded(){
     return this.eventsLoaded && this.eventsLoaded.length > 0;
@@ -81,8 +81,9 @@ export class EventsComponent {
     });
   }
   refreshEvents(){
-    this.getEvents();
     this.eventsLoaded = undefined;
+    this.eventsQuery = undefined;
+    this.getEvents();
   }
   fullDateTime(event: Event){
     return `${this.transformDate(event)} - ${this.transformDateEE(event)} - ${this.transformTime(event.start!)}`;
