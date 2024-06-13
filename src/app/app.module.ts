@@ -1,4 +1,4 @@
-import { APP_BASE_HREF, DatePipe } from '@angular/common';
+//modules
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -8,13 +8,18 @@ import { RouterModule } from '@angular/router';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ToastrModule } from 'ngx-toastr';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+
+//components
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
+import { MapComponent } from './map/map.component';
 import { HomeComponent } from './home/home.component';
-import { HttpRequestInterceptor } from './httprequest.interceptor';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { EventCreateComponent } from './event-create/event-create.component';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { SideBarMenuComponent } from './sidebar-menu/sidebar-menu.component';
+
+import { APP_BASE_HREF, DatePipe } from '@angular/common';
+import { HttpRequestInterceptor } from './httprequest.interceptor';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTicket,
         faDoorOpen, 
@@ -64,12 +69,14 @@ import { NgxMatDatetimePickerModule,
 import { AuthenticationDialogComponent } from './authentication-dialog/authentication-dialog.component';
 import { ScenariosComponent } from './scenarios/scenarios.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 registerLocaleData(localePT);
 
 @NgModule({
   declarations: [
     AppComponent,
+    MapComponent,
     NavMenuComponent,
     AuthenticationDialogComponent,
     SideBarMenuComponent,
@@ -85,6 +92,7 @@ registerLocaleData(localePT);
     ScenariosComponent
   ],
   imports: [
+    GoogleMapsModule,
     BrowserModule,
     MatSlideToggleModule,
     BrowserAnimationsModule,

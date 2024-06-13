@@ -1,0 +1,25 @@
+<google-map id="map"
+[center]="center"
+[options]="mapOptions"
+width="100%">
+  <map-marker *ngFor="let marker of markers"
+              [position]="marker.position"
+              [title]="marker.title"
+              [options]="{ draggable: false }">
+    <map-info-window *ngIf="marker.showInfo" [options]="{ maxWidth: 200 }">
+      <div>
+        <h3>{{ marker.title }}</h3>
+        <p>{{ marker.content }}</p>
+        <button>Encontros</button>
+      </div>
+    </map-info-window>
+  </map-marker>
+</google-map>
+
+<!--<google-map 
+  [options]="mapOptions"
+  [center]="center"
+  [zoom]="zoom"
+  (mapClick)="moveMap($event)"
+  (mapMousemove)="move($event)">
+</google-map>-->

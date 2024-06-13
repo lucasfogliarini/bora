@@ -9,10 +9,8 @@ import { AuthenticationService } from '../authentication.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AttendeeReply } from '../models/attendee-reply.model';
 import { MatDialog } from '@angular/material/dialog';
-import { EventCreate } from '../models/contents/event-create.model';
 import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
-import { PlaceResult } from '../models/place-result.model';
 
 @Component({
   selector: 'app-events',
@@ -342,11 +340,11 @@ ${dateTime}`;
       else{
         //@ts-ignore
         const placesService = new google.maps.places.PlacesService(document.createElement('div'));
-        placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (response: PlaceResult[]) =>{
+        placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (places: google.maps.places.PlaceResult[] | null, staus: google.maps.places.PlacesServiceStatus) =>{
           var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
           let bgImage = '../../assets/bora_bg_place.png';
-          if(response && response.length && response[0].photos && response[0].photos.length){
-            const photo = response[0].photos[0].getUrl();
+          if(places && places.length && places[0].photos && places[0].photos.length){
+            const photo = places[0].photos[0].getUrl();
             if(photo)
               bgImage = photo;
           }

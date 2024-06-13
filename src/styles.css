@@ -31,15 +31,3 @@ app-contact .popover{
 }
 
 html, body { height: 100%; }
-body { 
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
-    background: no-repeat url("assets/home_bora.png");
-}
-
-@media (min-width: 600px) {
-    body {
-      background-image: url("assets/home_bora.png");
-      background-size: cover;
-    }
-  }

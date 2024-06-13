@@ -157,21 +157,21 @@ export class EventCreateComponent {
     this.newEvent.location = this.googlePlace?.nativeElement.value;
   }
   getCurrentPlace(){
-    window.navigator.geolocation.getCurrentPosition(position =>{
+    /*window.navigator.geolocation.getCurrentPosition(position =>{
       //@ts-ignore
       var geocoder = new google.maps.Geocoder();
       //@ts-ignore
       var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       //@ts-ignore
       geocoder.geocode({'location': latLng }, addresses =>{
-        this.newEvent.location = addresses[0].formatted_address;
+        this.newEvent.location = addresses[0]formatted_address;
       });
     }, error =>{
       //error.code 1 You've decided not to share your position, but it's OK. We won't ask you again.
       //error.code 2 The network is down or the positioning service can't be reached.
       //error.code 3 The attempt timed out before it could get the location data.
       //else Geolocation failed due to unknown error.;
-    });
+    });*/
   }
   back(){
     if(this.chatState == 'what')
