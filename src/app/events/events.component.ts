@@ -84,7 +84,7 @@ export class EventsComponent {
     this.getEvents();
   }
   fullDateTime(event: Event){
-    return `${this.transformDate(event)} - ${this.transformDateEE(event)} - ${this.transformTime(event.start!)}`;
+    return `${this.transformDate(event)}, ${this.transformDateEE(event)} das ${this.transformTime(event.start!)} até ${this.transformTime(event.end!)}`;
   }
   isDay(eventTime: Date){
     const eventStart = new Date(eventTime);
@@ -215,7 +215,7 @@ ${event.ticketUrl}` : '';
     var whatsappText = 
 `${dateTime}
 ${event.title}
-${this.getLocationShare(event)}
+Onde? ${this.getLocationShare(event)}
 
 Clique no link e nos dois botões 'Bora!', confirme no WhatsApp
 E bora jam, xadrezinho, bola, jogatina e jogo do pix a vida toda!
