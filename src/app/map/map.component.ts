@@ -61,8 +61,8 @@ export class MapComponent {
           <!--<h8>No '${place.name}'(ponto desse mapa)</h8>-->
           <nav class="text-center">
             <a class='btn btn-dark' href="/bora.work">Consultoria e encontros</a>
-            <a class='btn btn-white' href="/lucasfogliarini">Encontre uma Parceria</a>
-          </nav>
+            <a class='btn btn-white' href="/lucasfogliarini">Encontre um(a) Parceria</a>
+          </nav})
           <br/>
           <p>
             <b>bora.work</b> é uma plataforma de <b>consultoria</b> e <b>parceria</b> que facilita o <b>entendimento</b>, <b>arquitetura</b>, <b>desenvolvimento</b> e <b>testes</b> de <b>projetos novos</b> de <b>tecnologia</b> e de extrema <b>qualidade</b>, além de tudo disso, também realiza diversos <b>encontros</b>, incluindo encontros de <b>tecnologia</b> e <b>revitalização da terra</b>.
