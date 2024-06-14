@@ -65,7 +65,7 @@ export class MapComponent {
           </nav>
           <br/>
           <p>
-            <b>bora.work</b> é uma plataforma de <b>consultoria</b> e <b>networking</b> que facilita a <b>organização</b> e <b>desenvolvimento</b> de <b>encontros, palestras e projetos de tecnologia e inovação</b>.
+            <b>bora.work</b> é uma plataforma de <b>consultoria</b> e <b>networking</b> que facilita a <b>arquitetura</b>, <b>desenvolvimento</b> e <b>testes</b> de <b>projetos</b> de <b>tecnologia nova</b> e de extrema <b>qualidade</b>, além de tudo disso, também realiza diversos <b>encontros</b>, incluindo encontros de <b>tecnologia</b> e <b>revitalização da terra</b>.
             Atuamos em diversos locais, como <b>coworkings, casas, restaurantes e plataformas digitais (Google Meet, Discord e WhatsApp)</b>. Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis. Junte-se a nós e descubra como <b>transformar suas ideias em realidade.</b>
             <br/>
             <br/>
