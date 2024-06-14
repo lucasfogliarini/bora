@@ -56,16 +56,16 @@ export class MapComponent {
     const infoWindow = new google.maps.InfoWindow({
       content: `
         <div>
-          <h6>Bora Consultoria e Parceria</h6>
+          <h6>Bora Consultoria e Parcerias</h6>
           <br/>
           <!--<h8>No '${place.name}'(ponto desse mapa)</h8>-->
           <nav class="text-center">
             <a class='btn btn-dark' href="/bora.work">Consultoria e encontros</a>
-            <a class='btn btn-white' href="/lucasfogliarini">Encontre um(a) Parceria</a>
+            <a class='btn btn-white' href="/lucasfogliarini">Encontre um(a) Parcerias</a>
           </nav})
           <br/>
           <p>
-            <b>bora.work</b> é uma plataforma de <b>consultoria</b> e <b>parceria</b> que facilita o <b>entendimento</b>, <b>arquitetura</b>, <b>desenvolvimento</b> e <b>testes</b> de <b>projetos novos</b> de <b>tecnologia</b> e de extrema <b>qualidade</b>, além de tudo disso, também realiza diversos <b>encontros</b>, incluindo encontros de <b>tecnologia</b> e <b>revitalização da terra</b>.
+            <b>bora.work</b> é uma plataforma de <b>consultoria</b> e <b>parcerias</b> que facilita o <b>entendimento</b>, <b>arquitetura</b>, <b>desenvolvimento</b> e <b>testes</b> de <b>projetos novos</b> de <b>tecnologia</b> e de extrema <b>qualidade</b>, além de tudo disso, também realiza diversos <b>encontros</b>, incluindo encontros de <b>tecnologia</b> e <b>revitalização da terra</b>.
             Atuamos em diversos locais, como <b>coworkings, casas, restaurantes e plataformas digitais (Google Meet, Discord e WhatsApp)</b>. Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis. Junte-se a nós e descubra como <b>transformar suas ideias em realidade.</b>
             <br/>
             <br/>
