@@ -56,7 +56,8 @@ export class MapComponent {
     const infoWindow = new google.maps.InfoWindow({
       content: `
         <div>
-          <h5>Bora Work</h5>
+          <h6>Bora Networking e Consultoria</h6>
+          <br/>
           <!--<h8>No '${place.name}'(ponto desse mapa)</h8>-->
           <nav class="text-center">
             <a class='btn btn-dark' href="/bora.work">Encontros</a>
