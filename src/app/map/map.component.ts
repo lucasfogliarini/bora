@@ -61,7 +61,7 @@ export class MapComponent {
           <!--<h8>No '${place.name}'(ponto desse mapa)</h8>-->
           <nav class="text-center">
             <a class='btn btn-dark' href="/bora.work">Consultoria e encontros</a>
-            <a class='btn btn-white' href="/lucasfogliarini">Encontre um(a) Parcerias</a>
+            <a class='btn btn-white' href="/lucasfogliarini">Parcerias</a>
           </nav})
           <br/>
           <p>
