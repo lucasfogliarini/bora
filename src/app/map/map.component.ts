@@ -40,39 +40,65 @@ export class MapComponent {
                 position: place.geometry?.location,
               });
               marker.addListener('click', () => {
-                this.openInfoWindow(marker, place);
+                const partnerId = Math.floor(Math.random() * 2) + 1;
+                if(partnerId == 1)
+                  this.openBoraWork(marker, place);
+                else if(partnerId == 2)
+                  this.openBoraSocial(marker, place);
               });
-              this.openInfoWindow(marker, place);
+              this.openBoraWork(marker, place);
           }
       });
     }
   }
 
-  openInfoWindow(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
+  openBoraWork(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
     const infoWindow = new google.maps.InfoWindow({
       content: `
         <div>
-          <h5>Bora Work e Bora Social!</h5>
+          <h5>Bora Work</h5>
+          <!--<h8>No '${place.name}'(ponto desse mapa)</h8>-->
+          <nav class="text-center">
+            <a class='btn btn-dark' href="/bora.work">Encontros</a>
+            <a class='btn btn-dark' href="/lucasfogliarini">Parceiros</a>
+          </nav>
+          <br/>
           <p>
             <b>bora.work</b> é uma plataforma de <b>consultoria</b> e <b>networking</b> que facilita a <b>organização</b> e <b>desenvolvimento</b> de <b>encontros, palestras e projetos de tecnologia e inovação</b>.
-            <!--Atuamos em diversos locais, como <b>coworkings, restaurantes e plataformas digitais (Google Meet, Discord e WhatsApp)</b>. Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis. Junte-se a nós e descubra como <b>transformar suas ideias em realidade.</b>-->
+            Atuamos em diversos locais, como <b>coworkings, casas, restaurantes e plataformas digitais (Google Meet, Discord e WhatsApp)</b>. Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis. Junte-se a nós e descubra como <b>transformar suas ideias em realidade.</b>
             <br/>
             <br/>
-            <b>bora.social</b> são os encontros sociais com <b>Parceiros</b> do <b>Bora!</b>
+            <!--<b>bora.social</b> são os encontros sociais com <b>Parceiros</b> do <b>Bora!</b>-->
           </p>
-          <h7>
-            <b>
-              Onde fica? <br /> 
-              Fica no '${place.name}' na Luggo do Bairro Jardim Carvalho
-            </b>
-          </h7>
-          <br />
-          <br />
+        </div>
+      `
+    });
+
+    infoWindow.open(this.googleMap.googleMap, marker);
+  }
+
+  openBoraSocial(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
+    const infoWindow = new google.maps.InfoWindow({
+      content: `
+        <div>
+          <h5>Bora Social</h5>
+          <!--<h8>No '${place.name}'(ponto desse mapa)</h8>-->          
           <nav class="text-center">
-            <a class='btn btn-dark' href="/bora.work">Bora Work!</a>
-            <a class='btn btn-dark' href="/lucasfogliarini">Bora Social!</a>
+            <a class='btn btn-dark' href="/lucasfogliarini">Encontros</a>
+            <a class='btn btn-dark' href="/bora.work">Parceiros</a>
           </nav>
-          <br />
+          <br/>
+          <p>
+            <b>bora.social</b> são os encontros sociais com <b>Parceiros</b> do <b>Bora!</b>
+            <ul>
+              <li>Bora Jam (no Bora Social)</li>
+              <li>Bora Bola (futebol nos parques)</li>
+              <li>Bora Xadrezinho (no Bora Social)</li>
+              <li>Bora Jogatina (cartas no Bora Social)</li>
+              <li>Shows, Teatros e Festivais (em Porto Alegre e região)</li>
+            <ul>
+          </p>          
+          
         </div>
       `
     });
