@@ -5,12 +5,13 @@
 export const environment = {
   production: false,
   appName: "Bora",
+  appDomain: "bora.work",
+  boraApi: 'https://api.bora.work/',
+  //boraApi: 'https://localhost:5001/',//must use /
   adminPhone: "5551992364249",
   mainRole: 'Parceira(o)',
   secondRole: 'Cliente',
   appDefiniteArticle: 'o',//O Bora!
-  boraApi: 'https://api.bora.work/',
-  //boraApi: 'https://localhost:5001/',//must use /
 };
 
 /*
