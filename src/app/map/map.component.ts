@@ -26,7 +26,6 @@ export class MapComponent {
   ngAfterViewInit(): void {
     if(this.googleMap){
       var placesService = new google.maps.places.PlacesService(this.googleMap.googleMap!);
-      // Usando a biblioteca Places para buscar um lugar por nome
       var request = {
           query: 'Bora Social!, Porto Alegre, Brazil',
           fields: ['place_id', 'geometry', 'name']
@@ -79,11 +78,6 @@ export class MapComponent {
     });
 
     infoWindow.open(this.googleMap.googleMap, marker);
-  }
-
-  handleButtonClick(placeId: string): void {
-    // Lógica para lidar com o clique no botão da janela de informação
-    console.log('Botão clicado para o lugar ID:', placeId);
   }
 }
 
