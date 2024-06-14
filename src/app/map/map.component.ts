@@ -15,13 +15,13 @@ export class MapComponent {
 
   mapOptions: google.maps.MapOptions = {
     center: this.boraSocial,
-    zoom: 13,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-    /*disableDefaultUI: false,
+    zoom: 7,
+    mapTypeId: google.maps.MapTypeId.SATELLITE,
+    disableDefaultUI: false,
     fullscreenControl: false,
     mapTypeControl: false,
     streetViewControl: true,
-    zoomControl: false,*/
+    zoomControl: false,
   };
   ngAfterViewInit(): void {
     if(this.googleMap){
@@ -60,7 +60,7 @@ export class MapComponent {
           <!--<h8>No '${place.name}'(ponto desse mapa)</h8>-->
           <nav class="text-center">
             <a class='btn btn-dark' href="/bora.work">Encontros</a>
-            <a class='btn btn-dark' href="/lucasfogliarini">Parceiros</a>
+            <a class='btn btn-white' href="/lucasfogliarini">Parceiros</a>
           </nav>
           <br/>
           <p>
@@ -84,7 +84,7 @@ export class MapComponent {
           <h5>Bora Social</h5>
           <!--<h8>No '${place.name}'(ponto desse mapa)</h8>-->          
           <nav class="text-center">
-            <a class='btn btn-dark' href="/lucasfogliarini">Encontros</a>
+            <a class='btn btn-white' href="/lucasfogliarini">Encontros</a>
             <a class='btn btn-dark' href="/bora.work">Parceiros</a>
           </nav>
           <br/>
