@@ -218,7 +218,7 @@ ${event.title}
 Onde? ${this.getLocationShare(event)}
 
 Clique no link e nos dois botões 'Bora!', confirme no WhatsApp
-E bora jam, xadrezinho, bola, jogatina e jogo do pix a vida toda!
+E bora prosperar!
 ${eventUrl}
 ${ticketUrl}`;
 
