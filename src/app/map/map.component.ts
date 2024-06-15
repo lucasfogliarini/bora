@@ -56,8 +56,8 @@ export class MapComponent {
     const infoWindow = new google.maps.InfoWindow({
       content: `
         <div>
-          <h5>Bora.Work</h5>
-          <h6>Consultoria e Parcerias</h6>
+          <h5 class='text-center'>Bora.Work</h5>
+          <h6 class='text-center'>Consultoria e Parcerias</h6>
           <br/>
           <!--<h8>No '${place.name}'(ponto desse mapa)</h8>-->
           <nav class="text-center">
@@ -82,17 +82,17 @@ export class MapComponent {
   openBoraSocial(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
     const infoWindow = new google.maps.InfoWindow({
       content: `
-        <div>
-          <h5>Bora Social</h5>
-          <h6>Social e Parcerias</h6>
+        <div class=''>
+          <h5 class='text-center'>Bora Social</h5>
+          <h6 class='text-center'>Social e Parcerias</h6>
           <!--<h8>No '${place.name}'(ponto desse mapa)</h8>-->          
           <nav class="text-center">
             <a class='btn btn-white' href="/lucasfogliarini">Encontros</a>
-            <a class='btn btn-dark' href="/bora.work">Parceiros</a>
+            <a class='btn btn-dark' href="/bora.work">Parcerias</a>
           </nav>
           <br/>
           <p>
-            <b>bora.social</b> são os encontros sociais com <b>Parceiros</b> do <b>Bora!</b>
+            <b>bora.social</b> são os encontros sociais com as <b>Parcerias</b> do <b>Bora!</b>
             <ul>
               <li>Bora Jam (no Bora Social)</li>
               <li>Bora Bola (futebol nos parques)</li>
