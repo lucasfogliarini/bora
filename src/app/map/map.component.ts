@@ -56,7 +56,8 @@ export class MapComponent {
     const infoWindow = new google.maps.InfoWindow({
       content: `
         <div>
-          <h6>Bora Consultoria e Parcerias</h6>
+          <h5>Bora.Work</h5>
+          <h6>Consultoria e Parcerias</h6>
           <br/>
           <!--<h8>No '${place.name}'(ponto desse mapa)</h8>-->
           <nav class="text-center">
@@ -83,6 +84,7 @@ export class MapComponent {
       content: `
         <div>
           <h5>Bora Social</h5>
+          <h6>Social e Parcerias</h6>
           <!--<h8>No '${place.name}'(ponto desse mapa)</h8>-->          
           <nav class="text-center">
             <a class='btn btn-white' href="/lucasfogliarini">Encontros</a>
