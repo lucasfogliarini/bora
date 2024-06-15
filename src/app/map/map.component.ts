@@ -62,7 +62,7 @@ export class MapComponent {
           <nav class="text-center">
             <a class='btn btn-dark' href="/bora.work">Consultoria e encontros</a>
             <a class='btn btn-white' href="/lucasfogliarini">Parcerias</a>
-          </nav})
+          </nav>
           <br/>
           <p>
             <b>bora.work</b> é uma plataforma de <b>consultoria</b> e <b>parcerias</b> que facilita o <b>entendimento</b>, <b>arquitetura</b>, <b>desenvolvimento</b> e <b>testes</b> de <b>projetos novos</b> de <b>tecnologia</b> e de extrema <b>qualidade</b>, além de tudo disso, também realiza diversos <b>encontros</b>, incluindo encontros de <b>tecnologia</b> e <b>revitalização da terra</b>.
