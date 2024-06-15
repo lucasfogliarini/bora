@@ -106,7 +106,7 @@
           <span style="font-size: small;">{{transformTime(event.start!)}}</span>
           <br />
           
-          <span style="font-size: xx-small;">... {{transformTime(event.end!)}}</span>
+          <span style="font-size: xx-small;">{{formatTimeInterval(event)}} {{transformTime(event.end!)}}</span>
         </div>
         <div class="title col-7">
           <div>{{ event.title?.substring(0, 100) }}</div>

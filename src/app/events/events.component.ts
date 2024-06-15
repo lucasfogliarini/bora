@@ -121,6 +121,22 @@ export class EventsComponent {
   transformDateEE(event: Event){
     return this.datePipe.transform(event.start, 'EE', '', 'pt-BR');
   }
+  formatTimeInterval(event: Event){
+    if(event.start != null){
+      const start = new Date(event.start);
+      const end = new Date(event.end!);
+      const diffMs = end.getTime() - start.getTime();
+      const diffHours = diffMs / (1000 * 60 * 60);
+      const horas = Math.floor(diffHours);
+      const minutos = Math.round((diffHours - horas) * 60);
+      if (horas > 0) {
+          return minutos > 0 ? `${horas}:${minutos < 10 ? '0' : ''}${minutos}h` : `${horas}h`;
+      } else {
+          return `${minutos}min`;
+      }
+    }
+    return '...'
+  }
   replyBoraApi(event: Event, response: string){
     let user = this.getUser();
     let attendeeReply: AttendeeReply = {
