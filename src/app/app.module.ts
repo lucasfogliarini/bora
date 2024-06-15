@@ -46,8 +46,10 @@ import { faTicket,
         faForward,
         faLeftLong,
         faCameraRetro,
-        faHeadset } from '@fortawesome/free-solid-svg-icons';
-import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
+        faHeadset, 
+        faEarth,
+        faEarthAmericas} from '@fortawesome/free-solid-svg-icons';
+import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faYoutube, faDiscord } from '@fortawesome/free-brands-svg-icons';
 import { AccountComponent } from './account/account.component';
 import { registerLocaleData } from '@angular/common';
 import localePT from '@angular/common/locales/pt';
@@ -117,10 +119,13 @@ registerLocaleData(localePT);
     }),
     SocialLoginModule,
     RouterModule.forRoot([
-      { path: 'privacy',  component: PrivacyComponent },
+      { path: '', redirectTo: '/map', pathMatch: 'full' },
+      { path: 'map',  component: MapComponent },
       { path: 'bora',  component: BoraComponent },
       { path: 'scenarios',  component: ScenariosComponent },
-      { path: ':user',  component: AccountComponent }
+      { path: ':user',  component: AccountComponent },
+      { path: 'privacy',  component: PrivacyComponent },
+      { path: 'home', component: HomeComponent }
     ]),
     FontAwesomeModule
   ],
@@ -164,8 +169,10 @@ export class AppModule {
       faWhatsapp,
       faInstagram,
       faSpotify,
+      faDiscord,
       faYoutube,
       faPeopleLine,
+      faEarthAmericas,
       faUser,
       faAt,
       faCamera,

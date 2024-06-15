@@ -7,6 +7,7 @@ import { Account } from '../models/account.model';
 })
 export class NavMenuComponent {
   account = new Account;
+  news?: string;
   constructor() { }
   isExpanded = false;
 

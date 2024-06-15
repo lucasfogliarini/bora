@@ -1,8 +1,7 @@
-<app-home *ngIf="isHome()"></app-home>
-<div *ngIf="!isHome()" class="wrapper container-fluid">
+<div class="wrapper container-fluid">
   <app-nav-menu></app-nav-menu>
-  <app-sidebar-menu></app-sidebar-menu>
-  <div class="content-wrapper">
+  <!--<app-sidebar-menu></app-sidebar-menu>-->
+  <div class="">
     <router-outlet></router-outlet>
   </div>
   <app-contact></app-contact>
