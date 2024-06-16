@@ -12,8 +12,8 @@
           <li *ngIf="account.linkedin" title="linkedin.com">
             <a class="nav-link" target="_blank" href="https://www.linkedin.com/in/{{account.linkedin}}" role="button"><fa-icon [icon]="['fab','linkedin']"></fa-icon></a>
           </li>
-          <li *ngIf="account.youTube" title="youtube.com/channel">
-            <a class="nav-link" target="_blank" href="https://www.youtube.com/channel/{{account.youTube}}" role="button"><fa-icon [icon]="['fab','youtube']"></fa-icon></a>
+          <li *ngIf="account.youTube" title="youtube.com">
+            <a class="nav-link" target="_blank" href="https://www.youtube.com/{{account.youTube}}" role="button"><fa-icon [icon]="['fab','youtube']"></fa-icon></a>
           </li>
           <li *ngIf="account.spotify" title="spotify.com/user/">
             <a class="nav-link" target="_blank" href="https://open.spotify.com/user/{{account.spotify}}" role="button"><fa-icon [icon]="['fab','spotify']"></fa-icon></a>
