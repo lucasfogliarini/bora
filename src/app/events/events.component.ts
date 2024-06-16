@@ -194,8 +194,8 @@ ${whatsappGroupText}
   openUrl(url: string){
     window.open(url);
   }
-  getLocation(event: Event){
-    return event.location ? event.location.substring(0,100) : 'Indefinido.';
+  getLocation(event: Event, subEnd: number = 100){
+    return event.location ? event.location.substring(0, subEnd) : 'Indefinido.';
   }
   openCalendar(event: Event){
     window.open(event.googleEventUrl);

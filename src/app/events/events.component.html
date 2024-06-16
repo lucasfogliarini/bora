@@ -103,10 +103,12 @@
               (cancel)="privateEvent(event)"
               role="button">{{transformDate(event)}} <br /> {{ transformDateEE(event) }}
           </div>
-          <span style="font-size: small;">{{transformTime(event.start!)}}</span>
+          <small>{{transformTime(event.start!)}}</small>
           <br />
           
-          <span style="font-size: xx-small;">{{formatTimeInterval(event)}} {{transformTime(event.end!)}}</span>
+          <small style="font-size: xx-small;">{{formatTimeInterval(event)}} {{transformTime(event.end!)}}</small>
+          <br />
+          <small style="font-size: xx-small;">{{getLocation(event, 20)}}</small>
         </div>
         <div class="title col-7">
           <div>{{ event.title?.substring(0, 100) }}</div>
