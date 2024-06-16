@@ -3,7 +3,8 @@ import { Account } from '../models/account.model';
 
 @Component({
   selector: 'app-nav-menu',
-  templateUrl: './nav-menu.component.html'
+  templateUrl: './nav-menu.component.html',
+  styleUrls: [ 'nav-menu.component.css' ]
 })
 export class NavMenuComponent {
   account = new Account;

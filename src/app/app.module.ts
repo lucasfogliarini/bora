@@ -52,7 +52,9 @@ import { faTicket,
         faChessKing,
         faChessBoard,
         faChessKnight,
-        faChessQueen} from '@fortawesome/free-solid-svg-icons';
+        faChessQueen,
+        faHourglassStart,
+        faHourglassHalf} from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faYoutube, faDiscord } from '@fortawesome/free-brands-svg-icons';
 import { AccountComponent } from './account/account.component';
 import { registerLocaleData } from '@angular/common';
@@ -156,6 +158,8 @@ registerLocaleData(localePT);
 export class AppModule { 
   constructor(library: FaIconLibrary) {
     library.addIcons(
+      faHourglassStart,
+      faHourglassHalf,
       faTicket,
       faLock,
       faLockOpen,
