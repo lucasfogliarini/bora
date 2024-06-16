@@ -71,7 +71,7 @@ export class MapComponent {
           <div class='text-center'>
             <small>A maioria dos encontros presenciais são em Porto Alegre no</small>
             <br />
-            <a class='btn btn-white' target='_blank' href='https://www.google.com/maps/search/?api=1&query=Bora+Social!/'>Bora Social!</a>
+            <a class='btn btn-white' target='_blank' href='https://www.google.com/maps/search/?api=1&query=Bora+Social!/'>Bora Cowork!</a>
             <br />
             ⬇️
           </div>
