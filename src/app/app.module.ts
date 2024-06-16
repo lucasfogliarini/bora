@@ -48,7 +48,11 @@ import { faTicket,
         faCameraRetro,
         faHeadset, 
         faEarth,
-        faEarthAmericas} from '@fortawesome/free-solid-svg-icons';
+        faEarthAmericas,
+        faChessKing,
+        faChessBoard,
+        faChessKnight,
+        faChessQueen} from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faYoutube, faDiscord } from '@fortawesome/free-brands-svg-icons';
 import { AccountComponent } from './account/account.component';
 import { registerLocaleData } from '@angular/common';
@@ -171,6 +175,9 @@ export class AppModule {
       faSpotify,
       faDiscord,
       faYoutube,
+      faChessKnight,
+      faChessKing,
+      faChessQueen,
       faPeopleLine,
       faEarthAmericas,
       faUser,

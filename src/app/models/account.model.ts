@@ -14,6 +14,7 @@ export class Account {
     spotify: string;
     linkedin: string;
     youTube: string;
+    chess: string;
     accountability: string;
 }
 
