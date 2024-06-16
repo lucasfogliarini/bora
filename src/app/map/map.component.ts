@@ -59,7 +59,6 @@ export class MapComponent {
           <h5 class='text-center'>Bora.Work</h5>
           <h6 class='text-center'>Consultoria e Parcerias</h6>
           <br/>
-          <!--<h8>No '${place.name}'(ponto desse mapa)</h8>-->
           <nav class="text-center">
             <a class='btn btn-dark' href="/bora.work">Consultoria e encontros</a>
             <a class='btn btn-white' href="/lucasfogliarini">Parcerias</a>
@@ -68,10 +67,15 @@ export class MapComponent {
           <p>
             <b>bora.work</b> é uma plataforma de <b>consultoria</b> e <b>parcerias</b> que facilita o <b>entendimento</b>, <b>arquitetura</b>, <b>desenvolvimento</b> e <b>testes</b> de <b>projetos novos</b> de <b>tecnologia</b> e de extrema <b>qualidade</b>, além de tudo disso, também realiza diversos <b>encontros</b>, incluindo encontros de <b>tecnologia</b> e <b>revitalização da terra</b>.
             Atuamos em diversos locais, como <b>coworkings, casas, restaurantes e plataformas digitais (Google Meet, Discord e WhatsApp)</b>. Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis. Junte-se a nós e descubra como <b>transformar suas ideias em realidade.</b>
-            <br/>
-            <br/>
-            <!--<b>bora.social</b> são os encontros sociais com <b>Parceiros</b> do <b>Bora!</b>-->
           </p>
+          <div class='text-center'>
+            <small>Mas, onde?</small>
+            <br />
+            <a class='btn btn-white' target='_blank' href='https://www.google.com/maps/search/?api=1&query=Bora+Social!/'>No Bora Social!</a>
+            <br />
+            ⬇️
+          </div>
+          <br/>
         </div>
       `
     });
@@ -82,10 +86,9 @@ export class MapComponent {
   openBoraSocial(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
     const infoWindow = new google.maps.InfoWindow({
       content: `
-        <div class=''>
+        <div>
           <h5 class='text-center'>Bora Social</h5>
-          <h6 class='text-center'>Social e Parcerias</h6>
-          <!--<h8>No '${place.name}'(ponto desse mapa)</h8>-->          
+          <h6 class='text-center'>Social e Parcerias</h6>         
           <nav class="text-center">
             <a class='btn btn-white' href="/lucasfogliarini">Encontros</a>
             <a class='btn btn-dark' href="/bora.work">Parcerias</a>
@@ -100,8 +103,8 @@ export class MapComponent {
               <li>Bora Jogatina (cartas no Bora Social)</li>
               <li>Shows, Teatros e Festivais (em Porto Alegre e região)</li>
             <ul>
-          </p>          
-          
+          </p>
+          <br/>
         </div>
       `
     });
