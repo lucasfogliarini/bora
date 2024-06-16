@@ -225,7 +225,7 @@ ${whatsappGroupText}
     let user = this.getUser();
     let eventUrl = `${window.location.origin}/${user}?eId=${this.shortId(event)}`;
     let ticketUrl = event.ticketUrl ? `
-Compra de ingressos:
+Adquira o seu ingresso:
 ${event.ticketUrl}` : '';
 
     var whatsappText = 
