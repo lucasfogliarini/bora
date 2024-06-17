@@ -21,7 +21,15 @@
         <input #googlePlace type="search" ngx-google-places-autocomplete [options]='placesOptions' (onAddressChange)="addressChange()"/>
         &nbsp;
         <div class="buttonEvent">
-          <button [disabled]="!newEvent.location || chatState == 'creating'" (click)="create()" type="button" class="btn btn-dark">{{creatingOrNext()}}</button>
+          <button [hidden]="!authService.getAccount()" [disabled]="!newEvent.location || chatState == 'creating'" (click)="create()" type="button" class="btn btn-dark">{{creatingOrNext()}}</button>
+          <div [hidden]="authService.getAccount()">
+            <small><b>Logue-se para criar um encontro ...</b></small>
+            <asl-google-signin-button
+              [type]="'standard'"
+              [size]="'small'"
+            >
+            </asl-google-signin-button>
+          </div>
         </div>
       </div>
       <div id="event-title" *ngIf="chatState == 'what'" class="event-question card-title">

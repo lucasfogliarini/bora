@@ -20,7 +20,7 @@ import { Location } from '../models/location.model';
 })
 export class EventCreateComponent {
   newEvent: Event = new Event;
-  account?: Account;
+  //account?: Account;
   placesOptions: Options = new Options;
   eventCreate: EventCreate = new EventCreate;
   scenarios?: Scenario[];
@@ -30,7 +30,7 @@ export class EventCreateComponent {
   googlePlace?: ElementRef;
 
   constructor(private boraApiService: BoraApiService,
-              private authService: AuthenticationService,
+              public authService: AuthenticationService,
               private toastr: ToastrService,
               private activeRoute: ActivatedRoute,
               private router: Router) {
@@ -89,11 +89,11 @@ export class EventCreateComponent {
         this.eventUpdated.emit(event);
       });
     }else{
-      this.authService.signInWithGoogle();
+      this.toastr.warning('Precisa estar logado para criar um encontro.');
     }
   }
   creatingOrNext(){
-    return this.chatState == 'creating' ? 'Criando encontro ... ' : 'Próximo';
+    return this.chatState == 'creating' ? 'Criando encontro ... ' : 'Criar e escolher o assunto ...';
   }
   protectionLabel(){
     return this.newEvent.public ? 'Público' : 'Privado';
