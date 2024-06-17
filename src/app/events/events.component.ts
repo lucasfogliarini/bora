@@ -155,10 +155,7 @@ export class EventsComponent {
       this.replied = true;
     }, async (errorResponse: HttpErrorResponse)=>{
        if(errorResponse.status == 401){
-          this.authService.signInWithGoogle((dialog: MatDialog)=>{
-            dialog.closeAll();
-            this.reply(event, response);
-          });
+          this.authService.signInWithGoogle();
        }else{
           this.toastr.error(errorResponse.message);
        }

@@ -89,10 +89,7 @@ export class EventCreateComponent {
         this.eventUpdated.emit(event);
       });
     }else{
-      this.authService.signInWithGoogle((dialog: MatDialog)=>{
-        dialog.closeAll();
-        this.create()
-      });
+      this.authService.signInWithGoogle();
     }
   }
   creatingOrNext(){

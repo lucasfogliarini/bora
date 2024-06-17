@@ -8,18 +8,32 @@ import { RouterModule } from '@angular/router';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ToastrModule } from 'ngx-toastr';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { NgxMatDatetimePickerModule, 
+         NgxMatNativeDateModule, 
+         NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 //components
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
+import { AccountComponent } from './account/account.component';
 import { MapComponent } from './map/map.component';
 import { HomeComponent } from './home/home.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { SideBarMenuComponent } from './sidebar-menu/sidebar-menu.component';
+import { ScenariosComponent } from './scenarios/scenarios.component';
+import { ContactComponent } from './contact/contact.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { FooterComponent } from './footer/footer.component';
+import { BoraComponent } from './bora/bora.component';
 
 import { APP_BASE_HREF, DatePipe } from '@angular/common';
 import { HttpRequestInterceptor } from './httprequest.interceptor';
+import { registerLocaleData } from '@angular/common';
+import localePT from '@angular/common/locales/pt';
+registerLocaleData(localePT);
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTicket,
         faDoorOpen, 
@@ -56,41 +70,14 @@ import { faTicket,
         faHourglassStart,
         faHourglassHalf} from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faYoutube, faDiscord } from '@fortawesome/free-brands-svg-icons';
-import { AccountComponent } from './account/account.component';
-import { registerLocaleData } from '@angular/common';
-import localePT from '@angular/common/locales/pt';
-import { ContactComponent } from './contact/contact.component';
-import { PrivacyComponent } from './privacy/privacy.component';
-import { FooterComponent } from './footer/footer.component';
-import { BoraComponent } from './bora/bora.component';
-import { EventCommentComponent } from './event-comment/event-comment.component';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog';
-import { NgxMatDatetimePickerModule, 
-         NgxMatNativeDateModule, 
-         NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
-import { AuthenticationDialogComponent } from './authentication-dialog/authentication-dialog.component';
-import { ScenariosComponent } from './scenarios/scenarios.component';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { GoogleMapsModule } from '@angular/google-maps';
-
-registerLocaleData(localePT);
-
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
     NavMenuComponent,
-    AuthenticationDialogComponent,
     SideBarMenuComponent,
     HomeComponent,
     EventCreateComponent,
-    EventCommentComponent,
     EventsComponent,
     AccountComponent,
     ContactComponent,
@@ -102,16 +89,9 @@ registerLocaleData(localePT);
   imports: [
     GoogleMapsModule,
     BrowserModule,
-    MatSlideToggleModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    MatSliderModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatDialogModule,
-    MatDatepickerModule,
-    MatInputModule,
     NgxMatDatetimePickerModule,
     NgxMatTimepickerModule,
     NgxMatNativeDateModule,

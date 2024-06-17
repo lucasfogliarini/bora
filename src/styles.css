@@ -21,6 +21,10 @@ app-contact .popover{
     top: -70px !important;
 }
 
+app-nav-menu .popover {
+    top: 90px !important;
+}
+
 .attendees .popover-body{
     width: 13rem !important;
 }
@@ -29,5 +33,7 @@ app-contact .popover{
     border-radius: 12px;
     margin-bottom: 5px;
 }
+
+
 
 html, body { height: 100%; }

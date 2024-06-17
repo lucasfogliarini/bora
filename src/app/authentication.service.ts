@@ -1,9 +1,7 @@
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
-import { AuthenticationDialogComponent } from './authentication-dialog/authentication-dialog.component';
 import { BoraApiService } from './bora-api.service';
 import { Account } from './models/account.model';
 
@@ -13,10 +11,8 @@ import { Account } from './models/account.model';
 export class AuthenticationService {
   user?: SocialUser;
   account = new Account;
-  afterGetJwt?: (dialog: MatDialog) => void;
   constructor(private authService: SocialAuthService,
               private toastr: ToastrService,
-              private dialog: MatDialog,
               private boraApiService: BoraApiService) {
               }
   subscribeAuth(){
@@ -24,8 +20,6 @@ export class AuthenticationService {
       this.user = user;
       if(user){
         this.getJwtAndSave(user).then(e=>{
-          if(this.afterGetJwt)
-            this.afterGetJwt(this.dialog);
           var accountUri = `accounts?filter=contains(Email,'${user.email}')`;
           this.boraApiService.get<Account[]>(accountUri, (accounts) => {
             if(accounts.length){
@@ -46,12 +40,8 @@ export class AuthenticationService {
       localStorage.setItem("jwt", authentication.jwToken);
     }
   }
-  signInWithGoogle(afterGetJwt?: (dialog: MatDialog) => void){
-    this.afterGetJwt = afterGetJwt;
-    this.dialog.open(AuthenticationDialogComponent, {
-      enterAnimationDuration: '1s',
-      exitAnimationDuration: '1s',
-    });
+  signInWithGoogle(){
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
   async getAccessToken(): Promise<string> {

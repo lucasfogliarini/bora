@@ -1,13 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Account } from '../models/account.model';
-import { Event } from '../models/event.model';
 import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
 import { BoraApiService } from '../bora-api.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 import { EventCreateComponent } from '../event-create/event-create.component';
-import { EventsComponent } from '../events/events.component';
-import { EventCommentComponent } from '../event-comment/event-comment.component';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
@@ -24,12 +21,6 @@ export class AccountComponent {
   futureObserversMessage?: string;
 
   eventCreate!: EventCreateComponent;
-  eventComment!: EventCommentComponent;
-  @ViewChild(EventCommentComponent)
-  set eventCommentChield(eventComment: EventCommentComponent) {
-    if(eventComment != undefined)
-      this.eventComment = eventComment;
-  }
 
   constructor(private boraApiService: BoraApiService,
               public authService: AuthenticationService,
@@ -49,9 +40,6 @@ export class AccountComponent {
                     this.editing = e.snapshot.queryParams['editing'] === 'true';
                   }
                 });
-  }
-  initComment(){
-    this.eventComment.init();
   }
   changePartnership(){
     this.boraApiService.patch<Account>(`accounts`, this.account, () => {
