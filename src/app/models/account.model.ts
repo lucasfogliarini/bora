@@ -16,6 +16,8 @@ export class Account {
     youTube: string;
     chess: string;
     accountability: string;
+    static boraAccountJson = 'boraAccountJson';
+    static boraAccountJwt = 'boraAccountJWT';
 }
 
 export enum EventVisibility

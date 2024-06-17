@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { Account } from '../models/account.model';
 import { WhatsApp } from '../wa';
 import { environment } from 'src/environments/environment';
-import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -10,11 +9,11 @@ import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
   styleUrls: [ 'nav-menu.component.css' ]
 })
 export class NavMenuComponent {
-  user: SocialUser | null = null;
-  account = new Account;
   news?: string = "17/06/2024, Porto Alegre, ";
-  constructor(public authService: SocialAuthService) {    
+  constructor(public authService: AuthenticationService) {    
     this.news = `${this.getNowString()}, Porto Alegre`;
+
+    this.authService.subscribeAuth();
   }
   getNowString(){
     const now = new Date();

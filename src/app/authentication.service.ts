@@ -10,35 +10,42 @@ import { Account } from './models/account.model';
 })
 export class AuthenticationService {
   user?: SocialUser;
-  account = new Account;
   constructor(private authService: SocialAuthService,
               private toastr: ToastrService,
               private boraApiService: BoraApiService) {
               }
+
+  getAccount(): Account | undefined{
+    const boraAccountJson = localStorage.getItem(Account.boraAccountJson);
+    if(boraAccountJson){
+      var boraAccount = JSON.parse(boraAccountJson) as Account;
+      return boraAccount;
+    }
+    return undefined;
+  }              
   subscribeAuth(){
-    this.authService.authState.subscribe(user => {
-      this.user = user;
-      if(user){
-        this.getJwtAndSave(user).then(e=>{
-          var accountUri = `accounts?filter=contains(Email,'${user.email}')`;
-          this.boraApiService.get<Account[]>(accountUri, (accounts) => {
-            if(accounts.length){
-              this.account = accounts[0];
-            }else{
-              this.toastr.warning('Usuário não encontrado.');
-            }
-          });
-        });
+    this.authService.authState.subscribe(boraSocialUser => {
+      if(boraSocialUser){
+        this.registerLogin(boraSocialUser);
       }
     });
   }
-  async getJwtAndSave(user: SocialUser){
-    const jwt = localStorage.getItem("jwt");
+  async registerLogin(boraSocialUser: SocialUser){
+    const jwt = localStorage.getItem(Account.boraAccountJwt);
     if(!jwt){
       var tokenUri = `token`;
-      const authentication = await this.boraApiService.postPromise(tokenUri, user);
-      localStorage.setItem("jwt", authentication.jwToken);
+      const authentication = await this.boraApiService.postPromise(tokenUri, boraSocialUser);
+      localStorage.setItem(Account.boraAccountJwt, authentication.jwToken);
     }
+    var accountUri = `accounts?filter=contains(Email,'${boraSocialUser.email}')`;
+    this.boraApiService.get<Account[]>(accountUri, (accounts) => {
+      if(accounts.length){
+        const account = accounts[0];
+        localStorage.setItem(Account.boraAccountJson, JSON.stringify(account));
+      }else{
+        this.toastr.warning('Usuário não encontrado.');
+      }
+    });
   }
   signInWithGoogle(){
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
@@ -51,15 +58,15 @@ export class AuthenticationService {
 
   signOut(): void {
     this.authService.signOut();
-    localStorage.removeItem("jwt");
+    localStorage.removeItem(Account.boraAccountJwt);
+    localStorage.removeItem(Account.boraAccountJson);
   }
   authorizeCalendar(){
-    var authUrl = `${environment.boraApi}accounts/authorizeCalendar?redirectUrl=${window.location.origin}/${this.account.username}`;
+    var authUrl = `${environment.boraApi}accounts/authorizeCalendar?redirectUrl=${window.location.origin}/${this.getAccount()?.username}`;
     window.open(authUrl, '_blank');
   }
   unauthorizeCalendar(){
     this.boraApiService.patch_(`accounts/unauthorizeCalendar`, (account) => {
-      this.account.calendarAuthorized = false;
       this.toastr.success('Acesso a sua agenda do Google foi revogado.');
     });
   }

@@ -258,7 +258,7 @@ ${ticketUrl}`;
     var date = new Date(event.start!).toLocaleDateString();
     this.title.setTitle(`${event.title} - ${date}`);
     this.router.navigate([], { queryParams: { eId: this.shortId(event) } });
-    let aIndex = event.attendees?.findIndex(e=>e.username == this.authService.account.username);
+    let aIndex = event.attendees?.findIndex(e=>e.username == this.authService.getAccount()?.username);
     this.replied = aIndex! > 0;
   }
   attendees(event: Event){
@@ -317,13 +317,13 @@ ${dateTime}`;
     return `<a target='_blank' href='${whatsAppLink}'>${helpText}</a>`
   }
   popAttendee(attendees: Attendee[]){
-    let aIndex = attendees.findIndex(e=>e.username == this.authService.account.username);
+    let aIndex = attendees.findIndex(e=>e.username == this.authService.getAccount()?.username);
     if(aIndex > 0){
       this.arrayMove(attendees, aIndex, 0);
     }
   }
   proximityRate(attendee: Attendee){
-    var isLoggedUser = this.authService.account.email == this.authService.user?.email;
+    var isLoggedUser = this.authService.getAccount()?.email == this.authService.user?.email;
     return isLoggedUser ? `${attendee.proximityRate}%` : "";
   }
   getSpotifyEmbedUrl(event: Event){

@@ -54,12 +54,22 @@
   </ul>
 </nav>
 
-<div class="row">
-  <label *ngIf="news" class="col-9" style="font-size: small; color: gray;">
+<div class="row mb-2">
+  <label *ngIf="news" class="col-8" style="font-size: small; color: gray;">
     {{news}}
   </label>
-  <div id="boraGoogle" class="col-3">
-    <div class="g_id_signin"
+  <div id="boraGoogle" class="col-4 text-center">
+    <asl-google-signin-button 
+        [hidden]="authService.getAccount()"
+        [type]="'standard'"
+        [size]="'small'"
+    >
+    </asl-google-signin-button>
+
+    <button (click)="authService.signOut()" [hidden]="!authService.getAccount()" class="btn btn-xs btn-white" style="border: 1px solid black;">Deslogar</button>
+
+
+    <!--<div class="g_id_signin"
       data-type="standard"
       data-shape="pill"
       data-theme="filled_black"
@@ -74,7 +84,7 @@
       data-ux_mode="popup"
       data-auto_select="true"
       data-itp_support="true">
-    </div>
+    </div>-->
   </div>
 </div>
 

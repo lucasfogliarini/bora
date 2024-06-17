@@ -27,7 +27,7 @@ export class SideBarMenuComponent  implements OnInit {
     this.authService.subscribeAuth();
   }
   openUser(){
-    var locationPath = this.authService.account?.username;
+    var locationPath = this.authService.getAccount()!.username;
     /*if(editing){
       locationPath += `?editing=true`;
     }*/
