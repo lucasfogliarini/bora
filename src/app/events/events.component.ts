@@ -51,10 +51,19 @@ export class EventsComponent {
   hasEventsLoaded(){
     return this.eventsLoaded && this.eventsLoaded.length > 0;
   }
+  getTimeMax(addMonths: number = 1){
+    let timeMax = new Date();
+    // Obtém o mês atual (os meses em JavaScript são baseados em zero)
+    let currentMonth = timeMax.getMonth();
+    // Define o mês para o próximo mês
+    timeMax.setMonth(currentMonth + addMonths);
+    return timeMax.toISOString();
+  }
   getEvents(hasTicket?: boolean){
     let user = this.getUser();
     const query = this.eventsQuery ?? '';
-    var eventsUri = `events?user=${user}&query=${query}&hasTicket=${hasTicket ?? false}`;
+    const timeMax = query == undefined ? this.getTimeMax() : this.getTimeMax(12);
+    var eventsUri = `events?user=${user}&query=${query}&hasTicket=${hasTicket ?? false}&timeMax=${timeMax}`;
     this.setEvents(undefined);
     this.boraApiService.get<Event[]>(eventsUri, (eventsLoaded: Event[]) => {
       this.eventsLoaded = eventsLoaded;
