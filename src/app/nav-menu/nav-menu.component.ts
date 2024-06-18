@@ -9,9 +9,9 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: [ 'nav-menu.component.css' ]
 })
 export class NavMenuComponent {
-  news?: string = "17/06/2024, Porto Alegre, ";
+  news?: string = undefined;
   constructor(public authService: AuthenticationService) {    
-    this.news = `${this.getNowString()}, Porto Alegre`;
+    this.news = `${this.getNowString()}, POA`;
 
     this.authService.subscribeAuth();
   }
@@ -19,7 +19,7 @@ export class NavMenuComponent {
     const now = new Date();
     const date = now.toLocaleDateString();
     const time = now.toLocaleTimeString();
-    const nowString = `${date} - ${time}`;
+    const nowString = `${date}, ${time}`;
     return nowString;
   }
   boraUnderstand(){

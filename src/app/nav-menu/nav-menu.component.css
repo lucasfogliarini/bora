@@ -4,3 +4,8 @@
 #bora-nav{
     padding: 0px !important;
 }
+
+a{
+    color: inherit;
+    text-decoration: underline;
+}
