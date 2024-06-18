@@ -16,7 +16,6 @@ import { environment } from 'src/environments/environment';
 export class AccountComponent {
   env = environment;
   account = new Account;
-  editing: boolean = false;
   pastObserversMessage?: string;
   futureObserversMessage?: string;
 
@@ -33,12 +32,6 @@ export class AccountComponent {
                   this.account = account;
                   this.title.setTitle(`${account.name} no ${this.env.appName}`);
                   this.setObservers();
-                });
-
-                this.router.events.subscribe(e=>{
-                  if(e instanceof ActivationEnd){
-                    this.editing = e.snapshot.queryParams['editing'] === 'true';
-                  }
                 });
   }
   changePartnership(){
@@ -77,8 +70,7 @@ export class AccountComponent {
     return this.activeRoute.snapshot.url[0].path || 'lucasfogliarini';
   }
   updateAccount(){
-    this.boraApiService.patch<Account>(`accounts`, this.account, () => {       
-       this.editing = false;
+    this.boraApiService.patch<Account>(`accounts`, this.account, () => {
        this.toastr.success('Perfil atualizado.');
        this.router.navigate([this.account.username]);
     });

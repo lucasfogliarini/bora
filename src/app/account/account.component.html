@@ -1,7 +1,7 @@
 <section id="account" class="content">
   <div class="card">
     <div class="card-header">
-      <nav *ngIf="!editing" class="navbar navbar-expand">
+      <nav class="navbar navbar-expand">
         <ul *ngIf="account?.id" class="navbar-nav">
           <li *ngIf="account.photo" class="image">
             <a href="{{account.username}}"><img style="width: 50px" [src]="account.photo" class="img-circle elevation-2" alt="User Image"></a>
@@ -27,72 +27,6 @@
         </ul>
       </nav>
       <h3 *ngIf="!account">Usuário não encontrado</h3>
-      <div id="editing-account" *ngIf="editing">
-        <div class="d-flex mb-2">
-          <fa-icon class="mr-2" [icon]="['fas','comments']"></fa-icon>
-          <div class="custom-control custom-switch mt-2">
-            <input id="partnership" (change)="changePartnership()" [(ngModel)]="account.isPartner" type="checkbox" class="custom-control-input">
-            <label *ngIf="account.isPartner" class="custom-control-label" for="partnership">
-                {{env.mainRole}}
-                <small *ngIf="!authService.getAccount()?.calendarAuthorized">, disponibilize sua agenda para marcar compromissos clicando em autorizar agenda.</small>
-            </label>
-            <label *ngIf="!account.isPartner" class="custom-control-label" for="partnership">
-                {{env.secondRole}}
-                <small>👉 pra ser <b>{{env.mainRole}}</b></small>
-            </label>
-          </div>
-        </div>
-        <div *ngIf="!authService.getAccount()?.calendarAuthorized && account.isPartner" class="d-flex mb-2">
-          <fa-icon class="mr-2" [icon]="['fas','calendar-day']"></fa-icon>
-          <button *ngIf="!authService.getAccount()?.calendarAuthorized" (click)="authService.authorizeCalendar()" class="btn-success btn form-control">Autorizar Google Agenda</button>
-          <button *ngIf="authService.getAccount()?.calendarAuthorized" 
-              mwlConfirmationPopover
-              title="Desautorizar Google Agenda"
-              popoverTitle="Desautorizar Google Agenda"
-              popoverMessage="Clique em confirmar para <b>desautorizar leitura e criação de encontros</b> na sua agenda. <br /><br /> {{whyRevokeCalendar()}}"
-              placement="bottom"
-              (confirm)="unauthorizeCalendar()"
-              class="btn-secondary btn form-control">Desautorizar Google Agenda</button>
-        </div>
-        <div class="d-flex mb-2">
-          <fa-icon class="mr-2" [icon]="['fas','user']"></fa-icon>
-          <input [(ngModel)]="account.name" type="text" class="form-control input-sm" placeholder="Nome" />
-        </div>
-        <div class="d-flex mb-2">
-          <fa-icon class="mr-2" [icon]="['fab','whatsapp']"></fa-icon>
-          <input [(ngModel)]="account.whatsApp" type="number" class="form-control input-sm" placeholder="51987654321" />
-        </div>
-        <div class="d-flex mb-2">
-          <fa-icon class="mr-2" [icon]="['fab','instagram']"></fa-icon>
-          <input [(ngModel)]="account.instagram" type="text" class="form-control input-sm" placeholder="instagramUser" (keydown.space)="$event.preventDefault();" />
-        </div>
-        <div class="d-flex mb-2">
-          <fa-icon class="mr-2" [icon]="['fas','book-open']"></fa-icon>
-          <input [(ngModel)]="account.accountability" type="text" class="form-control input-sm" placeholder="Músico, Fotógrafo, Ator, Artista, ..."/>
-        </div>
-        <div class="d-flex mb-2">
-          <fa-icon class="mr-2" [icon]="['fab','linkedin']"></fa-icon>
-          <input [(ngModel)]="account.linkedin" type="text" class="form-control input-sm" placeholder="linkedinUser" (keydown.space)="$event.preventDefault();" />
-        </div>
-        <div class="d-flex mb-2">
-          <fa-icon class="mr-2" [icon]="['fas','at']"></fa-icon>
-          <input [(ngModel)]="account.username" type="text" class="form-control input-sm" placeholder="vamoUser" (keydown.space)="$event.preventDefault();" />
-        </div>
-        <div class="d-flex mb-2">
-          <fa-icon class="mr-2" [icon]="['fab','spotify']"></fa-icon>
-          <input [(ngModel)]="account.spotify" type="text" class="form-control input-sm" placeholder="spotifyUser" (keydown.space)="$event.preventDefault();" />
-        </div>
-        <div class="d-flex mb-2">
-          <fa-icon class="mr-2" [icon]="['fas','camera']"></fa-icon>
-          <button (click)="openGoogleConta()" class="btn btn-dark form-control">Alterar foto no Google</button>
-        </div>
-        <div *ngIf="account?.username == 'lucasfogliarini'" class="d-flex mb-2">
-          <fa-icon class="mr-2" [icon]="['fas','camera-retro']"></fa-icon>
-          <button [routerLink]="['/scenarios']" class="btn btn-dark form-control">Cenários</button>
-        </div>
-        <button (click)="updateAccount()" class="btn-dark btn">Salvar</button>
-        <button (click)="editing=false" class="btn-white btn">Cancelar</button>
-      </div>
       <div class="row">
         <small class="col-5" style="font-family: system-ui;">{{account.accountability}}</small>
         <div class="row col-7">
