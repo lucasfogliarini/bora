@@ -2,7 +2,7 @@
     mwlConfirmationPopover
     title="Contato por Whatsapp"
     popoverTitle="Contato por Whatsapp"
-    popoverMessage="Clique em <b>WhatsApp</b>, para: <br />  - Ser uma(o) <b>{{env.mainRole}}</b> <br /> - Relatar um <b>bug ou problema</b> <br /> - Dar uma <b>sugestão</b>"
+    [popoverMessage]="contactMessage"
     placement="left"
     confirmText="WhatsApp"
     (confirm)="open()"
