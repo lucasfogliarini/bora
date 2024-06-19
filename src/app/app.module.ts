@@ -9,9 +9,6 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ToastrModule } from 'ngx-toastr';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
-import { NgxMatDatetimePickerModule, 
-         NgxMatNativeDateModule, 
-         NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { GoogleMapsModule } from '@angular/google-maps';
 
 //components
@@ -93,9 +90,6 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faY
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    NgxMatDatetimePickerModule,
-    NgxMatTimepickerModule,
-    NgxMatNativeDateModule,
     GooglePlaceModule,
     ToastrModule.forRoot(),
     ConfirmationPopoverModule.forRoot({
