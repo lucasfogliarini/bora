@@ -61,7 +61,7 @@ export class MapComponent {
           <br/>
           <nav class="text-center">
             <a class='btn btn-dark' href="/bora.work">Consultoria e encontros</a>
-            <a class='btn btn-white' href="/lucasfogliarini">Parcerias</a>
+            <a class='btn btn-white' href="/lucasfogliarini">Parceira(o) Destaque</a>
           </nav>
           <br/>
           <p>
