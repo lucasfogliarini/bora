@@ -40,7 +40,7 @@ export class NavMenuComponent {
     const partnershipPatch: AccountInput = { isPartner: !this.isPartner };
     this.boraApiService.patchAccount(partnershipPatch, (account: any) => {
         const togglePartnership = !this.isPartner ? 'ativada' : 'desativada';
-        this.toastr.show(`Parceria ${togglePartnership} com sucesso! Logue novamente para ver o efeito.`);
+        this.toastr.show(`Parceria ${togglePartnership} com sucesso! Relogue e atualize a página para ver o efeito.`);
         this.authService.signOut();
     });
   }
