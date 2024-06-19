@@ -1,12 +1,9 @@
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Options } from 'ngx-google-places-autocomplete/objects/options/options';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 import { BoraApiService } from '../bora-api.service';
-import { Account } from '../models/account.model';
-import { AttendeeReply } from '../models/attendee-reply.model';
 import { Content } from '../models/contents/content.model';
 import { EventCreate } from '../models/contents/event-create.model';
 import { Event } from '../models/event.model';

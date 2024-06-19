@@ -8,7 +8,6 @@ import { Attendee } from '../models/attendee.model';
 import { AuthenticationService } from '../authentication.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AttendeeReply } from '../models/attendee-reply.model';
-import { MatDialog } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
 
