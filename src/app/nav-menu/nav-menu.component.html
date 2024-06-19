@@ -83,7 +83,19 @@
   </div>  
   <div *ngIf="this.authService.getAccount()" class="col-5">
     <a href="/{{this.authService.getAccount()?.username}}"><small class="col-5 mr-1">{{this.authService.getAccount()?.username}}</small></a>
-    <img style="width: 30px;" [src]="this.authService.getAccount()?.photo" class="img-circle image elevation-2" alt="Imagem de Perfil">
+    <img [src]="this.authService.getAccount()?.photo"
+        class="img-circle image elevation-2"
+        alt="Imagem de Perfil"
+        style="width: 30px;"
+        mwlConfirmationPopover
+        title="Conta"
+        popoverTitle="Conta"
+        [popoverMessage]="partnership"
+        placement="left"
+        confirmText="{{togglePartnershipText}}"
+        (confirm)="togglePartnership()"
+        cancelText="Deslogar"
+        (cancel)="authService.signOut()">
   </div>
 </div>
 
