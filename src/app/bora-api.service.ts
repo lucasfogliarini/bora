@@ -8,6 +8,7 @@ import { Content } from './models/contents/content.model';
 import { Scenario } from './models/scenario.model';
 import { Event } from './models/event.model';
 import { Location } from './models/location.model';
+import { AccountInput } from './models/account-input.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,10 @@ export class BoraApiService {
       }
       onFound(account);
     });
+  }
+
+  patchAccount(account: AccountInput, callBack: (account: Account) => void){
+    this.patch<Account>(`accounts`, account, callBack);
   }
 
   getContentsByDomain(collection: string, callBack: (content: Content[]) => void){

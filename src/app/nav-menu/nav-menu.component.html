@@ -78,8 +78,6 @@
         [size]="'small'"
     >
     </asl-google-signin-button>
-
-    <button (click)="authService.signOut()" [hidden]="!authService.getAccount()" class="btn btn-xs btn-white" style="border: 1px solid black;">Deslogar</button>
   </div>  
   <div *ngIf="this.authService.getAccount()" class="col-5">
     <a href="/{{this.authService.getAccount()?.username}}"><small class="col-5 mr-1">{{this.authService.getAccount()?.username}}</small></a>
