@@ -18,6 +18,14 @@ export class BoraApiService {
   constructor(private http: HttpClient,
     private toastr: ToastrService) {}
 
+  getPartners(callBack: (partnersCallback: Account[]) => void){
+    let partnersUri = `accounts?filter=IsPartner eq true&orderby=PartnerSince desc, UpdatedAt desc`;
+
+    this.get(partnersUri, (partners: Account[])=>{
+        callBack(partners);
+    });
+  }
+
   getAccount(username: string, onFound: any){
     var accountUri = `accounts?filter=username eq '${username}'`;
     this.get<Account[]>(accountUri, (accounts) => {

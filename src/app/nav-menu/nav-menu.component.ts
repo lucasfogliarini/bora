@@ -5,6 +5,7 @@ import { AuthenticationService } from '../authentication.service';
 import { BoraApiService } from '../bora-api.service';
 import { AccountInput } from '../models/account-input.model';
 import { ToastrService } from 'ngx-toastr';
+import { Account } from '../models/account.model';
 
 @Component({
   selector: 'app-nav-menu',
@@ -13,13 +14,30 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NavMenuComponent {
   news?: string = undefined;
+  partners: Account[] = [];
+  partnersContent = '';
   constructor(public authService: AuthenticationService,
               private boraApiService: BoraApiService,
               private toastr: ToastrService
   ) {    
     this.news = `${this.getNowString()}, POA`;
+    this.boraApiService.getPartners((partners=>{
+      this.partners = partners;
+      if(partners){
+        this.popPartner(partners);
+        this.partnersContent = partners.map(e=>
+        `<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a><br />`).join('');
+        //`<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a>&nbsp;<small>${e.accountability?.substring(0,25) ?? ''}</small><br />`).join('');
+        //partnersContent += this.partnerInvite();// Quero ser parceiro
+        this.partnersContent += `<small class="offset-7">${partners.length} parceira(o)s</small>`;
+      }
+    }));
 
     this.authService.subscribeAuth();
+  }
+
+  bora(){
+    window.location.href = '/bora.work';
   }
   isPartner = this.authService.getAccount()?.isPartner;
   togglePartnershipText = this.isPartner ? 'Desativar' : 'Ativar';
@@ -38,6 +56,17 @@ export class NavMenuComponent {
   <!--3. Você é <b>convidado automaticamente<b/> nos encontros produzidos pelo <a target='_blank' href='/bora.work'><b>bora.work</b></a>-->
   </small>
   `;
+  popPartner(partners: Account[]){
+    let aIndex = partners.findIndex(e=>e.username == this.authService.getAccount()?.username);
+    if(aIndex > 0){
+      this.arrayMove(partners, aIndex, 0);
+    }
+  }
+  arrayMove(arr: Array<any>, fromIndex: number, toIndex: number) {
+    var element = arr[fromIndex];
+    arr.splice(fromIndex, 1);
+    arr.splice(toIndex, 0, element);
+  }
   togglePartnership(){
     const partnershipPatch: AccountInput = { isPartner: !this.isPartner };
     this.boraApiService.patchAccount(partnershipPatch, (account: any) => {

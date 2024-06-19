@@ -63,7 +63,7 @@
               class="col-6 float-right">
             </fa-icon>            
             <input type="button" value="Bora!" *ngIf="!replied" mwlConfirmationPopover
-              popoverClass='attendees'
+              popoverClass='accounts'
               title="Convidados,  Bora?"
               popoverTitle="Convidados,  Bora?"
               [popoverMessage]="attendees(event)"
@@ -75,7 +75,7 @@
               role="button"
               class="btn btn-block btn-dark col-6" />
             <fa-icon *ngIf="replied" [icon]="['fas', 'people-group']" mwlConfirmationPopover
-              popoverClass='attendees'
+              popoverClass='accounts'
               title="Convidados,  Bora?"
               popoverTitle="Convidados,  Bora?"
               [popoverMessage]="attendees(event)"

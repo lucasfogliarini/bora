@@ -25,15 +25,19 @@ app-nav-menu .popover {
     top: 145px !important;
 }
 
-.attendees .popover-body{
+app-nav-menu .accounts {
+    width: 250px;
+    top: 200px !important;
+}
+
+.accounts .popover-body{
     width: 13rem !important;
 }
-.attendees .popover-body img{
+.accounts .popover-body img{
     width: 25px;
     border-radius: 12px;
     margin-bottom: 5px;
 }
-
 
 
 html, body { height: 100%; }

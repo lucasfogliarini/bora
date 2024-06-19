@@ -56,13 +56,21 @@
         <small style="font-size: xx-small;">Chess</small>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item content">
       <a class="nav-link"
-        href="/bora.work"
+        popoverClass='accounts'
+        mwlConfirmationPopover
+        value="Parcerias"
+        title="Parcerias"
+        popoverTitle="Parcerias"
+        [popoverMessage]="partnersContent"
+        placement="left"
+        confirmText="Bora!"
+        (confirm)="bora()"
         role="button">
-        <fa-icon [icon]="['fas','hourglass-start']"></fa-icon>
+        <fa-icon [icon]="['fas','user-doctor']"></fa-icon>
         <br />
-        <small style="font-size: xx-small;"><b>Bora?</b></small>
+        <small style="font-size: xx-small;"><b>Parcerias</b></small>
       </a>
     </li>
   </ul>

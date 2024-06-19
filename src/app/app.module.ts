@@ -66,7 +66,8 @@ import { faTicket,
         faChessQueen,
         faHourglassStart,
         faHourglassHalf,
-        faGlasses} from '@fortawesome/free-solid-svg-icons';
+        faGlasses,
+        faUserDoctor} from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faYoutube, faDiscord } from '@fortawesome/free-brands-svg-icons';
 @NgModule({
   declarations: [
@@ -134,6 +135,7 @@ export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIcons(
       faGlasses,
+      faUserDoctor,
       faHourglassStart,
       faHourglassHalf,
       faTicket,
