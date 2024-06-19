@@ -31,9 +31,11 @@ export class NavMenuComponent {
   <br />
   <b>Enquanto ativado</b>:
   <br/>
-  1. O botão <b>Bora?</b> é <b>exibido</b> no seu perfil para que <b>qualquer pessoa entre em contato pelo Google Agenda</b> <a target='_blank' href='https://api.bora.work/accounts/authorizeCalendar'>(caso sua agenda for autorizada)</a>
+  1. Seu perfil de <b>Parceira(o)</b> será apresentado na lista de <b>Parcerias</b> do <a target='_blank' href='/map'>Mapa na Home</a>
   <br/>
-  2. Você é <b>convidado automaticamente<b/> nos encontros produzidos pelo <a href='/bora.work'><b>bora.work</b></a>
+  2. O botão <b>'Bora?'</b> é <b>exibido</b> no seu perfil para que <b>qualquer pessoa entre em contato pelo Google Agenda</b> <a target='_blank' href='https://api.bora.work/accounts/authorizeCalendar'>(caso sua agenda for autorizada)</a>
+  <br/>
+  <!--3. Você é <b>convidado automaticamente<b/> nos encontros produzidos pelo <a target='_blank' href='/bora.work'><b>bora.work</b></a>-->
   </small>
   `;
   togglePartnership(){
