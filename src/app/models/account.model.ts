@@ -16,6 +16,7 @@ export class Account {
     youTube: string;
     chess: string;
     accountability: string;
+    updatedAt: Date;
     static boraAccountJson = 'boraAccountJson';
     static boraAccountJwt = 'boraAccountJWT';
 }

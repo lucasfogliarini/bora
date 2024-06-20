@@ -21,19 +21,27 @@ app-contact .popover{
     top: -70px !important;
 }
 
-app-nav-menu .popover {
+app-nav-menu .profile {
     top: 145px !important;
 }
 
-app-nav-menu .accounts {
-    width: 250px;
+app-nav-menu .partners {
     top: 200px !important;
 }
 
-.accounts .popover-body{
-    width: 13rem !important;
+app-nav-menu .partners .popover-body{
+    width: 250px !important;
 }
-.accounts .popover-body img{
+
+app-nav-menu .updatedAt{
+    font-size: xx-small
+}
+
+.popover-body{
+    width: 250px;
+}
+
+.popover-body img{
     width: 25px;
     border-radius: 12px;
     margin-bottom: 5px;

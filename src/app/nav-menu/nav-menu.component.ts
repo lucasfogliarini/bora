@@ -20,13 +20,14 @@ export class NavMenuComponent {
               private boraApiService: BoraApiService,
               private toastr: ToastrService
   ) {    
-    this.news = `${this.getNowString()}, POA`;
+    this.news = `${this.formatDate()}, POA`;
     this.boraApiService.getPartners((partners=>{
       this.partners = partners;
       if(partners){
         this.popPartner(partners);
         this.partnersContent = partners.map(e=>
-        `<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a><br />`).join('');
+        `<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a>
+        <small class='updatedAt'>${this.formatDate(e.updatedAt, false)}</small><br />`).join('');
         //`<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a>&nbsp;<small>${e.accountability?.substring(0,25) ?? ''}</small><br />`).join('');
         //partnersContent += this.partnerInvite();// Quero ser parceiro
         this.partnersContent += `<small>${partners.length} parceira(o)s</small>`;
@@ -75,12 +76,18 @@ export class NavMenuComponent {
         this.authService.signOut();
     });
   }
-  getNowString(){
-    const now = new Date();
-    const date = now.toLocaleDateString();
-    const time = now.toLocaleTimeString();
-    const nowString = `${date}, ${time}`;
-    return nowString;
+  formatDate(now?: Date, withTime = true){
+    if(typeof now == 'string')
+      now = new Date(now);
+    now = now ?? new Date();
+    const date = now.toLocaleDateString();    
+    let timeString = '';
+    if(withTime){
+      const time = now.toLocaleTimeString();
+      timeString = withTime ? `, ${time}` : '';
+    }
+    const dateString = `${date}${timeString}`;
+    return dateString;
   }
   boraUnderstand(){
     const whatsAppLink = WhatsApp.generateLink(`Oi Lucas!
