@@ -21,13 +21,19 @@ export class NavMenuComponent {
               private toastr: ToastrService
   ) {    
     this.news = `${this.formatDate()}, POA`;
-    this.boraApiService.getPartners((partners=>{
+    const calendarAuthorized = false;
+    this.boraApiService.getPartners(calendarAuthorized, (partners=>{
       this.partners = partners;
       if(partners){
         this.popPartner(partners);
-        this.partnersContent = partners.map(e=>
-        `<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a>
-        <small class='updatedAt'>${this.formatDate(e.updatedAt, false)}</small><br />`).join('');
+        this.partnersContent = 
+        partners.map(e=>
+                `<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a>
+                  <small>
+                    ${e.calendarAuthorized ? '>' : ''}
+                    ${this.formatDate(e.updatedAt, false)}
+                  </small>
+                <br />`).join('');
         //`<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a>&nbsp;<small>${e.accountability?.substring(0,25) ?? ''}</small><br />`).join('');
         //partnersContent += this.partnerInvite();// Quero ser parceiro
         this.partnersContent += `<small>${partners.length} parceira(o)s</small>`;

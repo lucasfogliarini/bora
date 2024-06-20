@@ -18,8 +18,8 @@ export class BoraApiService {
   constructor(private http: HttpClient,
     private toastr: ToastrService) {}
 
-  getPartners(callBack: (partnersCallback: Account[]) => void){
-    let partnersUri = `accounts?filter=IsPartner eq true&orderby=UpdatedAt desc, PartnerSince asc`;
+  getPartners(calendarAuthorized: boolean, callBack: (partnersCallback: Account[]) => void){
+    let partnersUri = `accounts?filter=IsPartner eq true&calendarAuthorized eq ${calendarAuthorized}&orderby=CalendarAuthorized desc, UpdatedAt desc, PartnerSince asc`;
 
     this.get(partnersUri, (partners: Account[])=>{
         callBack(partners);
