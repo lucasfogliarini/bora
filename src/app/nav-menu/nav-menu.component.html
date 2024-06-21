@@ -80,29 +80,36 @@
   <label *ngIf="news" class="col-7" style="font-size: small; color: gray;">
     {{news}}
   </label>
-  <div [hidden]="authService.getAccount()" id="boraGoogle" class="col-5 text-center">
-    <asl-google-signin-button
-        [type]="'standard'"
-        [size]="'small'"
-    >
-    </asl-google-signin-button>
-  </div>  
-  <div *ngIf="this.authService.getAccount()" class="col-5">
-    <a href="/{{this.authService.getAccount()?.username}}"><small class="col-5 mr-1">{{this.authService.getAccount()?.username}}</small></a>
-    <img [src]="this.authService.getAccount()?.photo"
-        class="img-circle image elevation-2"
-        alt="Imagem de Perfil"
-        style="width: 30px;"
-        mwlConfirmationPopover
-        popoverClass="profile"
-        title="Conta {{userType}}"
-        popoverTitle="Conta {{userType}}"
-        [popoverMessage]="partnership"
-        placement="left"
-        confirmText="{{togglePartnershipText}}"
-        (confirm)="togglePartnership()"
-        cancelText="Deslogar"
-        (cancel)="authService.signOut()">
+  <div id="profile" class="col-5">
+    <div class="float-right mr-3">
+      <div id="logged" [hidden]="authService.getAccount()">
+        <asl-google-signin-button
+            class="float-right"
+            [type]="'standard'"
+            [size]="'small'"
+        >
+        </asl-google-signin-button>
+      </div>
+      <div id="notLogged" [hidden]="!this.authService.getAccount()">
+        <a href="/{{this.authService.getAccount()?.username}}">
+          <small class="col-5 mr-1">{{this.authService.getAccount()?.username}}</small>
+        </a>
+        <img [src]="this.authService.getAccount()?.photo"
+            class="img-circle image elevation-2"
+            alt="Imagem de Perfil"
+            style="width: 30px;"
+            mwlConfirmationPopover
+            popoverClass="profile"
+            title="Conta {{userType}}"
+            popoverTitle="Conta {{userType}}"
+            [popoverMessage]="partnership"
+            placement="left"
+            confirmText="{{togglePartnershipText}}"
+            (confirm)="togglePartnership()"
+            cancelText="Deslogar"
+            (cancel)="authService.signOut()">
+      </div>
+    </div>
   </div>
 </div>
 
