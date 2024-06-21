@@ -1,6 +1,6 @@
 <nav id="events-nav" class="row" style="border-bottom: 1px solid rgb(216, 208, 208)">
   <div class="col-9"></div>
-  <input id="eventsQuery" (input)="getEvents()" [(ngModel)]="eventsQuery" type="text" placeholder="Encontre! 'Bora', 'tech', 'jam'" class="ml-1 col-8" />
+  <input id="eventsQuery" (input)="getEvents()" [(ngModel)]="eventsQuery" type="text" placeholder="Encontre! 'tech', 'parceiros', 'bora', ..." class="ml-1 col-8" />
   <fa-icon (click)="getEvents(true)" title="Eventos com ingresso" class="m-2 col-1" [icon]="['fas','ticket']"></fa-icon>
   <fa-icon (click)="refreshEvents()" title="Todos os eventos" class="m-2 col-1" [icon]="['fas','arrows-rotate']"></fa-icon>
 </nav>
