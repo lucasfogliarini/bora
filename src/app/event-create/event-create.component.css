@@ -7,9 +7,9 @@
     -moz-border-radius: 10px;
 }
 
-#event-when input[type=button]{
-    margin: 5px;
-    float: right;
+.event-when input[type=button]{
+    margin-top: 8px;
+    width: 150px;
 }
 .escape-button{
     position: relative;

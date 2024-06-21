@@ -45,49 +45,28 @@
           <button [disabled]="!newEvent.title" (click)="updateTitle()" type="button" class="btn btn-dark">Próximo</button>
         </div>
       </div>
-      <div id="event-when" *ngIf="chatState == 'when'" class="event-question card-title">
+      <div id="event-when-date" *ngIf="chatState == 'when-date'" class="event-question card-title event-when">
         <h6>{{eventCreate.when}}</h6>
         <div id="event-public-switch" class="custom-control custom-switch mt-3">
           <input id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
           <label class="custom-control-label" for="event-public" role="button">{{protectionLabel()}}</label>
         </div>
 
-        <input value="No outro Sábado" type="button" class="btn btn-dark" (click)="updateWhen('sabado_mais_7')" />
+        <input value="No outro Sábado" type="button" class="btn btn-dark" (click)="updateWhenDate('sabado_mais_7')" />
         <br />
-        <input value="Próximo Sábado" type="button" class="btn btn-dark" (click)="updateWhen('sabado_proximo')" />
+        <input value="Sábado" type="button" class="btn btn-dark" (click)="updateWhenDate('sabado')" />
         <br />
-        <input value="Amanhã" type="button" class="btn btn-dark" (click)="updateWhen('amanha')" />
+        <input value="Sexta" type="button" class="btn btn-dark" (click)="updateWhenDate('sexta')" />
         <br />
-        <input value="Hoje" type="button" class="btn btn-dark" (click)="updateWhen('hoje')" />
+        <input value="Amanhã" type="button" class="btn btn-dark" (click)="updateWhenDate('amanha')" />
         <br />
-        <input value="Agora!" type="button" class="btn btn-dark" (click)="updateWhen('agora')" />
+        <input value="Hoje" type="button" class="btn btn-dark" (click)="updateWhenDate('hoje')" />
+        <br />
+        <input value="Agora!" type="button" class="btn btn-dark" (click)="updateWhenDate('agora')" />
       </div>
-      <div id="event-when2" *ngIf="chatState == 'when2'" class="event-question card-title">
+      <div id="event-when-time" *ngIf="chatState == 'when-time'" class="event-question card-title event-when">
         <h6>{{eventCreate.when}}</h6>
-        <div id="event-public-switch" class="custom-control custom-switch mt-3">
-          <input id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
-          <label class="custom-control-label" for="event-public" role="button">{{protectionLabel()}}</label>
-        </div>
-
-        <input value="Esse mês" type="button" class="btn btn-dark" (click)="updateWhen('30_dias')" />
-        <br />
-        <input value="Sábado" type="button" class="btn btn-dark" (click)="updateWhen('sabado')" />
-        <br />
-        <input value="Sexta" type="button" class="btn btn-dark" (click)="updateWhen('sexta')" />
-        <br />
-        <input value="Quinta" type="button" class="btn btn-dark" (click)="updateWhen('sexta')" />
-        <br />
-        <input value="Quarta" type="button" class="btn btn-dark" (click)="updateWhen('sexta')" />
-        <br />
-        <input value="Terça" type="button" class="btn btn-dark" (click)="updateWhen('sexta')" />
-        <br />
-        <input value="Segunda" type="button" class="btn btn-dark" (click)="updateWhen('sexta')" />
-        <br />
-        <input value="Amanhã" type="button" class="btn btn-dark" (click)="updateWhen('amanha')" />
-        <br />
-        <input value="Hoje" type="button" class="btn btn-dark" (click)="updateWhen('hoje')" />
-        <br />
-        <input value="Agora!" type="button" class="btn btn-dark" (click)="updateWhen('agora')" />
+          <button class="btn btn-dark m-1" (click)="updateWhenTime(num)" *ngFor="let num of whenTimes">{{ num }}h</button>
       </div>
     </div>
 </div>

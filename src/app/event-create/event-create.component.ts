@@ -17,12 +17,14 @@ import { Location } from '../models/location.model';
 })
 export class EventCreateComponent {
   newEvent: Event = new Event;
-  //account?: Account;
   placesOptions: Options = new Options;
   eventCreate: EventCreate = new EventCreate;
   scenarios?: Scenario[];
-  chatState: string = 'when';
+  chatState: string = 'closed';
   @Output() eventUpdated: EventEmitter<any> = new EventEmitter();
+  whenTimeStart = 10;
+  whenTimeEnd = 22;
+  whenTimes = Array.from({ length: this.whenTimeEnd - this.whenTimeStart + 1 }, (_, i) => i + this.whenTimeStart);
 
   @ViewChild('googlePlace')
   googlePlace?: ElementRef;
@@ -98,7 +100,7 @@ export class EventCreateComponent {
   updateTitle(){
     var user = this.getUsername();
     const eventPatchTitle: Event = { title: this.newEvent.title };
-    this.chatState = 'when';
+    this.chatState = 'when-date';
     this.boraApiService.patchEvent(user,this.newEvent!.id!, eventPatchTitle, (event: Event) => {
       if(!event.location){
         this.getCurrentPlace();
@@ -106,31 +108,58 @@ export class EventCreateComponent {
       this.eventUpdated.emit(event);
     });
   }
-  updateWhen(when: string){
+  updateWhenDate(when: string){
     var user = this.getUsername();
+    this.newEvent.start = this.getWhenDate(when);
     const eventPatchWhen: Event = {
-      start: this.getWhenDateTime(when),
+      start: this.newEvent.start,
       public: this.newEvent.public
-    };    
+    };
+    
     this.boraApiService.patchEvent(user, this.newEvent!.id!, eventPatchWhen, (event: Event) => {
-      this.close();
-      if(event.public)
-        this.toastr.success(`${this.eventCreate.success} Compartilha no Whatsapp 👇`);
+      if(when == 'agora')
+        this.close();
       else
-        this.toastr.success(`${this.eventCreate.success}`);      
-      this.router.navigate([], { queryParams: { eId: event.id } });
-      setTimeout(()=>{
-        window.location.reload();
-      }, 1000)
-      this.eventUpdated.emit(event);
+        this.chatState = 'when-time';
+      if(this.chatState == 'closed'){
+        this.eventCreated(event);
+      }
     });
   }
-  getWhenDateTime(when: string) {
+  updateWhenTime(time: number){
+    var user = this.getUsername();
+    const startWithTime = new Date(this.newEvent.start!);
+    startWithTime.setHours(time);
+    startWithTime.setMinutes(0);
+    startWithTime.setSeconds(0);
+    const eventPatchWhen: Event = {
+      start: startWithTime,
+      public: this.newEvent.public
+    };
+    
+    this.boraApiService.patchEvent(user, this.newEvent!.id!, eventPatchWhen, (event: Event) => {
+      this.close();
+      this.eventCreated(event);
+    });
+  }
+  eventCreated(event: Event){
+    if(event.public)
+      this.toastr.success(`${this.eventCreate.success} Compartilha no Whatsapp 👇`);
+    else
+      this.toastr.success(`${this.eventCreate.success}`);
+
+    this.router.navigate([], { queryParams: { eId: event.id } });
+    setTimeout(()=>{
+      window.location.reload();
+    }, 1000)
+    this.eventUpdated.emit(event);
+  }
+  getWhenDate(when: string) {
     const now = new Date();
     const daysUntilSaturday = (6 - now.getDay() + 7) % 7; // Calcula os dias até o próximo sábado
     switch (when.toLowerCase()) {
         case 'agora':
-            return new Date(now.getTime() + 30 * 60 * 1000); // Adiciona 30 minutos
+          return new Date(now.getTime() + 30 * 60 * 1000); // Adiciona 30 minutos
         case 'hoje':
             return this.nowAddDays(0, 19);
         case 'amanha':
@@ -139,7 +168,6 @@ export class EventCreateComponent {
             const daysUntilFriday = (5 - now.getDay() + 7) % 7; // Calcula os dias até a próxima sexta
             return this.nowAddDays(daysUntilFriday, 19);
         case 'sabado':
-        case 'sabado_proximo':            
             return this.nowAddDays(daysUntilSaturday, 16);
         case 'sabado_mais_7':
             return this.nowAddDays(daysUntilSaturday  + 7, 16);
