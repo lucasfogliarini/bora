@@ -27,7 +27,7 @@ export class MapComponent {
     if(this.googleMap){
       var placesService = new google.maps.places.PlacesService(this.googleMap.googleMap!);
       var request = {
-          query: 'Bora Social!, Porto Alegre, Brazil',
+          query: 'bora.work, Porto Alegre, Brazil',
           fields: ['place_id', 'geometry', 'name']
       };
 
@@ -61,7 +61,7 @@ export class MapComponent {
           <br/>
           <nav class="text-center">
             <a class='btn btn-dark' href="/bora.work">Consultoria e encontros</a>
-            <a class='btn btn-white' href="/lucasfogliarini">Parceira(o) Destaque</a>
+            <a class='btn btn-white btn-outline-secondary' href="/lucasfogliarini">Parceira(o) Destaque</a>
           </nav>
           <br/>
           <p>
@@ -71,7 +71,8 @@ export class MapComponent {
           <div class='text-center'>
             <small>A maioria dos encontros presenciais são em Porto Alegre no</small>
             <br />
-            <a class='btn btn-white' target='_blank' href='https://www.google.com/maps/search/?api=1&query=Bora+Social!/'>Bora Cowork!</a>
+            <br />
+            <a class='btn btn-white btn-outline-secondary' target='_blank' href='https://www.google.com/maps/search/?api=1&query=bora.work, Porto Alegre'>Bora Work!</a>
             <br />
             ⬇️
           </div>
