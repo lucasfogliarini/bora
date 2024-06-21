@@ -21,6 +21,7 @@ export class EventCreateComponent {
   placesOptions: Options = new Options;
   eventCreate: EventCreate = new EventCreate;
   scenarios?: Scenario[];
+  chatState: string = 'when';
   @Output() eventUpdated: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('googlePlace')
@@ -74,7 +75,6 @@ export class EventCreateComponent {
     this.chatState = 'where';
     this.newEvent = new Event;
   }
-  chatState: string = 'closed';
   create(){
     const jwt = localStorage.getItem("jwt");
     if(jwt){
@@ -127,26 +127,30 @@ export class EventCreateComponent {
   }
   getWhenDateTime(when: string) {
     const now = new Date();
+    const daysUntilSaturday = (6 - now.getDay() + 7) % 7; // Calcula os dias até o próximo sábado
     switch (when.toLowerCase()) {
         case 'agora':
             return new Date(now.getTime() + 30 * 60 * 1000); // Adiciona 30 minutos
         case 'hoje':
-            return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 16, 0, 0); // Hoje às 16:00
+            return this.nowAddDays(0, 19);
         case 'amanha':
-            return new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 16, 0, 0); // Amanhã às 16:00
+          return this.nowAddDays(1, 19);
         case 'sexta':
             const daysUntilFriday = (5 - now.getDay() + 7) % 7; // Calcula os dias até a próxima sexta
-            return new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysUntilFriday, 19, 0, 0); // Próximo sexta às 19:00
+            return this.nowAddDays(daysUntilFriday, 19);
         case 'sabado':
-            const daysUntilSaturday = (6 - now.getDay() + 7) % 7; // Calcula os dias até o próximo sábado
-            return new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysUntilSaturday, 16, 0, 0); // Próximo sábado às 16:00
-        case '30_dias':
-            const randomDays = Math.floor(Math.random() * 30) + 1;
-            return new Date(now.getFullYear(), now.getMonth(), now.getDate() + randomDays, 16, 0, 0); // Data aleatória dentro dos próximos 30 dias às 16:00
+        case 'sabado_proximo':            
+            return this.nowAddDays(daysUntilSaturday, 16);
+        case 'sabado_mais_7':
+            return this.nowAddDays(daysUntilSaturday  + 7, 16);
         default:
             throw new Error('Parâmetro inválido');
     }
-  }  
+  }
+  nowAddDays(addDays: number, hour: number){
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate() + addDays, hour, 0, 0);
+  }
   addressChange(){
     this.newEvent.location = this.googlePlace?.nativeElement.value;
   }

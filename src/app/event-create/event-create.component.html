@@ -33,60 +33,61 @@
         </div>
       </div>
       <div id="event-title" *ngIf="chatState == 'what'" class="event-question card-title">
-      <h6>{{eventCreate.what}}</h6>
-      <div *ngFor="let title of eventCreate.titles; let i = index" class="form-check">
-        <input [value]="title" [(ngModel)]="newEvent.title" class="form-check-input" type="radio" id="title_{{i}}">
-        <label class="form-check-label" for="title_{{i}}">
-          {{title}}
-        </label>
-      </div>
-      <input [(ngModel)]="newEvent.title" class="form-control mt-2" type="text" id="title" [placeholder]="eventCreate.titleSuggestion">
-      <div class="buttonEvent">
-        <button [disabled]="!newEvent.title" (click)="updateTitle()" type="button" class="btn btn-dark">Próximo</button>
-      </div>
+        <h6>{{eventCreate.what}}</h6>
+        <div *ngFor="let title of eventCreate.titles; let i = index" class="form-check">
+          <input [value]="title" [(ngModel)]="newEvent.title" class="form-check-input" type="radio" id="title_{{i}}">
+          <label class="form-check-label" for="title_{{i}}">
+            {{title}}
+          </label>
+        </div>
+        <input [(ngModel)]="newEvent.title" class="form-control mt-2" type="text" id="title" [placeholder]="eventCreate.titleSuggestion">
+        <div class="buttonEvent">
+          <button [disabled]="!newEvent.title" (click)="updateTitle()" type="button" class="btn btn-dark">Próximo</button>
+        </div>
       </div>
       <div id="event-when" *ngIf="chatState == 'when'" class="event-question card-title">
-      <h6>{{eventCreate.when}}</h6>
-      <div id="event-public-switch" class="custom-control custom-switch mt-3">
-        <input id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
-        <label class="custom-control-label" for="event-public" role="button">{{protectionLabel()}}</label>
+        <h6>{{eventCreate.when}}</h6>
+        <div id="event-public-switch" class="custom-control custom-switch mt-3">
+          <input id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
+          <label class="custom-control-label" for="event-public" role="button">{{protectionLabel()}}</label>
+        </div>
+
+        <input value="No outro Sábado" type="button" class="btn btn-dark" (click)="updateWhen('sabado_mais_7')" />
+        <br />
+        <input value="Próximo Sábado" type="button" class="btn btn-dark" (click)="updateWhen('sabado_proximo')" />
+        <br />
+        <input value="Amanhã" type="button" class="btn btn-dark" (click)="updateWhen('amanha')" />
+        <br />
+        <input value="Hoje" type="button" class="btn btn-dark" (click)="updateWhen('hoje')" />
+        <br />
+        <input value="Agora!" type="button" class="btn btn-dark" (click)="updateWhen('agora')" />
       </div>
+      <div id="event-when2" *ngIf="chatState == 'when2'" class="event-question card-title">
+        <h6>{{eventCreate.when}}</h6>
+        <div id="event-public-switch" class="custom-control custom-switch mt-3">
+          <input id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
+          <label class="custom-control-label" for="event-public" role="button">{{protectionLabel()}}</label>
+        </div>
 
-      <input value="Esse mês às 16h" type="button" class="btn btn-dark" (click)="updateWhen('30_dias')" />
-      <br />
-      <input value="Sábado às 16h" type="button" class="btn btn-dark" (click)="updateWhen('sabado')" />
-      <br />
-      <input value="Sexta às 19h" type="button" class="btn btn-dark" (click)="updateWhen('sexta')" />
-      <br />
-      <input value="Amanhã às 16h" type="button" class="btn btn-dark" (click)="updateWhen('amanha')" />
-      <br />
-      <input value="Hoje às 16h" type="button" class="btn btn-dark" (click)="updateWhen('hoje')" />
-      <br />
-      <input value="Agora!" type="button" class="btn btn-dark" (click)="updateWhen('agora')" />
-      <!--<mat-form-field>
-        <input
-          matInput
-          [(ngModel)]="newEvent.start"
-          [ngxMatDatetimePicker]="dateTimePicker"
-          placeholder="Escolha a data e hora"
-          (focus)="dateTimePicker.open()"
-          readonly
-        />
-        <ngx-mat-datetime-picker
-          #dateTimePicker
-          [showSpinners]="true"
-          [stepMinute]="30"
-          [touchUi]="true"
-          [defaultTime]="eventCreate.whenDefault"
-        >
-        </ngx-mat-datetime-picker>
-      </mat-form-field>
-
-
-      <div class="buttonEvent">
-        <button (click)="update(true)" type="button" class="btn btn-white mr-2">{{eventCreate.neutral}}</button>
-        <button [disabled]="!newEvent.start" (click)="update(true)" type="button" class="btn btn-dark">🗓 Agendar</button>
-      </div>-->
+        <input value="Esse mês" type="button" class="btn btn-dark" (click)="updateWhen('30_dias')" />
+        <br />
+        <input value="Sábado" type="button" class="btn btn-dark" (click)="updateWhen('sabado')" />
+        <br />
+        <input value="Sexta" type="button" class="btn btn-dark" (click)="updateWhen('sexta')" />
+        <br />
+        <input value="Quinta" type="button" class="btn btn-dark" (click)="updateWhen('sexta')" />
+        <br />
+        <input value="Quarta" type="button" class="btn btn-dark" (click)="updateWhen('sexta')" />
+        <br />
+        <input value="Terça" type="button" class="btn btn-dark" (click)="updateWhen('sexta')" />
+        <br />
+        <input value="Segunda" type="button" class="btn btn-dark" (click)="updateWhen('sexta')" />
+        <br />
+        <input value="Amanhã" type="button" class="btn btn-dark" (click)="updateWhen('amanha')" />
+        <br />
+        <input value="Hoje" type="button" class="btn btn-dark" (click)="updateWhen('hoje')" />
+        <br />
+        <input value="Agora!" type="button" class="btn btn-dark" (click)="updateWhen('agora')" />
       </div>
     </div>
 </div>
