@@ -27,21 +27,17 @@
 }
 
 #bora_button{
-    font-size: larger;
-    padding: 15px;
-    position: fixed;
-    bottom: 85px;
-    right: 10px;
     z-index: 999;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
+    border-radius: 33px;
+    -webkit-border-radius: 33px;
+    -moz-border-radius: 33px;
+    height: 60px;
 }
 
 #bora{
     padding: 15px;
     position: fixed;
-    bottom: 85px;
+    bottom: 75px;
     right: 10px;
     z-index: 999;
     border-radius: 20px;

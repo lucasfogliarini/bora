@@ -4,7 +4,7 @@
       (click)="init()"
       type="button" value="Bora?"
       role="button"
-      class="btn btn-block btn-dark col-3"
+      class="btn btn-block btn-dark right"
       [hidden]="chatState != 'closed'" />
 
   <div id="event-create" [hidden]="chatState == 'closed'">
@@ -45,7 +45,6 @@
         <button [disabled]="!newEvent.title" (click)="updateTitle()" type="button" class="btn btn-dark">Próximo</button>
       </div>
       </div>
-
       <div id="event-when" *ngIf="chatState == 'when'" class="event-question card-title">
       <h6>{{eventCreate.when}}</h6>
       <div id="event-public-switch" class="custom-control custom-switch mt-3">
@@ -89,14 +88,5 @@
         <button [disabled]="!newEvent.start" (click)="update(true)" type="button" class="btn btn-dark">🗓 Agendar</button>
       </div>-->
       </div>
-
-      <!--<div id="event-evaluation" *ngIf="event?.location && !event?.evaluation" class="event-question card-title">
-      <h6>{{eventCreate.evaluation}}</h6>
-      <mat-slider [(ngModel)]="newEvent.evaluation" min="2" max="{{eventCreate.evaluationMax}}" step="2" thumbLabel></mat-slider>
-      <div class="buttonEvent">
-        <button (click)="evaluate()" type="button" class="btn btn-white mr-2">{{eventCreate.neutral}}</button>
-        <button [disabled]="!newEvent.evaluation" (click)="evaluate()" type="button" class="btn btn-dark">{{eventCreate.currency}} {{newEvent.evaluation}}</button>
-      </div>
-      </div>-->
     </div>
 </div>
