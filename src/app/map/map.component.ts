@@ -1,5 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { GoogleMap } from '@angular/google-maps';
+import { BoraApiService } from '../bora-api.service';
+import { Account } from '../models/account.model';
 
 @Component({
   selector: 'app-map',
@@ -10,11 +12,11 @@ export class MapComponent {
   @ViewChild(GoogleMap, { static: false }) googleMap!: GoogleMap;
   markers: Marker[] = [];
   poa: google.maps.LatLngLiteral = { lat: -30.0346, lng: -51.2177 };// Coordenadas para Porto Alegre, Brasil
-  boraSocial: google.maps.LatLngLiteral = { lat: -30.0540572, lng: -51.1477079 };// Coordenadas para Porto Alegre, Brasil
-  center: google.maps.LatLngLiteral = this.boraSocial;
+  boraWork: google.maps.LatLngLiteral = { lat: -30.0540572, lng: -51.1477079 };// Coordenadas para Porto Alegre, Brasil
+  center: google.maps.LatLngLiteral = this.boraWork;
 
   mapOptions: google.maps.MapOptions = {
-    center: this.boraSocial,
+    center: this.boraWork,
     zoom: 7,
     mapTypeId: google.maps.MapTypeId.SATELLITE,
     disableDefaultUI: false,
@@ -23,6 +25,8 @@ export class MapComponent {
     streetViewControl: true,
     zoomControl: false,
   };
+
+  constructor(private boraApiService: BoraApiService) { }
   ngAfterViewInit(): void {
     if(this.googleMap){
       var placesService = new google.maps.places.PlacesService(this.googleMap.googleMap!);
@@ -53,35 +57,43 @@ export class MapComponent {
   }
 
   openBoraWork(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
-    const infoWindow = new google.maps.InfoWindow({
-      content: `
-        <div>
-          <h5 class='text-center'>Bora.Work</h5>
-          <h6 class='text-center'>Consultoria e Parcerias</h6>
-          <br/>
-          <nav class="text-center">
-            <a class='btn btn-dark' href="/bora.work">Consultoria e encontros</a>
-            <a class='btn btn-white btn-outline-secondary' href="/lucasfogliarini">Parceira(o) Destaque</a>
-          </nav>
-          <br/>
-          <p>
-            <b>bora.work</b> é uma plataforma de <b>consultoria</b> e <b>parcerias</b> que facilita o <b>entendimento</b>, <b>arquitetura</b>, <b>desenvolvimento</b> e <b>testes</b> de <b>projetos inovadores de tecnologia</b> com <b>qualidade</b>, além de tudo isso, também <b>realiza</b> diversos <b>encontros</b>, incluindo encontros de <b>tecnologia</b> e <b>revitalização da terra</b>.
-            Atuamos em diversos locais, como <b>coworkings, casas, restaurantes e plataformas digitais (Google Meet, Discord e WhatsApp)</b>. Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis. Junte-se a nós e descubra como <b>transformar suas ideias em realidade.</b>
-          </p>
-          <div class='text-center'>
-            <small>A maioria dos encontros presenciais são em Porto Alegre no</small>
-            <br />
-            <br />
-            <a class='btn btn-white btn-outline-secondary' target='_blank' href='https://www.google.com/maps/search/?api=1&query=bora.work, Porto Alegre'>Bora Work!</a>
-            <br />
-            ⬇️
-          </div>
-          <br/>
-        </div>
-      `
-    });
-
-    infoWindow.open(this.googleMap.googleMap, marker);
+    const calendarAuthorized = true;
+    this.boraApiService.getPartners(calendarAuthorized, (partners=>{
+      if(partners){
+        const partnersNotDirectors = partners.filter(p=>p.username != 'bora.work' && p.username != 'lucasfogliarini');
+        const featuredPartner = partnersNotDirectors.length ? partnersNotDirectors[0] : partners[1];
+        const infoWindow = new google.maps.InfoWindow({
+          content: `
+            <div>
+              <h5 class='text-center'>Bora.Work</h5>
+              <h6 class='text-center'>Consultoria e Parcerias</h6>
+              <br/>
+              <nav class="text-center">
+                <a class='btn btn-dark' href="/bora.work">Consultoria de TI</a>
+                <a class='btn btn-white btn-outline-secondary' href="${featuredPartner.username}">
+                  ${featuredPartner.name} <small style='font-size: xx-small'>(${featuredPartner.accountability})</small>
+                </a>
+              </nav>
+              <br/>
+              <p>
+                <b>bora.work</b> é uma plataforma de <b>consultoria</b> e <b>parcerias</b> que facilita o <b>entendimento</b>, <b>arquitetura</b>, <b>desenvolvimento</b> e <b>testes</b> de <b>projetos inovadores de tecnologia</b> com <b>qualidade</b>, além de tudo isso, também <b>realiza</b> diversos <b>encontros</b>, incluindo encontros de <b>tecnologia</b> e <b>revitalização da terra</b>.
+                Atuamos em diversos locais, como <b>coworkings, casas, restaurantes e plataformas digitais (Google Meet, Discord e WhatsApp)</b>. Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis. Junte-se a nós e descubra como <b>transformar suas ideias em realidade.</b>
+              </p>
+              <div class='text-center'>
+                <small>A maioria dos encontros presenciais são em Porto Alegre no</small>
+                <br />
+                <br />
+                <a class='btn btn-white btn-outline-secondary' target='_blank' href='https://www.google.com/maps/search/?api=1&query=bora.work, Porto Alegre'>Bora Work!</a>
+                <br />
+                ⬇️
+              </div>
+              <br/>
+            </div>
+          `
+        });
+        infoWindow.open(this.googleMap.googleMap, marker);
+      }
+    }));
   }
 
   openBoraSocial(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
