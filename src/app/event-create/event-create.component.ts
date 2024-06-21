@@ -63,14 +63,10 @@ export class EventCreateComponent {
       if(content) this.eventCreate.titleSuggestion = content.text;
       content = contents.find(e=>e.key == 'where');
       if(content) this.eventCreate.where = content.text;
-      content = contents.find(e=>e.key == 'when');
-      if(content) this.eventCreate.when = content.text;
-      content = contents.find(e=>e.key == 'evaluation');
-      if(content) this.eventCreate.evaluation = content.text;
-      content = contents.find(e=>e.key == 'evaluationMax');
-      if(content) this.eventCreate.evaluationMax = Number.parseInt(content.text);
-      content = contents.find(e=>e.key == 'currency');
-      if(content) this.eventCreate.currency = content.text;
+      content = contents.find(e=>e.key == 'whenDate');
+      if(content) this.eventCreate.whenDate = content.text;
+      content = contents.find(e=>e.key == 'whenTime');
+      if(content) this.eventCreate.whenTime = content.text;
     });
   }
   init(){

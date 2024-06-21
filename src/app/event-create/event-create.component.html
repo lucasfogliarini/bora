@@ -46,7 +46,7 @@
         </div>
       </div>
       <div id="event-when-date" *ngIf="chatState == 'when-date'" class="event-question card-title event-when">
-        <h6>{{eventCreate.when}}</h6>
+        <h6>{{eventCreate.whenDate}}</h6>
         <input value="No outro Sábado" type="button" class="btn btn-dark" (click)="updateWhenDate('sabado_mais_7')" />
         <br />
         <input value="Sábado" type="button" class="btn btn-dark" (click)="updateWhenDate('sabado')" />
@@ -67,7 +67,7 @@
         </div>
       </div>
       <div id="event-when-time" *ngIf="chatState == 'when-time'" class="event-question card-title event-when">
-        <h6>{{eventCreate.when}}</h6>
+        <h6>{{eventCreate.whenTime}}</h6>
           <button class="btn btn-dark m-1" (click)="updateWhenTime(num)" *ngFor="let num of whenTimes">{{ num }}h</button>
       </div>
     </div>

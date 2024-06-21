@@ -13,16 +13,9 @@ export class EventCreate {
   locations?: Location[];
   //
   //when
-  when?: string = 'Quando?';
-  whenDefault = [14, 0, 0];
-  //
-  //when and how much 
-  evaluation?: string = 'Quantas pessoas?';
-  evaluationDefault: number = 2;
-  evaluationMax?: number = 30;
-  currency?: string = '👨‍👨‍👧‍👦';
-  //
-  //others
-  neutral: string = 'Tanto faz';
+  whenDate?: string = 'Que dia?';
+  whenTime?: string = 'Que hora?';
+
+  //bora!
   success = 'Bora então!';
 }
