@@ -19,11 +19,18 @@ export class BoraApiService {
     private toastr: ToastrService) {}
 
   getPartners(calendarAuthorized: boolean, callBack: (partnersCallback: Account[]) => void){
-    let partnersUri = `accounts?filter=IsPartner eq true&calendarAuthorized eq ${calendarAuthorized}&orderby=CalendarAuthorized desc, UpdatedAt desc, PartnerSince asc`;
+    const lastMonth = this.todayAddMonths();
+    let partnersUri = `accounts?filter= IsPartner eq true and UpdatedAt ge ${lastMonth.toISOString()}&orderby=CalendarAuthorized desc, UpdatedAt desc, PartnerSince asc`;
 
     this.get(partnersUri, (partners: Account[])=>{
         callBack(partners);
     });
+  }
+
+  todayAddMonths(months: number = -1){
+    const today = new Date();
+    const date = new Date(today.setMonth(today.getMonth() + months));
+    return date;    
   }
 
   getAccount(username: string, onFound: any){

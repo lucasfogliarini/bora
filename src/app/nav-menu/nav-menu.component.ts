@@ -36,7 +36,7 @@ export class NavMenuComponent {
                 <br />`).join('');
         //`<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a>&nbsp;<small>${e.accountability?.substring(0,25) ?? ''}</small><br />`).join('');
         //partnersContent += this.partnerInvite();// Quero ser parceiro
-        this.partnersContent += `<small>${partners.length} parceira(o)s</small>`;
+        this.partnersContent += `<small>${partners.length} parceira(o)s <b>ativos</b></small>`;
       }
     }));
 
