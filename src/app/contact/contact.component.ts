@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ContactComponent {
   contactMessage = `Clique em <b>WhatsApp</b>, para: <br/>  
-- Marcar uma consulta com o <a href='/lucasfogliarini'>Fundador</a> <br/>
+- Marcar uma Consulta de TI com o arquiteto do <a href='/bora.work'>bora.work</a> <br/>
 - Ser uma(o) <b>${environment.mainRole}</b> <br/>
 - <b>Sugerir uma melhoria</b> <br/>
 - Relatar um <b>bug ou problema</b>`;
