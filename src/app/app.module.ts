@@ -1,4 +1,5 @@
 //modules
+import { APP_BASE_HREF, CommonModule, DatePipe } from '@angular/common';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -26,7 +27,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { FooterComponent } from './footer/footer.component';
 import { BoraComponent } from './bora/bora.component';
 
-import { APP_BASE_HREF, DatePipe } from '@angular/common';
+
 import { HttpRequestInterceptor } from './httprequest.interceptor';
 import { registerLocaleData } from '@angular/common';
 import localePT from '@angular/common/locales/pt';
@@ -84,12 +85,15 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faY
         BoraComponent,
         ScenariosComponent
     ],
-    bootstrap: [AppComponent], imports: [GoogleMapsModule,
+    bootstrap: [AppComponent],
+        imports: [
+        CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
         GooglePlaceModule,
-        ToastrModule.forRoot(),
+        ToastrModule.forRoot(),        
+        GoogleMapsModule,
         ConfirmationPopoverModule.forRoot({
             cancelButtonType: '',
             confirmButtonType: 'dark',
