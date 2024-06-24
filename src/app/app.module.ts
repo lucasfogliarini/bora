@@ -1,5 +1,5 @@
 //modules
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -69,68 +69,61 @@ import { faTicket,
         faGlasses,
         faUserDoctor} from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faYoutube, faDiscord, faJira } from '@fortawesome/free-brands-svg-icons';
-@NgModule({
-  declarations: [
-    AppComponent,
-    MapComponent,
-    NavMenuComponent,
-    SideBarMenuComponent,
-    HomeComponent,
-    EventCreateComponent,
-    EventsComponent,
-    AccountComponent,
-    ContactComponent,
-    PrivacyComponent,
-    FooterComponent,
-    BoraComponent,
-    ScenariosComponent
-  ],
-  imports: [
-    GoogleMapsModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    GooglePlaceModule,
-    ToastrModule.forRoot(),
-    ConfirmationPopoverModule.forRoot({
-      cancelButtonType: '',
-      confirmButtonType: 'dark',
-      cancelText: "Cancelar",
-      confirmText: "Confirmar"
-    }),
-    SocialLoginModule,
-    RouterModule.forRoot([
-      { path: '', redirectTo: '/map', pathMatch: 'full' },
-      { path: 'map',  component: MapComponent },
-      { path: 'bora',  component: BoraComponent },
-      { path: 'scenarios',  component: ScenariosComponent },
-      { path: ':user',  component: AccountComponent },
-      { path: 'privacy',  component: PrivacyComponent },
-      { path: 'home', component: HomeComponent }
-    ]),
-    FontAwesomeModule
-  ],
-  providers: [
-              DatePipe,
-              { provide: APP_BASE_HREF, useValue: '/'},
-              { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
-              {
-                provide: 'SocialAuthServiceConfig',
-                useValue: {
-                  autoLogin: true,
-                  providers: [
+@NgModule({ declarations: [
+        AppComponent,
+        MapComponent,
+        NavMenuComponent,
+        SideBarMenuComponent,
+        HomeComponent,
+        EventCreateComponent,
+        EventsComponent,
+        AccountComponent,
+        ContactComponent,
+        PrivacyComponent,
+        FooterComponent,
+        BoraComponent,
+        ScenariosComponent
+    ],
+    bootstrap: [AppComponent], imports: [GoogleMapsModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        GooglePlaceModule,
+        ToastrModule.forRoot(),
+        ConfirmationPopoverModule.forRoot({
+            cancelButtonType: '',
+            confirmButtonType: 'dark',
+            cancelText: "Cancelar",
+            confirmText: "Confirmar"
+        }),
+        SocialLoginModule,
+        RouterModule.forRoot([
+            { path: '', redirectTo: '/map', pathMatch: 'full' },
+            { path: 'map', component: MapComponent },
+            { path: 'bora', component: BoraComponent },
+            { path: 'scenarios', component: ScenariosComponent },
+            { path: ':user', component: AccountComponent },
+            { path: 'privacy', component: PrivacyComponent },
+            { path: 'home', component: HomeComponent }
+        ]),
+        FontAwesomeModule], providers: [
+        DatePipe,
+        { provide: APP_BASE_HREF, useValue: '/' },
+        { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
+        {
+            provide: 'SocialAuthServiceConfig',
+            useValue: {
+                autoLogin: true,
+                providers: [
                     {
-                      id: GoogleLoginProvider.PROVIDER_ID,
-                      provider: new GoogleLoginProvider(
-                        '1037813106930-vdf1p42ovuatjt5qvjbn4qtfq973tqos.apps.googleusercontent.com'
-                      )
+                        id: GoogleLoginProvider.PROVIDER_ID,
+                        provider: new GoogleLoginProvider('1037813106930-vdf1p42ovuatjt5qvjbn4qtfq973tqos.apps.googleusercontent.com')
                     }
-                  ]
-                } as SocialAuthServiceConfig,
-              }],
-  bootstrap: [AppComponent]
-})
+                ]
+            } as SocialAuthServiceConfig,
+        },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { 
   constructor(library: FaIconLibrary) {
     library.addIcons(
