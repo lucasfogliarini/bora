@@ -139,15 +139,16 @@ export class EventCreateComponent {
     });
   }
   eventCreated(event: Event){
+    let message = '';
     if(event.public)
-      this.toastr.success(`${this.eventCreate.success} Compartilha no Whatsapp 👇`);
+      message = 'Confirme presença e compartilhe no Whatsapp 👇';
     else
-      this.toastr.success(`${this.eventCreate.success}`);
-
-    this.router.navigate([], { queryParams: { eId: event.id } });
+      message ='Confira sua agenda do Google e confirme presença!';
+    
+    this.toastr.success(message, this.eventCreate.success);
     setTimeout(()=>{
       window.location.reload();
-    }, 1000)
+    }, 2000)
     this.eventUpdated.emit(event);
   }
   getWhenDate(when: string) {
