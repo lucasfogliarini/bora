@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "bora:build:production"
+              "buildTarget": "bora:build:production"
             },
             "development": {
-              "browserTarget": "bora:build:development"
+              "buildTarget": "bora:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bora:build"
+            "buildTarget": "bora:build"
           }
         },
         "test": {
