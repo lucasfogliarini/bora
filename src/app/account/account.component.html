@@ -27,8 +27,13 @@
         </ul>
       </nav>
       <h3 *ngIf="!account">Usuário não encontrado</h3>
-      <div class="row">
-        <small class="col-5" style="font-family: system-ui;">{{account.accountability}}</small>
+
+      
+      <div id="account-name" class="row">
+        <small><b class="col-12">{{account.name}}</b></small>
+      </div>
+      <div id="account-accountability" class="row">
+        <small class="col-12">{{account.accountability}}</small>
       </div>
     </div>
     <div class="card-body p-0">
