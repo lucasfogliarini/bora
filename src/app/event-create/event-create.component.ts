@@ -9,6 +9,7 @@ import { EventCreate } from '../models/contents/event-create.model';
 import { Event } from '../models/event.model';
 import { Scenario } from '../models/scenario.model';
 import { Location } from '../models/location.model';
+import { Account } from '../models/account.model';
 
 @Component({
   selector: 'app-event-create',
@@ -16,11 +17,12 @@ import { Location } from '../models/location.model';
   styleUrls: ['./event-create.component.css']
 })
 export class EventCreateComponent {
+  account?: Account;
   newEvent: Event = new Event;
   placesOptions: Options = new Options;
   eventCreate: EventCreate = new EventCreate;
   scenarios?: Scenario[];
-  chatState: string = 'closed';
+  chatState: string = 'when-date';
   @Output() eventUpdated: EventEmitter<any> = new EventEmitter();
   whenTimeStart = 10;
   whenTimeEnd = 22;
@@ -32,12 +34,18 @@ export class EventCreateComponent {
   constructor(private boraApiService: BoraApiService,
               public authService: AuthenticationService,
               private toastr: ToastrService,
-              private activeRoute: ActivatedRoute,
-              private router: Router) {
+              private activeRoute: ActivatedRoute) {
                 this.placesOptions.componentRestrictions = { country: 'br' };
                 this.setContents();
                 this.setScenarios();
                 this.setLocations();
+                this.setAccount();
+  }
+  setAccount(){
+    this.boraApiService.getAccount(this.getUsername(), (account: Account)=>{
+        this.account = account;
+        this.newEvent.public = account.eventVisibility == 1;
+    });
   }
   getUsername(){
     return this.activeRoute.snapshot.url[0].path || 'bora.work';

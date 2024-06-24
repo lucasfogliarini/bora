@@ -61,7 +61,7 @@
         <div class="row mt-3">
           <small class="col-4"><b>Como?</b></small>
           <div id="event-public-switch" class="custom-control custom-switch col-8">
-            <input id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
+            <input [disabled]="account?.eventVisibility != 0" id="event-public" [(ngModel)]="newEvent.public" type="checkbox" class="custom-control-input">
             <label class="custom-control-label" for="event-public" role="button">{{protectionLabel()}}</label>
           </div>
         </div>
