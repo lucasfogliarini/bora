@@ -18,17 +18,21 @@
             {{location.name}}
           </label>
         </div>
-        <input #googlePlace type="search" ngx-google-places-autocomplete [options]='placesOptions' (onAddressChange)="addressChange()"/>
-        &nbsp;
+        <br />
+        <!--<input #googlePlace type="search" ngx-google-places-autocomplete [options]='placesOptions' (onAddressChange)="addressChange()"/>-->
         <div class="buttonEvent">
           <button [hidden]="!authService.getAccount()" [disabled]="!newEvent.location || chatState == 'creating'" (click)="create()" type="button" class="btn btn-dark">{{creatingOrNext()}}</button>
           <div [hidden]="authService.getAccount()">
             <small><b>Logue-se para criar um encontro ...</b></small>
+            <br />
             <asl-google-signin-button
-              [type]="'standard'"
-              [size]="'small'"
-            >
-            </asl-google-signin-button>
+                  text="continue_with"
+                  type="standard"
+                  size="medium"
+                  theme="filled_black"
+                  shape="circle"
+              >
+              </asl-google-signin-button>
           </div>
         </div>
       </div>

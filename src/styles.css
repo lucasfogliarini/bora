@@ -1,6 +1,6 @@
 @import "~admin-lte/dist/css/adminlte.min.css";
 @import "~admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css";
-@import "~ngx-toastr/toastr.css";
+@import 'ngx-toastr/toastr';
 
 #credential_picker_iframe{
     display: none;

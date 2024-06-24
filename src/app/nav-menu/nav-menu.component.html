@@ -87,17 +87,20 @@
   <label *ngIf="news" class="col-7" style="font-size: small; color: gray;">
     {{news}}
   </label>
-  <div id="profile" class="col-5">
+  <div id="profile" class="col-5" role="button">
     <div class="float-right mr-3">
-      <div id="logged" [hidden]="authService.getAccount()">
+      <div id="notLogged" [hidden]="this.authService.getAccount()">
         <asl-google-signin-button
             class="float-right"
-            [type]="'standard'"
-            [size]="'small'"
+            text="continue_with"
+            type="standard"
+            size="small"
+            theme="filled_black"
+            shape="circle"
         >
         </asl-google-signin-button>
       </div>
-      <div id="notLogged" [hidden]="!this.authService.getAccount()">
+      <div id="logged" [hidden]="!this.authService.getAccount()">
         <a href="/{{this.authService.getAccount()?.username}}">
           <small class="col-5 mr-1">{{this.authService.getAccount()?.username}}</small>
         </a>

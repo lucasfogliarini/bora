@@ -1,7 +1,7 @@
 //modules
 import { APP_BASE_HREF, CommonModule, DatePipe } from '@angular/common';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ToastrModule } from 'ngx-toastr';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
-import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 import { GoogleMapsModule } from '@angular/google-maps';
 
 //components
@@ -58,11 +58,9 @@ import { faTicket,
         faForward,
         faLeftLong,
         faCameraRetro,
-        faHeadset, 
-        faEarth,
+        faHeadset,
         faEarthAmericas,
         faChessKing,
-        faChessBoard,
         faChessKnight,
         faChessQueen,
         faHourglassStart,
@@ -70,7 +68,9 @@ import { faTicket,
         faGlasses,
         faUserDoctor} from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faYoutube, faDiscord, faJira } from '@fortawesome/free-brands-svg-icons';
-@NgModule({ declarations: [
+@NgModule({
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+    declarations: [
         AppComponent,
         MapComponent,
         NavMenuComponent,
@@ -86,12 +86,12 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faY
         ScenariosComponent
     ],
     bootstrap: [AppComponent],
-        imports: [
+    imports: [
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
-        GooglePlaceModule,
+        //GooglePlaceModule,
         ToastrModule.forRoot(),        
         GoogleMapsModule,
         ConfirmationPopoverModule.forRoot({
@@ -100,6 +100,7 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faY
             cancelText: "Cancelar",
             confirmText: "Confirmar"
         }),
+        GoogleSigninButtonModule,
         SocialLoginModule,
         RouterModule.forRoot([
             { path: '', redirectTo: '/map', pathMatch: 'full' },
@@ -110,7 +111,9 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faY
             { path: 'privacy', component: PrivacyComponent },
             { path: 'home', component: HomeComponent }
         ]),
-        FontAwesomeModule], providers: [
+        FontAwesomeModule
+    ],
+    providers: [
         DatePipe,
         { provide: APP_BASE_HREF, useValue: '/' },
         { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
@@ -118,6 +121,7 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faY
             provide: 'SocialAuthServiceConfig',
             useValue: {
                 autoLogin: true,
+                lang: 'pt-BR',
                 providers: [
                     {
                         id: GoogleLoginProvider.PROVIDER_ID,
