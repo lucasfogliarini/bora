@@ -22,7 +22,7 @@ export class EventCreateComponent {
   placesOptions: Options = new Options;
   eventCreate: EventCreate = new EventCreate;
   scenarios?: Scenario[];
-  chatState: string = 'when-date';
+  chatState: string = 'closed';
   @Output() eventUpdated: EventEmitter<any> = new EventEmitter();
   whenTimeStart = 10;
   whenTimeEnd = 22;
