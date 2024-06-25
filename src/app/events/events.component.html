@@ -4,8 +4,8 @@
   <fa-icon (click)="getEvents(true)" title="Eventos com ingresso" class="m-2 col-1" [icon]="['fas','ticket']"></fa-icon>
   <fa-icon (click)="refreshEvents()" title="Todos os eventos" class="m-2 col-1" [icon]="['fas','arrows-rotate']"></fa-icon>
 </nav>
-<div *ngIf="eventsMessage" class="text-center m-2">
-  <small>{{eventsMessage}}</small>
+<div *ngIf="eventMessage()" class="text-center m-2">
+  <small>{{eventMessage()}}</small>
 </div>
 
 <div *ngIf="events">

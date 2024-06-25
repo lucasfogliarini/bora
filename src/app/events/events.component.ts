@@ -20,8 +20,6 @@ export class EventsComponent {
   env = environment;
   eventsQuery?: string;
   events?: Event[] = [];
-  eventsLoaded?: Event[];
-  eventsMessage?: string = undefined;
   replied: boolean = false;
 
   constructor(private boraApiService: BoraApiService,
@@ -38,17 +36,13 @@ export class EventsComponent {
   getUser(){
     return this.activeRoute.snapshot.url[0].path || environment.appDomain;
   }
-  setEvents(events?: Event[]){
-    this.eventsMessage = undefined;
-    this.events = events;
-    if(events === undefined){
-      this.eventsMessage = "Carregando ...";
-    }
-    else if(!this.hasEventsLoaded())
-      this.eventsMessage = "Nenhum evento público encontrado. Clique em refresh para recarregar todos os eventos e limpar os filtros.";
-  }
-  hasEventsLoaded(){
-    return this.eventsLoaded && this.eventsLoaded.length > 0;
+  eventMessage(){
+    if(this.events == undefined)
+      return 'Nenhum evento público encontrado. Clique em refresh para recarregar todos os eventos e limpar os filtros.'
+    else if(this.events.length == 0)
+      return 'Carregando eventos ...';
+    else
+      return undefined;
   }
   getTimeMax(addMonths: number = 1){
     let timeMax = new Date();
@@ -59,23 +53,27 @@ export class EventsComponent {
     return timeMax.toISOString();
   }
   getEvents(hasTicket?: boolean){
+    this.events = [];
     let user = this.getUser();
     const query = this.eventsQuery ?? '';
     const timeMax = query == undefined ? this.getTimeMax() : this.getTimeMax(12);
     var eventsUri = `events?user=${user}&query=${query}&hasTicket=${hasTicket ?? false}&timeMax=${timeMax}`;
-    this.setEvents(undefined);
     this.boraApiService.get<Event[]>(eventsUri, (eventsLoaded: Event[]) => {
-      this.eventsLoaded = eventsLoaded;
-      this.setEvents(this.eventsLoaded);
+      if(!eventsLoaded.length){
+        this.events = undefined;
+        return;
+      }
+
+      this.events = eventsLoaded;
       const eId = this.activeRoute.snapshot.queryParams['eId'];
-      let currentEvent = eventsLoaded.find(e=>e.id!.includes(eId));
+      let currentEvent = this.events.find(e=>e.id!.includes(eId));
       if(currentEvent){
         this.selectEvent(currentEvent);
-        var eIndex = eventsLoaded.indexOf(currentEvent);
+        var eIndex = this.events.indexOf(currentEvent);
         this.arrayMove(this.events!, eIndex, 0);
       }
     }, (errorResponse: HttpErrorResponse)=>{
-        this.setEvents([]);
+        this.events = undefined;
     });
   }
   privateEvent(event: Event){
@@ -87,7 +85,7 @@ export class EventsComponent {
     });
   }
   refreshEvents(){
-    this.eventsLoaded = undefined;
+    this.events = undefined;
     this.eventsQuery = undefined;
     this.getEvents();
   }
