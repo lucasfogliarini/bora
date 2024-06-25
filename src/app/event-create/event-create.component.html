@@ -51,11 +51,15 @@
       </div>
       <div id="event-when-date" *ngIf="chatState == 'when-date'" class="event-question card-title event-when">
         <h6>{{eventCreate.whenDate}}</h6>
+        <input value="Ano que vem (365 dias)" type="button" class="btn btn-dark" (click)="updateWhenDate('365_dias')" />
+        <br />
+        <input value="No próximo Verão" type="button" class="btn btn-dark" (click)="updateWhenDate('verao_proximo')" />
+        <br />
         <input value="No outro Sábado" type="button" class="btn btn-dark" (click)="updateWhenDate('sabado_mais_7')" />
         <br />
-        <input value="Sábado" type="button" class="btn btn-dark" (click)="updateWhenDate('sabado')" />
+        <input value="Próximo Sábado" type="button" class="btn btn-dark" (click)="updateWhenDate('sabado')" />
         <br />
-        <input value="Sexta" type="button" class="btn btn-dark" (click)="updateWhenDate('sexta')" />
+        <input value="Próxima Sexta" type="button" class="btn btn-dark" (click)="updateWhenDate('sexta')" />
         <br />
         <input value="Amanhã" type="button" class="btn btn-dark" (click)="updateWhenDate('amanha')" />
         <br />

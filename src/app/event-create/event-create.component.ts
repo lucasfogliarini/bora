@@ -176,6 +176,10 @@ export class EventCreateComponent {
             return this.nowAddDays(daysUntilSaturday, 16);
         case 'sabado_mais_7':
             return this.nowAddDays(daysUntilSaturday  + 7, 16);
+        case 'verao_proximo':
+            return this.getNextSummerDate();
+        case '365_dias':
+            return this.nowAddDays(daysUntilSaturday  + 365, 16);
         default:
             throw new Error('Parâmetro inválido');
     }
@@ -183,6 +187,23 @@ export class EventCreateComponent {
   nowAddDays(addDays: number, hour: number){
     const now = new Date();
     return new Date(now.getFullYear(), now.getMonth(), now.getDate() + addDays, hour, 0, 0);
+  }
+ getNextSummerDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+  
+    // Datas de início e fim do verão no hemisfério sul
+    const summerStartCurrentYear = new Date(year, 11, 21); // 21 de dezembro do ano atual
+    const summerStartNextYear = new Date(year + 1, 11, 21); // 21 de dezembro do próximo ano
+    const summerEndNextYear = new Date(year + 1, 2, 21);   // 21 de março do próximo ano
+  
+    if (today >= summerStartCurrentYear && today <= summerEndNextYear) {
+      return summerStartCurrentYear; // Estamos no verão atual
+    } else if (today > summerEndNextYear) {
+      return summerStartNextYear; // O próximo verão é no próximo ano
+    } else {
+      return summerStartCurrentYear; // O próximo verão é neste ano
+    }
   }
   addressChange(){
     this.newEvent.location = this.googlePlace?.nativeElement.value;

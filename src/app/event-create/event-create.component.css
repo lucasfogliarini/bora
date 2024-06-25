@@ -9,7 +9,7 @@
 
 .event-when input[type=button]{
     margin-top: 8px;
-    width: 150px;
+    width: 100%;
 }
 .escape-button{
     position: relative;
