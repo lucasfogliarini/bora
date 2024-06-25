@@ -3,6 +3,9 @@
     "rewrite": "/index.html",
     "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
   },
+  "platform": {
+    "apiRuntime": "node:20"
+  },
   "routes": [
     {
       "route": "/*",
