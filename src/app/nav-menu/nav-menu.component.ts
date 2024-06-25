@@ -28,10 +28,10 @@ export class NavMenuComponent {
         this.popPartner(partners);
         this.partnersContent = 
         partners.map(e=>
-                `<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a>
+                `<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.name?.split(' ')[0]}</a>
                   <small>
                     ${e.calendarAuthorized ? '>' : ''}
-                    ${this.formatDate(e.updatedAt, false)}
+                    ${e.accountability ? e.accountability?.split(' e ')[0] : ''}
                   </small>
                 <br />`).join('');
         //`<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a>&nbsp;<small>${e.accountability?.substring(0,25) ?? ''}</small><br />`).join('');
