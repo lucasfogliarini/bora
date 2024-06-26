@@ -82,7 +82,7 @@ export class EventCreateComponent {
     this.newEvent = new Event;
   }
   create(){
-    const jwt = localStorage.getItem("jwt");
+    const jwt = localStorage.getItem(Account.boraAccountJwt);
     if(jwt){
       var user = this.getUsername();
       this.chatState = 'creating';
