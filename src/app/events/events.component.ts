@@ -182,9 +182,9 @@ WhatsApp (grupo):
 ${event.chat}` : '';
 
       var whatsappText = 
-`${responseText} no encontro ...
+`${dateTime}
+${responseText} no encontro ...
 ${event.title}
-${dateTime}
 ${conferenceText}
 ${whatsappGroupText}
 `;
