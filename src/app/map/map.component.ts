@@ -79,12 +79,15 @@ export class MapComponent {
                 <b>bora.work</b> é uma plataforma de <b><a target='_blank' href='/bora.work'>Consultoria de TI</a></b> e <b>Parcerias</b> que facilita o <b>entendimento</b>, <b>arquitetura</b>, <b>desenvolvimento</b> e <b>testes</b> de <b>projetos inovadores de tecnologia</b> com <b>qualidade</b>, além de tudo isso, também <b>realiza</b> diversos <b><a target='_blank' href='/bora.work'>encontros</a></b>, incluindo <b><a target='_blank' href='/bora.work?find=tech'>encontros de tecnologia (Bora Tech)</a>, palestras, workshops, cursos e o <a target='_blank' href='/bora.work?find=Bora Parceiros'>Bora Parceiros!</a></b> para <b>expandir o networking</b> e <b>discutir gestão e liderança</b>.
                 <br/>
                 Atuamos em diversos locais, como <b>coworkings, casas, restaurantes e plataformas digitais (Google Meet, Discord e WhatsApp)</b>. Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis. Junte-se a nós e descubra como <b>transformar suas ideias em realidade.</b>
-              </p>
+              </p>              
               <div class='text-center'>
+                <a target='_blank' role='button' href='https://chatgpt.com/share/c800bc1d-0a92-4a76-9fae-5439353bf023' class='btn btn-white btn-outline-secondary' >ChatGPT sobre o bora.work</a>
+                <br />
+                <br />
                 <small>A maioria dos encontros presenciais são em Porto Alegre no</small>
                 <br />
                 <br />
-                <a class='btn btn-white btn-outline-secondary' target='_blank' href='https://www.google.com/maps/search/?api=1&query=bora.work, Porto Alegre'>Bora Work!</a>
+                <a class='btn btn-white btn-outline-secondary' target='_blank' href='https://www.google.com/maps/search/?api=1&query=bora.work, Porto Alegre'>Bora Work <small>(presencial)</small></a>
                 <br />
                 ⬇️
               </div>
