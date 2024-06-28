@@ -214,7 +214,16 @@ ${whatsappGroupText}
   }
   getLocationShare(event: Event){
     if(this.conferenceOnLocation(event)){
-      return event.location?.includes('discord') ? "💻 Discord" : "💻 Google Meet"
+      const isWA = event.location?.includes('wa');
+      const isDiscord = event.location?.includes('discord');
+      const isMeta = event.location?.includes('meta');
+      const isTribe = event.location?.includes('tribe');
+      if(isWA) return "📲 WhatsApp";
+      if(isDiscord) return "💻 Discord";
+      if(isMeta) return "🥽 Meta";
+      if(isTribe) return "🎚️ Tribe ao vivo";
+      else
+        return "💻 Google Meet"
     }
     else if(!event.location){
       return "Indefinido."
