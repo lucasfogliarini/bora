@@ -236,19 +236,20 @@ ${whatsappGroupText}
     var dateTime = this.fullDateTime(event);
     let user = this.getUser();
     let eventUrl = `${window.location.origin}/${user}?eId=${this.shortId(event)}`;
-    let ticketUrl = event.ticketUrl ? `
+    let ticketInvite = event.ticketUrl ? `
 Adquira o seu ingresso:
 ${event.ticketUrl}` : '';
+    let conferenceInvite = this.conferenceOnLocation(event) ? `Canal: ${event.conferenceUrl}\n` : ``;
 
     var whatsappText = 
 `${dateTime}
 ${event.title}
 Onde? ${this.getLocationShare(event)}
-
+${conferenceInvite}
 Confirme presença no link abaixo e de o 'Bora!'
 Ou respondendo no WA particular.
 ${eventUrl}
-${ticketUrl}`;
+${ticketInvite}`;
 
     const whatsAppLink = this.generateWhatsAppLink(whatsappText);
     window.open(whatsAppLink);
