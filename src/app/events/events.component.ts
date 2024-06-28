@@ -351,6 +351,8 @@ ${dateTime}`;
           bgImagePath = '../../assets/discord.jpg'
         else if(event.conferenceUrl?.includes('meta'))
           bgImagePath = '../../assets/meta.jpg'
+        else if(event.conferenceUrl?.includes('tribe'))
+          bgImagePath = '../../assets/tribe.jpg'
         else
           bgImagePath = '../../assets/google-meet.jpg';  
         this.setBackgroundImage(event, bgImagePath);
@@ -384,7 +386,7 @@ ${dateTime}`;
     return event.conferenceUrl || this.conferenceOnLocation(event);
   }
   conferenceOnLocation(event: Event){
-    return ['discord','meet.google', 'wa.me', 'meta'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
+    return ['discord','meet.google', 'wa.me', 'meta','tribe'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
   }
   arrayMove(arr: Array<any>, fromIndex: number, toIndex: number) {
     var element = arr[fromIndex];
