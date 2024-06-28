@@ -167,7 +167,16 @@ export class EventsComponent {
        }
     });
   }
-
+  replyPrivate(event: Event){
+    var dateTime = this.fullDateTime(event);
+    var whatsappText = 
+`${dateTime}
+Posso ir nesse encontro privado? ...
+${event.title}
+${this.getEventUrl(event)}`;
+    const whatsAppLink = this.generateWhatsAppLink(whatsappText, environment.adminPhone);
+    window.open(whatsAppLink);
+  }
   reply(event: Event, response: string){
     var useWhatsApp = true;
     if(useWhatsApp){
@@ -232,10 +241,14 @@ ${whatsappGroupText}
       return `${event.location?.substring(0,30)} ...`;
     }
   }
-  share(event: Event){
-    var dateTime = this.fullDateTime(event);
+  getEventUrl(event: Event){
     let user = this.getUser();
     let eventUrl = `${window.location.origin}/${user}?eId=${this.shortId(event)}`;
+    return eventUrl;
+  }
+  share(event: Event){
+    var dateTime = this.fullDateTime(event);
+    let eventUrl = this.getEventUrl(event);
     let ticketInvite = event.ticketUrl ? `
 Adquira o seu ingresso:
 ${event.ticketUrl}` : '';

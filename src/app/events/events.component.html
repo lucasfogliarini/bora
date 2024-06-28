@@ -11,7 +11,7 @@
 <div *ngIf="events">
   <div class="{{isSelectedClass(event)}}" (click)="selectEvent(event)" role="button" *ngFor="let event of events">
     <div [id]="'e'+event.id" class="event-details">
-      <div id="image-and-buttons" class="row">
+      <div id="image-and-buttons-public" [hidden]="!event.public" class="row">
         <img [hidden]="!event.expanded" class="background-image" src="../../assets/loading.gif" />
         <div *ngIf="event.expanded" class="event-buttons col-4 mt-3">
           <div class="row">
@@ -90,7 +90,18 @@
           </div>
         </div>
       </div>
-      <div id="date-and-title" class="row">
+      <div id="image-and-buttons-private" [hidden]="event.public"  class="row">
+        <img [hidden]="!event.expanded" class="background-image" src="../../assets/privado.jpg" />
+        <div *ngIf="event.expanded" class="event-buttons col-4 mt-5">
+          <div class="row">
+            <input (click)="replyPrivate(event)"
+                  type="button"
+                  value="Posso ir?!"
+                  class="btn btn-block btn-dark col-9 offset-1" />
+          </div>
+        </div>
+      </div>
+      <div id="date-title-location" class="row">
         <div class="date-time col-3">
           <div class="date" mwlConfirmationPopover
               title="Google Agenda"
@@ -112,7 +123,8 @@
           <div>{{ event.title?.substring(0, 100) }}</div>
           <small>{{ event.description?.substring(0, 100) }}</small>
           <br />
-          <small style="font-size: xx-small;"><b>Onde? {{getLocation(event, 40)}}</b></small>
+          <small [hidden]="!event.public" style="font-size: xx-small;"><b>Onde? {{getLocation(event, 40)}}</b></small>
+          <small [hidden]="event.public" style="font-size: xx-small;"><b>Onde? Só o bora sabe!</b></small>
         </div>
         <div *ngIf="!event.expanded" class="event-buttons-collapsed col-1 mt-2">
           <fa-icon [icon]="['fas', 'people-group']" class="col-12"></fa-icon>
