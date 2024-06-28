@@ -245,8 +245,8 @@ ${event.ticketUrl}` : '';
 ${event.title}
 Onde? ${this.getLocationShare(event)}
 
-Clique no link e nos dois botões 'Bora!', confirme no WhatsApp
-E bora prosperar!
+Confirme presença no link abaixo e de o 'Bora!'
+Ou respondendo no WA particular.
 ${eventUrl}
 ${ticketUrl}`;
 
