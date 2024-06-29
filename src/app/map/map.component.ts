@@ -50,7 +50,10 @@ export class MapComponent {
                 else if(partnerId == 2)
                   this.openBoraSocial(marker, place);
               });
-              this.openBoraWork(marker, place);
+              if(window.location.hostname == 'bora.work')
+                this.openBoraWork(marker, place);
+              else
+                this.openBoraSocial(marker, place);
           }
       });
     }
@@ -107,20 +110,21 @@ export class MapComponent {
           <h5 class='text-center'>Bora Social</h5>
           <h6 class='text-center'>Social e Parcerias</h6>         
           <nav class="text-center">
-            <a class='btn btn-white' href="/lucasfogliarini">Encontros</a>
-            <a class='btn btn-dark' href="/bora.work">Parcerias</a>
+            <a class='btn btn-dark' href="/lucasfogliarini">Encontros</a>
+            <a class='btn btn-white' href="/bora.work">Bora Tech?</a>
           </nav>
           <br/>
-          <p>
-            <b>bora.social</b> são os encontros sociais com as <b>Parcerias</b> do <b>Bora!</b>
-            <ul>
-              <li>Bora Jam (no Bora Social)</li>
-              <li>Bora Bola (futebol nos parques)</li>
-              <li>Bora Xadrezinho (no Bora Social)</li>
-              <li>Bora Jogatina (cartas no Bora Social)</li>
-              <li>Shows, Teatros e Festivais (em Porto Alegre e região)</li>
-            <ul>
-          </p>
+          <b>bora.social</b> é uma produtora de eventos presenciais em Porto Alegre e região. E também um <a target='_blank' href='https://www.instagram.com/borasocial'>Pod Cast</a> que cria conteúdos com o Oculus 🥽
+          <br/>
+          <br/>
+          <ul style='list-style-type: none; padding: 0'>
+            <li><a target='_blank' href='/lucasfogliarini?find=Jam'>🎼 Bora Jam</a> (festa privada)</li>
+            <li><a target='_blank' href='/lucasfogliarini?find=timeleft'>🤔 Bora Timeleft</a> (encontro com desconhecidos)</li>
+            <li><a target='_blank' href='/lucasfogliarini?find=xadrez'>♟️ Bora Xadrezinho</a> (todos ratings)</li>
+            <li><a target='_blank' href='/lucasfogliarini?find=Bola'>⚽ Bora Bola</a> (futebol nos parques)</li>
+            <li><a target='_blank' href='/lucasfogliarini'>🎭 Shows, Teatros e Festivais (em Porto Alegre e região)</li>
+            <li><a target='_blank' href='/lucasfogliarini?find=jogatina'>🃏 Bora Jogatina</a> (Poker e The Resistence)</li>
+          <ul>
           <br/>
         </div>
       `
