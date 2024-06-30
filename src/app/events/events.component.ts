@@ -227,10 +227,12 @@ ${whatsappGroupText}
       const isDiscord = event.location?.includes('discord');
       const isMeta = event.location?.includes('meta');
       const isTribe = event.location?.includes('tribe');
+      const isTwitch = event.location?.includes('twitch');
       if(isWA) return "📲 WhatsApp";
       if(isDiscord) return "💻 Discord";
       if(isMeta) return "🥽 Meta";
       if(isTribe) return "🎚️ Tribe ao vivo";
+      if(isTwitch) return "📺 Twitch";
       else
         return "💻 Google Meet"
     }
@@ -374,7 +376,7 @@ ${dateTime}`;
           bgImagePath = '../../assets/discord.jpg'
         else if(event.conferenceUrl?.includes('meta'))
           bgImagePath = '../../assets/meta.jpg'
-        else if(event.conferenceUrl?.includes('tribe'))
+        else if(event.conferenceUrl?.includes('twitch'))
           bgImagePath = '../../assets/tribe.jpg'
         else
           bgImagePath = '../../assets/google-meet.jpg';  
@@ -409,7 +411,7 @@ ${dateTime}`;
     return event.conferenceUrl || this.conferenceOnLocation(event);
   }
   conferenceOnLocation(event: Event){
-    return ['discord','meet.google', 'wa.me', 'meta','tribe'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
+    return ['discord','meet.google', 'wa.me', 'meta','tribe','twitch'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
   }
   arrayMove(arr: Array<any>, fromIndex: number, toIndex: number) {
     var element = arr[fromIndex];
