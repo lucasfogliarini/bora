@@ -221,6 +221,12 @@ ${whatsappGroupText}
   openConference(event: Event){
     window.open(event.conferenceUrl);
   }
+  isConference(event: Event){
+    return event.conferenceUrl || this.conferenceOnLocation(event);
+  }
+  conferenceOnLocation(event: Event){
+    return ['discord','meet.google', 'wa.me', 'meta','tribe','twitch'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
+  }
   getLocationShare(event: Event){
     if(this.conferenceOnLocation(event)){
       const isWA = event.location?.includes('wa');
@@ -254,15 +260,22 @@ ${whatsappGroupText}
     let ticketInvite = event.ticketUrl ? `
 Adquira o seu ingresso:
 ${event.ticketUrl}` : '';
-    let conferenceInvite = this.conferenceOnLocation(event) ? `Canal: ${event.conferenceUrl}\n` : ``;
+
+    let inviteConference = '';
+    let inviteText = `Encontro presencial, confirme presença no link abaixo e de o 'Bora!'
+Ou respondendo direto no meu WhatsApp particular.`;
+    if(this.conferenceOnLocation(event)){
+      inviteConference = `Canal: ${event.conferenceUrl}\n`;
+      inviteText = 'Encontro virtual, entre no canal acima e participe!';
+    }
 
     var whatsappText = 
 `${dateTime}
 ${event.title}
 Onde? ${this.getLocationShare(event)}
-${conferenceInvite}
-Confirme presença no link abaixo e de o 'Bora!'
-Ou respondendo no WA particular.
+${inviteConference}
+${inviteText}
+
 ${eventUrl}
 ${ticketInvite}`;
 
@@ -406,12 +419,6 @@ ${dateTime}`;
         var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
         eventBackgroundImage!.setAttribute('src', imgPath);
       }, 200);
-  }
-  isConference(event: Event){
-    return event.conferenceUrl || this.conferenceOnLocation(event);
-  }
-  conferenceOnLocation(event: Event){
-    return ['discord','meet.google', 'wa.me', 'meta','tribe','twitch'].some(c=>event.location?.includes(c)) || ['m','meet',].some(c=>event.location?.startsWith(c));
   }
   arrayMove(arr: Array<any>, fromIndex: number, toIndex: number) {
     var element = arr[fromIndex];
