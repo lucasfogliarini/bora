@@ -389,7 +389,7 @@ ${dateTime}`;
           bgImagePath = '../../assets/discord.jpg'
         else if(event.conferenceUrl?.includes('meta'))
           bgImagePath = '../../assets/meta.jpg'
-        else if(event.conferenceUrl?.includes('twitch'))
+        else if(event.conferenceUrl?.includes('tribe'))
           bgImagePath = '../../assets/tribe.jpg'
         else
           bgImagePath = '../../assets/google-meet.jpg';  
