@@ -110,8 +110,8 @@ export class MapComponent {
           <h5 class='text-center'>Bora Social</h5>
           <h6 class='text-center'>Social e Parcerias</h6>         
           <nav class="text-center">
-            <a class='btn btn-dark' href="/lucasfogliarini">Encontros</a>
-            <a class='btn btn-white' href="/bora.work">Bora Tech?</a>
+            <a class='btn btn-white' href="/lucasfogliarini">Encontros</a>
+            <a class='btn btn-dark' target='_blank' href="https://live.tribexr.com/lucasfogliarini">🎧 Bora Tribe DJ?</a>
           </nav>
           <br/>
           <b>bora.social</b> é uma produtora de eventos presenciais em Porto Alegre e região. E também um <a target='_blank' href='https://www.instagram.com/borasocial'>Pod Cast</a> que cria conteúdos com o Oculus 🥽
