@@ -111,13 +111,14 @@ export class MapComponent {
           <h6 class='text-center'>Social e Parcerias</h6>         
           <nav class="text-center">
             <a class='btn btn-white' href="/lucasfogliarini">Encontros</a>
-            <a class='btn btn-dark' target='_blank' href="https://live.tribexr.com/lucasfogliarini">🎧 Bora Tribe DJ?</a>
+            <a class='btn btn-dark' target='_blank' href="/lucasfogliarini?find=tribe">🎧 Bora Tribe DJ?</a>
           </nav>
           <br/>
           <b>bora.social</b> é uma produtora de eventos presenciais em Porto Alegre e região. E também um <a target='_blank' href='https://www.instagram.com/borasocial'>Pod Cast</a> que cria conteúdos com o Oculus 🥽
           <br/>
           <br/>
           <ul style='list-style-type: none; padding: 0'>
+          <li><a target='_blank' href='/lucasfogliarini?find=tribe'>🥽 Bora Tribe DJ 🎧</a> (festa virtual)</li>
             <li><a target='_blank' href='/lucasfogliarini?find=Jam'>🎼 Bora Jam</a> (festa privada)</li>
             <li><a target='_blank' href='/lucasfogliarini?find=timeleft'>🤔 Bora Timeleft</a> (encontro com desconhecidos)</li>
             <li><a target='_blank' href='/lucasfogliarini?find=xadrez'>♟️ Bora Xadrezinho</a> (todos ratings)</li>
