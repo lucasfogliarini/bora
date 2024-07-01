@@ -113,6 +113,12 @@ export class EventCreateComponent {
     });
   }
   updateWhenDate(when: string){
+    if(when == 'agora'){
+      this.close();
+      this.eventCreated(this.newEvent);
+      return;
+    }
+
     var user = this.getUsername();
     this.newEvent.start = this.getWhenDate(when);
     const eventPatchWhen: Event = {
@@ -121,13 +127,7 @@ export class EventCreateComponent {
     };
     
     this.boraApiService.patchEvent(user, this.newEvent!.id!, eventPatchWhen, (event: Event) => {
-      if(when == 'agora')
-        this.close();
-      else
-        this.chatState = 'when-time';
-      if(this.chatState == 'closed'){
-        this.eventCreated(event);
-      }
+      this.chatState = 'when-time';
     });
   }
   updateWhenTime(time: number){
@@ -163,8 +163,6 @@ export class EventCreateComponent {
     const now = new Date();
     const daysUntilSaturday = (6 - now.getDay() + 7) % 7; // Calcula os dias até o próximo sábado
     switch (when.toLowerCase()) {
-        case 'agora':
-          return new Date(now.getTime() + 30 * 60 * 1000); // Adiciona 30 minutos
         case 'hoje':
             return this.nowAddDays(0, 19);
         case 'amanha':
