@@ -10,11 +10,13 @@ export class Account {
     eventVisibility: EventVisibility;
     photo: string;
     whatsApp: string;
-    instagram: string;
-    spotify: string;
     linkedin: string;
-    youTube: string;
+    github: string;
+    tribe: string;
+    horizonMeta: string;
     chess: string;
+    spotify: string;
+    youTube: string;
     accountability: string;
     updatedAt: Date;
     static boraAccountJson = 'boraAccountJson';

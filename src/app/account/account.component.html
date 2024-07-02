@@ -6,24 +6,31 @@
           <li *ngIf="account.photo" class="image">
             <a href="{{account.username}}"><img style="width: 50px" [src]="account.photo" class="img-circle elevation-2" alt="User Image"></a>
           </li>
-          <li *ngIf="account.instagram" title="open.spotify.com">
-            <a class="nav-link" target="_blank" href="https://instagram.com/{{account.instagram}}" role="button"><fa-icon [icon]="['fab','instagram']"></fa-icon></a>
-          </li>
-          <li *ngIf="account.linkedin" title="linkedin.com">
-            <a class="nav-link" target="_blank" href="https://www.linkedin.com/in/{{account.linkedin}}" role="button"><fa-icon [icon]="['fab','linkedin']"></fa-icon></a>
-          </li>
-          <li *ngIf="account.youTube" title="youtube.com">
-            <a class="nav-link" target="_blank" href="https://www.youtube.com/{{account.youTube}}" role="button"><fa-icon [icon]="['fab','youtube']"></fa-icon></a>
-          </li>
-          <li *ngIf="account.spotify" title="spotify.com/user/">
-            <a class="nav-link" target="_blank" href="https://open.spotify.com/user/{{account.spotify}}" role="button"><fa-icon [icon]="['fab','spotify']"></fa-icon></a>
-          </li>
           <li *ngIf="account.whatsApp" title="api.whatsapp.com/send/">
             <a class="nav-link" target="_blank" href="https://api.whatsapp.com/send/?phone=55{{account.whatsApp}}&text=Oi {{account.name}}, bora trabalhar juntos?" role="button"><fa-icon [icon]="['fab','whatsapp']"></fa-icon></a>
+          </li>
+          <li *ngIf="account.linkedin" title="www.linkedin.com/in/">
+            <a class="nav-link" target="_blank" href="https://www.linkedin.com/in/{{account.linkedin}}" role="button"><fa-icon [icon]="['fab','linkedin']"></fa-icon></a>
+          </li>
+          <li *ngIf="account.github" title="github.com/">
+            <a class="nav-link" target="_blank" href="https://github.com/{{account.github}}" role="button"><fa-icon [icon]="['fab','github']"></fa-icon></a>
+          </li>
+          <li *ngIf="account.tribe" title="live.tribexr.com/">
+            <a class="nav-link" target="_blank" href="https://live.tribexr.com/{{account.tribe}}" role="button"><fa-icon [icon]="['fas','headset']"></fa-icon></a>
+          </li>
+          <li *ngIf="account.horizonMeta" title="horizon.meta.com/profile/">
+            <a class="nav-link" target="_blank" href="https://horizon.meta.com/profile/{{account.horizonMeta}}" role="button"><fa-icon [icon]="['fas','mask']"></fa-icon></a>
           </li>
           <li *ngIf="account.chess" title="chess.com/member/">
             <a class="nav-link" target="_blank" href="https://chess.com/member/{{account.chess}}" role="button"><fa-icon [icon]="['fas','chess-knight']"></fa-icon></a>
           </li>
+          <!--
+          <li *ngIf="account.spotify" title="spotify.com/user/">
+            <a class="nav-link" target="_blank" href="https://open.spotify.com/user/{{account.spotify}}" role="button"><fa-icon [icon]="['fab','spotify']"></fa-icon></a>
+          </li>
+          <li *ngIf="account.youTube" title="youtube.com">
+            <a class="nav-link" target="_blank" href="https://www.youtube.com/{{account.youTube}}" role="button"><fa-icon [icon]="['fab','youtube']"></fa-icon></a>
+          </li>-->
         </ul>
       </nav>
       <h3 *ngIf="!account">Usuário não encontrado</h3>
