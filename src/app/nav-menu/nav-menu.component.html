@@ -120,6 +120,14 @@
             shape="circle"
         >
         </asl-google-signin-button>
+        <br>
+        <div #logar class="col-5"
+            mwlConfirmationPopover
+            popoverTitle="Logue e ative Parceria"
+            popoverMessage="1. Clique em <b>Continuar com o Google</b> <br /> 2. Clique na engrenagem e depois no botão <b>Ativar</b> (Parceria)"
+            placement="bottom"
+            confirmText="Ok">
+      </div>
       </div>
       <div id="logged" [hidden]="!this.authService.getAccount()" class="row">
         <a href="/{{this.authService.getAccount()?.username}}" class="col-6 mr-2">

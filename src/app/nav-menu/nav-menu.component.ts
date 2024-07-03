@@ -21,6 +21,11 @@ export class NavMenuComponent {
   isPartner = this.authService.getAccount()?.isPartner;
   togglePartnershipText = this.isPartner ? 'Desativar' : 'Ativar';
   userType = this.isPartner ? 'Parceira(o)' : 'Usuário(o)';
+  @ViewChild('profileGear')
+  profileGear?: ElementRef;
+  @ViewChild('logar')
+  logar?: ElementRef;
+
   partnership: string = `É muito bom ter você como <b>${this.userType}</b> do <b>Bora!</b>
   <br/><br/>
   <small>
@@ -34,11 +39,8 @@ export class NavMenuComponent {
   <br/>
   <!--3. Você é <b>convidado automaticamente<b/> nos encontros produzidos pelo <a target='_blank' href='/bora.work'><b>bora.work</b></a>-->
   </small>
-
   
   `;
-  @ViewChild('profileGear')
-  profileGear?: ElementRef;
 
   constructor(public authService: AuthenticationService,
               private boraApiService: BoraApiService,
@@ -78,8 +80,10 @@ export class NavMenuComponent {
     });
   }
   bePartner(){
-    if (this.profileGear) {
+    if (this.authService.getAccount() && this.profileGear) {
       this.profileGear.nativeElement.click();
+    }else if(this.logar){
+      this.logar.nativeElement.click();
     }
   }
   arrayMove(arr: Array<any>, fromIndex: number, toIndex: number) {
