@@ -93,8 +93,8 @@
         popoverTitle="Parcerias"
         [popoverMessage]="partnersContent"
         placement="left"
-        confirmText="Bora!"
-        (confirm)="bora()"
+        confirmText="Quero Ser!"
+        (confirm)="bePartner()"
         role="button">
         <fa-icon [icon]="['fas','user-doctor']"></fa-icon>
         <br />
@@ -125,7 +125,7 @@
         <a href="/{{this.authService.getAccount()?.username}}" class="col-6 mr-2">
           <small>{{this.authService.getAccount()?.username}}</small>
         </a>
-        <div id="profile-gear" class="col-5"
+        <div #profileGear class="col-5"
           mwlConfirmationPopover
           popoverTitle="Conta {{userType}}"
           [popoverMessage]="partnership"

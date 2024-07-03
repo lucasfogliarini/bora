@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { WhatsApp } from '../wa';
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from '../authentication.service';
@@ -32,7 +32,11 @@ export class NavMenuComponent {
   <br/>
   <!--3. Você é <b>convidado automaticamente<b/> nos encontros produzidos pelo <a target='_blank' href='/bora.work'><b>bora.work</b></a>-->
   </small>
+
+  
   `;
+  @ViewChild('profileGear')
+  profileGear?: ElementRef;
 
   constructor(public authService: AuthenticationService,
               private boraApiService: BoraApiService,
@@ -54,7 +58,10 @@ export class NavMenuComponent {
                 <br />`).join('');
         //`<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a>&nbsp;<small>${e.accountability?.substring(0,25) ?? ''}</small><br />`).join('');
         //partnersContent += this.partnerInvite();// Quero ser parceiro
-        this.partnersContent += `<small>${partners.length} parceira(o)s <b>ativos</b></small>`;
+        this.partnersContent += `<small>${partners.length} parceira(o)s <b>ativos</b></small>
+<br />
+<small><b>Quer ser Parceira(o) com esse time e prosperar!?</b></small>
+        `;
       }
     }));
 
@@ -69,8 +76,10 @@ export class NavMenuComponent {
       this.authService.signOut();
     });
   }
-  bora(){
-    window.location.href = '/bora.work';
+  bePartner(){
+    if (this.profileGear) {
+      this.profileGear.nativeElement.click();
+    }
   }
   arrayMove(arr: Array<any>, fromIndex: number, toIndex: number) {
     var element = arr[fromIndex];
