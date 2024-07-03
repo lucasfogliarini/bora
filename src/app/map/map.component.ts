@@ -61,7 +61,7 @@ export class MapComponent {
 
   openBoraWork(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
     const calendarAuthorized = true;
-    this.boraApiService.getPartners(calendarAuthorized, (partners=>{
+    this.boraApiService.getPartners(calendarAuthorized, -30, (partners=>{
       if(partners){
         const partnersNotDirectors = partners.filter(p=>p.username != 'bora.work' && p.username != 'lucasfogliarini');
         const featuredPartner = partnersNotDirectors.length ? partnersNotDirectors[0] : partners[1];

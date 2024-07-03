@@ -18,18 +18,19 @@ export class BoraApiService {
   constructor(private http: HttpClient,
     private toastr: ToastrService) {}
 
-  getPartners(calendarAuthorized: boolean, callBack: (partnersCallback: Account[]) => void){
-    const lastMonth = this.todayAddMonths();
-    let partnersUri = `accounts?filter= IsPartner eq true and UpdatedAt ge ${lastMonth.toISOString()}&orderby=CalendarAuthorized desc, UpdatedAt desc, PartnerSince asc`;
+  getPartners(calendarAuthorized: boolean, partnerActivityDays: number, callBack: (partnersCallback: Account[]) => void){
+    const lastDays = this.todayAddDays(partnerActivityDays);
+    const calendarAuthorizedFilter = calendarAuthorized ? 'and CalendarAuthorized eq true' : '';
+    let partnersUri = `accounts?filter= IsPartner eq true ${calendarAuthorizedFilter} and UpdatedAt ge ${lastDays.toISOString()}&orderby=CalendarAuthorized desc, UpdatedAt desc, PartnerSince asc`;
 
     this.get(partnersUri, (partners: Account[])=>{
         callBack(partners);
     });
   }
 
-  todayAddMonths(months: number = -1){
+  todayAddDays(days: number = -1){
     const today = new Date();
-    const date = new Date(today.setMonth(today.getMonth() + months));
+    const date = new Date(today.setDate(today.getDay() + days));
     return date;    
   }
 

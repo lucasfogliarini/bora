@@ -16,6 +16,8 @@ export class NavMenuComponent {
   news?: string = undefined;
   partners: Account[] = [];
   partnersContent = '';
+  partnerActivityDays: number = -20;
+  partnerCalendarAuthorized = false;
   isPartner = this.authService.getAccount()?.isPartner;
   togglePartnershipText = this.isPartner ? 'Desativar' : 'Ativar';
   userType = this.isPartner ? 'Parceira(o)' : 'Usuário(o)';
@@ -43,8 +45,7 @@ export class NavMenuComponent {
               private toastr: ToastrService
   ) {    
     this.news = `${this.formatDate()}, POA`;
-    const calendarAuthorized = false;
-    this.boraApiService.getPartners(calendarAuthorized, (partners=>{
+    this.boraApiService.getPartners(this.partnerCalendarAuthorized, this.partnerActivityDays, (partners=>{
       this.partners = partners;
       if(partners){
         this.popPartner(partners);
@@ -58,7 +59,7 @@ export class NavMenuComponent {
                 <br />`).join('');
         //`<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a>&nbsp;<small>${e.accountability?.substring(0,25) ?? ''}</small><br />`).join('');
         //partnersContent += this.partnerInvite();// Quero ser parceiro
-        this.partnersContent += `<small>${partners.length} parceira(o)s <b>ativos</b></small>
+        this.partnersContent += `<small><b>${partners.length} Parceira(o)s ativos nos últimos ${Math.abs(this.partnerActivityDays)} dias</b></small>
 <br />
 <small><b>Quer ser Parceira(o) com esse time e prosperar!?</b></small>
         `;
