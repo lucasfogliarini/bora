@@ -68,10 +68,9 @@ import { faTicket,
         faGlasses,
         faUserDoctor,
         faMask,
-        faTv,
-        faTelevision,
         faTvAlt,
-        faHeadphones} from '@fortawesome/free-solid-svg-icons';
+        faHeadphones,
+        faGear} from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faYoutube, faDiscord, faJira, faTwitch } from '@fortawesome/free-brands-svg-icons';
 @NgModule({
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
@@ -140,6 +139,7 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faY
 export class AppModule { 
   constructor(library: FaIconLibrary) {
     library.addIcons(
+      faGear,
       faTvAlt,
       faHeadset,
       faHeadphones,

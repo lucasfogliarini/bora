@@ -105,10 +105,10 @@
 </nav>
 
 <div class="row mb-2">
-  <label *ngIf="news" class="col-7" style="font-size: small; color: gray;">
+  <label *ngIf="news" class="col-6" style="font-size: small; color: gray;">
     {{news}}
   </label>
-  <div id="profile" class="col-5" role="button">
+  <div id="profile" class="col-6" role="button">
     <div class="float-right mr-3">
       <div id="notLogged" [hidden]="this.authService.getAccount()">
         <asl-google-signin-button
@@ -121,24 +121,27 @@
         >
         </asl-google-signin-button>
       </div>
-      <div id="logged" [hidden]="!this.authService.getAccount()">
-        <a href="/{{this.authService.getAccount()?.username}}">
-          <small class="col-5 mr-1">{{this.authService.getAccount()?.username}}</small>
+      <div id="logged" [hidden]="!this.authService.getAccount()" class="row">
+        <a href="/{{this.authService.getAccount()?.username}}" class="col-6 mr-2">
+          <small>{{this.authService.getAccount()?.username}}</small>
         </a>
-        <img [src]="this.authService.getAccount()?.photo"
-            class="img-circle image elevation-2"
-            alt="Imagem de Perfil"
-            style="width: 30px;"
-            mwlConfirmationPopover
-            popoverClass="profile"
-            title="Conta {{userType}}"
-            popoverTitle="Conta {{userType}}"
-            [popoverMessage]="partnership"
-            placement="left"
-            confirmText="{{togglePartnershipText}}"
-            (confirm)="togglePartnership()"
-            cancelText="Deslogar"
-            (cancel)="authService.signOut()">
+        <div id="profile-gear" class="col-5"
+          mwlConfirmationPopover
+          popoverTitle="Conta {{userType}}"
+          [popoverMessage]="partnership"
+          placement="left"
+          confirmText="{{togglePartnershipText}}"
+          popoverClass="profile"
+          (confirm)="togglePartnership()"
+          cancelText="Deslogar"
+          (cancel)="authService.signOut()"
+          title="Conta {{userType}}">
+          <img [src]="this.authService.getAccount()?.photo"
+              class="img-circle image elevation-2 mr-1"
+              alt="Imagem de Perfil"
+              style="width: 30px;">
+          <fa-icon [icon]="['fas','gear']"></fa-icon>
+        </div>
       </div>
     </div>
   </div>
