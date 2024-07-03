@@ -254,7 +254,19 @@ ${whatsappGroupText}
     let eventUrl = `${window.location.origin}/${user}?eId=${this.shortId(event)}`;
     return eventUrl;
   }
-  share(event: Event){
+  shareCopy(event: Event){
+    const inviteText = this.generateInviteText(event);
+    navigator.clipboard.writeText(inviteText)
+      .then(() => {
+          this.toastr.success(inviteText, 'Convite Copiado! Compartilhe nas redes sociais!');
+      });
+  }
+  shareWA(event: Event){
+    const inviteText = this.generateInviteText(event);
+    const whatsAppLink = this.generateWhatsAppLink(inviteText);
+    window.open(whatsAppLink);
+  }
+  generateInviteText(event: Event){
     var dateTime = this.fullDateTime(event);
     let eventUrl = this.getEventUrl(event);
     let ticketInvite = event.ticketUrl ? `
@@ -269,7 +281,7 @@ Ou respondendo direto no meu WhatsApp particular.`;
       inviteText = 'Encontro virtual, entre no canal acima e participe!';
     }
 
-    var whatsappText = 
+    var invite = 
 `${dateTime}
 ${event.title}
 Onde? ${this.getLocationShare(event)}
@@ -278,9 +290,7 @@ ${inviteText}
 
 ${eventUrl}
 ${ticketInvite}`;
-
-    const whatsAppLink = this.generateWhatsAppLink(whatsappText);
-    window.open(whatsAppLink);
+    return invite;
   }
   generateWhatsAppLink(text: string, number?: string){//número nulo será compartilhamento selecionado
     var whatsappText = window.encodeURIComponent(text);

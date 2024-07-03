@@ -32,7 +32,9 @@
               popoverMessage="Compartilhar <b>{{event.title}}</b> no WhatsApp?"
               placement="left"
               confirmText="Compartilhar"
-              (confirm)="share(event)"
+              (confirm)="shareWA(event)"
+              cancelText="Copiar link"
+              (cancel)="shareCopy(event)"
               role="button"
               class="col-5 float-right">
             </fa-icon>
