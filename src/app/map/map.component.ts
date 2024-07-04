@@ -69,7 +69,7 @@ export class MapComponent {
           content: `
             <div>
               <h5 class='text-center'>Bora.Work</h5>
-              <h6 class='text-center'>Consultoria e Parcerias</h6>
+              <h6 class='text-center'>Capacitando tecnologistas para as melhores soluções do mercado</h6>
               <br/>
               <nav class="text-center">
                 <a class='btn btn-white btn-outline-secondary' href="${featuredPartner.username}">
@@ -108,7 +108,7 @@ export class MapComponent {
       content: `
         <div>
           <h5 class='text-center'>Bora Social</h5>
-          <h6 class='text-center'>Social e Parcerias</h6>         
+          <h6 class='text-center'>Produtora de eventos presenciais e virtuais em Porto Alegre e região</h6>         
           <nav class="text-center">
             <a class='btn btn-white btn-outline-secondary' href="/lucasfogliarini">Encontros</a>
             <a class='btn btn-dark' target='_blank' href="/lucasfogliarini?find=tribe">🎧 Bora Tribe DJ?</a>
