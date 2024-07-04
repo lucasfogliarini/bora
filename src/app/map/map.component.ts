@@ -72,10 +72,10 @@ export class MapComponent {
               <h6 class='text-center'>Consultoria e Parcerias</h6>
               <br/>
               <nav class="text-center">
-                <a class='btn btn-dark' href="/bora.work">Consultoria de TI</a>
                 <a class='btn btn-white btn-outline-secondary' href="${featuredPartner.username}">
-                  ${featuredPartner.name} <small style='font-size: xx-small'>(${featuredPartner.accountability})</small>
+                ${featuredPartner.name} <small style='font-size: xx-small'>(${featuredPartner.accountability})</small>
                 </a>
+                <a class='btn btn-dark' href="/bora.work">Consultoria de TI</a>
               </nav>
               <br/>
               <p>
@@ -110,7 +110,7 @@ export class MapComponent {
           <h5 class='text-center'>Bora Social</h5>
           <h6 class='text-center'>Social e Parcerias</h6>         
           <nav class="text-center">
-            <a class='btn btn-white' href="/lucasfogliarini">Encontros</a>
+            <a class='btn btn-white btn-outline-secondary' href="/lucasfogliarini">Encontros</a>
             <a class='btn btn-dark' target='_blank' href="/lucasfogliarini?find=tribe">🎧 Bora Tribe DJ?</a>
           </nav>
           <br/>
@@ -118,13 +118,13 @@ export class MapComponent {
           <br/>
           <br/>
           <ul style='list-style-type: none; padding: 0'>
-          <li><a target='_blank' href='/lucasfogliarini?find=tribe'>🥽 Bora Tribe DJ 🎧</a> (festa virtual)</li>
+            <li><a target='_blank' href='/lucasfogliarini'>🎭 Shows, Teatros e Festivais (em Porto Alegre e região)</li>
             <li><a target='_blank' href='/lucasfogliarini?find=Jam'>🎼 Bora Jam</a> (festa privada)</li>
             <li><a target='_blank' href='/lucasfogliarini?find=timeleft'>🤔 Bora Timeleft</a> (encontro com desconhecidos)</li>
-            <li><a target='_blank' href='/lucasfogliarini?find=xadrez'>♟️ Bora Xadrezinho</a> (todos ratings)</li>
             <li><a target='_blank' href='/lucasfogliarini?find=Bola'>⚽ Bora Bola</a> (futebol nos parques)</li>
-            <li><a target='_blank' href='/lucasfogliarini'>🎭 Shows, Teatros e Festivais (em Porto Alegre e região)</li>
+            <li><a target='_blank' href='/lucasfogliarini?find=xadrez'>♟️ Bora Xadrezinho</a> (todos ratings)</li>
             <li><a target='_blank' href='/lucasfogliarini?find=jogatina'>🃏 Bora Jogatina</a> (Poker e The Resistence)</li>
+            <li><a target='_blank' href='/lucasfogliarini?find=tribe'>🥽 Bora Tribe DJ 🎧</a> (festa virtual)</li>
           <ul>
           <br/>
         </div>
