@@ -14,7 +14,7 @@ export class AppComponent {
     private titleService: Title) { }
   ngOnInit(): void {
     this.RequestVersion();
-    let title = "bora.work | Capacitando Engenheiros e Tecnologistas para as melhores soluções do mercado.";
+    let title = "bora.work | Capacitando tecnologistas para as melhores soluções do mercado.";
     if(window.location.hostname == "bora.social")
       title = "bora.social | Produtora de eventos presenciais e virtuais em Porto Alegre e região";
     this.titleService.setTitle(title);
