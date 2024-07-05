@@ -133,10 +133,10 @@
       </div>
       </div>
       <div id="logged" [hidden]="!this.authService.getAccount()" class="row">
-        <a href="/{{this.authService.getAccount()?.username}}" class="col-6 mr-2">
+        <a href="/{{this.authService.getAccount()?.username}}" class="col-6">
           <small>{{this.authService.getAccount()?.username}}</small>
         </a>
-        <div #profileGear class="col-5"
+        <div #profileGear class="col-6"
           mwlConfirmationPopover
           popoverTitle="Conta {{userType}}"
           [popoverMessage]="partnership"
