@@ -72,8 +72,8 @@ export class MapComponent {
               <h6 class='text-center'>Capacitando tecnologistas para as melhores soluções do mercado</h6>
               <br/>
               <nav class="text-center">
-              ${featuredPartner.name} <small style='font-size: xx-small'>(${featuredPartner.accountability})</small>
                 <a class='btn btn-white btn-outline-secondary' href="${featuredPartner.username}">
+                ${featuredPartner.name} <small style='font-size: xx-small'>(${featuredPartner.accountability})</small>
                 </a>
                 <a class='btn btn-dark' href="/bora.work">Consultoria de TI</a>
               </nav>
