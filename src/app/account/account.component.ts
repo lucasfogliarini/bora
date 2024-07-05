@@ -7,6 +7,7 @@ import { AuthenticationService } from '../authentication.service';
 import { EventCreateComponent } from '../event-create/event-create.component';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { Responsibility } from '../models/responsibility.model';
 
 @Component({
   selector: 'app-account',
@@ -18,7 +19,7 @@ export class AccountComponent {
   account = new Account;
   pastObserversMessage?: string;
   futureObserversMessage?: string;
-
+  responsibilities?: Responsibility[];
   eventCreate!: EventCreateComponent;
 
   constructor(private boraApiService: BoraApiService,
@@ -32,6 +33,9 @@ export class AccountComponent {
                   this.account = account;
                   this.title.setTitle(`${account.name} no ${this.env.appName}`);
                   this.setObservers();
+                });
+                this.boraApiService.getResponsibilities((responsibilities: Responsibility[])=>{
+                  this.responsibilities = responsibilities;
                 });
   }
   changePartnership(){

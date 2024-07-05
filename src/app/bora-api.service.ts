@@ -9,6 +9,7 @@ import { Scenario } from './models/scenario.model';
 import { Event } from './models/event.model';
 import { Location } from './models/location.model';
 import { AccountInput } from './models/account-input.model';
+import { Responsibility } from './models/responsibility.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +19,20 @@ export class BoraApiService {
   constructor(private http: HttpClient,
     private toastr: ToastrService) {}
 
-  getPartners(calendarAuthorized: boolean, partnerActivityDays: number, callBack: (partnersCallback: Account[]) => void){
+  getPartners(calendarAuthorized: boolean, partnerActivityDays: number, callBack: (partners: Account[]) => void){
     const lastDays = this.todayAddDays(partnerActivityDays);
     const calendarAuthorizedFilter = calendarAuthorized ? 'and CalendarAuthorized eq true' : '';
     let partnersUri = `accounts?filter= IsPartner eq true ${calendarAuthorizedFilter} and UpdatedAt ge ${lastDays.toISOString()}&orderby=CalendarAuthorized desc, UpdatedAt desc, PartnerSince asc`;
 
     this.get(partnersUri, (partners: Account[])=>{
         callBack(partners);
+    });
+  }
+  getResponsibilities(callBack: (callback: Responsibility[]) => void){
+    let resposibilitiesUri = `responsibilities?orderby=UpdatedAt desc`;
+
+    this.get(resposibilitiesUri, (responsibilities: Responsibility[])=>{
+        callBack(responsibilities);
     });
   }
 
