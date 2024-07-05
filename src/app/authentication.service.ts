@@ -39,6 +39,7 @@ export class AuthenticationService {
     }
     var accountUri = `accounts?filter=contains(Email,'${boraSocialUser.email}')`;
     this.boraApiService.get<Account[]>(accountUri, (accounts) => {
+      location.reload();
       if(accounts.length){
         const account = accounts[0];
         localStorage.setItem(Account.boraAccountJson, JSON.stringify(account));
