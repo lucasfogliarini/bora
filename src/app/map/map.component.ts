@@ -72,8 +72,8 @@ export class MapComponent {
               <h6 class='text-center'>Capacitando tecnologistas para as melhores soluções do mercado</h6>
               <br/>
               <nav class="text-center">
+              ${featuredPartner.name} <small style='font-size: xx-small'>(${featuredPartner.accountability})</small>
                 <a class='btn btn-white btn-outline-secondary' href="${featuredPartner.username}">
-                ${featuredPartner.name} <small style='font-size: xx-small'>(${featuredPartner.accountability})</small>
                 </a>
                 <a class='btn btn-dark' href="/bora.work">Consultoria de TI</a>
               </nav>
@@ -110,8 +110,8 @@ export class MapComponent {
           <h5 class='text-center'>Bora Social</h5>
           <h6 class='text-center'>Produtora de eventos presenciais e virtuais em Porto Alegre e região</h6>         
           <nav class="text-center">
+          <a class='btn btn-dark' target='_blank' href="/lucasfogliarini?find=tribe">🎧 Bora Tribe DJ?</a>
             <a class='btn btn-white btn-outline-secondary' href="/lucasfogliarini">Encontros</a>
-            <a class='btn btn-dark' target='_blank' href="/lucasfogliarini?find=tribe">🎧 Bora Tribe DJ?</a>
           </nav>
           <br/>
           <b>bora.social</b> é uma produtora de eventos presenciais em Porto Alegre e região. E também um <a target='_blank' href='https://www.instagram.com/borasocial'>Pod Cast</a> que cria conteúdos com o Oculus 🥽
