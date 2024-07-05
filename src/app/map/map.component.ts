@@ -1,7 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { GoogleMap } from '@angular/google-maps';
 import { BoraApiService } from '../bora-api.service';
-import { Account } from '../models/account.model';
 
 @Component({
   selector: 'app-map',
@@ -69,13 +68,13 @@ export class MapComponent {
           content: `
             <div>
               <h5 class='text-center'>Bora.Work</h5>
-              <h6 class='text-center'>Capacitando tecnologistas para as melhores soluções do mercado</h6>
+              <h6 class='text-center'>Capacitando tecnologistas para as melhores soluções tecnológicas do mercado</h6>
               <br/>
               <nav class="text-center">
+                <a class='btn btn-dark' href="/bora.work">Encontros de Tecnologia</a>
                 <a class='btn btn-white btn-outline-secondary' href="${featuredPartner.username}">
-                ${featuredPartner.name} <small style='font-size: xx-small'>(${featuredPartner.accountability})</small>
+                  ${featuredPartner.name} <small style='font-size: xx-small'>(${featuredPartner.accountability})</small>
                 </a>
-                <a class='btn btn-dark' href="/bora.work">Consultoria de TI</a>
               </nav>
               <br/>
               <p>
