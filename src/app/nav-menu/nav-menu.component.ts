@@ -16,7 +16,7 @@ export class NavMenuComponent {
   news?: string = undefined;
   partners: Account[] = [];
   partnersContent = '';
-  partnerActivityDays: number = -20;
+  partnerActivityDays: number = -10;
   partnerCalendarAuthorized = false;
   isPartner = this.authService.getAccount()?.isPartner;
   togglePartnershipText = this.isPartner ? 'Desativar' : 'Ativar';
@@ -61,9 +61,10 @@ export class NavMenuComponent {
                 <br />`).join('');
         //`<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a>&nbsp;<small>${e.accountability?.substring(0,25) ?? ''}</small><br />`).join('');
         //partnersContent += this.partnerInvite();// Quero ser parceiro
-        this.partnersContent += `<small><b>${partners.length} Parceira(o)s ativos nos últimos ${Math.abs(this.partnerActivityDays)} dias</b></small>
+        this.partnersContent += `<small><b>${partners.length}</b> Parceira(o)s <b>ativos</b> nos últimos <b>${Math.abs(this.partnerActivityDays)} dias</b></small>
 <br />
-<small><b>Quer ser Parceira(o) com esse time e prosperar!?</b></small>
+<br />
+<b>Bora ser Parceira(o) com esse time e prosperar!?</b>
         `;
       }
     }));
