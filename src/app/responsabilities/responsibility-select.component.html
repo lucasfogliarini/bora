@@ -1,0 +1,9 @@
+<small [hidden]="selecting" class="col-12">{{selectedResponsibilities}}</small>
+<ng-multiselect-dropdown
+    [placeholder]="'Selecione seus cargos e responsabilidades'"
+    [data]="responsibilities"
+    [(ngModel)]="selectedResponsibilities"
+    [settings]="dropdownSettings"
+    [hidden]="!selecting"
+    name="responsibility">
+</ng-multiselect-dropdown>

@@ -39,7 +39,12 @@
       <div id="account-name" class="row">
         <small><b class="col-12">{{account.name}}</b></small>
       </div>
-      <div id="account-accountability" class="row">
+      <div id="account-responsibilities" class="row">
+        <app-responsibility-select
+          [(selectedResponsibilities)]="selectedResponsibilities"
+        ></app-responsibility-select>
+      </div>
+      <div id="account-bio" class="row">
         <small class="col-12">{{account.accountability}}</small>
       </div>
     </div>

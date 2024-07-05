@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Account } from '../models/account.model';
-import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BoraApiService } from '../bora-api.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
@@ -19,8 +19,8 @@ export class AccountComponent {
   account = new Account;
   pastObserversMessage?: string;
   futureObserversMessage?: string;
-  responsibilities?: Responsibility[];
   eventCreate!: EventCreateComponent;
+  selectedResponsibilities: Responsibility[] = [{ id: "1", title: "QA"}];
 
   constructor(private boraApiService: BoraApiService,
               public authService: AuthenticationService,
@@ -32,11 +32,10 @@ export class AccountComponent {
                 this.boraApiService.getAccount(user, (account: Account)=>{
                   this.account = account;
                   this.title.setTitle(`${account.name} no ${this.env.appName}`);
-                  this.setObservers();
                 });
-                this.boraApiService.getResponsibilities((responsibilities: Responsibility[])=>{
-                  this.responsibilities = responsibilities;
-                });
+  }
+  changeResponsibility(){
+
   }
   changePartnership(){
     this.boraApiService.patch<Account>(`accounts`, this.account, () => {
@@ -50,25 +49,6 @@ export class AccountComponent {
   }
   unauthorizeCalendar(){
     this.authService.unauthorizeCalendar();
-  }
-  setObservers(){
-    /*if(this.account.calendarAuthorized){
-      let user = this.getUser();
-      const today = new Date();
-      let daysAgo = new Date();
-      daysAgo.setDate(today.getDate() - 14);
-      today.setDate(today.getDate() + 14);
-      const eventsDaysAgoUri = `events?user=${user}&timeMin=${daysAgo.toISOString()}&timeMax=${today.toISOString()}`;
-      this.boraApiService.get(eventsDaysAgoUri, (events: Event[]) => {
-          if(events){
-            const pastObservers = [...new Map(events.filter(e=>new Date(e.start!) <= new Date()).flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
-            this.pastObserversMessage = pastObservers.filter(e=>e.username != user).map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a>&nbsp;<small>${e.isPartner ? this.env.mainRole : ''}</small><br />`).join('');
-
-            const futureObservers = [...new Map(events.filter(e=>new Date(e.start!) > new Date()).flatMap(e=>e.attendees).map(e => [e['username'], e])).values()];
-            this.futureObserversMessage = futureObservers.filter(e=>e.username != user).map(e=>`<img src='${e.photo}' />&nbsp;<a href='${window.location.origin}/${e.username}'>${e.name}</a>&nbsp;<small>${e.isPartner ? this.env.mainRole : ''}</small><br />`).join('');
-          }
-      });
-    }*/
   }
   getUser(){
     return this.activeRoute.snapshot.url[0].path || 'lucasfogliarini';

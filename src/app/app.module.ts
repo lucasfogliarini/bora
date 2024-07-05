@@ -72,6 +72,8 @@ import { faTicket,
         faHeadphones,
         faGear} from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faYoutube, faDiscord, faJira, faTwitch } from '@fortawesome/free-brands-svg-icons';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { ResponsibilitySelectComponent } from './responsabilities/responsibility-select.component';
 @NgModule({
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     declarations: [
@@ -87,7 +89,8 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faY
         PrivacyComponent,
         FooterComponent,
         BoraComponent,
-        ScenariosComponent
+        ScenariosComponent,
+        ResponsibilitySelectComponent,
     ],
     bootstrap: [AppComponent],
     imports: [
@@ -96,6 +99,7 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faY
         BrowserAnimationsModule,
         FormsModule,
         //GooglePlaceModule,
+        NgMultiSelectDropDownModule.forRoot(),
         ToastrModule.forRoot(),        
         GoogleMapsModule,
         ConfirmationPopoverModule.forRoot({

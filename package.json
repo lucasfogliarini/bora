@@ -2,7 +2,7 @@
   "name": "bora",
   "version": "0.0.0",
   "engines": {
-   "node": ">=20.0.0"
+    "node": ">=20.0.0"
   },
   "scripts": {
     "ng": "ng",
@@ -30,6 +30,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.0",
     "admin-lte": "^3.2.0",
     "angular-confirmation-popover": "^7.0.0",
+    "ng-multiselect-dropdown": "^1.0.0",
     "ngx-google-places-autocomplete": "^2.0.5",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.5.0",
