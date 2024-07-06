@@ -171,7 +171,7 @@ export class EventsComponent {
     var dateTime = this.fullDateTime(event);
     var whatsappText = 
 `${dateTime}
-Posso ir nesse encontro privado? ...
+Onde é esse encontro? Posso ir?
 ${event.title}
 ${this.getEventUrl(event)}`;
     const whatsAppLink = this.generateWhatsAppLink(whatsappText, environment.adminPhone);
