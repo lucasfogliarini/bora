@@ -378,7 +378,7 @@ ${event.title}`;
   }
   ticketHelpLink(event: Event){
     var dateTime = this.fullDateTime(event);
-    let helpText = 'Me ajuda a ir com você nesse evento?';
+    let helpText = 'Bora junto?';
 
     if(event.discount){
       helpText = `Quero ${event.discount}% de desconto pra ir com você nesse evento!`;
