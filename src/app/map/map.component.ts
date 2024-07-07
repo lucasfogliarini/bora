@@ -117,13 +117,13 @@ export class MapComponent {
           <br/>
           <br/>
           <ul style='list-style-type: none; padding: 0'>
-            <li><a target='_blank' href='/lucasfogliarini'>🎭 Shows, Teatros e Festivais (em Porto Alegre e região)</li>
-            <li><a target='_blank' href='/lucasfogliarini?find=Jam'>🎼 Bora Jam</a> (festa privada)</li>
-            <li><a target='_blank' href='/lucasfogliarini?find=timeleft'>🤔 Bora Timeleft</a> (encontro com desconhecidos)</li>
-            <li><a target='_blank' href='/lucasfogliarini?find=Bola'>⚽ Bora Bola</a> (futebol nos parques)</li>
-            <li><a target='_blank' href='/lucasfogliarini?find=xadrez'>♟️ Bora Xadrezinho</a> (todos ratings)</li>
-            <li><a target='_blank' href='/lucasfogliarini?find=jogatina'>🃏 Bora Jogatina</a> (Poker e The Resistence)</li>
-            <li><a target='_blank' href='/lucasfogliarini?find=tribe'>🥽 Bora Tribe DJ 🎧</a> (festa virtual)</li>
+            <li><a href='/lucasfogliarini'>🎭 Shows, Teatros e Festivais (em Porto Alegre e região)</li>
+            <li><a href='/lucasfogliarini?find=Jam'>🎼 Bora Jam</a> (música e dança)</li>
+            <li><a href='/lucasfogliarini?find=timeleft'>🤔 Bora Timeleft</a> (encontro com desconhecidos)</li>
+            <li><a href='/lucasfogliarini?find=Bola'>⚽ Bora Bola</a> (futebol nos parques)</li>
+            <li><a href='/lucasfogliarini?find=xadrez'>♟️ Bora Xadrezinho</a> (todos ratings)</li>
+            <li><a href='/lucasfogliarini?find=jogatina'>🃏 Bora Jogatina</a> (Poker e The Resistence)</li>
+            <li><a href='/lucasfogliarini?find=tribe'>🥽 Bora Tribe DJ 🎧</a> (festa virtual)</li>
           <ul>
           <br/>
         </div>
