@@ -52,6 +52,10 @@ export class EventsComponent {
     timeMax.setMonth(currentMonth + addMonths);
     return timeMax.toISOString();
   }
+  getJams(){
+    this.eventsQuery = 'Jam';
+    this.getEvents();
+  }
   getEvents(hasTicket?: boolean){
     this.events = [];
     let user = this.getUser();
