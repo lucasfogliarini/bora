@@ -42,6 +42,23 @@
         <small style="font-size: xx-small;">Tribe</small>
       </a>
     </li>
+    <li class="nav-item content">
+      <a class="nav-link"
+        popoverClass='partners'
+        mwlConfirmationPopover
+        value="Parcerias"
+        title="Parcerias"
+        popoverTitle="Parcerias"
+        [popoverMessage]="partnersContent"
+        placement="left"
+        confirmText="Bora!"
+        (confirm)="bePartner()"
+        role="button">
+        <fa-icon [icon]="['fas','user-doctor']"></fa-icon>
+        <br />
+        <small style="font-size: xx-small;"><b>Parcerias</b></small>
+      </a>
+    </li>
     <!--<li class="nav-item">
       <a class="nav-link" target="_blank" href="https://discord.gg/Yf4TCsSTG5" role="button">
         <fa-icon [icon]="['fab','discord']"></fa-icon>
@@ -84,23 +101,6 @@
         <small style="font-size: xx-small;">Jira</small>
       </a>
     </li>-->
-    <li class="nav-item content">
-      <a class="nav-link"
-        popoverClass='partners'
-        mwlConfirmationPopover
-        value="Parcerias"
-        title="Parcerias"
-        popoverTitle="Parcerias"
-        [popoverMessage]="partnersContent"
-        placement="left"
-        confirmText="Bora!"
-        (confirm)="bePartner()"
-        role="button">
-        <fa-icon [icon]="['fas','user-doctor']"></fa-icon>
-        <br />
-        <small style="font-size: xx-small;"><b>Parcerias</b></small>
-      </a>
-    </li>
   </ul>
 </nav>
 

@@ -52,11 +52,18 @@ export class EventsComponent {
     timeMax.setMonth(currentMonth + addMonths);
     return timeMax.toISOString();
   }
-  isSocial(){
-    
+  isBoraSocial(){
+    return window.location.hostname == 'bora.social';
+  }
+  getParceiros(){
+    this.eventsQuery = 'parceiros';
+    this.getEvents();
+  }
+  getTech(){
+    this.eventsQuery = 'tech';
+    this.getEvents();
   }
   getTribe(){
-    console.log(Location.name);
     this.eventsQuery = 'tribe';
     this.getEvents();
   }
