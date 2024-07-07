@@ -22,7 +22,7 @@
             <fa-icon [icon]="['fas', 'map-location-dot']" mwlConfirmationPopover
                 title="Localização"
                 popoverTitle="Abrir Google Maps?"
-                placement="left"
+                placement="top"
                 confirmText="Abrir"
                 [popoverMessage]="getLocation(event)"
                 (confirm)="openMaps(event.location)"
@@ -49,7 +49,7 @@
                 mwlConfirmationPopover
                 title="Canal"
                 popoverTitle="Abrir Canal?"
-                placement="left"
+                placement="bottom"
                 confirmText="Abrir"
                 [popoverMessage]="event.conferenceUrl!"
                 (confirm)="openConference(event)"
@@ -62,8 +62,8 @@
               title="Ingresso"
               popoverTitle="Ingresso"
               [popoverMessage]="ticket(event)"
-              placement="left"
-              confirmText="Comprar ingresso"
+              placement="bottom"
+              confirmText="Ingressos"
               (confirm)="openUrl(event.ticketUrl!)"
               role="button"
               class="col-6 float-right">

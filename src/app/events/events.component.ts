@@ -370,11 +370,9 @@ ${event.title}`;
   }
   ticket(event: Event){
     return `<b>${event.ticketDomain}</b>
-                <div class='row mt-1'>
-                <p class="col-12 font-weight-bold">
-                  ${this.ticketHelpLink(event)}
-                </p>
-            </div>`;
+</br>
+</br>
+${this.ticketHelpLink(event)}`;
   }
   ticketHelpLink(event: Event){
     var dateTime = this.fullDateTime(event);
