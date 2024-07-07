@@ -52,6 +52,14 @@ export class EventsComponent {
     timeMax.setMonth(currentMonth + addMonths);
     return timeMax.toISOString();
   }
+  isSocial(){
+    
+  }
+  getTribe(){
+    console.log(Location.name);
+    this.eventsQuery = 'tribe';
+    this.getEvents();
+  }
   getJams(){
     this.eventsQuery = 'Jam';
     this.getEvents();
