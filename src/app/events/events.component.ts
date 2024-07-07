@@ -406,14 +406,14 @@ ${dateTime}`;
         this.setBackgroundImage(event, bgImagePath);
       }
       else if(!event.location){
-        this.setBackgroundImage(event, '../../assets/bora_bg_place.png')
+        this.setBackgroundImage(event, '../../assets/bora_bg_place.jpg')
       }
       else{
         //@ts-ignore
         const placesService = new google.maps.places.PlacesService(document.createElement('div'));
         placesService.findPlaceFromQuery({ query: event.location, fields: ['photos']}, (places: google.maps.places.PlaceResult[] | null, staus: google.maps.places.PlacesServiceStatus) =>{
           var eventBackgroundImage = document.querySelector(`#e${event.id} .background-image`);
-          let bgImage = '../../assets/bora_bg_place.png';
+          let bgImage = '../../assets/bora_bg_place.jpg';
           if(places && places.length && places[0].photos && places[0].photos.length){
             const photo = places[0].photos[0].getUrl();
             if(photo)
