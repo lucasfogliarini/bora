@@ -77,6 +77,7 @@
       <div id="event-when-time" *ngIf="chatState == 'when-time'" class="event-question card-title event-when">
         <h6>{{eventCreate.whenTime}}</h6>
           <button class="btn btn-dark m-1" (click)="updateWhenTime(num)" *ngFor="let num of whenTimes">{{ num }}h</button>
+          <button class="btn btn-white m-1" (click)="updateWhenTime(17)">Tanto faz</button>
       </div>
     </div>
 </div>
