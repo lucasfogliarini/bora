@@ -16,7 +16,7 @@ export class NavMenuComponent {
   news?: string = undefined;
   partners: Account[] = [];
   partnersContent = '';
-  partnerActivityDays: number = -10;
+  partnerActivityDays: number = -30;
   partnerCalendarAuthorized = false;
   isPartner = this.authService.getAccount()?.isPartner;
   togglePartnershipText = this.isPartner ? 'Desativar' : 'Ativar';
