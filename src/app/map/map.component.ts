@@ -117,11 +117,12 @@ export class MapComponent {
           <br/>
           <br/>
           <ul style='list-style-type: none; padding: 0'>
-            <li><a href='/lucasfogliarini'>🎭 Shows, Teatros e Festivais (em Porto Alegre e região)</li>
+            <li><a href='/lucasfogliarini'>🎭 Shows, Teatros e Festivais</a> (em Porto Alegre e região)</li>
+            <li><a href='/lucasfogliarini?find=🥳'>🥳 Bora Celebrar</a> (aniversários)</li>
             <li><a href='/lucasfogliarini?find=Jam'>🎼 Bora Jam</a> (música e dança)</li>
             <li><a href='/lucasfogliarini?find=timeleft'>🤔 Bora Timeleft</a> (encontro com desconhecidos)</li>
             <li><a href='/lucasfogliarini?find=Bola'>⚽ Bora Bola</a> (futebol nos parques)</li>
-            <li><a href='/lucasfogliarini?find=xadrez'>♟️ Bora Xadrezinho</a> (todos ratings)</li>
+            <li><a href='/lucasfogliarini?find=xadrez'>♟️ Bora Xadrez</a> (todos ratings)</li>
             <li><a href='/lucasfogliarini?find=jogatina'>🃏 Bora Jogatina</a> (Poker e The Resistence)</li>
             <li><a href='/lucasfogliarini?find=tribe'>🥽 Bora Tribe DJ 🎧</a> (festa virtual)</li>
           <ul>
