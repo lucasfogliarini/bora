@@ -117,7 +117,7 @@ export class MapComponent {
           <br/>
           <br/>
           <ul style='list-style-type: none; padding: 0'>
-            <li><a href='/lucasfogliarini?hasTicket=true'>🎭 Shows, Teatros e Festivais</a> (em Porto Alegre e região)</li>
+            <li><a href='/lucasfogliarini?withTicket=true'>🎭 Shows, Teatros e Festivais</a> (em Porto Alegre e região)</li>
             <li><a href='/lucasfogliarini?find=banquete'>🍖 Bora Banquete</a> (banquete entre amigos)</li>
             <li><a href='/lucasfogliarini?find=camarote'>🍾 Bora Camarote</a> (camarotes em festas)</li>
             <li><a href='/lucasfogliarini?find=Jam'>🎼 Bora Jam</a> (festas privadas)</li>

@@ -19,6 +19,7 @@ import { DatePipe } from '@angular/common';
 export class EventsComponent {
   env = environment;
   eventsQuery?: string;
+  eventsWithTicket: boolean = false;
   events?: Event[] = [];
   replied: boolean = false;
 
@@ -31,6 +32,7 @@ export class EventsComponent {
               private datePipe: DatePipe,
               private title: Title) {
               this.eventsQuery = this.activeRoute.snapshot.queryParams['find'];
+              this.eventsWithTicket = this.activeRoute.snapshot.queryParams['withTicket'];
               this.getEvents();
   }
   getUser(){
@@ -71,12 +73,16 @@ export class EventsComponent {
     this.eventsQuery = 'Jam';
     this.getEvents();
   }
-  getEvents(hasTicket?: boolean){
+  getEventsWithTicket(){
+    this.eventsWithTicket = true;
+    this.getEvents();
+  }
+  getEvents(){
     this.events = [];
     let user = this.getUser();
     const query = this.eventsQuery ?? '';
     const timeMax = query == undefined ? this.getTimeMax() : this.getTimeMax(12);
-    var eventsUri = `events?user=${user}&query=${query}&hasTicket=${hasTicket ?? false}&timeMax=${timeMax}`;
+    var eventsUri = `events?user=${user}&query=${query}&hasTicket=${this.eventsWithTicket}&timeMax=${timeMax}`;
     this.boraApiService.get<Event[]>(eventsUri, (eventsLoaded: Event[]) => {
       if(!eventsLoaded.length){
         this.events = undefined;
