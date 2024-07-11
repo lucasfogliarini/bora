@@ -127,6 +127,7 @@ export class MapComponent {
             <li><a href='/lucasfogliarini?find=xadrez'>♟️ Bora Xadrez</a> (todos ratings)</li>
             <li><a href='/lucasfogliarini?find=Bola'>⚽ Bora Bola</a> (futebol nos parques)</li>
             <li><a href='/lucasfogliarini?find=tribe'>🥽 Bora Tribe DJ 🎧</a> (festa virtual)</li>
+            <li><a href='/lucasfogliarini?find=chess'>🥽 Bora Chess Club</a> (xadrezinho virtual)</li>
           <ul>
           <br/>
         </div>
