@@ -68,10 +68,10 @@ export class MapComponent {
           content: `
             <div>
               <h5 class='text-center'>Bora.Work</h5>
-              <h6 class='text-center'>Capacitando tecnologistas para as melhores soluções tecnológicas do mercado</h6>
+              <h6 class='text-center'>Capacitando Engenheiros e Tecnologistas para as melhores soluções do mercado.</h6>
               <br/>
               <nav class="text-center">
-                <a class='btn btn-dark' href="/bora.work">Encontros de Tecnologia</a>
+                <a class='btn btn-dark' href="/bora.work">Encontros</a>
                 <a class='btn btn-white btn-outline-secondary' href="${featuredPartner.username}">
                   ${featuredPartner.name} <small style='font-size: xx-small'>(${featuredPartner.accountability})</small>
                 </a>
