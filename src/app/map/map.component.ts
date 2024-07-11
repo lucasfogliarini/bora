@@ -49,7 +49,7 @@ export class MapComponent {
                 else if(partnerId == 2)
                   this.openBoraSocial(marker, place);
               });
-              if(window.location.hostname == 'bora.work')
+              if(window.location.hostname != 'bora.work')
                 this.openBoraWork(marker, place);
               else
                 this.openBoraSocial(marker, place);
@@ -68,7 +68,7 @@ export class MapComponent {
           content: `
             <div>
               <h5 class='text-center'>Bora.Work</h5>
-              <h6 class='text-center'>Capacitando Engenheiros e Tecnologistas para as melhores soluções do mercado.</h6>
+              <h6 class='text-center'>Capacitando Profissionais para as melhores soluções do mercado.</h6>
               <br/>
               <nav class="text-center">
                 <a class='btn btn-dark' href="/bora.work">Encontros</a>
@@ -78,7 +78,13 @@ export class MapComponent {
               </nav>
               <br/>
               <p>
-                <b>bora.work</b> é uma plataforma de <b><a target='_blank' href='/bora.work'>Consultoria de TI</a></b> e <b>Parcerias</b> que facilita o <b>entendimento</b>, <b>arquitetura</b>, <b>desenvolvimento</b> e <b>testes</b> de <b>projetos inovadores de tecnologia</b> com <b>qualidade</b>, além de tudo isso, também <b>realiza</b> diversos <b><a target='_blank' href='/bora.work'>encontros</a></b>, incluindo <b><a target='_blank' href='/bora.work?find=tech'>encontros de tecnologia (Bora Tech)</a>, palestras, workshops, cursos e o <a target='_blank' href='/bora.work?find=Bora Parceiros'>Bora Parceiros!</a></b> para <b>expandir o networking</b> e <b>discutir gestão e liderança</b>.
+                <b>Bora.work</b> é uma <b>Academia</b> de <b>profissionais</b> <a target='_blank' href='/bora.work?find=Bora Parceiros'>Parceiros</a> e de <a target='_blank' href='/bora.work?find=tech'>Tecnologia.</a>
+                <br />
+                O propósito dessa Academia é capacitar profissionais de tecnologia para expandir a nossa <a target='_blank' href='/bora.work'>Consultoria de TI</a></b> e continuar realizando o <b>entendimento</b>, <b>arquitetura</b>, <b>desenvolvimento</b> e <b>testes</b> de <b>projetos inovadores de tecnologia</b> com <b>qualidade.</b>
+                <br/>
+                <br/>
+                Com frequência participamos de <a target='_blank' href='/bora.work?withTicket=true'>palestras, workshops e cursos presenciais</a> de diversos produtores para <b>expandir o networking</b> e <b>discutir gestão e liderança</b>.
+                <br/>
                 <br/>
                 Atuamos em diversos locais, como <b>coworkings, casas, restaurantes e plataformas digitais (Google Meet, Discord e WhatsApp)</b>. Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis. Junte-se a nós e descubra como <b>transformar suas ideias em realidade.</b>
               </p>              
