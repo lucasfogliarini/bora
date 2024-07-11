@@ -40,7 +40,7 @@ export class EventsComponent {
   }
   eventMessage(){
     if(this.events == undefined)
-      return 'Nenhum evento público encontrado. Clique em refresh para recarregar todos os eventos e limpar os filtros.'
+      return 'Nenhum evento público encontrado. Clique em refresh 🔁 para recarregar todos os eventos e limpar os filtros.'
     else if(this.events.length == 0)
       return 'Carregando eventos ...';
     else
@@ -112,6 +112,7 @@ export class EventsComponent {
   refreshEvents(){
     this.events = undefined;
     this.eventsQuery = undefined;
+    this.eventsWithTicket = undefined;
     this.getEvents();
   }
   fullDateTime(event: Event){
