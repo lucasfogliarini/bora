@@ -107,23 +107,25 @@ export class MapComponent {
       content: `
         <div>
           <h5 class='text-center'>Bora Social</h5>
-          <h6 class='text-center'>Produtora de eventos presenciais e virtuais em Porto Alegre e região</h6>         
+          <h6 class='text-center'>Organizadora de eventos presenciais e virtuais em Porto Alegre e região</h6>         
           <nav class="text-center">
-          <a class='btn btn-dark' target='_blank' href="/lucasfogliarini?find=tribe">🎧 Bora Tribe DJ?</a>
+          <a class='btn btn-dark' target='_blank' href="/lucasfogliarini?find=banquete">🍾 Bora Banquete? 🍖</a>
             <a class='btn btn-white btn-outline-secondary' href="/lucasfogliarini">Encontros</a>
           </nav>
           <br/>
-          <b>bora.social</b> é uma produtora de eventos presenciais em Porto Alegre e região. E também um <a target='_blank' href='https://www.instagram.com/borasocial'>Pod Cast</a> que cria conteúdos com o Oculus 🥽
+          <b>bora.social</b> é uma organizadora de eventos presenciais em Porto Alegre e região. E também um <a target='_blank' href='https://www.instagram.com/borasocial'>Pod Cast</a> que cria conteúdos com o Oculus 🥽
           <br/>
           <br/>
           <ul style='list-style-type: none; padding: 0'>
-            <li><a href='/lucasfogliarini'>🎭 Shows, Teatros e Festivais</a> (em Porto Alegre e região)</li>
+            <li><a href='/lucasfogliarini?hasTicket=true'>🎭 Shows, Teatros e Festivais</a> (em Porto Alegre e região)</li>
+            <li><a href='/lucasfogliarini?find=banquete'>🍖 Bora Banquete</a> (banquete entre amigos)</li>
+            <li><a href='/lucasfogliarini?find=camarote'>🍾 Bora Camarote</a> (camarotes em festas)</li>
+            <li><a href='/lucasfogliarini?find=Jam'>🎼 Bora Jam</a> (festas privadas)</li>
             <li><a href='/lucasfogliarini?find=🥳'>🥳 Bora Celebrar</a> (aniversários)</li>
-            <li><a href='/lucasfogliarini?find=Jam'>🎼 Bora Jam</a> (música e dança)</li>
             <li><a href='/lucasfogliarini?find=timeleft'>🤔 Bora Timeleft</a> (encontro com desconhecidos)</li>
-            <li><a href='/lucasfogliarini?find=Bola'>⚽ Bora Bola</a> (futebol nos parques)</li>
-            <li><a href='/lucasfogliarini?find=xadrez'>♟️ Bora Xadrez</a> (todos ratings)</li>
             <li><a href='/lucasfogliarini?find=jogatina'>🃏 Bora Jogatina</a> (Poker e The Resistence)</li>
+            <li><a href='/lucasfogliarini?find=xadrez'>♟️ Bora Xadrez</a> (todos ratings)</li>
+            <li><a href='/lucasfogliarini?find=Bola'>⚽ Bora Bola</a> (futebol nos parques)</li>
             <li><a href='/lucasfogliarini?find=tribe'>🥽 Bora Tribe DJ 🎧</a> (festa virtual)</li>
           <ul>
           <br/>
