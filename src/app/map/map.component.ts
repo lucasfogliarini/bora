@@ -113,7 +113,7 @@ export class MapComponent {
             <a class='btn btn-white btn-outline-secondary' href="/lucasfogliarini">Encontros</a>
           </nav>
           <br/>
-          <b>bora.social</b> é uma organizadora de eventos presenciais em Porto Alegre e região. E também um <a target='_blank' href='https://www.instagram.com/borasocial'>Pod Cast</a> que cria conteúdos com o Oculus 🥽
+          <b>bora.social</b> é uma organizadora de eventos presenciais em Porto Alegre e região. E também um <a target='_blank' href='https://www.youtube.com/@lucasfogliarini'>Pod Cast</a> que cria conteúdos com o Oculus 🥽
           <br/>
           <br/>
           <ul style='list-style-type: none; padding: 0'>
