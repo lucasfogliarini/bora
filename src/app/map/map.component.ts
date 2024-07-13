@@ -51,7 +51,7 @@ export class MapComponent {
                 else if(partnerId == 2)
                   this.openBoraSocial(marker, place);
               });
-              if(window.location.hostname != 'bora.work')
+              if(['bora.work','localhost'].includes(window.location.hostname))
                 this.openBoraWork(marker, place);
               else
                 this.openBoraSocial(marker, place);
