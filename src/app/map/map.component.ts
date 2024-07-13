@@ -12,11 +12,12 @@ export class MapComponent {
   markers: Marker[] = [];
   poa: google.maps.LatLngLiteral = { lat: -30.0346, lng: -51.2177 };// Coordenadas para Porto Alegre, Brasil
   boraWork: google.maps.LatLngLiteral = { lat: -30.0540572, lng: -51.1477079 };// Coordenadas para Porto Alegre, Brasil
+  pucCarreiras: google.maps.LatLngLiteral = { lat: -30.0446776, lng: -51.218274 };// Coordenadas para Porto Alegre, Brasil
   center: google.maps.LatLngLiteral = this.boraWork;
 
   mapOptions: google.maps.MapOptions = {
-    center: this.boraWork,
-    zoom: 7,
+    center: this.pucCarreiras,
+    zoom: 12,
     mapTypeId: google.maps.MapTypeId.SATELLITE,
     disableDefaultUI: false,
     fullscreenControl: false,
@@ -30,7 +31,8 @@ export class MapComponent {
     if(this.googleMap){
       var placesService = new google.maps.places.PlacesService(this.googleMap.googleMap!);
       var request = {
-          query: 'bora.work, Porto Alegre, Brazil',
+          //query: 'bora.work, Porto Alegre, Brazil',
+          query: 'PUC Carreiras, Porto Alegre, Brazil',
           fields: ['place_id', 'geometry', 'name']
       };
 
@@ -98,7 +100,7 @@ export class MapComponent {
                 <small>A maioria dos encontros presenciais são em Porto Alegre no</small>
                 <br />
                 <br />
-                <a class='btn btn-white btn-outline-secondary' target='_blank' href='https://www.google.com/maps/search/?api=1&query=bora.work, Porto Alegre'>Bora Work <small>(presencial)</small></a>
+                <a class='btn btn-white btn-outline-secondary' target='_blank' href='https://www.google.com/maps/search/?api=1&query=PUC Carreiras, Porto Alegre'>Ágora <small>(PUC Carreiras)</small></a>
                 <br />
                 ⬇️
               </div>
