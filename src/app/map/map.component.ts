@@ -49,7 +49,7 @@ export class MapComponent {
                 else if(partnerId == 2)
                   this.openBoraSocial(marker, place);
               });
-              if(window.location.hostname == 'bora.work')
+              if(window.location.hostname != 'bora.work')
                 this.openBoraWork(marker, place);
               else
                 this.openBoraSocial(marker, place);
@@ -80,13 +80,16 @@ export class MapComponent {
               <p>
                 <b>Bora.work</b> é uma <b>Academia</b> de <b>profissionais</b> <a target='_blank' href='/bora.work?find=Bora Parceiros'>Parceiros</a> e de <a target='_blank' href='/bora.work?find=tech'>Tecnologia.</a>
                 <br />
-                O propósito dessa Academia é capacitar profissionais de tecnologia para expandir a nossa <a target='_blank' href='/bora.work'>Consultoria de TI</a></b> e continuar realizando o <b>entendimento</b>, <b>arquitetura</b>, <b>desenvolvimento</b> e <b>testes</b> de <b>projetos inovadores de tecnologia</b> com <b>qualidade.</b>
+                O propósito desta Academia é reunir e capacitar profissionais, expandindo nosso time <b>operacional</b> e de <b>liderança</b>, para continuar a <b><a target='_blank' href='https://bora.social'>produção de aplicativos inovadores</a></b> e a <b>organização de reuniões de qualquer natureza: palestras, cursos, workshops, reuniões de negócio, ...</b>
                 <br/>
                 <br/>
                 Com frequência participamos de <a target='_blank' href='/bora.work?withTicket=true'>palestras, workshops e cursos presenciais</a> de diversos produtores para <b>expandir o networking</b> e <b>discutir gestão e liderança</b>.
                 <br/>
                 <br/>
-                Atuamos em diversos locais, como <b>coworkings, casas, restaurantes e plataformas digitais (Google Meet, Discord e WhatsApp)</b>. Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis. Junte-se a nós e descubra como <b>transformar suas ideias em realidade.</b>
+                Atuamos em diversos locais, como <b>Universidades (PUCRS e Unisinos), coworkings, casas, restaurantes e plataformas digitais (<a target='_blank' href='https://meet.google.com'>Google Meet</a>, <a target='_blank' href='https://horizon.meta.com/profile/lucasfogliarini/'>Metaverso</a>, <a target='_blank' href='https://discord.gg/Yf4TCsSTG5'>Discord</a>, <a target='_blank' href='https://chat.whatsapp.com/I7ggwNVQp6I2yWCgMC9Evs'>WhatsApp</a>, <a target='_blank' href='https://www.linkedin.com/in/lucasfogliarini/'>Linkedin</a> e <a target='_blank' href='https://vamo.atlassian.net/jira/software/projects/BORA/boards/1/timeline'>Jira</a>)</b>.
+                <br/>
+                <br/>
+                Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis. Junte-se a nós e descubra como <b>transformar suas ideias em realidade.</b>
               </p>              
               <div class='text-center'>
                 <a target='_blank' role='button' href='https://chatgpt.com/share/c800bc1d-0a92-4a76-9fae-5439353bf023' class='btn btn-white btn-outline-secondary' >ChatGPT sobre o bora.work</a>
