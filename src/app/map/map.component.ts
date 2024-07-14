@@ -51,7 +51,7 @@ export class MapComponent {
                 else if(partnerId == 2)
                   this.openBoraSocial(marker, place);
               });
-              if(['bora.work','localhost'].includes(window.location.hostname))
+              if(!['bora.work','localhost'].includes(window.location.hostname))
                 this.openBoraWork(marker, place);
               else
                 this.openBoraSocial(marker, place);
@@ -121,13 +121,20 @@ export class MapComponent {
       content: `
         <div>
           <h5 class='text-center'>Bora Social</h5>
-          <h6 class='text-center'>Organizadora de eventos presenciais e virtuais em Porto Alegre e região</h6>         
+          <h6 class='text-center'>Organizadora de eventos presenciais e virtuais em Porto Alegre e região</h6>
+          <br/>
           <nav class="text-center">
-          <a class='btn btn-dark' target='_blank' href="/lucasfogliarini?find=banquete">🍾 Bora Banquete? 🍖</a>
+            <a class='btn btn-dark' target='_blank' href="/lucasfogliarini?find=banquete">🍾 Bora Banquete? 🍖</a>
             <a class='btn btn-white btn-outline-secondary' href="/lucasfogliarini">Encontros</a>
           </nav>
           <br/>
-          <b>bora.social</b> é uma organizadora de eventos presenciais em Porto Alegre e região. E também um <a target='_blank' href='https://www.youtube.com/@lucasfogliarini'>Pod Cast</a> que cria conteúdos com o Oculus 🥽
+          O <b>bora.social</b> é uma <b>organizadora de eventos presenciais e virtuais em Porto Alegre e região.</b>
+          <br/>
+          <br/>
+          E também um <a target='_blank' href='https://www.youtube.com/@lucasfogliarini'>Pod Cast</a> que cria conteúdos com o <b>Oculus</b> 🥽
+          <br/>
+          <br/>
+          E além, é uma <b>organização de encontros de estrelas e lendas do entretenimento ...</b>
           <br/>
           <br/>
           <ul style='list-style-type: none; padding: 0'>
