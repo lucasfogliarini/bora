@@ -15,22 +15,23 @@
           <li *ngIf="account.github" title="github.com/">
             <a class="nav-link" target="_blank" href="https://github.com/{{account.github}}" role="button"><fa-icon [icon]="['fab','github']"></fa-icon></a>
           </li>
-          <li *ngIf="account.tribe" title="live.tribexr.com/">
-            <a class="nav-link" target="_blank" href="https://live.tribexr.com/{{account.tribe}}" role="button"><fa-icon [icon]="['fas','headset']"></fa-icon></a>
-          </li>
           <li *ngIf="account.horizonMeta" title="horizon.meta.com/profile/">
             <a class="nav-link" target="_blank" href="https://horizon.meta.com/profile/{{account.horizonMeta}}" role="button"><fa-icon [icon]="['fas','mask']"></fa-icon></a>
+          </li>
+          <li *ngIf="account.youTube" title="youtube.com">
+            <a class="nav-link" target="_blank" href="https://www.youtube.com/{{account.youTube}}" role="button"><fa-icon [icon]="['fab','youtube']"></fa-icon></a>
           </li>
           <li *ngIf="account.chess" title="chess.com/member/">
             <a class="nav-link" target="_blank" href="https://chess.com/member/{{account.chess}}" role="button"><fa-icon [icon]="['fas','chess-knight']"></fa-icon></a>
           </li>
           <!--
+          <li *ngIf="account.tribe" title="live.tribexr.com/">
+            <a class="nav-link" target="_blank" href="https://live.tribexr.com/{{account.tribe}}" role="button"><fa-icon [icon]="['fas','headset']"></fa-icon></a>
+          </li>
           <li *ngIf="account.spotify" title="spotify.com/user/">
             <a class="nav-link" target="_blank" href="https://open.spotify.com/user/{{account.spotify}}" role="button"><fa-icon [icon]="['fab','spotify']"></fa-icon></a>
           </li>
-          <li *ngIf="account.youTube" title="youtube.com">
-            <a class="nav-link" target="_blank" href="https://www.youtube.com/{{account.youTube}}" role="button"><fa-icon [icon]="['fab','youtube']"></fa-icon></a>
-          </li>-->
+          -->
         </ul>
       </nav>
       <h3 *ngIf="!account">Usuário não encontrado</h3>
