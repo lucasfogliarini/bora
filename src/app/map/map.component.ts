@@ -85,9 +85,6 @@ export class MapComponent {
                 O propósito desta Academia é reunir e capacitar profissionais, expandindo nosso time <b>operacional</b> e de <b>liderança</b>, para continuar a <b><a target='_blank' href='https://bora.social'>produção de aplicativos inovadores</a></b> e a <b>organização de reuniões de qualquer natureza: palestras, cursos, workshops, reuniões de negócio, ...</b>
                 <br/>
                 <br/>
-                Com frequência participamos de <a target='_blank' href='/bora.work?withTicket=true'>palestras, workshops e cursos presenciais</a> de diversos produtores para <b>expandir o networking</b> e <b>discutir gestão e liderança</b>.
-                <br/>
-                <br/>
                 Atuamos em diversos locais, como <b>Universidades (PUCRS e Unisinos), coworkings, casas, restaurantes e plataformas digitais (<a target='_blank' href='https://meet.google.com'>Google Meet</a>, <a target='_blank' href='https://horizon.meta.com/profile/lucasfogliarini/'>Metaverso</a>, <a target='_blank' href='https://discord.gg/Yf4TCsSTG5'>Discord</a>, <a target='_blank' href='https://chat.whatsapp.com/I7ggwNVQp6I2yWCgMC9Evs'>WhatsApp</a>, <a target='_blank' href='https://www.linkedin.com/in/lucasfogliarini/'>Linkedin</a> e <a target='_blank' href='https://vamo.atlassian.net/jira/software/projects/BORA/boards/1/timeline'>Jira</a>)</b>.
                 <br/>
                 <br/>
@@ -95,6 +92,10 @@ export class MapComponent {
                 <br/>
                 <br/>
                 A <b>meta</b> é transformar os <b>valores, virtudes e inteligência da sociedade</b> para que ela se torne mais <b>respeitosa, justa, colaborativa e confiante</b>. Dessa forma, não teremos mais grandes problemas causados por <i>egoísmos, ódio, revoltas e até desastres naturais</i> que fazem tantas <b>crianças, idosos e até adultos</b> chorarem por <b>paz</b>.
+                <br/>
+                <br/>
+                Com frequência participamos de <a target='_blank' href='/bora.work?withTicket=true'>palestras, workshops e cursos presenciais</a> de diversos produtores para <b>expandir o networking</b> e <b>discutir gestão e liderança</b>.
+                <br/>
               </p>              
               <div class='text-center'>
                 <a target='_blank' role='button' href='https://chatgpt.com/share/c800bc1d-0a92-4a76-9fae-5439353bf023' class='btn btn-white btn-outline-secondary' >ChatGPT sobre o bora.work</a>
