@@ -120,10 +120,10 @@
               (cancel)="privateEvent(event)"
               role="button">
               <div id="date-start">{{transformDate(event.start!)}}</div>
-              <div id="date-end" [hidden]="!isHappening(event)">{{transformDate(event.end!)}}</div>
-              <div id="dayOfWeek" [hidden]="isHappening(event)">{{transformDateEE(event)}}</div>              
+              <div id="date-end" [hidden]="!isHappening(event.start!)">até {{transformDate(event.end!)}}</div>
+              <div id="dayOfWeek" [hidden]="isHappening(event.start!)">{{transformDateEE(event)}}</div>              
           </div>
-          <div id="event-time" [hidden]="isHappening(event)">
+          <div id="event-time" [hidden]="isHappening(event.start!)">
             <small id="event-start">{{transformTime(event.start!)}}</small>
             <br />
             
@@ -134,7 +134,7 @@
           <div id="event-title">{{ event.title?.substring(0, 100) }}</div>
           <small id="event-description">{{ event.description?.substring(0, 100) }}</small>
           <br />
-          <div [hidden]="isHappening(event)" id="event-where">
+          <div [hidden]="isHappening(event.start!)" id="event-where">
             <small id="event-where-public" [hidden]="!event.public" style="font-size: xx-small;"><b>Onde? {{getLocation(event, 40)}}</b></small>
             <small id="event-where-private" [hidden]="event.public" style="font-size: xx-small;"><b>Onde? Só o bora sabe!</b></small>
           </div>

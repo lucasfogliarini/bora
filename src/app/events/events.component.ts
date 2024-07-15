@@ -103,10 +103,10 @@ export class EventsComponent {
         this.events = undefined;
     });
   }
-  isHappening(event: Event): boolean {
+  isHappening(date: Date): boolean {
     const now = new Date();
-    if (event.start && event.end) {
-        const isHappening = now >= new Date(event.start);
+    if (date) {
+        const isHappening = now >= new Date(date);
         return isHappening;
     }
     return false;
@@ -138,7 +138,9 @@ export class EventsComponent {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
 
-    if(this.isNow(date))
+    if(this.isHappening(date))
+      return 'Acontecendo';
+    else if(this.isNow(date))
       return 'Agora';
     else if(date.toDateString() == today.toDateString())
       return 'Hoje';
