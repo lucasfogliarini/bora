@@ -65,7 +65,7 @@ export class MapComponent {
     const calendarAuthorized = true;
     this.boraApiService.getPartners(calendarAuthorized, -30, (partners=>{
       if(partners){
-        const partnersNotDirectors = partners.filter(p=>p.username != 'bora.work' && p.username != 'lucasfogliarini');
+        const partnersNotDirectors = partners.filter(p=>p.username != 'bora.work');
         const featuredPartner = partnersNotDirectors.length ? partnersNotDirectors[0] : partners[1];
         const infoWindow = new google.maps.InfoWindow({
           content: `
