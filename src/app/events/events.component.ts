@@ -103,6 +103,14 @@ export class EventsComponent {
         this.events = undefined;
     });
   }
+  isHappening(event: Event): boolean {
+    const now = new Date();
+    if (event.start && event.end) {
+        const isHappening = now >= new Date(event.start);
+        return isHappening;
+    }
+    return false;
+}
   privateEvent(event: Event){
     const eventPrivate = new Event();
     eventPrivate.public = false;
@@ -118,26 +126,26 @@ export class EventsComponent {
     this.getEvents();
   }
   fullDateTime(event: Event){
-    return `${this.transformDate(event)}, ${this.transformDateEE(event)} das ${this.transformTime(event.start!)} até ${this.transformTime(event.end!)}`;
+    return `${this.transformDate(event.start!)}, ${this.transformDateEE(event)} das ${this.transformTime(event.start!)} até ${this.transformTime(event.end!)}`;
   }
   isDay(eventTime: Date){
     const eventStart = new Date(eventTime);
     return eventStart.getHours() >= 6 && eventStart.getHours() < 18;
   }
-  transformDate(event: Event){
-    const eventStart = new Date(event.start!);
+  transformDate(date: Date){
+    date = new Date(date);
     const today = new Date();
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
 
-    if(this.isNow(eventStart))
+    if(this.isNow(date))
       return 'Agora';
-    else if(eventStart.toDateString() == today.toDateString())
+    else if(date.toDateString() == today.toDateString())
       return 'Hoje';
-      else if(eventStart.toDateString() == tomorrow.toDateString())
+      else if(date.toDateString() == tomorrow.toDateString())
       return 'Amanhã';
     else
-      return this.datePipe.transform(event.start, 'dd/MM/yy');
+      return this.datePipe.transform(date, 'dd/MM/yy');
   }
   isNow(date: Date){
     const now = new Date();

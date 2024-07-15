@@ -118,19 +118,26 @@
               cancelText="Privar"
               (confirm)="openCalendar(event)"
               (cancel)="privateEvent(event)"
-              role="button">{{transformDate(event)}} <br /> {{ transformDateEE(event) }}
+              role="button">
+              <div id="date-start">{{transformDate(event.start!)}}</div>
+              <div id="date-end" [hidden]="!isHappening(event)">{{transformDate(event.end!)}}</div>
+              <div id="dayOfWeek" [hidden]="isHappening(event)">{{transformDateEE(event)}}</div>              
           </div>
-          <small>{{transformTime(event.start!)}}</small>
-          <br />
-          
-          <small style="font-size: xx-small;">{{formatTimeInterval(event)}} {{transformTime(event.end!)}}</small>
+          <div id="event-time" [hidden]="isHappening(event)">
+            <small id="event-start">{{transformTime(event.start!)}}</small>
+            <br />
+            
+            <small id="event-start" style="font-size: xx-small;">{{formatTimeInterval(event)}} {{transformTime(event.end!)}}</small>
+          </div>
         </div>
         <div class="title col-7">
-          <div>{{ event.title?.substring(0, 100) }}</div>
-          <small>{{ event.description?.substring(0, 100) }}</small>
+          <div id="event-title">{{ event.title?.substring(0, 100) }}</div>
+          <small id="event-description">{{ event.description?.substring(0, 100) }}</small>
           <br />
-          <small [hidden]="!event.public" style="font-size: xx-small;"><b>Onde? {{getLocation(event, 40)}}</b></small>
-          <small [hidden]="event.public" style="font-size: xx-small;"><b>Onde? Só o bora sabe!</b></small>
+          <div [hidden]="isHappening(event)" id="event-where">
+            <small id="event-where-public" [hidden]="!event.public" style="font-size: xx-small;"><b>Onde? {{getLocation(event, 40)}}</b></small>
+            <small id="event-where-private" [hidden]="event.public" style="font-size: xx-small;"><b>Onde? Só o bora sabe!</b></small>
+          </div>
         </div>
         <div *ngIf="!event.expanded" class="event-buttons-collapsed col-1 mt-2">
           <fa-icon [icon]="['fas', 'people-group']" class="col-12"></fa-icon>
