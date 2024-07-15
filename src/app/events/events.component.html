@@ -120,7 +120,6 @@
               (cancel)="privateEvent(event)"
               role="button">
               <div id="date-start">{{transformDate(event.start!)}}</div>
-              <div id="date-end" [hidden]="!isHappening(event.start!)">até {{transformDate(event.end!)}}</div>
               <div id="dayOfWeek" [hidden]="isHappening(event.start!)">{{transformDateEE(event)}}</div>              
           </div>
           <div id="event-time" [hidden]="isHappening(event.start!)">
