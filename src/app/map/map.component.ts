@@ -70,7 +70,7 @@ export class MapComponent {
           content: `
             <div>
               <h5 class='text-center'>Bora.Work</h5>
-              <h6 class='text-center'>Capacitando Profissionais para as melhores soluções do mercado.</h6>
+              <h6 class='text-center'>Reunindo profissionais para as melhores soluções da socidade.</h6>
               <br/>
               <nav class="text-center">
                 <a class='btn btn-dark' href="/bora.work">Encontros</a>
@@ -82,16 +82,20 @@ export class MapComponent {
               <p>
                 <b>Bora.work</b> é uma <b>Academia</b> de <b>profissionais</b> <a target='_blank' href='/bora.work?find=Bora Parceiros'>Parceiros</a> e de <a target='_blank' href='/bora.work?find=tech'>Tecnologia.</a>
                 <br />
-                O propósito desta Academia é reunir e capacitar profissionais, expandindo nosso time <b>operacional</b> e de <b>liderança</b>, para continuar a <b><a target='_blank' href='https://bora.social'>produção de aplicativos inovadores</a></b> e a <b>organização de reuniões de qualquer natureza: palestras, cursos, workshops, reuniões de negócio, ...</b>
+                <br />
+                Nosso propósito é reunir e capacitar profissionais, expandindo nossa equipe <b>operacional</b> e de <b>liderança</b> para continuar a <b><a target='_blank' href='https://bora.social'>produção de aplicativos inovadores</a></b> e a <b>organização de eventos de qualquer natureza, como palestras, cursos, workshops e reuniões de negócios.</b>
                 <br/>
                 <br/>
-                Atuamos em diversos locais, como <b>Universidades (PUCRS e Unisinos), coworkings, casas, restaurantes e plataformas digitais (<a target='_blank' href='https://meet.google.com'>Google Meet</a>, <a target='_blank' href='https://horizon.meta.com/profile/lucasfogliarini/'>Metaverso</a>, <a target='_blank' href='https://discord.gg/Yf4TCsSTG5'>Discord</a>, <a target='_blank' href='https://chat.whatsapp.com/I7ggwNVQp6I2yWCgMC9Evs'>WhatsApp</a>, <a target='_blank' href='https://www.linkedin.com/in/lucasfogliarini/'>Linkedin</a> e <a target='_blank' href='https://vamo.atlassian.net/jira/software/projects/BORA/boards/1/timeline'>Jira</a>)</b>.
-                <br/>
-                <br/>
-                Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis. Junte-se a nós e descubra como <b>transformar suas ideias em realidade.</b>
+                Atuamos em <b>diversos locais</b>, incluindo <b>universidades (PUCRS e Unisinos), empresas, coworkings, casas, restaurantes e plataformas digitais (<a target='_blank' href='https://meet.google.com'>Google Meet</a>, <a target='_blank' href='https://horizon.meta.com/profile/lucasfogliarini/'>Metaverso</a>, <a target='_blank' href='https://discord.gg/Yf4TCsSTG5'>Discord</a>, <a target='_blank' href='https://chat.whatsapp.com/I7ggwNVQp6I2yWCgMC9Evs'>WhatsApp</a>, <a target='_blank' href='https://www.linkedin.com/in/lucasfogliarini/'>Linkedin</a> e <a target='_blank' href='https://vamo.atlassian.net/jira/software/projects/BORA/boards/1/timeline'>Jira</a>)</b>.
                 <br/>
                 <br/>
                 A <b>meta</b> é transformar os <b>valores, virtudes e inteligência da sociedade</b> para que ela se torne mais <b>respeitosa, justa, colaborativa e confiante</b>. Dessa forma, não teremos mais grandes problemas causados por <i>egoísmos, ódio, revoltas e até desastres naturais</i> que fazem tantas <b>crianças, idosos e até adultos</b> chorarem por <b>paz</b>.
+                <br/>
+                <br/>
+                Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis.
+                <br/>
+                <br/>
+                Junte-se a nós e descubra como <b>transformar suas ideias em realidade.</b>
                 <br/>
                 <br/>
                 Com frequência participamos de <a target='_blank' href='/bora.work?withTicket=true'>palestras, workshops e cursos presenciais</a> de diversos produtores para <b>expandir o networking</b> e <b>discutir gestão e liderança</b>.
