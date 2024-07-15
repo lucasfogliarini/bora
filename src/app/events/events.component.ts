@@ -312,8 +312,9 @@ Adquira o seu ingresso:
 ${event.ticketUrl}` : '';
 
     let inviteConference = '';
-    let inviteText = `Encontro presencial, confirme presença no link abaixo e de o 'Bora!'
-Ou respondendo direto no meu WhatsApp particular.`;
+    let inviteText = `Encontro presencial, confirme presença no particular.`;
+    /*let inviteText = `Encontro presencial, confirme presença no link abaixo e de o 'Bora!'
+Ou respondendo direto no meu WhatsApp particular.`;*/
     if(this.conferenceOnLocation(event)){
       inviteConference = `Canal: ${event.conferenceUrl}\n`;
       inviteText = 'Encontro virtual, entre no canal acima e participe!';
