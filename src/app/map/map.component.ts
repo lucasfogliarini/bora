@@ -67,6 +67,7 @@ export class MapComponent {
       if(partners){
         const partnersNotDirectors = partners.filter(p=>p.username != 'bora.work');
         const featuredPartner = partnersNotDirectors.length ? partnersNotDirectors[0] : partners[1];
+        const featuredPartnerAccountability = `${featuredPartner.accountability ? featuredPartner.accountability?.split(' e ')[0] : ''}`;
         const infoWindow = new google.maps.InfoWindow({
           content: `
             <div>
@@ -76,7 +77,7 @@ export class MapComponent {
               <nav class="text-center">
                 <a class='btn btn-dark' href="/bora.work">Encontros</a>
                 <a class='btn btn-white btn-outline-secondary' href="${featuredPartner.username}">
-                  ${featuredPartner.name} <small style='font-size: xx-small'>(${featuredPartner.accountability})</small>
+                  ${featuredPartner.name} <small style='font-size: xx-small'>(${featuredPartnerAccountability})</small>
                 </a>
               </nav>
               <br/>
