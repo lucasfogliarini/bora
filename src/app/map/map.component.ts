@@ -95,7 +95,7 @@ export class MapComponent {
                 Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis.
                 <br/>
                 <br/>
-                Junte-se a nós e descubra como <b>transformar suas ideias em realidade.</b>
+                <b><a target='_blank' href='https://wa.me/5551992364249?text=Quero ser parceira(o) do Bora!'>Junte-se a nós</a></b> e descubra como <b>transformar suas ideias em realidade.</b>
                 <br/>
                 <br/>
                 Com frequência participamos de <a target='_blank' href='/bora.work?withTicket=true'>palestras, workshops e cursos presenciais</a> de diversos produtores para <b>expandir o networking</b> e <b>discutir gestão e liderança</b>.
