@@ -1,12 +1,12 @@
 <nav id="events-nav" class="row" style="border-bottom: 1px solid rgb(216, 208, 208)">
   <div class="col-9"></div>
   <input id="eventsQuery" (input)="getEvents()" [(ngModel)]="eventsQuery" type="text" placeholder="Encontre! 'tech', 'parceiros', 'bora', ..." class="ml-1 col-6" />
-  <fa-icon [hidden]="isBoraSocial()" (click)="getTech()" title="Tech" class="m-1 col-1" [icon]="['fas','mask']"></fa-icon>
-  <fa-icon [hidden]="isBoraSocial()" (click)="getParceiros()" title="Parceiros" class="m-1 col-1" [icon]="['fas','user-doctor']"></fa-icon>
-  <fa-icon [hidden]="!isBoraSocial()" (click)="getTribe()" title="Tribe" class="m-1 col-1" [icon]="['fas','headset']"></fa-icon>
-  <fa-icon [hidden]="!isBoraSocial()" (click)="getJams()" title="Jams" class="m-1 col-1" [icon]="['fas','record-vinyl']"></fa-icon>
-  <fa-icon (click)="getEventsWithTicket()" title="Eventos com ingresso" class="m-1 col-1" [icon]="['fas','ticket']"></fa-icon>
-  <fa-icon (click)="refreshEvents()" title="Todos os eventos" class="m-1 col-1" [icon]="['fas','arrows-rotate']"></fa-icon>
+  <fa-icon role="button" [hidden]="!isBoraWork()" (click)="getTech()" title="Tech" class="m-1 col-1" [icon]="['fas','mask']"></fa-icon>
+  <fa-icon role="button" [hidden]="!isBoraWork()" (click)="getParceiros()" title="Parceiros" class="m-1 col-1" [icon]="['fas','user-doctor']"></fa-icon>
+  <fa-icon role="button" [hidden]="isBoraWork()" (click)="getTribe()" title="Tribe" class="m-1 col-1" [icon]="['fas','headset']"></fa-icon>
+  <fa-icon role="button" [hidden]="isBoraWork()" (click)="getJams()" title="Jams" class="m-1 col-1" [icon]="['fas','record-vinyl']"></fa-icon>
+  <fa-icon role="button" (click)="getEventsWithTicket()" title="Eventos com ingresso" class="m-1 col-1" [icon]="['fas','ticket']"></fa-icon>
+  <fa-icon role="button" (click)="refreshEvents()" title="Todos os eventos" class="m-1 col-1" [icon]="['fas','arrows-rotate']"></fa-icon>
 </nav>
 <div *ngIf="eventMessage()" class="text-center m-2">
   <small>{{eventMessage()}}</small>

@@ -10,6 +10,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AttendeeReply } from '../models/attendee-reply.model';
 import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
+import { StaticMethods } from '../static-methods';
 
 @Component({
   selector: 'app-events',
@@ -54,8 +55,8 @@ export class EventsComponent {
     timeMax.setMonth(currentMonth + addMonths);
     return timeMax.toISOString();
   }
-  isBoraSocial(){
-    return window.location.hostname == 'bora.social';
+  isBoraWork(){
+    return StaticMethods.isBoraWork();
   }
   getParceiros(){
     this.eventsQuery = 'parceiros';
@@ -74,6 +75,7 @@ export class EventsComponent {
     this.getEvents();
   }
   getEventsWithTicket(){
+    this.eventsQuery = undefined;
     this.eventsWithTicket = true;
     this.getEvents();
   }

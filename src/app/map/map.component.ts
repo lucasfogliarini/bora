@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { GoogleMap } from '@angular/google-maps';
 import { BoraApiService } from '../bora-api.service';
+import { StaticMethods } from '../static-methods';
 
 @Component({
   selector: 'app-map',
@@ -51,7 +52,7 @@ export class MapComponent {
                 else if(partnerId == 2)
                   this.openBoraSocial(marker, place);
               });
-              if(['bora.work','localhost'].includes(window.location.hostname))
+              if(StaticMethods.isBoraWork())
                 this.openBoraWork(marker, place);
               else
                 this.openBoraSocial(marker, place);
