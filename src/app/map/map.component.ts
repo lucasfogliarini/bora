@@ -71,7 +71,7 @@ export class MapComponent {
           content: `
             <div>
               <h5 class='text-center'>Bora.Work</h5>
-              <h6 class='text-center'>Reunindo profissionais para as melhores soluções da socidade.</h6>
+              <h6 class='text-center'>Reunindo profissionais para as melhores soluções do mercado e sociedade.</h6>
               <br/>
               <nav class="text-center">
                 <a class='btn btn-dark' href="/bora.work">Encontros</a>
