@@ -139,9 +139,9 @@ export class EventsComponent {
     tomorrow.setDate(tomorrow.getDate() + 1);
 
     if(this.isHappening(date))
-      return 'Acontecendo';
-    else if(this.isNow(date))
       return 'Agora';
+    else if(this.isNow(date))
+      return 'Logo (10min)';
     else if(date.toDateString() == today.toDateString())
       return 'Hoje';
       else if(date.toDateString() == tomorrow.toDateString())
@@ -151,7 +151,7 @@ export class EventsComponent {
   }
   isNow(date: Date){
     const now = new Date();
-    date.setHours(date.getHours() - 1);
+    date.setHours(date.getHours() - 0.2);
     return date.getFullYear() == now.getFullYear()
            && date.getMonth() == now.getMonth()
            && date.getDate() == now.getDate()
