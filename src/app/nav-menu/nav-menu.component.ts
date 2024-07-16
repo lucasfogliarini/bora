@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { StaticMethods } from '../static-methods';
+import { Statics } from '../statics';
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from '../authentication.service';
 import { BoraApiService } from '../bora-api.service';
@@ -112,7 +112,7 @@ export class NavMenuComponent {
     return dateString;
   }
   boraUnderstand(){
-    const whatsAppLink = StaticMethods.generateLink(`Oi Lucas!
+    const whatsAppLink = Statics.generateLink(`Oi Lucas!
 Acessei ${environment.appDefiniteArticle} '${environment.appDomain}'
 e gostaria de saber mais informações sobre ${environment.appDefiniteArticle} ${environment.appName}!`, environment.adminPhone);
 

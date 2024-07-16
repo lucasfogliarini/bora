@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BoraApiService } from './bora-api.service';
 import { Title } from '@angular/platform-browser';
+import { Statics } from './statics';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +15,9 @@ export class AppComponent {
     private titleService: Title) { }
   ngOnInit(): void {
     this.RequestVersion();
-    let title = "bora.work | Capacitando tecnologistas para as melhores soluções do mercado.";
+    let title = `bora.work | ${Statics.tecnologistas}`;
     if(window.location.hostname == "bora.social")
-      title = "bora.social | Produtora de eventos presenciais e virtuais em Porto Alegre e região";
+      title = `bora.social | ${Statics.eventos}`;
     this.titleService.setTitle(title);
   }
 

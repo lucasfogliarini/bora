@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { GoogleMap } from '@angular/google-maps';
 import { BoraApiService } from '../bora-api.service';
-import { StaticMethods } from '../static-methods';
+import { Statics } from '../statics';
 
 @Component({
   selector: 'app-map',
@@ -52,7 +52,7 @@ export class MapComponent {
                 else if(partnerId == 2)
                   this.openBoraSocial(marker, place);
               });
-              if(StaticMethods.isBoraWork())
+              if(Statics.isBoraWork())
                 this.openBoraWork(marker, place);
               else
                 this.openBoraSocial(marker, place);
@@ -72,7 +72,7 @@ export class MapComponent {
           content: `
             <div>
               <h5 class='text-center'>Bora.Work</h5>
-              <h6 class='text-center'>Reunindo profissionais para as melhores soluções do mercado e sociedade.</h6>
+              <h6 class='text-center'>${Statics.tecnologistas}</h6>
               <br/>
               <nav class="text-center">
                 <a class='btn btn-dark' href="/bora.work">Encontros</a>

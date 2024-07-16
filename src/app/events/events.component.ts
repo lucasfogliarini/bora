@@ -10,7 +10,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AttendeeReply } from '../models/attendee-reply.model';
 import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
-import { StaticMethods } from '../static-methods';
+import { Statics } from '../statics';
 
 @Component({
   selector: 'app-events',
@@ -56,7 +56,7 @@ export class EventsComponent {
     return timeMax.toISOString();
   }
   isBoraWork(){
-    return StaticMethods.isBoraWork();
+    return Statics.isBoraWork();
   }
   getParceiros(){
     this.eventsQuery = 'parceiros';
