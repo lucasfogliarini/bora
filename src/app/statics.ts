@@ -24,7 +24,6 @@ export class Statics {
                 return BoraDomain.Work;
         }
     }
-
     static onPlace(): string
     {
         switch(this.onDomain()){
@@ -36,9 +35,22 @@ export class Statics {
                 return "bora.work, Porto Alegre, Brazil";
         }
     }
+    static title(): string
+    {
+        switch(this.onDomain())
+        {
+            case BoraDomain.CotaVerde:
+                return `Cota Verde | ${Statics.cotistasVerdes}`;
+            case BoraDomain.Social:
+                return `bora.social | ${Statics.eventos}`;
+            default:
+                return `bora.work | ${Statics.trabalhadores}`;
+        }
+    }
     static onOffice(): string
     {
-        switch(this.onDomain()){
+        switch(this.onDomain())
+        {
             case BoraDomain.CotaVerde:
                 return "Diax Group <small>(Mercosul Center, sala 706D)</small>";
             case BoraDomain.Social:
@@ -47,14 +59,13 @@ export class Statics {
                 return "Ágora <small>(PUC Carreiras)</small>";
         }
     }
-    
+    public static trabalhadores: string = `Reunindo e capacitando profissionais para continuar expandindo o exército de trabalhadores presenciais e vituais`;
     public static tecnologistas: string = `Reunindo e capacitando tecnologistas para criar produtos digitais inovadores e informativos.`;
     public static cotistasVerdes: string = `Construindo um futuro mais sustentável através de projetos sociais e econômicos na Amazônia.`;
     public static investidores: string = `Reunindo e capacitando investidores para impulsionar o empreendedorismo.`;
     public static palestrantes: string = `Reunindo e capacitando palestrantes para levar conhecimento e realizar discursos.`;
     public static empresarios: string = `Reunindo empresários para resolver problemas empresariais.`;
     public static politicos: string = `Reunindo políticos para resolver problemas no Governo, sociedade e economia.`;
-
     public static eventos: string = `Produtora de eventos presenciais e virtuais em Porto Alegre e região`;
 }
 

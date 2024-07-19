@@ -15,10 +15,7 @@ export class AppComponent {
     private titleService: Title) { }
   ngOnInit(): void {
     this.RequestVersion();
-    let title = `bora.work | ${Statics.tecnologistas}`;
-    if(window.location.hostname == "bora.social")
-      title = `bora.social | ${Statics.eventos}`;
-    this.titleService.setTitle(title);
+    this.titleService.setTitle(Statics.title());
   }
 
   isHome(){

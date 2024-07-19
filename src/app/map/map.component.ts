@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { GoogleMap } from '@angular/google-maps';
 import { BoraApiService } from '../bora-api.service';
 import { Statics, BoraDomain } from '../statics';
@@ -80,7 +80,7 @@ export class MapComponent {
           content: `
             <div>
               <h5 class='text-center'>Bora.Work</h5>
-              <h6 class='text-center'>${Statics.tecnologistas}</h6>
+              <h6 class='text-center'>${Statics.trabalhadores}</h6>
               <br/>
               <nav class="text-center">
                 <a class='btn btn-dark' href="/bora.work">Encontros</a>
