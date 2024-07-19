@@ -55,8 +55,8 @@ export class MapComponent {
 
               switch(Statics.onDomain())
               {
-                  case BoraDomain.CotaVerde:
-                    this.openBoraCotaVerde(marker, place);
+                  case BoraDomain.Earth:
+                    this.openBoraEarth(marker, place);
                   break;
                   case BoraDomain.Social:
                     this.openBoraSocial(marker, place);
@@ -131,7 +131,7 @@ export class MapComponent {
       }
     }));
   }
-  openBoraCotaVerde(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
+  openBoraEarth(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
     const calendarAuthorized = true;
     this.boraApiService.getPartners(calendarAuthorized, -30, (partners=>{
       if(partners){

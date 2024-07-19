@@ -10,8 +10,8 @@ export class Statics {
     static onDomain(): BoraDomain
     {
         switch(window.location.hostname){
-            case "cotaverde.bora.work":
-                return BoraDomain.CotaVerde;
+            case "bora.earth":
+                return BoraDomain.Earth;
             case "saude.bora.work":
                 return BoraDomain.Saude;
             case "jus.bora.work":
@@ -27,7 +27,7 @@ export class Statics {
     static onPlace(): string
     {
         switch(this.onDomain()){
-            case BoraDomain.CotaVerde:
+            case BoraDomain.Earth:
                 return "Mercosul Center";
             case BoraDomain.Work:
                 return "PUC Carreiras, Porto Alegre, Brazil";
@@ -39,8 +39,8 @@ export class Statics {
     {
         switch(this.onDomain())
         {
-            case BoraDomain.CotaVerde:
-                return `Cota Verde | ${Statics.cotistasVerdes}`;
+            case BoraDomain.Earth:
+                return `bora.earth | ${Statics.cotistasVerdes}`;
             case BoraDomain.Social:
                 return `bora.social | ${Statics.eventos}`;
             default:
@@ -51,7 +51,7 @@ export class Statics {
     {
         switch(this.onDomain())
         {
-            case BoraDomain.CotaVerde:
+            case BoraDomain.Earth:
                 return "Diax Group <small>(Mercosul Center, sala 706D)</small>";
             case BoraDomain.Social:
                 return "Bora Social!";
@@ -71,7 +71,7 @@ export class Statics {
 
 export enum BoraDomain {
     Work = "Work",
-    CotaVerde = "CotaVerde",
+    Earth = "Earth",
     Social = "Social",
     Saude = "Saude",
     Justica = "Justica",
