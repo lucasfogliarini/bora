@@ -21,7 +21,7 @@ export class Statics {
             case "bora.social":
                 return BoraDomain.Social;
             default:
-                return BoraDomain.CotaVerde;
+                return BoraDomain.Work;
         }
     }
 
