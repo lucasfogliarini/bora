@@ -112,8 +112,8 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faY
             { path: 'map', component: MapComponent },
             { path: 'bora', component: BoraComponent },
             { path: 'scenarios', component: ScenariosComponent },
-            { path: ':user', component: AccountComponent },
             { path: 'privacy', component: PrivacyComponent },
+            { path: ':user', component: AccountComponent },
             { path: 'home', component: HomeComponent }
         ]),
         FontAwesomeModule
