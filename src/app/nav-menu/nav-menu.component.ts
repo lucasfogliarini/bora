@@ -25,7 +25,7 @@ export class NavMenuComponent {
   profileGear?: ElementRef;
   @ViewChild('logar')
   logar?: ElementRef;
-
+  partnershipInvite = 'Bora ser Parceira(o) com esse time e prosperar!?';
   partnership: string = `É muito bom ter você como <b>${this.userType}</b> do <b>Bora!</b>
   <br/><br/>
   <small>
@@ -64,7 +64,7 @@ export class NavMenuComponent {
         this.partnersContent += `<small><b>${partners.length}</b> Parceira(o)s <b>ativos</b> nos últimos <b>${Math.abs(this.partnerActivityDays)} dias</b></small>
 <br />
 <br />
-<b>Bora ser Parceira(o) com esse time e prosperar!?</b>
+<b>${this.isPartner ? 'Grato por ser Parceira(o) do Bora!' : this.partnershipInvite}</b>
         `;
       }
     }));

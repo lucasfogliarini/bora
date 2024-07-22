@@ -51,7 +51,7 @@
         popoverTitle="Parceiros"
         [popoverMessage]="partnersContent"
         placement="left"
-        confirmText="Bora!"
+        confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
         (confirm)="bePartner()"
         role="button">
         <fa-icon [icon]="['fas','user-doctor']"></fa-icon>
