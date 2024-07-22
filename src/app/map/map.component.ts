@@ -83,17 +83,17 @@ export class MapComponent {
               <h6 class='text-center'>${Statics.trabalhadores}</h6>
               <br/>
               <nav class="text-center">
-                <a class='btn btn-dark' href="/bora.work">Encontros</a>
-                <a class='btn btn-white btn-outline-secondary' href="${featuredPartner.username}">
-                  ${featuredPartner.name} <small style='font-size: xx-small'>(${featuredPartnerAccountability})</small>
+                <a class='btn  btn-dark' href="/bora.work?find=Bora%20Parceiros">
+                📈 Bora Parceiros
                 </a>
+                <a class='btn btn-white btn-outline-secondary' href="/bora.work">Encontros</a>
               </nav>
               <br/>
               <p>
-                <b>Bora.work</b> é uma <b>Academia</b> de <b>profissionais</b> <a target='_blank' href='/bora.work?find=Bora Parceiros'>Parceiros</a> e de <a target='_blank' href='/bora.work?find=tech'>Tecnologia.</a>
+                <b>Bora.work</b> é uma <b>Academia</b> de <b>líderes</b> <a target='_blank' href='/bora.work?find=Bora Parceiros'>Parceiros</a> e de <a target='_blank' href='/bora.work?find=tech'>Tecnologia.</a>
                 <br />
                 <br />
-                Nosso propósito é reunir e capacitar profissionais, expandindo nossa equipe <b>operacional</b> e de <b>liderança</b> para continuar a <b><a target='_blank' href='https://bora.earth'>produção de aplicativos inovadores</a></b> e a <b>organização de eventos de qualquer natureza, como palestras, cursos, workshops e reuniões de negócios.</b>
+                Nosso propósito é reunir e capacitar líderes e tecnologistas, expandindo nossa equipe <b>operacional</b> e de <b>liderança</b> para continuar a <b><a target='_blank' href='https://bora.earth'>produção de aplicativos inovadores</a></b> e a <b>organização de eventos de qualquer natureza, como palestras, cursos, workshops e reuniões de negócios.</b>
                 <br/>
                 <br/>
                 Atuamos em <b>diversos locais</b>, incluindo <b>universidades (PUCRS e Unisinos), empresas, coworkings, casas, restaurantes e plataformas digitais (<a target='_blank' href='https://meet.google.com'>Google Meet</a>, <a target='_blank' href='https://horizon.meta.com/profile/lucasfogliarini/'>Metaverso</a>, <a target='_blank' href='https://discord.gg/Yf4TCsSTG5'>Discord</a>, <a target='_blank' href='https://chat.whatsapp.com/I7ggwNVQp6I2yWCgMC9Evs'>WhatsApp</a>, <a target='_blank' href='https://www.linkedin.com/in/lucasfogliarini/'>Linkedin</a> e <a target='_blank' href='https://vamo.atlassian.net/jira/software/projects/BORA/boards/1/timeline'>Jira</a>)</b>.

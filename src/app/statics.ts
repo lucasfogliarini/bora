@@ -59,7 +59,7 @@ export class Statics {
                 return "Ágora <small>(PUC Carreiras)</small>";
         }
     }
-    public static trabalhadores: string = `Reunindo e capacitando profissionais para continuar expandindo o exército de trabalhadores presenciais e remotos`;
+    public static trabalhadores: string = `Reunindo e capacitando líderes e tecnologistas para continuar expandindo nossa Academia e Produtora Digital.`;
     public static tecnologistas: string = `Reunindo e capacitando tecnologistas para criar produtos digitais inovadores e informativos.`;
     public static cotistasVerdes: string = `Construindo um futuro mais sustentável através de projetos sociais e econômicos na Amazônia.`;
     public static investidores: string = `Reunindo e capacitando investidores para impulsionar o empreendedorismo.`;
