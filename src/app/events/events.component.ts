@@ -284,7 +284,7 @@ ${whatsappGroupText}
       return "Indefinido."
     }
     else{
-      return `${event.location?.substring(0,30)} ...`;
+      return `${event.location?.substring(0,40)} ...`;
     }
   }
   getEventUrl(event: Event){
