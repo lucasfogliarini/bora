@@ -146,8 +146,8 @@ export class MapComponent {
               <br/>
               <nav class="text-center">
                 <a class='btn btn-dark' href="/bora.work">Encontros</a>
-                <a class='btn btn-white btn-outline-secondary' href="${featuredPartner.username}">
-                  ${featuredPartner.name} <small style='font-size: xx-small'>(${featuredPartnerAccountability})</small>
+                <a class='btn btn-white btn-outline-secondary' href="/bora.work?eId=fe8q9">
+                  🌳 Cota Verde
                 </a>
               </nav>
               <br/>
