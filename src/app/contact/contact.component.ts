@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class ContactComponent {
   contactMessage = `Clique em <b>WhatsApp</b>, para: <br/>  
   - Formar <b>Parceria</b> <br/>
-- Conversar com o fundador e arquiteto do <a href='/bora.work'>bora.work</a> e <a target='_blank' href='https://bora.earth'>bora.earth</a> <br/>
+- Conversar com o arquiteto do <a href='/bora.work'>bora.work</a> e <a target='_blank' href='https://bora.earth'>bora.earth</a> <br/>
 - <b>Sugerir uma melhoria</b> <br/>
 - Relatar um <b>bug ou problema</b>`;
   open(){
