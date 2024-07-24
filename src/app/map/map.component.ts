@@ -80,13 +80,16 @@ export class MapComponent {
           content: `
             <div>
               <h5 class='text-center'>Bora.Work</h5>
-              <h6 class='text-center'>${Statics.trabalhadores}</h6>
+              <h6 class='text-center'>${Statics.tecnologistas}</h6>
               <br/>
               <nav class="text-center">
-                <a class='btn  btn-dark' href="/bora.work?find=Bora%20Parceiros">
+                <a class='btn  btn-dark' href="/bora.work?find=tech">
+                💻 Bora Tech
+                </a>
+                <a class='btn btn-white btn-outline-secondary' href="/bora.work?find=parceiros">
                 📈 Bora Parceiros
                 </a>
-                <a class='btn btn-white btn-outline-secondary' href="/bora.work">Encontros</a>
+                <!--<a class='btn btn-white btn-outline-secondary' href="/bora.work">Encontros</a>-->
               </nav>
               <br/>
               <p>

@@ -44,7 +44,7 @@ export class Statics {
             case BoraDomain.Social:
                 return `bora.social | ${Statics.eventos}`;
             default:
-                return `bora.work | ${Statics.trabalhadores}`;
+                return `bora.work | ${Statics.tecnologistas}`;
         }
     }
     static onOffice(): string
@@ -59,8 +59,8 @@ export class Statics {
                 return "Ágora <small>(PUC Carreiras)</small>";
         }
     }
-    public static trabalhadores: string = `Reunindo e capacitando líderes e tecnologistas para continuar expandindo nossa Academia e Produtora Digital.`;
-    public static tecnologistas: string = `Reunindo e capacitando tecnologistas para criar produtos digitais inovadores e informativos.`;
+    public static tecnologistas: string = `♟️Tecnologias e carreiras se formam aqui`;
+    public static lideres: string = `Reunindo e capacitando líderes para resolver todos os tipos de problemas.`;
     public static cotistasVerdes: string = `Construindo um futuro mais sustentável através de projetos sociais e econômicos na Amazônia.`;
     public static investidores: string = `Reunindo e capacitando investidores para impulsionar o empreendedorismo.`;
     public static palestrantes: string = `Reunindo e capacitando palestrantes para levar conhecimento e realizar discursos.`;
