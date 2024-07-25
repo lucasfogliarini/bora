@@ -75,7 +75,9 @@ import { faTicket,
         faHandshake,
         faLaptop,
         faLaptopCode,
-        faMoneyBillTrendUp} from '@fortawesome/free-solid-svg-icons';
+        faMoneyBillTrendUp,
+        faHouseLaptop,
+        faGraduationCap} from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faYoutube, faDiscord, faJira, faTwitch } from '@fortawesome/free-brands-svg-icons';
 @NgModule({
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
@@ -144,6 +146,8 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faY
 export class AppModule { 
   constructor(library: FaIconLibrary) {
     library.addIcons(
+      faGraduationCap,
+      faHouseLaptop,
       faMoneyBillTrendUp,
       faLaptopCode,
       faHandshake,

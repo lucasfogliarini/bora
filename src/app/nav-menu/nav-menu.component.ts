@@ -17,6 +17,8 @@ export class NavMenuComponent {
   partnersContent = '';
   techsContent = '';
   directorsContent = '';
+  coworkingsContent = '';
+  academiesContent = '';
   partnerActivityDays: number = -30;
   partnerCalendarAuthorized = false;
   isPartner = this.authService.getAccount()?.isPartner;
@@ -54,6 +56,10 @@ export class NavMenuComponent {
       this.techsContent = this.createResponsibilitiesContent(techs, 'Tecnologistas');
       const directors = partners.filter(p=>p.responsibilities?.some(r=> [17,18,19].includes(r.id)));
       this.directorsContent = this.createResponsibilitiesContent(directors, 'Diretores');
+      const coworkings = partners.filter(p=>p.responsibilities?.some(r=> [24].includes(r.id)));
+      this.coworkingsContent = this.createResponsibilitiesContent(coworkings, 'Coworkings');
+      const academies = partners.filter(p=>p.responsibilities?.some(r=> [25].includes(r.id)));
+      this.academiesContent = this.createResponsibilitiesContent(academies, 'Academias');
     }));
 
     this.authService.subscribeAuth();

@@ -16,12 +16,24 @@ app-nav-menu .profile {
     top: 145px !important;
 }
 
+app-nav-menu .coworkings {
+    top: 120px !important;
+}
+
+app-nav-menu .academies {
+    top: 0px !important;
+}
+
 app-nav-menu .partners {
-    top: 250px !important;
+    top: 0px !important;
 }
 
 app-nav-menu .techs {
-    left: 20px !important;
+    top: 0px !important;
+}
+
+app-nav-menu .directors {
+    top: 120px !important;
 }
 
 app-nav-menu .partners .popover-body{
