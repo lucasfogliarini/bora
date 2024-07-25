@@ -14,8 +14,9 @@ import { Account } from '../models/account.model';
 })
 export class NavMenuComponent {
   news?: string = undefined;
-  partners: Account[] = [];
   partnersContent = '';
+  techsContent = '';
+  directorsContent = '';
   partnerActivityDays: number = -30;
   partnerCalendarAuthorized = false;
   isPartner = this.authService.getAccount()?.isPartner;
@@ -48,31 +49,37 @@ export class NavMenuComponent {
   ) {    
     this.news = `${this.formatDate()}, POA`;
     this.boraApiService.getPartners(this.partnerCalendarAuthorized, this.partnerActivityDays, (partners=>{
-      this.partners = partners;
-      if(partners){
-        this.popPartner(partners);
-        this.partnersContent = 
-        partners.map(e=>
-                `<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.name?.split(' ')[0]}</a>
-                  <small>
-                    ${e.calendarAuthorized ? '>' : ''}
-                    ${e.accountability ? e.accountability?.split(' e ')[0] : ''}
-                    ${this.formatDate(e.lastAuthenticationAt, false)}
-                  </small>
-                <br />`).join('');
-        //`<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a>&nbsp;<small>${e.accountability?.substring(0,25) ?? ''}</small><br />`).join('');
-        //partnersContent += this.partnerInvite();// Quero ser parceiro
-        this.partnersContent += `<small><b>${partners.length}</b> Parceira(o)s <b>ativos</b> nos últimos <b>${Math.abs(this.partnerActivityDays)} dias</b></small>
-<br />
-<br />
-<b>${this.isPartner ? 'Grato por ser Parceira(o) do Bora!' : this.partnershipInvite}</b>
-        `;
-      }
+      this.partnersContent = this.createResponsibilitiesContent(partners, 'Parceiros');
+      const techs = partners.filter(p=>p.responsibilities?.some(r=>r.areaId == 3));
+      this.techsContent = this.createResponsibilitiesContent(techs, 'Tecnologistas');
+      const directors = partners.filter(p=>p.responsibilities?.some(r=> [17,18,19].includes(r.id)));
+      this.directorsContent = this.createResponsibilitiesContent(directors, 'Diretores');
     }));
 
     this.authService.subscribeAuth();
   }
 
+  createResponsibilitiesContent(accounts: Account[], responsibility: string){
+    let accountContent = '';
+    if(accounts){
+      this.popPartner(accounts);
+      accountContent = 
+      accounts.map(e=>
+              `<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.name?.split(' ')[0]}</a>
+                <small>
+                  ${e.calendarAuthorized ? '>' : ''}
+                  ${e.accountability ? e.accountability?.split(' e ')[0] : ''}
+                  ${this.formatDate(e.lastAuthenticationAt, false)}
+                </small>
+              <br />`).join('');
+              accountContent += `<small><b>${accounts.length}</b> ${responsibility} <b>ativos</b> nos últimos <b>${Math.abs(this.partnerActivityDays)} dias</b></small>
+<br />
+<br />
+<b>${this.isPartner ? 'Grato por ser Parceira(o) do Bora!' : this.partnershipInvite}</b>
+      `;
+    }
+    return accountContent;
+  }
   togglePartnership(){
     const partnershipPatch: AccountInput = { isPartner: !this.isPartner };
     this.boraApiService.patchAccount(partnershipPatch, (account: any) => {

@@ -9,6 +9,7 @@ import { Scenario } from './models/scenario.model';
 import { Event } from './models/event.model';
 import { Location } from './models/location.model';
 import { AccountInput } from './models/account-input.model';
+import { ODataResponse } from './models/odata-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +22,10 @@ export class BoraApiService {
   getPartners(calendarAuthorized: boolean, partnerActivityDays: number, callBack: (partnersCallback: Account[]) => void){
     const lastDays = this.todayAddDays(partnerActivityDays);
     const calendarAuthorizedFilter = calendarAuthorized ? 'and CalendarAuthorized eq true' : '';
-    let partnersUri = `accounts?filter= IsPartner eq true ${calendarAuthorizedFilter} and LastAuthenticationAt ge ${lastDays.toISOString()}&orderby=LastAuthenticationAt desc, PartnerSince asc`;
+    let partnersUri = `odata/accounts?expand=Responsibilities&filter=IsPartner eq true ${calendarAuthorizedFilter} and LastAuthenticationAt ge ${lastDays.toISOString()}&orderby=LastAuthenticationAt desc, PartnerSince asc`;
 
-    this.get(partnersUri, (partners: Account[])=>{
-        callBack(partners);
+    this.get(partnersUri, (partners: ODataResponse<Account>)=>{
+        callBack(partners.value);
     });
   }
 

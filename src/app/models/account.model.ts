@@ -1,3 +1,5 @@
+import { Responsibility } from "./responsibility";
+
 export class Account {
     id: string;
     username: string;
@@ -18,8 +20,9 @@ export class Account {
     spotify: string;
     youTube: string;
     accountability: string;
-    updatedAt: Date;
-    lastAuthenticationAt: Date;
+    updatedAt?: Date;
+    lastAuthenticationAt?: Date;
+    responsibilities?: Responsibility[];
     static boraAccountJson = 'boraAccountJson';
     static boraAccountJwt = 'boraAccountJWT';
 }

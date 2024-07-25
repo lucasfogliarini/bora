@@ -1,12 +1,63 @@
 <nav id="bora-nav" class="navbar navbar-expand navbar-white navbar-light">
   <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="/" role="button">
-        <fa-icon [icon]="['fas','earth-americas']"></fa-icon>
+    <li class="nav-item content">
+      <a class="nav-link"
+        popoverClass='partners'
+        mwlConfirmationPopover
+        value="Parceiros"
+        title="Parceiros"
+        popoverTitle="Parceiros"
+        [popoverMessage]="partnersContent"
+        placement="right"
+        confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
+        (confirm)="bePartner()"
+        role="button">
+        <fa-icon [icon]="['fas','handshake']"></fa-icon>
         <br />
-        <small style="font-size: xx-small;">Mapa</small>
+        <small style="font-size: xx-small;"><b>Parceiros</b></small>
       </a>
     </li>
+    <li class="nav-item content">
+      <a class="nav-link"
+        popoverClass='partners'
+        mwlConfirmationPopover
+        value="Tecnologistas"
+        title="Tecnologistas"
+        popoverTitle="Tecnologistas"
+        [popoverMessage]="techsContent"
+        placement="right"
+        confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
+        (confirm)="bePartner()"
+        role="button">
+        <fa-icon [icon]="['fas','laptop-code']"></fa-icon>
+        <br />
+        <small style="font-size: xx-small;"><b>Tecnologistas</b></small>
+      </a>
+    </li>
+    <li class="nav-item content">
+      <a class="nav-link"
+        popoverClass='partners'
+        mwlConfirmationPopover
+        value="Diretores"
+        title="Diretores"
+        popoverTitle="Diretores"
+        [popoverMessage]="directorsContent"
+        placement="bottom"
+        confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
+        (confirm)="bePartner()"
+        role="button">
+        <fa-icon [icon]="['fas','money-bill-trend-up']"></fa-icon>
+        <br />
+        <small style="font-size: xx-small;"><b>Diretores</b></small>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" target="_blank" href="https://www.linkedin.com/company/bora-work/" role="button">
+        <fa-icon [icon]="['fab','linkedin']"></fa-icon>
+        <br />
+        <small style="font-size: xx-small;">Linkedin</small>
+      </a>
+    </li>  
     <li class="nav-item">
       <a class="nav-link" target="_blank" href="https://www.instagram.com/bora.workers" role="button">
         <fa-icon [icon]="['fab','instagram']"></fa-icon>
@@ -15,17 +66,19 @@
       </a>
     </li>
     <li class="nav-item">
+      <a class="nav-link" href="/" role="button">
+        <fa-icon [icon]="['fas','earth-americas']"></fa-icon>
+        <br />
+        <small style="font-size: xx-small;">Mapa</small>
+      </a>
+    </li>
+    <!--
+    
+    <li class="nav-item">
       <a class="nav-link" target="_blank" href="https://discord.gg/Yf4TCsSTG5" role="button">
         <fa-icon [icon]="['fab','discord']"></fa-icon>
         <br />
         <small style="font-size: xx-small;">Discord</small>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" target="_blank" href="https://www.linkedin.com/company/bora-work/" role="button">
-        <fa-icon [icon]="['fab','linkedin']"></fa-icon>
-        <br />
-        <small style="font-size: xx-small;">Linkedin</small>
       </a>
     </li>
     <li class="nav-item">
@@ -42,24 +95,6 @@
         <small style="font-size: xx-small;">Meta</small>
       </a>
     </li>
-    <li class="nav-item content">
-      <a class="nav-link"
-        popoverClass='partners'
-        mwlConfirmationPopover
-        value="Parceiros"
-        title="Parceiros"
-        popoverTitle="Parceiros"
-        [popoverMessage]="partnersContent"
-        placement="left"
-        confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
-        (confirm)="bePartner()"
-        role="button">
-        <fa-icon [icon]="['fas','user-doctor']"></fa-icon>
-        <br />
-        <small style="font-size: xx-small;"><b>Parceiros</b></small>
-      </a>
-    </li>
-    <!--
     <li class="nav-item">
       <a class="nav-link" target="_blank" href="https://www.youtube.com/@lucasfogliarini" role="button">
         <fa-icon [icon]="['fab','youtube']"></fa-icon>

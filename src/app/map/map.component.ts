@@ -70,7 +70,8 @@ export class MapComponent {
   }
 
   openBoraWork(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
-    const calendarAuthorized = true;
+    this.openMapsInfoWindow(marker);
+    /*const calendarAuthorized = true;
     this.boraApiService.getPartners(calendarAuthorized, -30, (partners=>{
       if(partners){
         const partnersNotDirectors = partners.filter(p=>p.username != 'bora.work');
@@ -132,7 +133,64 @@ export class MapComponent {
         });
         infoWindow.open(this.googleMap.googleMap, marker);
       }
-    }));
+    }));*/
+  }
+  openMapsInfoWindow(marker: google.maps.Marker){
+    const infoWindow = new google.maps.InfoWindow({
+      content: `
+        <div>
+          <h5 class='text-center'>Bora.Work</h5>
+          <h6 class='text-center'>${Statics.tecnologistas}</h6>
+          <br/>
+          <nav class="text-center">
+            <a class='btn  btn-dark' href="/bora.work?find=tech">
+            💻 Bora Tech
+            </a>
+            <a class='btn btn-white btn-outline-secondary' href="/bora.work?find=parceiros">
+            📈 Bora Parceiros
+            </a>
+            <!--<a class='btn btn-white btn-outline-secondary' href="/bora.work">Encontros</a>-->
+          </nav>
+          <br/>
+          <p>
+            <b>Bora.work</b> é uma <b>Academia</b> de <b>líderes</b> <a target='_blank' href='/bora.work?find=Bora Parceiros'>Parceiros</a> e de <a target='_blank' href='/bora.work?find=tech'>Tecnologia.</a>
+            <br />
+            <br />
+            Nosso propósito é reunir e capacitar líderes e tecnologistas, expandindo nossa equipe <b>operacional</b> e de <b>liderança</b> para continuar a <b><a target='_blank' href='https://bora.earth'>produção de aplicativos inovadores</a></b> e a <b>organização de eventos de qualquer natureza, como palestras, cursos, workshops e reuniões de negócios.</b>
+            <br/>
+            <br/>
+            Atuamos em <b>diversos locais</b>, incluindo <b>universidades (PUCRS e Unisinos), empresas, coworkings, casas, restaurantes e plataformas digitais (<a target='_blank' href='https://meet.google.com'>Google Meet</a>, <a target='_blank' href='https://horizon.meta.com/profile/lucasfogliarini/'>Metaverso</a>, <a target='_blank' href='https://discord.gg/Yf4TCsSTG5'>Discord</a>, <a target='_blank' href='https://chat.whatsapp.com/I7ggwNVQp6I2yWCgMC9Evs'>WhatsApp</a>, <a target='_blank' href='https://www.linkedin.com/in/lucasfogliarini/'>Linkedin</a> e <a target='_blank' href='https://vamo.atlassian.net/jira/software/projects/BORA/boards/1/timeline'>Jira</a>)</b>.
+            <br/>
+            <br/>
+            A <b>meta</b> é transformar os <b>valores, virtudes e inteligência da sociedade</b> para que ela se torne mais <b>respeitosa, justa, colaborativa e confiante</b>. Dessa forma, não teremos mais grandes problemas causados por <i>egoísmos, ódio, revoltas e até desastres naturais</i> que fazem tantas <b>crianças, idosos e até adultos</b> chorarem por <b>paz</b>.
+            <br/>
+            <br/>
+            Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis.
+            <br/>
+            <br/>
+            <b><a target='_blank' href='https://wa.me/5551992364249?text=Quero ser parceira(o) do Bora!'>Junte-se a nós</a></b> e descubra como <b>transformar suas ideias em realidade.</b>
+            <br/>
+            <br/>
+            Com frequência participamos de <a target='_blank' href='/bora.work?withTicket=true'>palestras, workshops e cursos presenciais</a> de diversos produtores para <b>expandir o networking</b> e <b>discutir gestão e liderança</b>.
+            <br/>
+          </p>              
+          <div class='text-center'>
+            <!--
+            <a target='_blank' role='button' href='https://chatgpt.com/share/c800bc1d-0a92-4a76-9fae-5439353bf023' class='btn btn-white btn-outline-secondary' >ChatGPT sobre o bora.work</a>
+            <br />
+            <br />-->
+            <small>A maioria dos encontros presenciais são em Porto Alegre no</small>
+            <br />
+            <br />
+            <a class='btn btn-white btn-outline-secondary' target='_blank' href='https://www.google.com/maps/search/?api=1&query=${Statics.onPlace()}'>${Statics.onOffice()}</a>
+            <br />
+            ⬇️
+          </div>
+          <br/>
+        </div>
+      `
+    });
+    infoWindow.open(this.googleMap.googleMap, marker);
   }
   openBoraEarth(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
     const calendarAuthorized = true;
