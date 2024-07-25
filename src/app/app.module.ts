@@ -129,7 +129,7 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faY
         {
             provide: 'SocialAuthServiceConfig',
             useValue: {
-                autoLogin: true,
+                autoLogin: false,
                 lang: 'pt-BR',
                 providers: [
                     {
