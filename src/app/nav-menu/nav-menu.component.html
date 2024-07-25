@@ -19,13 +19,13 @@
     </li>
     <li class="nav-item content">
       <a class="nav-link"
-        popoverClass='partners'
+        popoverClass='techs'
         mwlConfirmationPopover
         value="Tecnologistas"
         title="Tecnologistas"
         popoverTitle="Tecnologistas"
         [popoverMessage]="techsContent"
-        placement="right"
+        placement="bottom"
         confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
         (confirm)="bePartner()"
         role="button">
@@ -36,7 +36,7 @@
     </li>
     <li class="nav-item content">
       <a class="nav-link"
-        popoverClass='partners'
+        popoverClass='directors'
         mwlConfirmationPopover
         value="Diretores"
         title="Diretores"

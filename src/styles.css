@@ -2,10 +2,6 @@
 @import "~admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css";
 @import 'ngx-toastr/toastr';
 
-#credential_picker_iframe{
-    display: none;
-}
-
 .content a{
     color: inherit;
     text-decoration: underline;
@@ -16,17 +12,16 @@
     left: 40px !important;
 }
 
-app-contact .popover{
-	position: fixed !important;
-    top: -70px !important;
-}
-
 app-nav-menu .profile {
     top: 145px !important;
 }
 
 app-nav-menu .partners {
-    top: 200px !important;
+    top: 250px !important;
+}
+
+app-nav-menu .techs {
+    left: 20px !important;
 }
 
 app-nav-menu .partners .popover-body{
@@ -35,6 +30,11 @@ app-nav-menu .partners .popover-body{
 
 app-nav-menu .partners small{
     font-size: xx-small
+}
+
+app-contact .popover{
+	position: fixed !important;
+    top: -70px !important;
 }
 
 .popover-body{
@@ -49,3 +49,7 @@ app-nav-menu .partners small{
 
 
 html, body { height: 100%; }
+
+#credential_picker_iframe{
+    display: none;
+}
