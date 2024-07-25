@@ -19,6 +19,7 @@ export class Account {
     youTube: string;
     accountability: string;
     updatedAt: Date;
+    lastAuthenticationAt: Date;
     static boraAccountJson = 'boraAccountJson';
     static boraAccountJwt = 'boraAccountJWT';
 }

@@ -21,7 +21,7 @@ export class BoraApiService {
   getPartners(calendarAuthorized: boolean, partnerActivityDays: number, callBack: (partnersCallback: Account[]) => void){
     const lastDays = this.todayAddDays(partnerActivityDays);
     const calendarAuthorizedFilter = calendarAuthorized ? 'and CalendarAuthorized eq true' : '';
-    let partnersUri = `accounts?filter= IsPartner eq true ${calendarAuthorizedFilter} and LastAuthenticationAt ge ${lastDays.toISOString()}&orderby=CalendarAuthorized desc, UpdatedAt desc, PartnerSince asc`;
+    let partnersUri = `accounts?filter= IsPartner eq true ${calendarAuthorizedFilter} and LastAuthenticationAt ge ${lastDays.toISOString()}&orderby=LastAuthenticationAt desc, PartnerSince asc`;
 
     this.get(partnersUri, (partners: Account[])=>{
         callBack(partners);

@@ -57,6 +57,7 @@ export class NavMenuComponent {
                   <small>
                     ${e.calendarAuthorized ? '>' : ''}
                     ${e.accountability ? e.accountability?.split(' e ')[0] : ''}
+                    ${this.formatDate(e.lastAuthenticationAt, false)}
                   </small>
                 <br />`).join('');
         //`<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.username}</a>&nbsp;<small>${e.accountability?.substring(0,25) ?? ''}</small><br />`).join('');
