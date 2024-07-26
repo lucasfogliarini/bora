@@ -62,6 +62,10 @@ export class EventsComponent {
     this.eventsQuery = 'parceiros';
     this.getEvents();
   }
+  getSocios(){
+    this.eventsQuery = 'socios';
+    this.getEvents();
+  }
   getTech(){
     this.eventsQuery = 'tech';
     this.getEvents();
@@ -74,9 +78,21 @@ export class EventsComponent {
     this.eventsQuery = 'Jam';
     this.getEvents();
   }
+  getBirthdays(){
+    this.eventsQuery = '🥳';
+    this.getEvents();
+  }
+  getJogatina(){
+    this.eventsQuery = 'jogatina';
+    this.getEvents();
+  }
   getEventsWithTicket(){
     this.eventsQuery = undefined;
     this.eventsWithTicket = true;
+    this.getEvents();
+  }
+  getToasts(){
+    this.eventsQuery = '🥂';
     this.getEvents();
   }
   getEvents(){

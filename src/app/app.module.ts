@@ -34,6 +34,7 @@ import localePT from '@angular/common/locales/pt';
 registerLocaleData(localePT);
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTicket,
+        faChampagneGlasses,
         faDoorOpen, 
         faMapLocationDot,
         faPenToSquare, 
@@ -77,7 +78,8 @@ import { faTicket,
         faLaptopCode,
         faMoneyBillTrendUp,
         faHouseLaptop,
-        faGraduationCap} from '@fortawesome/free-solid-svg-icons';
+        faGraduationCap,
+        faCakeCandles} from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faYoutube, faDiscord, faJira, faTwitch } from '@fortawesome/free-brands-svg-icons';
 @NgModule({
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
@@ -146,6 +148,8 @@ import { faGoogle, faWhatsapp, faInstagram, faSpotify, faLinkedin, faGithub, faY
 export class AppModule { 
   constructor(library: FaIconLibrary) {
     library.addIcons(
+      faChampagneGlasses,
+      faCakeCandles,
       faGraduationCap,
       faHouseLaptop,
       faMoneyBillTrendUp,
