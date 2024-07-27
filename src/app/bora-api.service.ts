@@ -36,11 +36,11 @@ export class BoraApiService {
   }
 
   getAccount(username: string, onFound: any){
-    var accountUri = `accounts?filter=username eq '${username}'`;
-    this.get<Account[]>(accountUri, (accounts) => {
+    var accountUri = `odata/accounts?expand=Responsibilities&filter=username eq '${username}'`;
+    this.get<ODataResponse<Account[]>>(accountUri, (response) => {
       let account;
-      if(accounts.length){
-        account = accounts[0];
+      if(response.value.length){
+        account = response.value[0];
       }else{
         this.toastr.warning('Usuário não encontrado.');
       }

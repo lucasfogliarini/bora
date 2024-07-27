@@ -12,6 +12,7 @@ export class Account {
     eventVisibility: EventVisibility;
     photo: string;
     whatsApp: string;
+    instagram: string;
     linkedin: string;
     github: string;
     tribe: string;

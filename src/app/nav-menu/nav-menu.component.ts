@@ -95,7 +95,7 @@ export class NavMenuComponent {
     const last = titles.pop();
     
     return titles.length === 0 ? last || '' : `${titles.slice(0, 2).join(', ')} e ${last}`;
-}
+  }
   togglePartnership(){
     const partnershipPatch: AccountInput = { isPartner: !this.isPartner };
     this.boraApiService.patchAccount(partnershipPatch, (account: any) => {

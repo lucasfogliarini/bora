@@ -12,11 +12,11 @@
           <li *ngIf="account.linkedin" title="www.linkedin.com/">
             <a class="nav-link" target="_blank" href="https://www.linkedin.com/{{account.linkedin}}" role="button"><fa-icon [icon]="['fab','linkedin']"></fa-icon></a>
           </li>
+          <li *ngIf="account.instagram" title="instagram.com/">
+            <a class="nav-link" target="_blank" href="https://instagram.com/{{account.instagram}}" role="button"><fa-icon [icon]="['fab','instagram']"></fa-icon></a>
+          </li>
           <li *ngIf="account.github" title="github.com/">
             <a class="nav-link" target="_blank" href="https://github.com/{{account.github}}" role="button"><fa-icon [icon]="['fab','github']"></fa-icon></a>
-          </li>
-          <li *ngIf="account.horizonMeta" title="horizon.meta.com/profile/">
-            <a class="nav-link" target="_blank" href="https://horizon.meta.com/profile/{{account.horizonMeta}}" role="button"><fa-icon [icon]="['fas','mask']"></fa-icon></a>
           </li>
           <li *ngIf="account.youTube" title="youtube.com">
             <a class="nav-link" target="_blank" href="https://www.youtube.com/{{account.youTube}}" role="button"><fa-icon [icon]="['fab','youtube']"></fa-icon></a>
@@ -25,6 +25,9 @@
             <a class="nav-link" target="_blank" href="https://chess.com/member/{{account.chess}}" role="button"><fa-icon [icon]="['fas','chess-knight']"></fa-icon></a>
           </li>
           <!--
+          <li *ngIf="account.chess" title="chess.com/member/">
+            <a class="nav-link" target="_blank" href="https://chess.com/member/{{account.chess}}" role="button"><fa-icon [icon]="['fas','chess-knight']"></fa-icon></a>
+          </li>
           <li *ngIf="account.tribe" title="live.tribexr.com/">
             <a class="nav-link" target="_blank" href="https://live.tribexr.com/{{account.tribe}}" role="button"><fa-icon [icon]="['fas','headset']"></fa-icon></a>
           </li>
@@ -42,6 +45,10 @@
       </div>
       <div id="account-accountability" class="row">
         <small class="col-12">{{account.accountability}}</small>
+      </div>
+      <br />
+      <div id="account-responsibilities" class="row">
+        <small style="font-size: xx-small;" class="col-12">{{accountResponsibility(account.responsibilities)}}</small>
       </div>
     </div>
     <div class="card-body p-0">

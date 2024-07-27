@@ -7,6 +7,7 @@ import { AuthenticationService } from '../authentication.service';
 import { EventCreateComponent } from '../event-create/event-create.component';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { Responsibility } from '../models/responsibility';
 
 @Component({
   selector: 'app-account',
@@ -77,5 +78,15 @@ export class AccountComponent {
   }
   openGoogleConta(){
     window.open('https://myaccount.google.com/personal-info', '', 'popup');
+  }
+
+  accountResponsibility(responsibilities?: Responsibility[]): string {
+    if (!responsibilities || responsibilities.length === 0) {
+        return '';
+    }
+    const titles = responsibilities.map(r => r.title);
+    const last = titles.pop();
+    
+    return titles.length === 0 ? last || '' : `${titles.join(', ')} e ${last}`;
   }
 }
