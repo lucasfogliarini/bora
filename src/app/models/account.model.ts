@@ -23,6 +23,7 @@ export class Account {
     updatedAt?: Date;
     lastAuthenticationAt?: Date;
     responsibilities?: Responsibility[];
+
     static boraAccountJson = 'boraAccountJson';
     static boraAccountJwt = 'boraAccountJWT';
 }

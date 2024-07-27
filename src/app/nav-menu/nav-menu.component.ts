@@ -6,6 +6,7 @@ import { BoraApiService } from '../bora-api.service';
 import { AccountInput } from '../models/account-input.model';
 import { ToastrService } from 'ngx-toastr';
 import { Account } from '../models/account.model';
+import { Responsibility } from '../models/responsibility';
 
 @Component({
   selector: 'app-nav-menu',
@@ -54,11 +55,11 @@ export class NavMenuComponent {
       this.partnersContent = this.createResponsibilitiesContent(partners, 'Parceiros');
       const techs = partners.filter(p=>p.responsibilities?.some(r=>r.areaId == 3));
       this.techsContent = this.createResponsibilitiesContent(techs, 'Tecnologistas');
-      const directors = partners.filter(p=>p.responsibilities?.some(r=> [17,18,19].includes(r.id)));
+      const directors = partners.filter(p=>p.responsibilities?.some(r=> [23].includes(r.id)));
       this.directorsContent = this.createResponsibilitiesContent(directors, 'Sócios');
       const coworkings = partners.filter(p=>p.responsibilities?.some(r=> [24].includes(r.id)));
       this.coworkingsContent = this.createResponsibilitiesContent(coworkings, 'Coworkings');
-      const academies = partners.filter(p=>p.responsibilities?.some(r=> [25].includes(r.id)));
+      const academies = partners.filter(p=>p.responsibilities?.some(r=> [12].includes(r.id)));
       this.academiesContent = this.createResponsibilitiesContent(academies, 'Academias');
     }));
 
@@ -74,8 +75,8 @@ export class NavMenuComponent {
               `<img src='${e.photo}' />&nbsp;<a href='/${e.username}'>${e.name?.split(' ')[0]}</a>
                 <small>
                   ${e.calendarAuthorized ? '>' : ''}
-                  ${e.accountability ? e.accountability?.split(' e ')[0] : ''}
-                  ${this.formatDate(e.lastAuthenticationAt, false)}
+                  ${this.accountResponsibility(e.responsibilities)}
+                  <!--${this.formatDate(e.lastAuthenticationAt, false)}-->
                 </small>
               <br />`).join('');
               accountContent += `<small><b>${accounts.length}</b> ${responsibility} <b>ativos</b> nos últimos <b>${Math.abs(this.partnerActivityDays)} dias</b></small>
@@ -86,6 +87,15 @@ export class NavMenuComponent {
     }
     return accountContent;
   }
+  accountResponsibility(responsibilities?: Responsibility[]): string {
+    if (!responsibilities || responsibilities.length === 0) {
+        return '';
+    }
+    const titles = responsibilities.map(r => r.title);
+    const last = titles.pop();
+    
+    return titles.length === 0 ? last || '' : `${titles.slice(0, 2).join(', ')} e ${last}`;
+}
   togglePartnership(){
     const partnershipPatch: AccountInput = { isPartner: !this.isPartner };
     this.boraApiService.patchAccount(partnershipPatch, (account: any) => {

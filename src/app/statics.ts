@@ -60,11 +60,11 @@ export class Statics {
         }
     }
     public static tecnologistas: string = `♟️Tecnologias e carreiras se formam aqui`;
+    public static empreendedorismo: string = `📈 Empreendedorismo, carreiras e palestras se formam aqui`;
     public static lideres: string = `Reunindo e capacitando líderes para resolver todos os tipos de problemas.`;
     public static cotistasVerdes: string = `Construindo um futuro mais sustentável através de projetos sociais e econômicos na Amazônia.`;
     public static investidores: string = `Reunindo e capacitando investidores para impulsionar o empreendedorismo.`;
     public static palestrantes: string = `Reunindo e capacitando palestrantes para levar conhecimento e realizar discursos.`;
-    public static empresarios: string = `Reunindo empresários para resolver problemas empresariais.`;
     public static politicos: string = `Reunindo políticos para resolver problemas no Governo, sociedade e economia.`;
     public static eventos: string = `Produtora de eventos presenciais e virtuais em Porto Alegre e região`;
 }
