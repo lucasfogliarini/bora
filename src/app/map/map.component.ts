@@ -46,11 +46,6 @@ export class MapComponent {
               });
               marker.addListener('click', () => {
                 this.openBoraWork(marker, place);
-                /*const partnerId = Math.floor(Math.random() * 2) + 1;
-                if(partnerId == 1)
-                  this.openBoraWork(marker, place);
-                else if(partnerId == 2)
-                  this.openBoraSocial(marker, place);*/
               });
 
               switch(Statics.onDomain())
