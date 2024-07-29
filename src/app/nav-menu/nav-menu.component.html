@@ -70,12 +70,29 @@
     </li>
     <li class="nav-item content">
       <a class="nav-link"
-        popoverClass='directors'
+        popoverClass='consultants'
+        mwlConfirmationPopover
+        value="Consultores"
+        title="Consultores"
+        popoverTitle="Consultores"
+        [popoverMessage]="consultantsContent"
+        placement="bottom"
+        confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
+        (confirm)="bePartner()"
+        role="button">
+        <fa-icon [icon]="['fas','comments']"></fa-icon>
+        <br />
+        <small style="font-size: xx-small;"><b>Consultores</b></small>
+      </a>
+    </li>
+    <!--<li class="nav-item content">
+      <a class="nav-link"
+        popoverClass='businessPartners'
         mwlConfirmationPopover
         value="Sócios"
         title="Sócios"
         popoverTitle="Sócios"
-        [popoverMessage]="directorsContent"
+        [popoverMessage]="businessPartnersContent"
         placement="left"
         confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
         (confirm)="bePartner()"
@@ -84,7 +101,7 @@
         <br />
         <small style="font-size: xx-small;"><b>Sócios</b></small>
       </a>
-    </li>
+    </li>-->
     <li class="nav-item">
       <a class="nav-link" href="/" role="button">
         <fa-icon [icon]="['fas','earth-americas']"></fa-icon>

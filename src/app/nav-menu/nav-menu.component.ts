@@ -15,11 +15,13 @@ import { Responsibility } from '../models/responsibility';
 })
 export class NavMenuComponent {
   news?: string = undefined;
-  partnersContent = '';
-  techsContent = '';
-  directorsContent = '';
   coworkingsContent = '';
   academiesContent = '';
+  partnersContent = '';
+  techsContent = '';
+  consultantsContent = '';
+  businessPartnersContent = '';
+
   partnerActivityDays: number = -30;
   partnerCalendarAuthorized = false;
   isPartner = this.authService.getAccount()?.isPartner;
@@ -52,15 +54,19 @@ export class NavMenuComponent {
   ) {    
     this.news = `${this.formatDate()}, POA`;
     this.boraApiService.getPartners(this.partnerCalendarAuthorized, this.partnerActivityDays, (partners=>{
-      this.partnersContent = this.createResponsibilitiesContent(partners, 'Parceiros');
-      const techs = partners.filter(p=>p.responsibilities?.some(r=>r.areaId == 3));
-      this.techsContent = this.createResponsibilitiesContent(techs, 'Tecnologistas');
-      const directors = partners.filter(p=>p.responsibilities?.some(r=> [23].includes(r.id)));
-      this.directorsContent = this.createResponsibilitiesContent(directors, 'Sócios');
       const coworkings = partners.filter(p=>p.responsibilities?.some(r=> [24].includes(r.id)));
       this.coworkingsContent = this.createResponsibilitiesContent(coworkings, 'Coworkings');
       const academies = partners.filter(p=>p.responsibilities?.some(r=> [12].includes(r.id)));
-      this.academiesContent = this.createResponsibilitiesContent(academies, 'Academias');
+      this.academiesContent = this.createResponsibilitiesContent(academies, 'Academias');      
+      this.partnersContent = this.createResponsibilitiesContent(partners, 'Parceiros');
+      const techs = partners.filter(p=>p.responsibilities?.some(r=>r.areaId == 3));
+      this.techsContent = this.createResponsibilitiesContent(techs, 'Tecnologistas');
+
+      const consultants = partners.filter(p=>p.responsibilities?.some(r=> [1,7,12,20,22,26,27,28,30].includes(r.id)));
+      this.consultantsContent = this.createResponsibilitiesContent(consultants, 'Consultores');
+      
+      const businessPartners = partners.filter(p=>p.responsibilities?.some(r=> [23].includes(r.id)));
+      this.businessPartnersContent = this.createResponsibilitiesContent(businessPartners, 'Sócios');
     }));
 
     this.authService.subscribeAuth();
