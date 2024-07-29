@@ -62,7 +62,7 @@ export class NavMenuComponent {
       const techs = partners.filter(p=>p.responsibilities?.some(r=>r.areaId == 3));
       this.techsContent = this.createResponsibilitiesContent(techs, 'Tecnologistas');
 
-      const consultants = partners.filter(p=>p.responsibilities?.some(r=> [1,7,12,20,22,26,27,28,30].includes(r.id)));
+      const consultants = partners.filter(p=>p.responsibilities?.some(r=> [1,7,12,20,22,26,27,28,30, 31].includes(r.id)));
       this.consultantsContent = this.createResponsibilitiesContent(consultants, 'Consultores');
       
       const businessPartners = partners.filter(p=>p.responsibilities?.some(r=> [23].includes(r.id)));
