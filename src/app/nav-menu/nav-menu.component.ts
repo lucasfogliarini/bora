@@ -22,7 +22,7 @@ export class NavMenuComponent {
   consultantsContent = '';
   businessPartnersContent = '';
 
-  partnerActivityDays: number = -30;
+  partnerActivityDays: number = -15;
   partnerCalendarAuthorized = false;
   isPartner = this.authService.getAccount()?.isPartner;
   togglePartnershipText = this.isPartner ? 'Desativar' : 'Ativar';

@@ -29,9 +29,10 @@ export class BoraApiService {
     });
   }
 
-  todayAddDays(days: number = -1){
+  todayAddDays(days: number = -1): Date {
     const today = new Date();
-    const date = new Date(today.setDate(today.getDay() + days));
+    const date = new Date();
+    date.setDate(today.getDate() + days);
     return date;    
   }
 
