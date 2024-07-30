@@ -6,7 +6,7 @@ import { BoraApiService } from '../bora-api.service';
 import { AccountInput } from '../models/account-input.model';
 import { ToastrService } from 'ngx-toastr';
 import { Account } from '../models/account.model';
-import { Responsibility } from '../models/responsibility';
+import { Responsibility } from '../models/responsibility.model';
 
 @Component({
   selector: 'app-nav-menu',

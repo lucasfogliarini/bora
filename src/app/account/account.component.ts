@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { Account } from '../models/account.model';
-import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BoraApiService } from '../bora-api.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 import { EventCreateComponent } from '../event-create/event-create.component';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
-import { Responsibility } from '../models/responsibility';
+import { Responsibility } from '../models/responsibility.model';
+import { Location } from "../models/location.model";
 
 @Component({
   selector: 'app-account',
@@ -80,13 +81,16 @@ export class AccountComponent {
     window.open('https://myaccount.google.com/personal-info', '', 'popup');
   }
 
-  accountResponsibility(responsibilities?: Responsibility[]): string {
-    if (!responsibilities || responsibilities.length === 0) {
+  accountResponsibility(account: Account): string {
+    if (!account.responsibilities || account.responsibilities.length === 0) {
         return '';
     }
-    const titles = responsibilities.map(r => r.title);
+    const titles = account.responsibilities.map(r => r.title);
     const last = titles.pop();
     
     return titles.length === 0 ? last || '' : `${titles.join(', ')} e ${last}`;
+  }
+  accountHome(account: Account) {
+    return account.locations?.find(l=>l.isHome && l.enabled)?.place;
   }
 }

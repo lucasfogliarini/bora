@@ -1,4 +1,5 @@
-import { Responsibility } from "./responsibility";
+import { Responsibility } from "./responsibility.model";
+import { Location } from "./location.model";
 
 export class Account {
     id: string;
@@ -24,6 +25,7 @@ export class Account {
     updatedAt?: Date;
     lastAuthenticationAt?: Date;
     responsibilities?: Responsibility[];
+    locations?: Location[];
 
     static boraAccountJson = 'boraAccountJson';
     static boraAccountJwt = 'boraAccountJWT';

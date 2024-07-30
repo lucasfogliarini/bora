@@ -37,7 +37,7 @@ export class BoraApiService {
   }
 
   getAccount(username: string, onFound: any){
-    var accountUri = `odata/accounts?expand=Responsibilities&filter=username eq '${username}'`;
+    var accountUri = `odata/accounts?expand=Responsibilities,Locations&filter=username eq '${username}'`;
     this.get<ODataResponse<Account[]>>(accountUri, (response) => {
       let account;
       if(response.value.length){

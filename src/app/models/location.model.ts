@@ -3,4 +3,5 @@ export class Location {
     name?: string;
     place?: string;
     enabled?: boolean;
+    isHome?: boolean;
 }
