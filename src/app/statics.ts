@@ -59,8 +59,8 @@ export class Statics {
                 return "Ágora <small>(PUC Carreiras)</small>";
         }
     }
+    public static empreendedorismo: string = `📈 Empreendedorismo, carreiras e serviços se formam aqui.`;
     public static tecnologistas: string = `♟️Tecnologias e carreiras se formam aqui`;
-    public static empreendedorismo: string = `📈 Empreendedorismo, carreiras e palestras se formam aqui`;
     public static lideres: string = `Reunindo e capacitando líderes para resolver todos os tipos de problemas.`;
     public static cotistasVerdes: string = `Construindo um futuro mais sustentável através de projetos sociais e econômicos na Amazônia.`;
     public static investidores: string = `Reunindo e capacitando investidores para impulsionar o empreendedorismo.`;
