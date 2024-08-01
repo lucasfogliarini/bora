@@ -44,7 +44,7 @@ export class Statics {
             case BoraDomain.Social:
                 return `bora.social | ${Statics.eventos}`;
             default:
-                return `bora.work | ${Statics.tecnologistas}`;
+                return `bora.work | ${Statics.empreendedorismo}`;
         }
     }
     static onOffice(): string
