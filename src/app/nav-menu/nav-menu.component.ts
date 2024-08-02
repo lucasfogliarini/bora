@@ -115,11 +115,18 @@ export class NavMenuComponent {
       responsibilityArea: responsibilityArea 
     };
     this.boraApiService.patchAccount(partnershipPatch, (account: any) => {
-      const togglePartnership = !this.isPartner ? 'ativada' : 'desativada';
-      this.toastr.show(`${this.partnershipGratefulness} Relogue para ver o efeito.`,`Parceria ${togglePartnership}`);
+      let togglePartnership = 'ativada';
+      let messagePartnership = 'adicionado';
+      if(this.isPartner){
+        togglePartnership = 'desativada';
+        messagePartnership = 'removido';
+      }
+      
+      this.toastr.show(`Agora você foi ${messagePartnership} da sua área no menu principal.`,`Parceria ${togglePartnership}`);
       this.authService.signOut();
-    }, (err)=>{
-
+      setTimeout(() => {
+        window.location.reload();  
+      }, 3000);      
     });
   }
   bePartner(responsibilityArea?: number){
