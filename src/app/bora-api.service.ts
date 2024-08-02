@@ -49,8 +49,8 @@ export class BoraApiService {
     });
   }
 
-  patchAccount(account: AccountInput, callBack: (account: Account) => void){
-    this.patch<Account>(`accounts`, account, callBack);
+  patchAccount(account: AccountInput, next: (account: Account) => void, error?: (err: any) => void){
+    this.patch<Account>(`accounts`, account, next, error);
   }
 
   getContentsByDomain(collection: string, callBack: (content: Content[]) => void){

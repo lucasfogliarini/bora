@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { BoraApiService } from './bora-api.service';
 import { Account } from './models/account.model';
+import { ODataResponse } from './models/odata-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -37,11 +38,11 @@ export class AuthenticationService {
       const authentication = await this.boraApiService.postPromise(tokenUri, boraSocialUser);
       localStorage.setItem(Account.boraAccountJwt, authentication.jwToken);
     }
-    var accountUri = `accounts?filter=contains(Email,'${boraSocialUser.email}')`;
-    this.boraApiService.get<Account[]>(accountUri, (accounts) => {
+    var accountUri = `odata/accounts?expand=Responsibilities&filter=contains(Email,'${boraSocialUser.email}')`;
+    this.boraApiService.get<ODataResponse<Account>>(accountUri, (response) => {
       location.reload();
-      if(accounts.length){
-        const account = accounts[0];
+      if(response.value.length){
+        const account = response.value[0];
         localStorage.setItem(Account.boraAccountJson, JSON.stringify(account));
       }else{
         this.toastr.warning('Usuário não encontrado.');

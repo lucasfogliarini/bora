@@ -31,7 +31,8 @@ export class NavMenuComponent {
   profileGear?: ElementRef;
   @ViewChild('logar')
   logar?: ElementRef;
-  partnershipInvite = 'Bora ser Parceira(o) com esse time e prosperar!?';
+  partnershipInvite = 'Bora formar Parceria com esse time e prosperar!?';
+  partnershipGratefulness = `Grato por ser Parceira(o) do Bora!`;
   partnership: string = `É muito bom ter você como <b>${this.userType}</b> do <b>Bora!</b>
   <br/><br/>
   <small>
@@ -72,6 +73,11 @@ export class NavMenuComponent {
     this.authService.subscribeAuth();
   }
 
+  accountWithResponsibility(){
+    const account = this.authService.getAccount();
+    return account?.responsibilities?.length;
+  }
+
   createResponsibilitiesContent(accounts: Account[], responsibility: string){
     let accountContent = '';
     if(accounts){
@@ -88,7 +94,7 @@ export class NavMenuComponent {
               accountContent += `<small><b>${accounts.length}</b> ${responsibility} <b>ativos</b> nos últimos <b>${Math.abs(this.partnerActivityDays)} dias</b></small>
 <br />
 <br />
-<b>${this.isPartner ? 'Grato por ser Parceira(o) do Bora!' : this.partnershipInvite}</b>
+<b>${this.partnershipInvite}</b>
       `;
     }
     return accountContent;
@@ -102,17 +108,23 @@ export class NavMenuComponent {
     
     return titles.length === 0 ? last || '' : `${titles.slice(0, 2).join(', ')} e ${last}`;
   }
-  togglePartnership(){
-    const partnershipPatch: AccountInput = { isPartner: !this.isPartner };
+  togglePartnership(responsibilityArea?: number){
+    const partnershipPatch: AccountInput = 
+    { 
+      isPartner: !this.isPartner,
+      responsibilityArea: responsibilityArea 
+    };
     this.boraApiService.patchAccount(partnershipPatch, (account: any) => {
       const togglePartnership = !this.isPartner ? 'ativada' : 'desativada';
-      this.toastr.show(`Muito grato por sua presença! Relogue para ver o efeito.`,`Parceria ${togglePartnership}`);
+      this.toastr.show(`${this.partnershipGratefulness} Relogue para ver o efeito.`,`Parceria ${togglePartnership}`);
       this.authService.signOut();
+    }, (err)=>{
+
     });
   }
-  bePartner(){
-    if (this.authService.getAccount() && this.profileGear) {
-      this.profileGear.nativeElement.click();
+  bePartner(responsibilityArea?: number){
+    if (this.authService.getAccount()) {
+      this.togglePartnership(responsibilityArea);
     }else if(this.logar){
       this.logar.nativeElement.click();
     }

@@ -9,8 +9,8 @@
         popoverTitle="Coworkings"
         [popoverMessage]="coworkingsContent"
         placement="right"
-        confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
-        (confirm)="bePartner()"
+        confirmText="{{this.accountWithResponsibility() ? 'Conta' : 'Bora!'}}"
+        (confirm)="bePartner(6)"
         role="button">
         <fa-icon [icon]="['fas','house-laptop']"></fa-icon>
         <br />
@@ -26,8 +26,8 @@
         popoverTitle="Educação"
         [popoverMessage]="educationContent"
         placement="bottom"
-        confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
-        (confirm)="bePartner()"
+        confirmText="{{this.accountWithResponsibility() ? 'Conta' : 'Bora!'}}"
+        (confirm)="bePartner(6)"
         role="button">
         <fa-icon [icon]="['fas','graduation-cap']"></fa-icon>
         <br />
@@ -43,8 +43,8 @@
         popoverTitle="Gestão e Finanças"
         [popoverMessage]="managementContent"
         placement="bottom"
-        confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
-        (confirm)="bePartner()"
+        confirmText="{{this.accountWithResponsibility() ? 'Conta' : 'Bora!'}}"
+        (confirm)="bePartner(4)"
         role="button">
         <fa-icon [icon]="['fas','list-check']"></fa-icon>
         <br />
@@ -60,8 +60,8 @@
         popoverTitle="Tecnologistas"
         [popoverMessage]="techsContent"
         placement="bottom"
-        confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
-        (confirm)="bePartner()"
+        confirmText="{{this.accountWithResponsibility() ? 'Conta' : 'Bora!'}}"
+        (confirm)="bePartner(3)"
         role="button">
         <fa-icon [icon]="['fas','laptop-code']"></fa-icon>
         <br />
@@ -77,8 +77,8 @@
         popoverTitle="Vendas e Marketing"
         [popoverMessage]="salesContent"
         placement="bottom"
-        confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
-        (confirm)="bePartner()"
+        confirmText="{{this.accountWithResponsibility() ? 'Conta' : 'Bora!'}}"
+        (confirm)="bePartner(5)"
         role="button">
         <fa-icon [icon]="['fas','comments-dollar']"></fa-icon>
         <br />
@@ -219,8 +219,9 @@
             popoverTitle="Logue e ative Parceria"
             popoverMessage="1. Clique em <b>Continuar com o Google</b> <br /> 
             2. Logue-se na sua conta <b>Google</b>. <br />
-            3. Clique na <b>engrenagem</b> e depois no botão <b>Ativar</b> (Parceria) <br />
-            4. <b>Prospere!</b>"
+            3. Escolha e clique numa das áreas no menu principal <b>(Gestão, Tech, Vendas, ...)</b> <br />
+            4. Dê um <b>Bora!</b> <br />
+            5. <b>Prospere!</b>"
             placement="bottom"
             cancelText="Ok"
             confirmText="Li e Entendi">
