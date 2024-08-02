@@ -135,7 +135,7 @@ export class MapComponent {
       content: `
         <div>
           <h5 class='text-center'>Bora.Work</h5>
-          <h6 class='text-center'>${Statics.tecnologistas}</h6>
+          <h6 class='text-center'>${Statics.empreendedorismo}</h6>
           <br/>
           <nav class="text-center">
             <a class='btn  btn-dark' href="/bora.work?find=tech">
@@ -148,10 +148,9 @@ export class MapComponent {
           </nav>
           <br/>
           <p>
-            <b>Bora.work</b> é uma <b>Academia</b> de <b>líderes</b> <a target='_blank' href='/bora.work?find=Bora Parceiros'>Parceiros</a> e de <a target='_blank' href='/bora.work?find=tech'>Tecnologia.</a>
-            <br />
-            <br />
-            Nosso propósito é reunir e capacitar líderes e tecnologistas, expandindo nossa equipe <b>operacional</b> e de <b>liderança</b> para continuar a <b><a target='_blank' href='https://bora.earth'>produção de aplicativos inovadores</a></b> e a <b>organização de eventos de qualquer natureza, como palestras, cursos, workshops e reuniões de negócios.</b>
+            <b>Bora.work</b> é uma <b>Academia de <a target='_blank' href='/bora.work?find=Bora Parceiros'>Empreendedorismo</a>, <a target='_blank' href='/bora.work?find=tech'>Tecnologia</a> e <a target='_blank' href='/bora.work?find=Bora Parceiros'>Carreiras</a></b>
+            com o propósito de reunir e capacitar líderes em <b>Gestão, Tecnologia e Vendas</b> de diversas áreas.
+            Nosso objetivo é disseminar a <b>cultura do empreendedorismo</b> por meio da <b><a target='_blank' href='/bora.work'>organização de eventos de qualquer natureza, como palestras, fóruns, workshops e reuniões de negócios.</a></b>
             <br/>
             <br/>
             Atuamos em <b>diversos locais</b>, incluindo <b>universidades (PUCRS e Unisinos), empresas, coworkings, casas, restaurantes e plataformas digitais (<a target='_blank' href='https://meet.google.com'>Google Meet</a>, <a target='_blank' href='https://horizon.meta.com/profile/lucasfogliarini/'>Metaverso</a>, <a target='_blank' href='https://discord.gg/Yf4TCsSTG5'>Discord</a>, <a target='_blank' href='https://chat.whatsapp.com/I7ggwNVQp6I2yWCgMC9Evs'>WhatsApp</a>, <a target='_blank' href='https://www.linkedin.com/in/lucasfogliarini/'>Linkedin</a> e <a target='_blank' href='https://vamo.atlassian.net/jira/software/projects/BORA/boards/1/timeline'>Jira</a>)</b>.
@@ -161,9 +160,6 @@ export class MapComponent {
             <br/>
             <br/>
             Proporcionamos <b>experiências únicas</b> que <b>conectam pessoas</b>, promovendo o crescimento <b>profissional</b> e a <b>expansão</b> da rede de contatos em ambientes acolhedores e confortáveis.
-            <br/>
-            <br/>
-            <b><a target='_blank' href='https://wa.me/5551992364249?text=Quero ser parceira(o) do Bora!'>Junte-se a nós</a></b> e descubra como <b>transformar suas ideias em realidade.</b>
             <br/>
             <br/>
             Com frequência participamos de <a target='_blank' href='/bora.work?withTicket=true'>palestras, workshops e cursos presenciais</a> de diversos produtores para <b>expandir o networking</b> e <b>discutir gestão e liderança</b>.
