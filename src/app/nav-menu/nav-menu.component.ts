@@ -16,13 +16,13 @@ import { Responsibility } from '../models/responsibility.model';
 export class NavMenuComponent {
   news?: string = undefined;
   coworkingsContent = '';
-  academiesContent = '';
-  partnersContent = '';
+  educationContent = '';
+  managementContent = '';
   techsContent = '';
-  consultantsContent = '';
+  salesContent = '';
   businessPartnersContent = '';
 
-  partnerActivityDays: number = -15;
+  partnerActivityDays: number = -30;
   partnerCalendarAuthorized = false;
   isPartner = this.authService.getAccount()?.isPartner;
   togglePartnershipText = this.isPartner ? 'Desativar' : 'Ativar';
@@ -56,14 +56,14 @@ export class NavMenuComponent {
     this.boraApiService.getPartners(this.partnerCalendarAuthorized, this.partnerActivityDays, (partners=>{
       const coworkings = partners.filter(p=>p.responsibilities?.some(r=> [24].includes(r.id)));
       this.coworkingsContent = this.createResponsibilitiesContent(coworkings, 'Coworkings');
-      const academies = partners.filter(p=>p.responsibilities?.some(r=> [12].includes(r.id)));
-      this.academiesContent = this.createResponsibilitiesContent(academies, 'Academias');      
-      this.partnersContent = this.createResponsibilitiesContent(partners, 'Parceiros');
+      const education = partners.filter(p=>p.responsibilities?.some(r=>r.areaId == 6));
+      this.educationContent = this.createResponsibilitiesContent(education, 'Educadores');      
+      const management = partners.filter(p=>p.responsibilities?.some(r=>r.areaId == 4));
+      this.managementContent = this.createResponsibilitiesContent(management, 'Gestores');
       const techs = partners.filter(p=>p.responsibilities?.some(r=>r.areaId == 3));
       this.techsContent = this.createResponsibilitiesContent(techs, 'Tecnologistas');
-
-      const consultants = partners.filter(p=>p.responsibilities?.some(r=> [1,7,12,20,22,26,27,28,30, 31].includes(r.id)));
-      this.consultantsContent = this.createResponsibilitiesContent(consultants, 'Consultores');
+      const sales = partners.filter(p=>p.responsibilities?.some(r=>r.areaId == 5));
+      this.salesContent = this.createResponsibilitiesContent(sales, 'Vendedores');
       
       const businessPartners = partners.filter(p=>p.responsibilities?.some(r=> [23].includes(r.id)));
       this.businessPartnersContent = this.createResponsibilitiesContent(businessPartners, 'Sócios');

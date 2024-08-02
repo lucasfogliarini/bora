@@ -20,12 +20,12 @@ app-nav-menu .coworkings {
     top: 120px !important;
 }
 
-app-nav-menu .academies {
+app-nav-menu .education {
     top: 0px !important;
     left: 20px !important;
 }
 
-app-nav-menu .partners {
+app-nav-menu .management {
     top: 0px !important;
 }
 
@@ -33,7 +33,7 @@ app-nav-menu .techs {
     top: 0px !important;
 }
 
-app-nav-menu .consultants {
+app-nav-menu .sales {
     top: 0px !important;
     left: -60px !important;
 }

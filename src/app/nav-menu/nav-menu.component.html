@@ -19,36 +19,36 @@
     </li>
     <li class="nav-item content">
       <a class="nav-link"
-        popoverClass='academies'
+        popoverClass='education'
         mwlConfirmationPopover
-        value="Academias"
-        title="Academias"
-        popoverTitle="Academias"
-        [popoverMessage]="academiesContent"
+        value="Educação"
+        title="Educação"
+        popoverTitle="Educação"
+        [popoverMessage]="educationContent"
         placement="bottom"
         confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
         (confirm)="bePartner()"
         role="button">
         <fa-icon [icon]="['fas','graduation-cap']"></fa-icon>
         <br />
-        <small style="font-size: xx-small;"><b>Academias</b></small>
+        <small style="font-size: xx-small;"><b>Educação</b></small>
       </a>
     </li>
     <li class="nav-item content">
       <a class="nav-link"
-        popoverClass='partners'
+        popoverClass='management'
         mwlConfirmationPopover
-        value="Parceiros"
-        title="Parceiros"
-        popoverTitle="Parceiros"
-        [popoverMessage]="partnersContent"
+        value="Gestão e Finanças"
+        title="Gestão e Finanças"
+        popoverTitle="Gestão e Finanças"
+        [popoverMessage]="managementContent"
         placement="bottom"
         confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
         (confirm)="bePartner()"
         role="button">
-        <fa-icon [icon]="['fas','handshake']"></fa-icon>
+        <fa-icon [icon]="['fas','list-check']"></fa-icon>
         <br />
-        <small style="font-size: xx-small;"><b>Parceiros</b></small>
+        <small style="font-size: xx-small;"><b>Gestão</b></small>
       </a>
     </li>
     <li class="nav-item content">
@@ -70,19 +70,19 @@
     </li>
     <li class="nav-item content">
       <a class="nav-link"
-        popoverClass='consultants'
+        popoverClass='sales'
         mwlConfirmationPopover
-        value="Consultores"
-        title="Consultores"
-        popoverTitle="Consultores"
-        [popoverMessage]="consultantsContent"
+        value="Vendas e Marketing"
+        title="Vendas e Marketing"
+        popoverTitle="Vendas e Marketing"
+        [popoverMessage]="salesContent"
         placement="bottom"
         confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
         (confirm)="bePartner()"
         role="button">
-        <fa-icon [icon]="['fas','comments']"></fa-icon>
+        <fa-icon [icon]="['fas','comments-dollar']"></fa-icon>
         <br />
-        <small style="font-size: xx-small;"><b>Consultores</b></small>
+        <small style="font-size: xx-small;"><b>Vendas</b></small>
       </a>
     </li>
     <!--<li class="nav-item content">
