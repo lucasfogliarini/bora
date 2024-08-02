@@ -124,6 +124,11 @@ export class NavMenuComponent {
   }
   bePartner(responsibilityArea?: number){
     if (this.authService.getAccount()) {
+      if(this.accountWithResponsibility() && this.profileGear){
+        this.profileGear.nativeElement.click();
+        return;
+      }
+
       this.togglePartnership(responsibilityArea);
     }else if(this.logar){
       this.logar.nativeElement.click();
