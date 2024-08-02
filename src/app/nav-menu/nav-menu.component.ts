@@ -94,7 +94,7 @@ export class NavMenuComponent {
               accountContent += `<small><b>${accounts.length}</b> ${responsibility} <b>ativos</b> nos últimos <b>${Math.abs(this.partnerActivityDays)} dias</b></small>
 <br />
 <br />
-<b>${this.partnershipInvite}</b>
+<b>${this.isPartner ? this.partnershipGratefulness : this.partnershipInvite}</b>
       `;
     }
     return accountContent;
