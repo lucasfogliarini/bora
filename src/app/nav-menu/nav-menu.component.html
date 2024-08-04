@@ -19,6 +19,23 @@
     </li>
     <li class="nav-item content">
       <a class="nav-link"
+        popoverClass='culture'
+        mwlConfirmationPopover
+        value="Cultura"
+        title="Cultura"
+        popoverTitle="Cultura"
+        [popoverMessage]="cultureContent"
+        placement="bottom"
+        confirmText="{{this.accountWithResponsibility() ? 'Conta' : 'Bora!'}}"
+        (confirm)="bePartner(5)"
+        role="button">
+        <fa-icon [icon]="['fas','music']"></fa-icon>
+        <br />
+        <small style="font-size: xx-small;"><b>Cultura</b></small>
+      </a>
+    </li>
+    <li class="nav-item content">
+      <a class="nav-link"
         popoverClass='education'
         mwlConfirmationPopover
         value="Educação"
@@ -68,7 +85,7 @@
         <small style="font-size: xx-small;"><b>Tech</b></small>
       </a>
     </li>
-    <li class="nav-item content">
+    <!--<li class="nav-item content">
       <a class="nav-link"
         popoverClass='sales'
         mwlConfirmationPopover
@@ -85,7 +102,7 @@
         <small style="font-size: xx-small;"><b>Vendas</b></small>
       </a>
     </li>
-    <!--<li class="nav-item content">
+    <li class="nav-item content">
       <a class="nav-link"
         popoverClass='businessPartners'
         mwlConfirmationPopover

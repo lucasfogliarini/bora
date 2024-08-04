@@ -20,6 +20,7 @@ export class NavMenuComponent {
   managementContent = '';
   techsContent = '';
   salesContent = '';
+  cultureContent = '';
   businessPartnersContent = '';
 
   partnerActivityDays: number = -30;
@@ -63,9 +64,11 @@ export class NavMenuComponent {
       this.managementContent = this.createResponsibilitiesContent(management, 'Gestores');
       const techs = partners.filter(p=>p.responsibilities?.some(r=>r.areaId == 3));
       this.techsContent = this.createResponsibilitiesContent(techs, 'Tecnologistas');
-      const sales = partners.filter(p=>p.responsibilities?.some(r=>r.areaId == 5));
-      this.salesContent = this.createResponsibilitiesContent(sales, 'Vendedores');
+      const culture = partners.filter(p=>p.responsibilities?.some(r=>r.areaId == 13));
+      this.cultureContent = this.createResponsibilitiesContent(culture, 'Cultura');  
       
+      const sales = partners.filter(p=>p.responsibilities?.some(r=>r.areaId == 5));
+      this.salesContent = this.createResponsibilitiesContent(sales, 'Vendedores');      
       const businessPartners = partners.filter(p=>p.responsibilities?.some(r=> [23].includes(r.id)));
       this.businessPartnersContent = this.createResponsibilitiesContent(businessPartners, 'Sócios');
     }));

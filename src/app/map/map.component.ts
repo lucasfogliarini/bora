@@ -82,7 +82,7 @@ export class MapComponent {
           <br/>
           <p>
             <b>Bora.work</b> é uma <b>Academia de <a target='_blank' href='/bora.work?find=Bora Parceiros'>Empreendedorismo</a>, <a target='_blank' href='/bora.work?find=tech'>Tecnologia</a> e <a target='_blank' href='/bora.work?find=Bora Parceiros'>Carreiras</a></b>
-            com o propósito de reunir e capacitar líderes em <b>Gestão, Tecnologia e Vendas</b> de diversas áreas com o objetivo de disseminar a <b>cultura do empreendedorismo</b> por meio da <b><a target='_blank' href='/bora.work'>organização de eventos de qualquer natureza, como palestras, fóruns, workshops e reuniões de negócios.</a></b>
+            com o propósito de reunir e capacitar líderes em <b>Gestão, Tecnologia, Cultura e Educação</b> de diversas áreas com o objetivo de disseminar a <b>cultura do empreendedorismo</b> por meio da <b><a target='_blank' href='/bora.work'>organização de eventos de qualquer natureza, como palestras, fóruns, workshops e reuniões de negócios.</a></b>
             <br/>
             <br/>
             Atuamos em <b>diversos locais</b>, incluindo <b>universidades (PUCRS e Unisinos), coworkings, empresas, casas, restaurantes e plataformas digitais (<a target='_blank' href='https://meet.google.com'>Google Meet</a>, <a target='_blank' href='https://horizon.meta.com/profile/lucasfogliarini/'>Metaverso</a>, <a target='_blank' href='https://discord.gg/Yf4TCsSTG5'>Discord</a>, <a target='_blank' href='https://chat.whatsapp.com/I7ggwNVQp6I2yWCgMC9Evs'>WhatsApp</a>, <a target='_blank' href='https://www.linkedin.com/in/lucasfogliarini/'>Linkedin</a> e <a target='_blank' href='https://vamo.atlassian.net/jira/software/projects/BORA/boards/1/timeline'>Jira</a>)</b>.

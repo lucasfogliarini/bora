@@ -20,9 +20,14 @@ app-nav-menu .coworkings {
     top: 120px !important;
 }
 
-app-nav-menu .education {
+app-nav-menu .culture {
     top: 0px !important;
     left: 20px !important;
+}
+
+app-nav-menu .education {
+    top: 0px !important;
+    left: 0px !important;
 }
 
 app-nav-menu .management {
@@ -31,6 +36,7 @@ app-nav-menu .management {
 
 app-nav-menu .techs {
     top: 0px !important;
+    left: -60px !important;
 }
 
 app-nav-menu .sales {
