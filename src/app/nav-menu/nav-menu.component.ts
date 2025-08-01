@@ -16,6 +16,7 @@ import { Responsibility } from '../models/responsibility.model';
 export class NavMenuComponent {
   news?: string = undefined;
   coworkingsContent = '';
+  servicesContent = '';
   educationContent = '';
   managementContent = '';
   techsContent = '';

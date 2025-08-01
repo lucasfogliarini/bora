@@ -2,7 +2,7 @@
 
 # Bora
 
-A [Bora](https://bora.work/) é uma aplicação desenvolvida para facilitar a organização de encontros e eventos, integrando-se perfeitamente com o Google Agenda para oferecer uma experiência de usuário simplificada e eficiente.
+O [Bora] é uma aplicação desenvolvida para facilitar a organização de encontros e eventos, integrando-se perfeitamente com o Google Agenda para oferecer uma experiência de usuário simplificada e eficiente.
 
 Essa plataforma permite que os usuários criem, gerenciem e compartilhem eventos com facilidade, tudo diretamente através da interface da Web. A integração com o Google Agenda permite sincronizar automaticamente os eventos criados na Bora com o calendário pessoal do usuário, garantindo que nunca se esqueçam de um compromisso importante.
 

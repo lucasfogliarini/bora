@@ -55,37 +55,24 @@ export class EventsComponent {
     timeMax.setMonth(currentMonth + addMonths);
     return timeMax.toISOString();
   }
-  isBoraWork(){
-    return Statics.isBoraWork();
-  }
-  getParceiros(){
-    this.eventsQuery = 'parceiros';
+  
+  getServices(){
+    this.eventsQuery = '🤲';
     this.getEvents();
   }
-  getSocios(){
-    this.eventsQuery = 'socios';
+  getChess(){
+    this.eventsQuery = '♟️';
     this.getEvents();
   }
   getTech(){
-    this.eventsQuery = 'tech';
-    this.getEvents();
-  }
-  getTribe(){
-    this.eventsQuery = 'tribe';
-    this.getEvents();
-  }
-  getJams(){
-    this.eventsQuery = 'Jam';
+    this.eventsQuery = '👨‍💻';
     this.getEvents();
   }
   getBirthdays(){
     this.eventsQuery = '🥳';
     this.getEvents();
   }
-  getJogatina(){
-    this.eventsQuery = 'jogatina';
-    this.getEvents();
-  }
+  
   getEventsWithTicket(){
     this.eventsQuery = undefined;
     this.eventsWithTicket = true;

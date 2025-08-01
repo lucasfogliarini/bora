@@ -1,10 +1,10 @@
 export const environment = {
   production: true,
   appName: "Bora",
-  appDomain: "bora.work",
-  boraApi: 'https://api.bora.work/',
+  appDomain: "bora",
+  boraApi: 'https://boraapi.azurewebsites.net/',
   adminPhone: "5551992364249",
-  mainRole: 'Parceira(o)',
+  mainRole: 'Irmão(a)',
   secondRole: 'Cliente',
   appDefiniteArticle: 'o',//O Bora!
 };

@@ -1,12 +1,9 @@
 <nav id="events-nav" class="row" style="border-bottom: 1px solid rgb(216, 208, 208)">
   <div class="col-9"></div>
-  <input id="eventsQuery" (input)="getEvents()" [(ngModel)]="eventsQuery" type="text" placeholder="Pesquise ... 'tech', 'parceiros', 'bora', ..." class="ml-1 col-5" />
-  <fa-icon role="button" [hidden]="!isBoraWork()" (click)="getParceiros()" title="Sócios" class="m-1 col-1" [icon]="['fas','handshake']"></fa-icon>
-  <fa-icon role="button" [hidden]="!isBoraWork()" (click)="getTech()" title="Tech" class="m-1 col-1" [icon]="['fas','laptop-code']"></fa-icon>
-  <fa-icon role="button" [hidden]="!isBoraWork()" (click)="getSocios()" title="Parceiros" class="m-1 col-1" [icon]="['fas','money-bill-trend-up']"></fa-icon>
-  <fa-icon role="button" [hidden]="isBoraWork()" (click)="getJogatina()" title="Bora Xadrez e Jogatina" class="m-1 col-1" [icon]="['fas','chess-king']"></fa-icon>
-  <fa-icon role="button" [hidden]="isBoraWork()" (click)="getBirthdays()" title="Bora Celebrar" class="m-1 col-1" [icon]="['fas','cake-candles']"></fa-icon>
-  <fa-icon role="button" [hidden]="isBoraWork()" (click)="getToasts()" title="Bora Brindar" class="m-1 col-1" [icon]="['fas','champagne-glasses']"></fa-icon>
+  <input id="eventsQuery" (input)="getEvents()" [(ngModel)]="eventsQuery" type="text" placeholder="Pesquise ... '🤲', '♟️', 'cultos', ..." class="ml-1 col-5" />
+  <fa-icon role="button" (click)="getServices()" title="Cultos" class="m-1 col-1" [icon]="['fas','bible']"></fa-icon>
+  <fa-icon role="button" (click)="getChess()" title="Xadrez" class="m-1 col-1" [icon]="['fas','chess-king']"></fa-icon>
+  <fa-icon role="button" (click)="getTech()" title="Arquitetura e tecnologia" class="m-1 col-1" [icon]="['fas','laptop-code']"></fa-icon>
   <fa-icon role="button" (click)="getEventsWithTicket()" title="Eventos com ingresso" class="m-1 col-1" [icon]="['fas','ticket']"></fa-icon>
   <fa-icon role="button" (click)="refreshEvents()" title="Todos os eventos" class="m-1 col-1" [icon]="['fas','arrows-rotate']"></fa-icon>
 </nav>

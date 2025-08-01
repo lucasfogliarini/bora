@@ -16,6 +16,10 @@ app-nav-menu .profile {
     top: 145px !important;
 }
 
+app-nav-menu .services {
+    top: 120px !important;
+}
+
 app-nav-menu .coworkings {
     top: 120px !important;
 }

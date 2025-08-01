@@ -1,20 +1,56 @@
 <nav id="bora-nav" class="navbar navbar-expand navbar-white navbar-light">
   <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="/" role="button">
+        <fa-icon [icon]="['fas','bible']"></fa-icon>
+        <br />
+        <small style="font-size: xx-small;">Cultos</small>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/" role="button">
+        <fa-icon [icon]="['fas','chess-king']"></fa-icon>
+        <br />
+        <small style="font-size: xx-small;">Jogos</small>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/" role="button">
+        <fa-icon [icon]="['fas','laptop-code']"></fa-icon>
+        <br />
+        <small style="font-size: xx-small;">Arquitetura</small>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/" role="button">
+        <fa-icon [icon]="['fas','comments']"></fa-icon>
+        <br />
+        <small style="font-size: xx-small;">Debates</small>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/" role="button">
+        <fa-icon [icon]="['fas','earth-americas']"></fa-icon>
+        <br />
+        <small style="font-size: xx-small;">Mapa</small>
+      </a>
+    </li>
+    <!--
     <li class="nav-item content">
       <a class="nav-link"
-        popoverClass='coworkings'
+        popoverClass='techs'
         mwlConfirmationPopover
-        value="Coworkings"
-        title="Coworkings"
-        popoverTitle="Coworkings"
-        [popoverMessage]="coworkingsContent"
-        placement="right"
+        value="Tecnologistas"
+        title="Tecnologistas"
+        popoverTitle="Tecnologistas"
+        [popoverMessage]="techsContent"
+        placement="bottom"
         confirmText="{{this.accountWithResponsibility() ? 'Conta' : 'Bora!'}}"
-        (confirm)="bePartner(6)"
+        (confirm)="bePartner(3)"
         role="button">
-        <fa-icon [icon]="['fas','house-laptop']"></fa-icon>
+        <fa-icon [icon]="['fas','laptop-code']"></fa-icon>
         <br />
-        <small style="font-size: xx-small;"><b>Coworkings</b></small>
+        <small style="font-size: xx-small;"><b>Tech</b></small>
       </a>
     </li>
     <li class="nav-item content">
@@ -36,97 +72,21 @@
     </li>
     <li class="nav-item content">
       <a class="nav-link"
-        popoverClass='education'
+        popoverClass='coworkings'
         mwlConfirmationPopover
-        value="Educação"
-        title="Educação"
-        popoverTitle="Educação"
-        [popoverMessage]="educationContent"
-        placement="bottom"
+        value="Coworkings"
+        title="Coworkings"
+        popoverTitle="Coworkings"
+        [popoverMessage]="coworkingsContent"
+        placement="right"
         confirmText="{{this.accountWithResponsibility() ? 'Conta' : 'Bora!'}}"
         (confirm)="bePartner(6)"
         role="button">
-        <fa-icon [icon]="['fas','graduation-cap']"></fa-icon>
+        <fa-icon [icon]="['fas','house-laptop']"></fa-icon>
         <br />
-        <small style="font-size: xx-small;"><b>Educação</b></small>
+        <small style="font-size: xx-small;"><b>Coworkings</b></small>
       </a>
     </li>
-    <li class="nav-item content">
-      <a class="nav-link"
-        popoverClass='management'
-        mwlConfirmationPopover
-        value="Gestão e Finanças"
-        title="Gestão e Finanças"
-        popoverTitle="Gestão e Finanças"
-        [popoverMessage]="managementContent"
-        placement="bottom"
-        confirmText="{{this.accountWithResponsibility() ? 'Conta' : 'Bora!'}}"
-        (confirm)="bePartner(4)"
-        role="button">
-        <fa-icon [icon]="['fas','list-check']"></fa-icon>
-        <br />
-        <small style="font-size: xx-small;"><b>Gestão</b></small>
-      </a>
-    </li>
-    <li class="nav-item content">
-      <a class="nav-link"
-        popoverClass='techs'
-        mwlConfirmationPopover
-        value="Tecnologistas"
-        title="Tecnologistas"
-        popoverTitle="Tecnologistas"
-        [popoverMessage]="techsContent"
-        placement="bottom"
-        confirmText="{{this.accountWithResponsibility() ? 'Conta' : 'Bora!'}}"
-        (confirm)="bePartner(3)"
-        role="button">
-        <fa-icon [icon]="['fas','laptop-code']"></fa-icon>
-        <br />
-        <small style="font-size: xx-small;"><b>Tech</b></small>
-      </a>
-    </li>
-    <!--<li class="nav-item content">
-      <a class="nav-link"
-        popoverClass='sales'
-        mwlConfirmationPopover
-        value="Vendas e Marketing"
-        title="Vendas e Marketing"
-        popoverTitle="Vendas e Marketing"
-        [popoverMessage]="salesContent"
-        placement="bottom"
-        confirmText="{{this.accountWithResponsibility() ? 'Conta' : 'Bora!'}}"
-        (confirm)="bePartner(5)"
-        role="button">
-        <fa-icon [icon]="['fas','comments-dollar']"></fa-icon>
-        <br />
-        <small style="font-size: xx-small;"><b>Vendas</b></small>
-      </a>
-    </li>
-    <li class="nav-item content">
-      <a class="nav-link"
-        popoverClass='businessPartners'
-        mwlConfirmationPopover
-        value="Sócios"
-        title="Sócios"
-        popoverTitle="Sócios"
-        [popoverMessage]="businessPartnersContent"
-        placement="left"
-        confirmText="{{isPartner ? 'Conta' : 'Bora!'}}"
-        (confirm)="bePartner()"
-        role="button">
-        <fa-icon [icon]="['fas','money-bill-trend-up']"></fa-icon>
-        <br />
-        <small style="font-size: xx-small;"><b>Sócios</b></small>
-      </a>
-    </li>-->
-    <li class="nav-item">
-      <a class="nav-link" href="/" role="button">
-        <fa-icon [icon]="['fas','earth-americas']"></fa-icon>
-        <br />
-        <small style="font-size: xx-small;">Mapa</small>
-      </a>
-    </li>
-    <!--
     <li class="nav-item">
       <a class="nav-link" target="_blank" href="https://www.linkedin.com/company/bora-work/" role="button">
         <fa-icon [icon]="['fab','linkedin']"></fa-icon>

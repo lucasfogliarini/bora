@@ -13,12 +13,13 @@ export class MapComponent {
   markers: Marker[] = [];
   poa: google.maps.LatLngLiteral = { lat: -30.0346, lng: -51.2177 };// Coordenadas para Porto Alegre, Brasil
   boraWork: google.maps.LatLngLiteral = { lat: -30.0540572, lng: -51.1477079 };// Coordenadas para Porto Alegre, Brasil
+  boraJardimEuropa: google.maps.LatLngLiteral = { lat: -30.0253869, lng: -51.1686648 };// Coordenadas para Porto Alegre, Brasil
   pucCarreiras: google.maps.LatLngLiteral = { lat: -30.0446776, lng: -51.218274 };// Coordenadas para Porto Alegre, Brasil
-  center: google.maps.LatLngLiteral = this.boraWork;
+  center: google.maps.LatLngLiteral = this.boraJardimEuropa;
 
   mapOptions: google.maps.MapOptions = {
-    center: this.pucCarreiras,
-    zoom: 12,
+    center: this.center,
+    zoom: 15,
     mapTypeId: google.maps.MapTypeId.SATELLITE,
     disableDefaultUI: false,
     fullscreenControl: false,
@@ -45,25 +46,83 @@ export class MapComponent {
                 position: place.geometry?.location,
               });
               marker.addListener('click', () => {
-                this.openBoraWork(marker, place);
+                this.openBoraVirtudes(marker, place);
               });
 
               switch(Statics.onDomain())
               {
-                  case BoraDomain.Earth:
-                    this.openBoraEarth(marker, place);
+                  case BoraDomain.Virtudes:
+                    this.openBoraVirtudes(marker, place);
                   break;
-                  case BoraDomain.Social:
-                    this.openBoraSocial(marker, place);
+                  case BoraDomain.Work:
+                    this.openBoraWork(marker, place);
                     break;
                   default:
-                    this.openBoraWork(marker, place);
+                    this.openBoraVirtudes(marker, place);
               }
           }
       });
     }
   }
 
+  openBoraVirtudes(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
+    const infoWindow = new google.maps.InfoWindow({
+      content: `
+        <div>
+          <h5 class='text-center'>Bora encontros</h5>
+          <h6 class='text-center'>${Statics.virtudes}</h6>
+          <br/>
+          <p>
+            O <b>Bora encontros</b> é mais do que uma rede de encontros e grupos — é um movimento. Um espaço para nutrir conexões <b>verdadeiras</b>, compartilhar saberes, viver com <b>virtudes</b> o <b>sagrado</b> no cotidiano e fortalecer o que temos de melhor: o vínculo humano.
+            <br />
+            Acreditamos que encontros com propósito podem transformar pessoas, e pessoas transformadas transformam comunidades.
+          </p>
+          <p>Descubra nossos grupos e se conecte com o que faz sentido pra você:</p>
+          <ul style='list-style-type: none; padding: 0'>
+            <li>
+             🤲🏻 Bora Cultos
+             (<a target='_blank' href='https://chat.whatsapp.com/FtoRjOgoiZmLvQFltbCbzA'>grupo</a>
+             ou <a target='_blank' href='/lucasfogliarini?find=🤲🏻'>agenda</a>)
+            </li>
+            <li>
+             ♟️ Bora Xadrez
+             (<a target='_blank' href='https://chat.whatsapp.com/DOzoRcmsAjW7mHPj9iMD0z'>grupo</a>
+             ou <a target='_blank' href='/lucasfogliarini?find=♟️'>agenda</a>)
+            </li>
+            <li>
+             👨‍💻 Bora arquitetura, tecnologia e empreendedorismo
+             (<a target='_blank' href='https://chat.whatsapp.com/CAzPAdol09sAk63BEJ1Qz0'>grupo</a>
+             ou <a target='_blank' href='/lucasfogliarini?find=👨‍💻'>agenda</a>)
+            </li>
+            <li>
+             🗣️ Bora debates, discursos e palestras
+             (<a target='_blank' href='https://chat.whatsapp.com/HsBIyjtWqOD6GkNDrPHCfz'>grupo</a>
+             ou <a target='_blank' href='/lucasfogliarini?find=🗣️'>agenda</a>)
+            </li>
+            <li>
+             🎭 Espetáculos e Teatros (StandUps)
+             (<a target='_blank' href='/lucasfogliarini?withTicket=true'>agenda</a>)
+            </li>
+            <li>
+             ⚽ Bora Bola
+             (<a target='_blank' href='/lucasfogliarini?find=⚽'>agenda</a>)
+            </li>
+          <ul>
+          <br/>
+          <div class='text-center'>
+            <small>A maioria dos encontros presenciais são em Porto Alegre no</small>
+            <br />
+            <br />
+            <a class='btn btn-dark' target='_blank' href='https://www.google.com/maps/search/?api=1&query=${Statics.onPlace()}'>${Statics.onOffice()}</a>
+            <br />
+            ⬇️
+          </div>
+          <br/>
+        </div>
+      `
+    });
+    infoWindow.open(this.googleMap.googleMap, marker);
+  }
   openBoraWork(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
     const infoWindow = new google.maps.InfoWindow({
       content: `
