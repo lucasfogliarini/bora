@@ -73,9 +73,9 @@ export class MapComponent {
           <h6 class='text-center'>${Statics.virtudes}</h6>
           <br/>
           <p>
-            O <b>Bora encontros</b> é mais do que uma rede de encontros e grupos — é um movimento. Um espaço para nutrir conexões <b>verdadeiras</b>, compartilhar saberes, viver com <b>virtudes</b> o <b>sagrado</b> no cotidiano e fortalecer o que temos de melhor: o vínculo humano.
-            <br />
-            Acreditamos que encontros com propósito podem transformar pessoas, e pessoas transformadas transformam comunidades.
+            O <b>Bora</b> é um movimento criado para promover conexões verdadeiras entre pessoas através de grupos e encontros com propósito. Um espaço para <b>compartilhar saberes, cultivar virtudes</b>, trocar experiências e fortalecer vínculos humanos.
+            <br/>
+            Além das conexões, o <b>Bora</b> também valoriza o <b>aprendizado coletivo e a mentoria</b>, acreditando que quando compartilhamos conhecimento, todos crescem juntos.
           </p>
           <p>Descubra nossos grupos e se conecte com o que faz sentido pra você:</p>
           <ul style='list-style-type: none; padding: 0'>
