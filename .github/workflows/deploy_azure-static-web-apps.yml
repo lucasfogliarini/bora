@@ -8,14 +8,14 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-    name: Build and Deploy to bora.work group (work, finance, social)
+    name: Build and Deploy to bora
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: true
 
-      - name: bora.work Deploy
-        id: bora-work-deploy
+      - name: bora Deploy
+        id: bora-deploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_KIND_COAST_0D6ED6A10 }}
@@ -28,36 +28,6 @@ jobs:
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           ###### End of Repository/Build Configurations ######
-
-      - name: bora.earth Deploy
-        id: bora-earth-deploy
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.BORA_EARTH }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
-          action: "upload"
-          app_location: "/" # App source code path
-          output_location: "dist/bora" # Built app content directory - optional
-          ##skip_app_build: true
-          ##api_location: "" # Api source code path - optional
-          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          ###### End of Repository/Build Configurations ######
-
-      - name: bora.social Deploy
-        id: bora-social-deploy
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_HAPPY_WATER_020B4F610 }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
-          action: "upload"
-          app_location: "/" # App source code path
-          output_location: "dist/bora" # Built app content directory - optional
-          ##skip_app_build: true
-          ##api_location: "" # Api source code path - optional
-          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          ###### End of Repository/Build Configurations ######  
 
   ##bora.work
   close_pull_request:
