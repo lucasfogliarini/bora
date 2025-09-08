@@ -80,32 +80,37 @@ export class MapComponent {
           <p>Descubra nossos grupos e se conecte com o que faz sentido pra você:</p>
           <ul style='list-style-type: none; padding: 0'>
             <li>
+             👼 Bora PUC Angels
+             (<a target='_blank' href='https://chat.whatsapp.com/HsWkEqJlO1U9V7g0zNrgDE?mode=ems_copy_t'>grupo</a>
+             ou <a target='_blank' href='https://lu.ma/pucangels-rs'>agenda</a>)
+            </li>
+            <li>
              🤲🏻 Bora Cultos
              (<a target='_blank' href='https://chat.whatsapp.com/FtoRjOgoiZmLvQFltbCbzA'>grupo</a>
-             ou <a target='_blank' href='/lucasfogliarini?find=🤲🏻'>agenda</a>)
+             ou <a target='_blank' href='https://lu.ma/bora?tag=cultos'>agenda</a>)
             </li>
             <li>
              ♟️ Bora Xadrez
              (<a target='_blank' href='https://chat.whatsapp.com/DOzoRcmsAjW7mHPj9iMD0z'>grupo</a>
-             ou <a target='_blank' href='/lucasfogliarini?find=♟️'>agenda</a>)
+             ou <a target='_blank' href='https://lu.ma/bora?tag=xadrez'>agenda</a>)
             </li>
             <li>
-             👨‍💻 Bora arquitetura, tecnologia e empreendedorismo
+             👨‍💻 Bora arquitetura e tecnologia
              (<a target='_blank' href='https://chat.whatsapp.com/CAzPAdol09sAk63BEJ1Qz0'>grupo</a>
-             ou <a target='_blank' href='/lucasfogliarini?find=👨‍💻'>agenda</a>)
+             ou <a target='_blank' href='https://lu.ma/bora?tag=tech'>agenda</a>)
             </li>
             <li>
              🗣️ Bora debates, discursos e palestras
              (<a target='_blank' href='https://chat.whatsapp.com/HsBIyjtWqOD6GkNDrPHCfz'>grupo</a>
-             ou <a target='_blank' href='/lucasfogliarini?find=🗣️'>agenda</a>)
+             ou <a target='_blank' href='https://lu.ma/pucangels-rs'>agenda</a>)
             </li>
             <li>
              🎭 Espetáculos e Teatros (StandUps)
-             (<a target='_blank' href='/lucasfogliarini?withTicket=true'>agenda</a>)
+             (<a target='_blank' href='https://lu.ma/bora?tag=teatros'>agenda</a>)
             </li>
             <li>
              ⚽ Bora Bola
-             (<a target='_blank' href='/lucasfogliarini?find=⚽'>agenda</a>)
+             (<a target='_blank' href='https://lu.ma/bora?tag=bola'>agenda</a>)
             </li>
           <ul>
           <br/>
