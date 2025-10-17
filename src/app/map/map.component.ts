@@ -46,71 +46,63 @@ export class MapComponent {
                 position: place.geometry?.location,
               });
               marker.addListener('click', () => {
-                this.openBoraVirtudes(marker, place);
+                this.openBoraEncontros(marker, place);
               });
 
               switch(Statics.onDomain())
               {
                   case BoraDomain.Virtudes:
-                    this.openBoraVirtudes(marker, place);
+                    this.openBoraEncontros(marker, place);
                   break;
                   case BoraDomain.Work:
                     this.openBoraWork(marker, place);
                     break;
                   default:
-                    this.openBoraVirtudes(marker, place);
+                    this.openBoraEncontros(marker, place);
               }
           }
       });
     }
   }
 
-  openBoraVirtudes(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
+  openBoraEncontros(marker: google.maps.Marker, place: google.maps.places.PlaceResult): void {
     const infoWindow = new google.maps.InfoWindow({
       content: `
         <div>
-          <h5 class='text-center'>Bora encontros</h5>
-          <h6 class='text-center'>${Statics.virtudes}</h6>
+          <h5 class='text-center'>Bora</h5>
+          <h6 class='text-center'>${Statics.encontros}</h6>
           <br/>
           <p>
             O <b>Bora</b> é um movimento criado para promover conexões verdadeiras entre pessoas através de grupos e encontros com propósito. Um espaço para <b>compartilhar saberes, cultivar virtudes</b>, trocar experiências e fortalecer vínculos humanos.
             <br/>
-            Além das conexões, o <b>Bora</b> também valoriza o <b>aprendizado coletivo e a mentoria</b>, acreditando que quando compartilhamos conhecimento, todos crescem juntos.
+            Além das conexões, também valorizamos o <b>aprendizado coletivo e a mentoria</b>, acreditando que quando compartilhamos conhecimento, todos crescem juntos.
           </p>
           <p>Descubra nossos grupos e se conecte com o que faz sentido pra você:</p>
-          <ul style='list-style-type: none; padding: 0'>
-            <li>
-             👼 Bora PUC Angels
-             (<a target='_blank' href='https://chat.whatsapp.com/HsWkEqJlO1U9V7g0zNrgDE?mode=ems_copy_t'>grupo</a>
-             ou <a target='_blank' href='https://lu.ma/pucangels-rs'>agenda</a>)
-            </li>
+          <ul style='list-style-type: none; padding: 0'>            
             <li>
              🤲🏻 Bora Cultos
              (<a target='_blank' href='https://chat.whatsapp.com/FtoRjOgoiZmLvQFltbCbzA'>grupo</a>
              ou <a target='_blank' href='https://lu.ma/bora?tag=cultos'>agenda</a>)
             </li>
             <li>
+             👨‍💻 Bora Tech (evolução e conhecimento em arquitetura de software e novas tecnologias)
+             (<a target='_blank' href='https://chat.whatsapp.com/CAzPAdol09sAk63BEJ1Qz0'>grupo</a>
+             ou <a target='_blank' href='https://lu.ma/bora?tag=tech'>agenda</a>)
+            </li>
+            <li>
              ♟️ Bora Xadrez
              (<a target='_blank' href='https://chat.whatsapp.com/DOzoRcmsAjW7mHPj9iMD0z'>grupo</a>
              ou <a target='_blank' href='https://lu.ma/bora?tag=xadrez'>agenda</a>)
-            </li>
+            </li>            
             <li>
-             👨‍💻 Bora arquitetura e tecnologia
-             (<a target='_blank' href='https://chat.whatsapp.com/CAzPAdol09sAk63BEJ1Qz0'>grupo</a>
-             ou <a target='_blank' href='https://lu.ma/bora?tag=tech'>agenda</a>)
+             🪽 Bora PUC Angels
+             (<a target='_blank' href='https://chat.whatsapp.com/HsWkEqJlO1U9V7g0zNrgDE?mode=ems_copy_t'>grupo</a>
+             ou <a target='_blank' href='https://lu.ma/pucangels-rs'>agenda</a>)
             </li>
             <li>
              🗣️ Bora debates, discursos e palestras
              (<a target='_blank' href='https://chat.whatsapp.com/HsBIyjtWqOD6GkNDrPHCfz'>grupo</a>
              ou <a target='_blank' href='https://lu.ma/pucangels-rs'>agenda</a>)
-            </li>
-            <li>
-             🎭 Espetáculos e Teatros (StandUps)
-             (<a target='_blank' href='https://lu.ma/bora?tag=teatros'>agenda</a>)
-            </li>
-            <li>
-             ⚽ Bora Bola
-             (<a target='_blank' href='https://lu.ma/bora?tag=bola'>agenda</a>)
             </li>
           <ul>
           <br/>

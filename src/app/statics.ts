@@ -62,6 +62,7 @@ export class Statics {
                 return "Jardim Europa";
         }
     }
+    public static encontros: string = `Encontros com propósito que geram inovação, educação e transformação.`;
     public static virtudes: string = `Cultivando conhecimento, virtudes e o sagrado para transformar pessoas e comunidades`;
     public static empreendedorismo: string = `📈 Empreendedorismo, carreiras e serviços se formam aqui.`;
     public static tecnologistas: string = `♟️Tecnologias e carreiras se formam aqui`;
