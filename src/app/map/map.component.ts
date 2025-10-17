@@ -82,27 +82,27 @@ export class MapComponent {
             <li>
              🤲🏻 Bora Cultos
              (<a target='_blank' href='https://chat.whatsapp.com/FtoRjOgoiZmLvQFltbCbzA'>grupo</a>
-             ou <a target='_blank' href='https://lu.ma/bora?tag=cultos'>agenda</a>)
+             | <a target='_blank' href='https://lu.ma/bora?tag=cultos'>agenda</a>)
             </li>
             <li>
              👨‍💻 Bora Tech (evolução e conhecimento em arquitetura de software e novas tecnologias)
              (<a target='_blank' href='https://chat.whatsapp.com/CAzPAdol09sAk63BEJ1Qz0'>grupo</a>
-             ou <a target='_blank' href='https://lu.ma/bora?tag=tech'>agenda</a>)
+             | <a target='_blank' href='https://lu.ma/bora?tag=tech'>agenda</a>)
             </li>
             <li>
              ♟️ Bora Xadrez
              (<a target='_blank' href='https://chat.whatsapp.com/DOzoRcmsAjW7mHPj9iMD0z'>grupo</a>
-             ou <a target='_blank' href='https://lu.ma/bora?tag=xadrez'>agenda</a>)
+             | <a target='_blank' href='https://lu.ma/bora?tag=xadrez'>agenda</a>)
             </li>            
             <li>
              🪽 Bora PUC Angels
              (<a target='_blank' href='https://chat.whatsapp.com/HsWkEqJlO1U9V7g0zNrgDE?mode=ems_copy_t'>grupo</a>
-             ou <a target='_blank' href='https://lu.ma/pucangels-rs'>agenda</a>)
+             | <a target='_blank' href='https://lu.ma/pucangels-rs'>agenda</a>)
             </li>
             <li>
              🗣️ Bora debates, discursos e palestras
              (<a target='_blank' href='https://chat.whatsapp.com/HsBIyjtWqOD6GkNDrPHCfz'>grupo</a>
-             ou <a target='_blank' href='https://lu.ma/pucangels-rs'>agenda</a>)
+             | <a target='_blank' href='https://lu.ma/pucangels-rs'>agenda</a>)
             </li>
           <ul>
           <br/>
