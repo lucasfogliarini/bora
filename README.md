@@ -1,11 +1,15 @@
-[![Deploy Bora Api to Azure Web App](https://github.com/lucasfogliarini/bora/actions/workflows/deploy_docker_containerapp.yml/badge.svg)](https://github.com/lucasfogliarini/bora/actions/workflows/deploy_docker_containerapp.yml)
+O **Bora Morar** é uma iniciativa criada para simplificar e orientar decisões relacionadas à moradia, conectando informação, pessoas e soluções de forma prática, transparente e estruturada.
 
-# Bora
+A proposta do Bora Morar é apoiar quem está pensando em **comprar, financiar, trocar ou planejar um imóvel**, oferecendo clareza sobre opções, processos e impactos financeiros envolvidos em cada escolha. Mais do que tratar apenas de imóveis, o projeto aborda **planejamento financeiro, tomada de decisão consciente e visão de longo prazo**.
 
-O [Bora] é uma aplicação desenvolvida para facilitar a organização de encontros e eventos, integrando-se perfeitamente com o Google Agenda para oferecer uma experiência de usuário simplificada e eficiente.
+O projeto está organizado e documentado de forma estruturada, inclusive do ponto de vista arquitetural. A visão de sistema e contexto pode ser consultada no diagrama **C4 do bora.host**, disponível em:
+[https://s.icepanel.io/5EJNqZk1BJKyQN/T4RR/landscape/overview](https://s.icepanel.io/5EJNqZk1BJKyQN/T4RR/landscape/overview)
 
-Essa plataforma permite que os usuários criem, gerenciem e compartilhem eventos com facilidade, tudo diretamente através da interface da Web. A integração com o Google Agenda permite sincronizar automaticamente os eventos criados na Bora com o calendário pessoal do usuário, garantindo que nunca se esqueçam de um compromisso importante.
+Além disso, o Bora Morar possui um espaço dedicado no ChatGPT, utilizado como apoio para exploração de ideias, refinamento de conceitos e evolução do projeto:
+[https://chatgpt.com/g/g-p-6945839657dc8191b3e75db0d88d0f84-bora/project](https://chatgpt.com/g/g-p-6945839657dc8191b3e75db0d88d0f84-bora/project)
 
-Além disso, a Web API da Bora oferece uma variedade de recursos úteis, como a capacidade de enviar convites personalizados aos participantes, configurar lembretes automáticos e até mesmo definir preferências de localização para facilitar a escolha de um local adequado para o evento.
+O Bora Morar nasce com a convicção de que morar bem não é apenas adquirir um imóvel, mas **compreender o contexto, avaliar cenários financeiros e fazer escolhas alinhadas aos objetivos pessoais e familiares**.
 
-Com uma interface amigável e intuitiva, a Bora torna a organização de encontros uma tarefa simples e sem complicações, permitindo que os usuários se concentrem no que realmente importa: aproveitar o tempo com amigos, familiares ou colegas, sem se preocupar com os detalhes logísticos.
+Dentro dessa visão, existe o interesse em **avaliar um orçamento e possíveis soluções junto ao Banco Carrefour**, considerando sua atuação no mercado financeiro e a oportunidade de apoiar iniciativas que promovam educação, planejamento e acesso consciente à moradia.
+
+O Bora Morar se posiciona como um ponto de apoio para transformar dúvidas em decisões mais seguras, combinando informação de qualidade, visão sistêmica e diálogo com parceiros estratégicos.
