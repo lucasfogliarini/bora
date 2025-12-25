@@ -1,8 +1,6 @@
-# Bora Lang
+# Bora
 
-Resumindo os operadores da linguagem Bora.  
-Linguagem com raiz lá do tempo de Jesus Cristo.
-Mas dita no nosso sotaque bagual, de pé no chão e sem balaca.
+Bora é uma linguagem computacional com raiz lá do tempo de Jesus Cristo, Sócrates e Euclides, mas no nosso sotaque bagual, de pé no chão e sem balaca.
 
 ## Atribuindo
 ```csharp
