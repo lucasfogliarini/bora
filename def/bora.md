@@ -1,12 +1,12 @@
-# Bora Lang
+# BORA e seu jeito de Ser
 
-Resumindo os operadores da linguagem Bora.  
-Linguagem com raiz lá do tempo de Jesus Cristo.
-Mas dita no nosso sotaque bagual, de pé no chão e sem balaca.
+Resuminho dos operadores da linguagem Bora.  
+Linguagem com raiz lá do tempo de Jesus,  
+mas dita no nosso sotaque, de pé no chão e sem balaca.
 
 ## Atribuindo
 ```csharp
-= //Bota um valor(elemento ou número) no lugar. Nada a ver com Comparando se é igual.
+= //bota um valor no lugar, nada a ver com igualar, vide Arte de Igualar
 ```
 ## Desengronhando e Engronhando
 
@@ -18,7 +18,7 @@ Mas dita no nosso sotaque bagual, de pé no chão e sem balaca.
 ```
 ## Comparando
 ```csharp
-== //Isso sim é comparar se é igual Vivente! E não é o mesmo que atribuir.
+==    //Isso sim é igualar Vivente! Não atribuir como '='.
 !=    //Isso é completamente oposto de '=='.
 >     //Maior que um trosso
 <     //Menor que um trosso
