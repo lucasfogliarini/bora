@@ -1,6 +1,6 @@
 # Bora
 
-Bora é uma linguagem computacional com raiz lá do tempo de Jesus Cristo, Sócrates e Euclides, mas no nosso sotaque bagual, de pé no chão e sem balaca.
+Bora é uma linguagem computacional com raiz lá do tempo de Jesus Cristo, Sócrates, Arquimedes e Euclides, mas no nosso sotaque bagual, de pé no chão e sem balaca.
 
 ## Atribuindo
 ```csharp
