@@ -3,12 +3,10 @@ number
 1.618033988749895 #phi
 2.718281828459045 #e
 3.141592653589793 #pi
-116.2867 #year/pi
-134.2422 #year/e
-226.0000 #year/phi
-365.2422 #year
-
-
+116.2867 #boraSolarYearPI/pi
+134.2422 #boraSolarYearE/e
+226.0000 #boraSolarYear226/phi
+365.2422 #boraSolarYear
 
 0
 1

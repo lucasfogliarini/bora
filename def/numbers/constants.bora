@@ -1,15 +1,15 @@
 constant
 
-bora0_5=0.5 # half
-bora1=1.0 # one
+bora0_5=0.5
+bora1=1.0
+bora2=2.0
 phi=1.618033988749895 # golden ratio
 e=2.718281828459045 # natural logarithm base
 pi=3.141592653589793 # circle constant
 bora5=5.0000
 
-boraSolarYear226=226.0000
-boraSolarYearPI=134.2422
 boraSolarYearE=116.2867
-
+boraSolarYearPI=134.2422
+boraSolarYear226=226.0000
 boraSolarYear=365.2422
 

@@ -1,6 +1,6 @@
 bora
 
-sq2 = bora(): 2 ** bora0_5 # 1.41421356
+sq2 = bora(): bora2 ** bora0_5 # 1.41421356
 phi = bora(): (bora1 + bora5 ** bora0_5) / bora2  # 1.618033988749895
 sqpi = bora(): pi ** bora0_5 # 1.7320508075688772
 e = bora(n): (bora1 + bora1/n) ** n # 2~2.718281828459045
