@@ -1,15 +1,15 @@
-constants
+constant
 
-phi=1.618033988749895
-e=2.718281828459045
-pi=3.141592653589793
-lfp=226.0000
-lfppi=134.2422
-lfpe=116.2867
+bora0_5=0.5 # half
+bora1=1.0 # one
+phi=1.618033988749895 # golden ratio
+e=2.718281828459045 # natural logarithm base
+pi=3.141592653589793 # circle constant
+bora5=5.0000
 
-year=365.2422
+boraSolarYear226=226.0000
+boraSolarYearPI=134.2422
+boraSolarYearE=116.2867
 
-year=phi*lfp
-year=pi*lfppi
-year=e*lfpe
+boraSolarYear=365.2422
 

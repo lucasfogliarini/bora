@@ -1,14 +1,22 @@
 # Atribuindo
 =
+
 # Desengronhando e Engronhando
-+
-*
--
-/
++ # Adição
+- # Subtração
+* # Multiplicação
+/ # Divisão
+
+# Desengronhando afu
+
+** # Potenciação
+% # Resto
+
 # Comparando
-==
-!=
->
-<
->=
-<=
+
+== # Igualdade
+!= # Desigualdade
+> # Maior
+< # Menor
+>= # Maior ou Igual
+<= # Menor ou Igual
