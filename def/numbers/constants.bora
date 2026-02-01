@@ -3,10 +3,13 @@ constants
 phi=1.618033988749895
 e=2.718281828459045
 pi=3.141592653589793
+lfp=226.0000
+lfppi=134.2422
+lfpe=116.2867
 
 year=365.2422
 
-year=phi*226.0000
-year=pi*116.2867
-year=e*134.2422
+year=phi*lfp
+year=pi*lfppi
+year=e*lfpe
 
