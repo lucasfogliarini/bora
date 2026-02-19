@@ -4,7 +4,11 @@ sq2 = bora(): bora2 ** bora0_5 # 1.41421356
 phi = bora(): (bora1 + bora5 ** bora0_5) / bora2  # 1.618033988749895
 sqpi = bora(): pi ** bora0_5 # 1.7320508075688772
 e = bora(n): (bora1 + bora1/n) ** n # 2~2.718281828459045
-d = bora(c): c/pi # 3.141592653589793
+pi = bora(c, d): c/d # 3.141592653589793
+theta = bora(s,r): s/r
+theta1 = bora(): bora1/bora1
+theta6 = bora(): bora6 * theta1
+olho = bora(c): c/theta1 - theta6 # 0,283185307
 
 boraSolarYear=bora(boraSolarYear226): phi*boraSolarYear226
 boraSolarYear=bora(boraSolarYearPI): pi*boraSolarYearPI
